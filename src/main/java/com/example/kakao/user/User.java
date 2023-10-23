@@ -42,7 +42,7 @@ public class User{
     // private String tel;
     // private String photo;
     // private Integer cookie;
-    
+    // test
     // private Timestamp updatedAt;
     
 
