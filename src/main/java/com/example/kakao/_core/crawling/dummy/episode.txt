@@ -1,0 +1,129 @@
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'106화', 9.98, false, 'thumbnail_202x120_a8875ebf-fbe1-4700-bea0-7d5c33e499f2.jpg','2023-10-19 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'105화', 9.98, false, 'thumbnail_202x120_ace51d29-d5e5-42ba-b21d-2f15d7035b00.jpg','2023-10-12 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'휴재 특별편 5', 9.86, false, 'thumbnail_202x120_7bbdd521-4788-48e4-86ba-b9bf6dc84e23.jpg','2023-08-31 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'휴재 특별편 4 (각색의 시작)', 9.89, false, 'thumbnail_202x120_3bb676c5-db88-45ea-ac2c-9a8b9e193335.jpg','2023-08-24 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'휴재 특별편 3 (추가Q&A)', 9.91, false, 'thumbnail_202x120_539baffd-ffa2-47c4-9aeb-c7ee6db25874.jpg','2023-08-17 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'휴재 특별편 2 (김현수 작가님)', 9.96, false, 'thumbnail_202x120_dc5ac71d-6899-488a-a3d2-12d5eeae0cc1.jpg','2023-08-10 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'휴재 특별편 1 (이현민&문백경 작가님)', 9.96, false, 'thumbnail_202x120_c3392e7c-754b-4515-b8ac-a0e74ff3c49a.jpg','2023-08-03 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'104화', 9.96, false, 'thumbnail_202x120_b6316d1b-820f-4bfd-a7d8-2ae07674f64e.jpg','2023-07-27 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'103화', 9.98, false, 'thumbnail_202x120_73c16fd1-68ce-41d1-811d-add3701ecf23.jpg','2023-07-20 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'102화', 9.98, false, 'thumbnail_202x120_4cbb7dfb-4278-4d58-8f80-e5815f0bcd73.jpg','2023-07-13 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'101화', 9.98, false, 'thumbnail_202x120_c8f3a464-c945-46cb-8e1e-816415ad7a48.jpg','2023-07-06 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'100화', 9.98, false, 'thumbnail_202x120_2230b60f-b8c3-41b4-b0aa-17549a61a61d.jpg','2023-06-29 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'99화', 9.98, false, 'thumbnail_202x120_be924d63-77dd-451e-a81f-f42bb5f05932.jpg','2023-06-22 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'98화', 9.98, false, 'thumbnail_202x120_aefcdc69-e884-40e7-aa5b-25575b38cd81.jpg','2023-06-15 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'97화', 9.98, false, 'thumbnail_202x120_270a65aa-2959-4081-8bf6-a034a77d1c53.jpg','2023-06-08 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'96화', 9.98, false, 'thumbnail_202x120_f7bd3a7f-ec19-463d-901d-c86cead9f7fe.jpg','2023-06-01 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'95화', 9.98, false, 'thumbnail_202x120_914b0b4e-e3f4-4b6d-a03e-edcbca52e2f1.jpg','2023-05-25 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'94화', 9.98, false, 'thumbnail_202x120_d3279a0c-4827-4915-b0cc-f7d839a15f1e.jpg','2023-05-18 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'93화', 9.98, false, 'thumbnail_202x120_5e4ffbda-c359-4e76-b4e1-bcd7f7aa6826.jpg','2023-05-11 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (2,'92화', 9.98, false, 'thumbnail_202x120_46c791e4-51af-450e-ab54-44a984c9680d.jpg','2023-05-04 00:00:00.0');
+
+
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'89화', 9.98, false, 'thumbnail_202x120_46a16f6f-344f-4dfd-a089-2881bc2a8f49.jpg','2023-10-19 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'88화', 9.97, false, 'thumbnail_202x120_37073671-8d95-4a5d-860d-98d6053053c8.jpg','2023-10-12 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'87화', 9.97, false, 'thumbnail_202x120_014f6424-4fcd-4b43-92db-c8816302e5b4.jpg','2023-10-05 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'86화', 9.98, false, 'thumbnail_202x120_abaed91f-4b0a-4bf4-8804-24fb8da8c44f.jpg','2023-09-28 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'85화', 9.96, false, 'thumbnail_202x120_b4ea3ed9-5e9c-47cf-9c7a-47f87e033ab0.jpg','2023-09-21 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'84화', 9.97, false, 'thumbnail_202x120_403d65c0-0efb-4412-8bfb-31573795e85e.jpg','2023-09-14 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'83화', 9.95, false, 'thumbnail_202x120_484fa97c-ebf5-468e-9b94-7ac0327070b1.jpg','2023-09-07 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'82화', 9.89, false, 'thumbnail_202x120_c0a837bc-852d-47cf-98c9-266b07731457.jpg','2023-08-31 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'81화', 9.97, false, 'thumbnail_202x120_c46cba05-e9f2-4e56-980a-499f20d7a274.jpg','2023-08-24 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'80화', 9.97, false, 'thumbnail_202x120_e7f897ff-9afa-4664-b099-0d5c2ae51563.jpg','2023-08-17 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'79화', 9.96, false, 'thumbnail_202x120_28bc76dc-dbd3-47d5-9627-2f23266a0860.jpg','2023-08-10 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'78화', 9.96, false, 'thumbnail_202x120_2bbe5b1a-c1f5-483e-a519-759006b8cfda.jpg','2023-08-03 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'77화', 9.97, false, 'thumbnail_202x120_08f983da-d543-4880-a918-904736657191.jpg','2023-07-27 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'76화', 9.93, false, 'thumbnail_202x120_8c8526f0-7f16-4583-abe4-30d624bfb8ea.jpg','2023-07-20 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'75화', 9.97, false, 'thumbnail_202x120_a11f8b33-4b7f-4871-9230-4af28656bcad.jpg','2023-07-13 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'74화', 9.94, false, 'thumbnail_202x120_dae12d91-10c3-4988-8c19-a8270d035f22.jpg','2023-07-06 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'73화', 9.91, false, 'thumbnail_202x120_39aa18b8-1b58-4fbe-92f7-dc0e2444259b.jpg','2023-06-29 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'72화', 9.97, false, 'thumbnail_202x120_cbc87bef-6f54-49f3-b91f-d626ac52f9f7.jpg','2023-06-22 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'71화', 9.96, false, 'thumbnail_202x120_76cd2289-d85a-4f5e-ac94-0dc2dcfa22f7.jpg','2023-06-15 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (3,'70화', 9.97, false, 'thumbnail_202x120_32e6c193-c3a5-40e5-9477-f4a9ade805c6.jpg','2023-06-08 00:00:00.0');
+
+
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'152화', 9.97, false, 'thumbnail_202x120_cf54b80e-2dd8-4138-95ca-82f2c7c517ef.jpg','2023-10-19 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'151화', 9.97, false, 'thumbnail_202x120_92912862-c42f-4d59-9364-ebed145de9f2.jpg','2023-10-12 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'150화', 9.98, false, 'thumbnail_202x120_dc6a667b-39c6-4842-87f6-dd3599b80228.jpg','2023-10-05 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'149화', 9.98, false, 'thumbnail_202x120_c909af74-bc66-46a3-90ba-e660e36e5ab3.jpg','2023-09-28 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'148화', 9.97, false, 'thumbnail_202x120_30b4f37f-bcd0-4161-8bb3-5450f21e8c05.jpg','2023-09-21 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'147화', 9.95, false, 'thumbnail_202x120_7815c85e-cd09-47ea-af12-1f959f2ef3a7.jpg','2023-09-14 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'146화', 9.98, false, 'thumbnail_202x120_d25a7029-ef32-4e59-beaf-f4a43bede28b.jpg','2023-09-07 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'145화', 9.98, false, 'thumbnail_202x120_29b882f6-d22b-4607-ab16-445a75337722.jpg','2023-08-31 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'144화', 9.98, false, 'thumbnail_202x120_de5af4d5-9541-4a7f-be71-8e384a65ef2b.jpg','2023-08-24 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'143화', 9.98, false, 'thumbnail_202x120_2112411f-67d7-47bb-b91c-3f9bc950ca8a.jpg','2023-08-17 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'142화', 9.96, false, 'thumbnail_202x120_ae4e0d29-bc6d-4705-a774-2367fccba105.jpg','2023-08-10 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'141화', 9.96, false, 'thumbnail_202x120_1b2b6a5f-528d-40bc-bf4b-187e08472b86.jpg','2023-08-03 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'140화', 9.96, false, 'thumbnail_202x120_48379591-57df-4750-8f9e-92f6f0b9adb0.jpg','2023-07-27 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'139화', 9.97, false, 'thumbnail_202x120_3b7d3b59-ab90-4f39-9393-7762fc97fbc8.jpg','2023-07-20 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'138화', 9.96, false, 'thumbnail_202x120_279e5d48-87c1-4422-b0cc-0b4d6317f130.jpg','2023-07-13 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'137화', 9.95, false, 'thumbnail_202x120_ce008482-e598-4d3c-b4c4-b2fac66e6c5a.jpg','2023-07-06 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'136화', 9.95, false, 'thumbnail_202x120_48319cff-10a6-49d6-bb8b-213f0cf396d8.jpg','2023-06-29 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'135화', 9.94, false, 'thumbnail_202x120_f0392c10-c9d3-4297-a037-2df617b5df35.jpg','2023-06-22 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'134화', 9.97, false, 'thumbnail_202x120_80b33a4d-52f5-4c7e-aeb3-1b071852ffb0.jpg','2023-06-15 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (4,'133화', 9.97, false, 'thumbnail_202x120_6df9d4df-7a7c-4a88-9b7c-aa1266e13bc5.jpg','2023-06-08 00:00:00.0');
+
+
+
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'117화. 고인물 코퍼레이션 단합 대회', 9.98, false, 'thumbnail_202x120_61f6c829-cbfd-49f7-8585-2b096cbac60c.jpg','2023-10-19 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'116화. 릭노스의 전당포', 9.98, false, 'thumbnail_202x120_d449cc72-cc20-4fcd-8b12-cbc58dd0b6e3.jpg','2023-10-12 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'115화. 고인물이 이중 전직을 하는 법', 9.98, false, 'thumbnail_202x120_1b72b68a-d00a-4849-ad5f-20b4bc240e4d.jpg','2023-10-05 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'114화. 신념을 잇는 끈', 9.97, false, 'thumbnail_202x120_5d4ad464-5cfa-489f-b9f2-cfd0875941d4.jpg','2023-09-28 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'113화. 그림자 속 암기, 월영', 9.97, false, 'thumbnail_202x120_e42b570e-e8dd-415e-820b-a1e6029e751c.jpg','2023-09-21 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'112화. 두 계층의 연합(2)', 9.98, false, 'thumbnail_202x120_c083b6f7-1ae2-49c6-9be9-db6803ed111f.jpg','2023-09-14 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'111화. 두 계층의 연합(1)', 9.98, false, 'thumbnail_202x120_81864290-d7bb-4ce1-9a17-c901c741d3c3.jpg','2023-09-07 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'110화. 붉은 맹세의 문양', 9.96, false, 'thumbnail_202x120_0bc1aa55-30a4-424c-86c7-5df36c545006.jpg','2023-08-31 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'109화. 권천지룡 암황의 수제자', 9.97, false, 'thumbnail_202x120_f180fa9e-83a3-49a4-8850-bf2b907f59c1.jpg','2023-08-24 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'108화. 일상을 살아간다는 것', 9.97, false, 'thumbnail_202x120_3d949b24-36b5-4f29-9486-49020b5cd858.jpg','2023-08-17 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'107화. 세력 선택(3)', 9.97, false, 'thumbnail_202x120_cae87f73-c52f-415f-9f58-636c3bf9b5da.jpg','2023-08-10 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'106화. 3대 재앙(2)', 9.97, false, 'thumbnail_202x120_adaf65f3-8f84-43c7-adbe-23c5394d9fd7.jpg','2023-08-03 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'105화. 3대 재앙(1)', 9.92, false, 'thumbnail_202x120_f3f0c856-2fab-41d7-b1b6-c4b2d2c74cae.jpg','2023-07-27 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'104화. 절망을 부르는 뿔피리(2)', 9.97, false, 'thumbnail_202x120_2ff46987-9b30-4d74-a326-0e7b35b19f26.jpg','2023-07-20 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'103화. 절망을 부르는 뿔피리(1)', 9.97, false, 'thumbnail_202x120_2cdde2c8-1cfa-4de1-a968-16f6239424a2.jpg','2023-07-13 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'102화. 귀혈대주 염호', 9.97, false, 'thumbnail_202x120_9dfbf71e-0e95-4d34-ad05-f09c33be55da.jpg','2023-07-06 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'101화. 쾌락 전투광', 9.97, false, 'thumbnail_202x120_a8996102-4949-4fa5-8079-b2b1c488c196.jpg','2023-06-29 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'100화. 세력 선택(2)', 9.97, false, 'thumbnail_202x120_a93eb4bc-23bd-41c3-b100-933664cfa28e.jpg','2023-06-22 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'99화. 세력 선택(1)', 9.97, false, 'thumbnail_202x120_e1fd4e23-d364-432d-a67c-ce3d688a324f.jpg','2023-06-15 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (5,'98화. 가면무도회(2)', 9.97, false, 'thumbnail_202x120_3bb77bf0-6260-4f12-9d64-5f4932e084a8.jpg','2023-06-08 00:00:00.0');
+
+
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[월] 은우와 5주차', 9.91, false, 'thumbnail_202x120_7e3575ed-30dd-4b14-ad3a-1c98f11d8c83.jpg','2023-10-22 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[일] 정완과 4주차', 9.92, false, 'thumbnail_202x120_f4dbd952-c7de-4b17-b176-b3ea9f1c2c74.jpg','2023-10-21 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[토] 연희와 4주차', 9.23, false, 'thumbnail_202x120_3167d441-9a34-4b5f-851d-5dd1c0b0a569.jpg','2023-10-20 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[금] 태원과 4주차', 9.89, false, 'thumbnail_202x120_93624cf6-769a-4fd8-91d7-2b1a4467cf3d.jpg','2023-10-19 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[목] 티아와 4주차', 9.75, false, 'thumbnail_202x120_6626545d-0299-4cfe-8f00-6615c537e804.jpg','2023-10-18 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[수] 범철과 4주차', 9.85, false, 'thumbnail_202x120_f38ba06b-8b9f-4604-9dfd-3c3146357033.jpg','2023-10-17 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[화] 하얀 개와 4주차', 9.84, false, 'thumbnail_202x120_06279fc7-fda1-4207-bfd6-35099c23fe63.jpg','2023-10-16 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[월] 은우와 4주차', 9.92, false, 'thumbnail_202x120_1848b457-24bd-4eca-aa46-e1efc7ac3ced.jpg','2023-10-15 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[일] 정완과 3주차', 9.94, false, 'thumbnail_202x120_1ad4400e-b30f-4e27-a5ed-2d337840070b.jpg','2023-10-14 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[토] 연희와 3주차', 9.35, false, 'thumbnail_202x120_fb0fb7fa-bd7f-4143-bc2a-5a638d4c53c0.jpg','2023-10-13 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[금] 태원과 3주차', 9.86, false, 'thumbnail_202x120_20805ff6-f511-4dfd-ab4f-dcb7ce07307c.jpg','2023-10-12 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[목] 티아와 3주차', 9.77, false, 'thumbnail_202x120_f704d761-e934-4a34-87db-3f2667b749c5.jpg','2023-10-11 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[수] 범철과 3주차', 9.89, false, 'thumbnail_202x120_188f57b6-1006-4503-9f2b-8083d44e2098.jpg','2023-10-10 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[화] 하얀 개와 3주차', 9.87, false, 'thumbnail_202x120_d3d6b6c8-39cb-4e6a-8f57-85389f0a7e98.jpg','2023-10-09 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[월] 은우와 3주차', 9.92, false, 'thumbnail_202x120_3f9309f2-4f43-477a-96ac-57deed30354b.jpg','2023-10-08 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[일] 정완과 2주차', 9.94, false, 'thumbnail_202x120_d2d45e17-6e7a-4649-b197-cfebef2ca4f1.jpg','2023-10-07 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[토] 연희와 2주차', 9.17, false, 'thumbnail_202x120_9df0de5a-f921-464b-b601-c58f5437969b.jpg','2023-10-06 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[금] 태원과 2주차', 9.93, false, 'thumbnail_202x120_7abc4726-4185-4e8e-a9b4-96c43b9007e4.jpg','2023-10-05 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[목] 티아와 2주차', 9.62, false, 'thumbnail_202x120_96d6d684-82c5-4651-9172-4e40204dae31.jpeg','2023-10-04 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (6,'[수] 범철과 2주차', 9.91, false, 'thumbnail_202x120_085de48b-dadb-479e-851b-25b14f6824f5.jpg','2023-10-03 00:00:00.0');
+
+
+
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (7,'1부 여희연(6)', 9.31, false, 'thumbnail_202x120_f638e258-b4f8-4731-b628-d29e16e878d6.jpg','2023-10-19 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (7,'1부 여희연(5)', 9.57, false, 'thumbnail_202x120_7531eabf-2c72-451e-b3d1-11c8525d9f1f.jpg','2023-10-12 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (7,'1부 여희연(4)', 9.36, false, 'thumbnail_202x120_0548ea96-699c-4283-a9b9-7e3dbe575c36.jpg','2023-10-05 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (7,'1부 여희연(3)', 9.68, false, 'thumbnail_202x120_16828337-71f6-4964-be33-7ad160c9f3b8.jpg','2023-09-28 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (7,'1부 여희연(2)', 9.57, false, 'thumbnail_202x120_84da0cc0-84d0-4658-9448-a91890e232de.jpg','2023-09-21 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (7,'1부 여희연(1)', 8.89, false, 'thumbnail_202x120_317fc3b9-aad2-4132-b13a-c80376e093ba.jpg','2023-09-14 00:00:00.0');
+
+
+
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (8,'5화 - 그런 도박에는 자신있으니까', 9.94, false, 'thumbnail_202x120_e813d9d4-0c40-4dce-83cc-127079f9cf06.jpg','2023-10-19 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (8,'4화 - 타임 패러독스', 9.94, false, 'thumbnail_202x120_41d7bdf5-6dc5-41dd-8ef0-09a8a6411cd6.jpg','2023-10-12 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (8,'3화 - 전직과 참교육', 9.91, false, 'thumbnail_202x120_8de811e3-37e9-449a-8abe-47824ff2d9d4.jpg','2023-10-05 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (8,'2화 - 철 (凸)', 9.9, false, 'thumbnail_202x120_aa5692b6-c7d5-4f99-a61f-3decdc23f235.jpg','2023-09-28 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (8,'1화 - 내가 돌아왔다', 9.9, false, 'thumbnail_202x120_276db2b9-007b-4295-82d1-98764a29f654.jpg','2023-09-21 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`is_read`,`thumbnail`,`created_at`) VALUES  (8,'프롤로그 - 롤백', 9.72, false, 'thumbnail_202x120_3cbccb02-0c9e-49aa-952a-9bb6a129fb34.jpg','2023-09-21 00:00:00.0');
+
+
