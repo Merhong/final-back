@@ -48,7 +48,7 @@ public class UserController {
         return ResponseEntity.ok().header("Authorization", "Bearer "+responseDTO.getJwt()).body(ApiUtils.success(responseDTO));
     }
 
-    // 업데이트 // 쿠키 추가
+    // 업데이트 //  쿠키 추가
     @PutMapping("/user")
     public ResponseEntity<?> update(@RequestBody @Valid UserRequest.updateDTO requestDTO, Errors errors) {
         User sessionUser = (User) session.getAttribute("sessionUser");
