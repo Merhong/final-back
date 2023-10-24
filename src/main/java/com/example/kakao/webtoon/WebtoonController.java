@@ -18,7 +18,7 @@ public class WebtoonController {
 
     private final WebtoonService webtoonService; // 자바에서 final 변수는 반드시 초기화되어야 함.
 
-    // (기능1) 상품 목록보기
+    // 웹툰 전체목록
     @GetMapping("/webtoons")
     public ResponseEntity<?> findAll(@RequestParam(value = "page", defaultValue = "0") Integer page) {
         System.out.println("테스트 : findAll()");
@@ -27,7 +27,7 @@ public class WebtoonController {
         return ResponseEntity.ok().body(ApiUtils.success(DTOList));
     }
 
-    // // (기능2) 상품 상세보기
+    // 웹툰 상세보기
     @GetMapping("/webtoons/{id}")
     public ResponseEntity<?> findById(@PathVariable int id) {
         WebtoonResponse.FindByIdDTO DTO = webtoonService.findById(id);

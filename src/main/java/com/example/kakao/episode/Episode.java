@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import com.example.kakao.webtoon.Webtoon;
 
 
@@ -20,29 +22,30 @@ public class Episode {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(length = 100, nullable = false)
-    private String detailTitle;
-    private String thumbnail;
-    private Double starCount;
-    private Integer cookieCost;
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
-    // 웹툰 내용 테이블 추가 필요
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Webtoon webtoon;
     
-    // @ManyToOne(fetch = FetchType.LAZY)
-    // private Author author;
+    @Column(length = 100, nullable = false)
+    private String detailTitle;
+
+    private String thumbnail;
+
+    String authorComment;
+
+    private Integer cookieCost;
     
-    // String intro;
-    // String hashtag;
-    // String age;
-    // String week;
-    // Boolean isEnd;
-    // String thumbnail;
-    // Timestamp createdAt;
-    // Timestamp updatedAt;
+    @ColumnDefault("0")
+    private Double starScore; // 별점 계산 분자값
     
-    // private Boolean isRead; // 유저랑 중간테이블
+    @ColumnDefault("0")
+    private Double starCount; // 별점 계산 분모값
+
+    private Timestamp createdAt;
+
+    private Timestamp updatedAt;
+
+    // 웹툰 내용 테이블 추가 필요
+    
+
 }

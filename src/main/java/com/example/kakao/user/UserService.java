@@ -34,10 +34,25 @@ public class UserService {
         System.out.println(userPS);
 
         String jwt = JwtTokenUtils.create(userPS);
-
+        
         UserResponse.loginResponseDTO responseDTO = new UserResponse.loginResponseDTO(userPS);
         responseDTO.setJwt(jwt);
 
+        return responseDTO;
+    }
+
+    @Transactional
+    public UserResponse.updateResponseDTO update(UserRequest.updateDTO requestDTO, User sessionUser) {
+
+        User user = userJPARepository.findById(sessionUser.getId())
+        .orElseThrow(()-> new Exception400("오류 : "+requestDTO.getEmail()));
+        
+        user.setUsername(requestDTO.getUsername());
+        user.setPassword(requestDTO.getPassword());
+        user.setCookie(requestDTO.getCookie());
+        
+        UserResponse.updateResponseDTO responseDTO = new UserResponse.updateResponseDTO(user);
+        
         return responseDTO;
     }
 }
