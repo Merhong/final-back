@@ -1,4 +1,4 @@
-package com.example.kakao.Author;
+package com.example.kakao.author;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -11,9 +11,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.example.kakao.episode.Episode;
+import com.example.kakao.entity.WebtoonAuthor;
 import com.example.kakao.user.User;
-import com.example.kakao.webtoon.Webtoon;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -25,37 +24,16 @@ public class Author{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
-    private List<Webtoon> webtoonList = new ArrayList<>();
-    
     @OneToOne
     private User user;
 
-    private String authorname;
+    private String authorNickname;
 
-    // @Column(length = 100, nullable = false, unique = true)
-    // private String email; // 인증시 필요한 필드
-    // @Column(length = 256, nullable = false)
-    // private String password;
-    // @Column(length = 45, nullable = false, unique = true)
-    // private String username; // 별명
+    private String authorPhoto;
 
-    // private Boolean isAdmin; // true=관리자, false=일반유저
-    
-    // private Timestamp createdAt;
-    
-    
-    
-    
-    // private String birth;
-    // private String gender;
-    // private String realName; // 실명
-    
-    // private String tel;
-    // private String photo;
-    // private Integer cookie;
-    
-    // private Timestamp updatedAt;
-    
+    private String siteURL;
 
+    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
+    private List<WebtoonAuthor> webtoonAuthorList = new ArrayList<>();
+    
 }

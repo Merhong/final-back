@@ -21,8 +21,12 @@ public class ValidAdvice {
     @Pointcut("@annotation(org.springframework.web.bind.annotation.PostMapping)")
     public void postMapping(){}
 
+    // 풋매핑도 추가했음
+    @Pointcut("@annotation(org.springframework.web.bind.annotation.PutMapping)")
+    public void putMapping(){}
+
     // 공통 기능
-    @Before("postMapping()")
+    @Before("postMapping() || putMapping()")
     public void checkValid(JoinPoint jp){
         Object[] args = jp.getArgs();
         for (Object arg : args) {

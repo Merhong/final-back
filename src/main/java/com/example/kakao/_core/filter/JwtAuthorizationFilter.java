@@ -31,7 +31,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * /orders/**
  * /products/**
  * 이 주소만 필터가 동작하면 된다
+ * FilterConfig에서 설정
  */
+
 public class JwtAuthorizationFilter implements Filter {
 
     @Override
