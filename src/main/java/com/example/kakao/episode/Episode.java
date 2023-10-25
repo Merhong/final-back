@@ -12,6 +12,8 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.example.kakao.comment.Comment;
+import com.example.kakao.entity.EpisodePhoto;
 import com.example.kakao.webtoon.Webtoon;
 
 
@@ -28,13 +30,20 @@ public class Episode {
     @ManyToOne(fetch = FetchType.LAZY)
     private Webtoon webtoon;
     
+    @OneToMany(mappedBy = "episode", fetch = FetchType.LAZY)
+    private List<EpisodePhoto> episodePhotoList = new ArrayList<>();
+    
+    @OneToMany(mappedBy = "episode", fetch = FetchType.LAZY)
+    private List<Comment> commentList = new ArrayList<>();
+
     @Column(length = 100, nullable = false)
     private String detailTitle;
 
     private String thumbnail;
 
-    String authorComment;
+    private String authorComment;
 
+    @ColumnDefault("0")
     private Integer cookieCost;
     
     @ColumnDefault("0")

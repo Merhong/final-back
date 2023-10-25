@@ -27,6 +27,6 @@ public class WebtoonHashTag{
     private Webtoon webtoon;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private HashTag hashTag;
+    private HashTag hashTag; // 그냥 코드테이블 안만들고 바로 적어야하나?
 
 }

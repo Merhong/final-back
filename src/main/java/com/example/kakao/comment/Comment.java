@@ -32,14 +32,18 @@ public class Comment {
     @ManyToOne(fetch = FetchType.LAZY)
     private Episode episode;
     
+    @ColumnDefault("false")
+    private Boolean isDelete;
+
     @Column(length = 200, nullable = false)
     private String content;
 
     @CreationTimestamp
     private Timestamp createdAt;
     
-    @UpdateTimestamp
-    private Timestamp updatedAt;
+    // 댓글은 수정 기능 없다
+    // @UpdateTimestamp 
+    // private Timestamp updatedAt;
 
     // 베스트댓글?
     

@@ -1,185 +1,224 @@
-// package com.example.kakao.episode;
+package com.example.kakao.episode;
 
-// import java.util.List;
-// import java.util.stream.Collector;
-// import java.util.stream.Collectors;
+import java.sql.Timestamp;
+import java.util.List;
+import java.util.stream.Collectors;
 
-// import com.example.kakao.product.Product;
-// import com.example.kakao.product.option.Option;
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 
-// import lombok.Getter;
-// import lombok.Setter;
-// import lombok.ToString;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
 
-// public class EpisodeResponse {
+import com.example.kakao.comment.Comment;
+import com.example.kakao.entity.EpisodePhoto;
+import com.example.kakao.user.User;
 
-//     @ToString
-//     @Getter
-//     @Setter
-//     public static class FindAllDTO {
-//         private Integer id;
-//         private String title;
-//         private String author;
-//         private Double starCount;
-//         private String image;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-//         public FindAllDTO(Episode episode) {
-//             this.id = webtoon.getId();
-//             this.title = webtoon.getTitle();
-//             this.author = webtoon.getAuthor();
-//             this.starCount = webtoon.getStarCount();
-//             this.image = webtoon.getImage();
-//         }
-//     }
+public class EpisodeResponse {
 
-//     // (기능2) 상품 상세보기
-//     @Getter
-//     @Setter
-//     public static class FindByIdDTO {
-//         private Integer productId;
-//         private String productName;
-//         private String productImage;
-//         private Integer productPrice;
-//         private Integer productStartCount;
-//         private List<OptionDTO> options;
+    // 웹툰 에피소드 1편 보기 DTO
+    @Getter
+    @Setter
+    @ToString
+    public static class FindByIdDTO {
+        private Integer episodeId;
+        private String detailTitle;
+        private Double starScore;
+        private Double starCount;
+        private Timestamp createdAt;
+        private String authorComment;
+        private String authorName;
+        private Integer webtoonId;
+        private String webtoonName;
+        private List<CommentDTO> commentList;
+        private List<PhotoDTO> PhotoList;
 
-//         public FindByIdDTO(Product product) {
-//             this.productId = product.getId();
-//             this.productName = product.getProductName();
-//             this.productImage = product.getImage();
-//             this.productPrice = product.getPrice();
-//             this.productStartCount = 5;
-//             this.options = product.getOptions().stream()
-//                     .map(o -> new OptionDTO(o))
-//                     .collect(Collectors.toList());
-//         }
+        public FindByIdDTO(Episode episode) {
+            this.episodeId = episode.getId();
+            this.detailTitle = episode.getDetailTitle();
+            this.starScore = episode.getStarScore();
+            this.starCount = episode.getStarCount();
+            this.createdAt = episode.getCreatedAt();
+            this.authorComment = episode.getAuthorComment();
+            this.authorName = episode.getWebtoon().getWebtoonAuthorList().stream()
+                    .map(webtoonAuthor -> webtoonAuthor.getAuthor().getAuthorNickname())
+                    .collect(Collectors.joining(" / "));
+            this.webtoonId = episode.getWebtoon().getId();
+            this.webtoonName = episode.getWebtoon().getTitle();
+            this.PhotoList = episode.getEpisodePhotoList().stream()
+                    .map(t -> new PhotoDTO(t)).collect(Collectors.toList());
+        }
 
-//         @Getter
-//         @Setter
-//         class OptionDTO {
-//             private Integer optionId;
-//             private String optionName;
-//             private Integer optionPrice;
+        @Getter
+        @Setter
+        @ToString
+        class CommentDTO {
+            private Integer id;
+            private User user;
+            private Episode episode;
+            private Boolean isDelete;
+            private String content;
+            private Timestamp createdAt;
 
-//             OptionDTO(Option option) {
-//                 this.optionId = option.getId();
-//                 this.optionName = option.getOptionName();
-//                 this.optionPrice = option.getPrice();
-//             }
-//         }
-//     }
+            CommentDTO(Comment comment) {
+                // this.id = episodePhoto.getId();
+                // this.photoURL = episodePhoto.getPhotoURL();
+            }
+        }
+        @Getter
+        @Setter
+        @ToString
+        class PhotoDTO {
+            private Integer id;
+            private String photoURL;
 
-//     // 상품조회 + 옵션조회
-//     @Getter
-//     @Setter
-//     public static class FindByIdV1DTO {
-//         private Integer productId;
-//         private String productName;
-//         private String productImage;
-//         private Integer productPrice;
-//         private Integer productStartCount;
-//         private List<OptionDTO> options;
+            PhotoDTO(EpisodePhoto episodePhoto) {
+                this.id = episodePhoto.getId();
+                this.photoURL = episodePhoto.getPhotoURL();
+            }
+        }
 
-//         public FindByIdV1DTO(Product product, List<Option> options) {
-//             this.productId = product.getId();
-//             this.productName = product.getProductName();
-//             this.productImage = product.getImage();
-//             this.productPrice = product.getPrice();
-//             this.productStartCount = 5;
-//             this.options = options.stream()
-//                     .map(o -> new OptionDTO(o))
-//                     .collect(Collectors.toList());
-//         }
+    }
 
-//         @Getter
-//         @Setter
-//         class OptionDTO {
-//             private Integer optionId;
-//             private String optionName;
-//             private Integer optionPrice;
 
-//             OptionDTO(Option option) {
-//                 this.optionId = option.getId();
-//                 this.optionName = option.getOptionName();
-//                 this.optionPrice = option.getPrice();
-//             }
-//         }
-//     }
 
-//     // 양방향 매핑
-//     @Getter
-//     @Setter
-//     public static class FindByIdV2DTO {
-//         private Integer productId;
-//         private String productName;
-//         private String productImage;
-//         private Integer productPrice;
-//         private Integer productStartCount;
-//         private List<OptionDTO> options;
 
-//         public FindByIdV2DTO(Product product) {
-//             this.productId = product.getId();
-//             this.productName = product.getProductName();
-//             this.productImage = product.getImage();
-//             this.productPrice = product.getPrice();
-//             this.productStartCount = 5;
-//             System.out.println("이제 Lazy Loading 한다 =================");
-//             this.options = product.getOptions().stream()
-//                     .map(o -> new OptionDTO(o))
-//                     .collect(Collectors.toList());
-//         }
+    // @ToString
+    // @Getter
+    // @Setter
+    // public static class FindAllDTO {
+    //     private Integer id;
+    //     private String title;
+    //     private String author;
+    //     private Double starCount;
+    //     private String image;
 
-//         @Getter
-//         @Setter
-//         class OptionDTO {
-//             private Integer optionId;
-//             private String optionName;
-//             private Integer optionPrice;
+    //     public FindAllDTO(Episode episode) {
+    //         this.id = webtoon.getId();
+    //         this.title = webtoon.getTitle();
+    //         this.author = webtoon.getAuthor();
+    //         this.starCount = webtoon.getStarCount();
+    //         this.image = webtoon.getImage();
+    //     }
+    // }
 
-//             OptionDTO(Option option) {
-//                 System.out.println("이제 Lazy Loading 시작됨 =========");
-//                 this.optionId = option.getId();
-//                 this.optionName = option.getOptionName();
-//                 this.optionPrice = option.getPrice();
-//             }
-//         }
-//     }
 
-//     // 옵션만 조회
-//     @Getter
-//     @Setter
-//     public static class FindByIdV3DTO {
-//         private Integer productId;
-//         private String productName;
-//         private String productImage;
-//         private Integer productPrice;
-//         private Integer productStartCount;
-//         private List<OptionDTO> options;
+    // // 상품조회 + 옵션조회
+    // @Getter
+    // @Setter
+    // public static class FindByIdV1DTO {
+    //     private Integer productId;
+    //     private String productName;
+    //     private String productImage;
+    //     private Integer productPrice;
+    //     private Integer productStartCount;
+    //     private List<OptionDTO> options;
 
-//         public FindByIdV3DTO(List<Option> options) {
-//             System.out.println("이제 Lazy 시작한다???????????????????????");
-//             this.productId = options.get(0).getProduct().getId();
-//             this.productName = options.get(0).getProduct().getProductName();
-//             this.productImage = options.get(0).getProduct().getImage();
-//             this.productPrice = options.get(0).getProduct().getPrice();
-//             this.productStartCount = 5;
-//             this.options = options.stream()
-//                     .map(o -> new OptionDTO(o))
-//                     .collect(Collectors.toList());
-//         }
+    //     public FindByIdV1DTO(Product product, List<Option> options) {
+    //         this.productId = product.getId();
+    //         this.productName = product.getProductName();
+    //         this.productImage = product.getImage();
+    //         this.productPrice = product.getPrice();
+    //         this.productStartCount = 5;
+    //         this.options = options.stream()
+    //                 .map(o -> new OptionDTO(o))
+    //                 .collect(Collectors.toList());
+    //     }
 
-//         @Getter
-//         @Setter
-//         class OptionDTO {
-//             private Integer optionId;
-//             private String optionName;
-//             private Integer optionPrice;
+    //     @Getter
+    //     @Setter
+    //     class OptionDTO {
+    //         private Integer optionId;
+    //         private String optionName;
+    //         private Integer optionPrice;
 
-//             OptionDTO(Option option) {
-//                 this.optionId = option.getId();
-//                 this.optionName = option.getOptionName();
-//                 this.optionPrice = option.getPrice();
-//             }
-//         }
-//     }
-// }
+    //         OptionDTO(Option option) {
+    //             this.optionId = option.getId();
+    //             this.optionName = option.getOptionName();
+    //             this.optionPrice = option.getPrice();
+    //         }
+    //     }
+    // }
+
+    // // 양방향 매핑
+    // @Getter
+    // @Setter
+    // public static class FindByIdV2DTO {
+    //     private Integer productId;
+    //     private String productName;
+    //     private String productImage;
+    //     private Integer productPrice;
+    //     private Integer productStartCount;
+    //     private List<OptionDTO> options;
+
+    //     public FindByIdV2DTO(Product product) {
+    //         this.productId = product.getId();
+    //         this.productName = product.getProductName();
+    //         this.productImage = product.getImage();
+    //         this.productPrice = product.getPrice();
+    //         this.productStartCount = 5;
+    //         System.out.println("이제 Lazy Loading 한다 =================");
+    //         this.options = product.getOptions().stream()
+    //                 .map(o -> new OptionDTO(o))
+    //                 .collect(Collectors.toList());
+    //     }
+
+    //     @Getter
+    //     @Setter
+    //     class OptionDTO {
+    //         private Integer optionId;
+    //         private String optionName;
+    //         private Integer optionPrice;
+
+    //         OptionDTO(Option option) {
+    //             System.out.println("이제 Lazy Loading 시작됨 =========");
+    //             this.optionId = option.getId();
+    //             this.optionName = option.getOptionName();
+    //             this.optionPrice = option.getPrice();
+    //         }
+    //     }
+    // }
+
+    // // 옵션만 조회
+    // @Getter
+    // @Setter
+    // public static class FindByIdV3DTO {
+    //     private Integer productId;
+    //     private String productName;
+    //     private String productImage;
+    //     private Integer productPrice;
+    //     private Integer productStartCount;
+    //     private List<OptionDTO> options;
+
+    //     public FindByIdV3DTO(List<Option> options) {
+    //         System.out.println("이제 Lazy 시작한다???????????????????????");
+    //         this.productId = options.get(0).getProduct().getId();
+    //         this.productName = options.get(0).getProduct().getProductName();
+    //         this.productImage = options.get(0).getProduct().getImage();
+    //         this.productPrice = options.get(0).getProduct().getPrice();
+    //         this.productStartCount = 5;
+    //         this.options = options.stream()
+    //                 .map(o -> new OptionDTO(o))
+    //                 .collect(Collectors.toList());
+    //     }
+
+    //     @Getter
+    //     @Setter
+    //     class OptionDTO {
+    //         private Integer optionId;
+    //         private String optionName;
+    //         private Integer optionPrice;
+
+    //         OptionDTO(Option option) {
+    //             this.optionId = option.getId();
+    //             this.optionName = option.getOptionName();
+    //             this.optionPrice = option.getPrice();
+    //         }
+    //     }
+    // }
+}

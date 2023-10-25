@@ -32,6 +32,7 @@ public class LikeReComment{
     @ManyToOne(fetch = FetchType.LAZY)
     private ReComment recomment;
 
+    // 본인껀 못하는 로직 필요
     private Boolean isLike; // true좋아요 / false 싫어요
 
     @CreationTimestamp

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.utils.ApiUtils;
 
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,15 @@ import lombok.RequiredArgsConstructor;
 public class EpisodeController {
 
     private final EpisodeService episodeService; // 자바에서 final 변수는 반드시 초기화되어야 함.
+
+    // 웹툰 에피소드 1편 보기
+    @GetMapping("/webtoons/{webtoonId}/{episodeId}")
+    public ResponseEntity<?> findById(@PathVariable int webtoonId, @PathVariable int episodeId) {
+        // System.out.println(webtoonId+"/"+episodeId);
+        EpisodeResponse.FindByIdDTO responseDTO = episodeService.findById(webtoonId, episodeId);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
 
     // (기능1) 상품 목록보기
     // @GetMapping("/webtoons")

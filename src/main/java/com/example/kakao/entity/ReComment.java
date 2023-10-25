@@ -32,6 +32,9 @@ public class ReComment {
     @ManyToOne(fetch = FetchType.LAZY)
     private Comment comment;
     
+    @ColumnDefault("false")
+    private Boolean isDelete;
+
     @Column(length = 200, nullable = false)
     private String content;
 
