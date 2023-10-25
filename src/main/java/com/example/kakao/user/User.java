@@ -1,5 +1,6 @@
 package com.example.kakao.user;
 
+import com.example.kakao.Author.Author;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,7 +15,6 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.example.kakao.author.Author;
 import com.example.kakao.entity.enums.UserTypeEnum;
 
 

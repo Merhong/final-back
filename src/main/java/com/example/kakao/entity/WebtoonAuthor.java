@@ -1,5 +1,6 @@
 package com.example.kakao.entity;
 
+import com.example.kakao.Author.Author;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,7 +12,6 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.example.kakao.author.Author;
 import com.example.kakao.webtoon.Webtoon;
 
 @Getter

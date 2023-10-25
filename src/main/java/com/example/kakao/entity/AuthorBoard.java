@@ -1,5 +1,6 @@
 package com.example.kakao.entity;
 
+import com.example.kakao.Author.Author;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,7 +15,6 @@ import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.example.kakao.author.Author;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

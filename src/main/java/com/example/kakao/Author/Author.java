@@ -1,4 +1,4 @@
-package com.example.kakao.author;
+package com.example.kakao.Author;
 
 import lombok.AccessLevel;
 import lombok.Builder;
