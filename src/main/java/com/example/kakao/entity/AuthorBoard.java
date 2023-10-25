@@ -11,6 +11,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import com.example.kakao.author.Author;
 
 @Getter
@@ -32,6 +35,10 @@ public class AuthorBoard{
 
     private String photo;
 
+    @CreationTimestamp
     private Timestamp createdAt;
+    
+    @UpdateTimestamp
+    private Timestamp updatedAt;
 
 }

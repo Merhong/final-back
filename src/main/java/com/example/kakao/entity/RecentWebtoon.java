@@ -11,6 +11,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import com.example.kakao.episode.Episode;
 import com.example.kakao.user.User;
 import com.example.kakao.webtoon.Webtoon;
@@ -34,6 +37,7 @@ public class RecentWebtoon{
     @ManyToOne(fetch = FetchType.LAZY)
     private Episode episode;
 
+    @CreationTimestamp
     private Timestamp createdAt;
 
 }

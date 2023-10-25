@@ -11,6 +11,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import com.example.kakao.user.User;
 import com.example.kakao.webtoon.Webtoon;
 
@@ -32,6 +35,7 @@ public class InterestWebtoon{
 
     private Boolean isAlarm;
 
+    @CreationTimestamp
     private Timestamp createdAt;
 
 }

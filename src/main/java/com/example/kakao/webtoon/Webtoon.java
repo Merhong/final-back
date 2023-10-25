@@ -9,6 +9,8 @@ import java.util.List;
 import javax.persistence.*;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import com.example.kakao.entity.WebtoonAuthor;
 import com.example.kakao.episode.Episode;
@@ -51,8 +53,10 @@ public class Webtoon {
 
     private String specially; // 휴재, 완결, 무료, 순위, 신작 // 여러개가 되면?
 
+    @CreationTimestamp
     private Timestamp createdAt;
-
+    
+    @UpdateTimestamp
     private Timestamp updatedAt;
 
 

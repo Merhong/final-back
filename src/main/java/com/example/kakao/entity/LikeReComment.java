@@ -11,6 +11,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import com.example.kakao.user.User;
 
 @Getter
@@ -31,6 +34,7 @@ public class LikeReComment{
 
     private Boolean isLike; // true좋아요 / false 싫어요
 
+    @CreationTimestamp
     private Timestamp createdAt;
 
     //두개 공통 중복이면 안되게 유니크 제약조건 필요
