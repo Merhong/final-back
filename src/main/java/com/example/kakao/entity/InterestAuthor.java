@@ -38,4 +38,5 @@ public class InterestAuthor{
     @CreationTimestamp
     private Timestamp createdAt;
 
+    
 }
