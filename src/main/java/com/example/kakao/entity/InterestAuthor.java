@@ -11,6 +11,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import com.example.kakao.author.Author;
 import com.example.kakao.user.User;
 
@@ -32,6 +35,7 @@ public class InterestAuthor{
 
     private Boolean isAlarm;
 
+    @CreationTimestamp
     private Timestamp createdAt;
 
 }

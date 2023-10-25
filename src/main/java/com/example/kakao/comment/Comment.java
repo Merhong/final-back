@@ -9,6 +9,8 @@ import java.util.List;
 import javax.persistence.*;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import com.example.kakao.episode.Episode;
 import com.example.kakao.user.User;
@@ -33,8 +35,10 @@ public class Comment {
     @Column(length = 200, nullable = false)
     private String content;
 
+    @CreationTimestamp
     private Timestamp createdAt;
-
+    
+    @UpdateTimestamp
     private Timestamp updatedAt;
 
     // 베스트댓글?

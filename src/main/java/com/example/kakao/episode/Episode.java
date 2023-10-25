@@ -9,6 +9,8 @@ import java.util.List;
 import javax.persistence.*;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import com.example.kakao.webtoon.Webtoon;
 
@@ -41,8 +43,10 @@ public class Episode {
     @ColumnDefault("0")
     private Double starCount; // 별점 계산 분모값
 
+    @CreationTimestamp
     private Timestamp createdAt;
-
+    
+    @UpdateTimestamp
     private Timestamp updatedAt;
 
     // 웹툰 내용 테이블 추가 필요

@@ -47,6 +47,12 @@ public class UserService {
         User user = userJPARepository.findById(sessionUser.getId())
         .orElseThrow(()-> new Exception400("오류 : "+requestDTO.getEmail()));
         
+        System.out.println(requestDTO.getEmail() );
+        System.out.println(sessionUser.getEmail() );
+        if( !(requestDTO.getEmail().equals(sessionUser.getEmail())) ){
+            throw new Exception400("로그인 유저랑 변경하려는 유저가 다름 : "+requestDTO.getEmail());
+        }
+
         user.setUsername(requestDTO.getUsername());
         user.setPassword(requestDTO.getPassword());
         user.setCookie(requestDTO.getCookie());

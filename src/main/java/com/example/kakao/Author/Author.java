@@ -11,6 +11,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import com.example.kakao.entity.WebtoonAuthor;
 import com.example.kakao.user.User;
 
@@ -32,6 +35,12 @@ public class Author{
     private String authorPhoto;
 
     private String siteURL;
+
+    @CreationTimestamp
+    private Timestamp createdAt;
+    
+    @UpdateTimestamp
+    private Timestamp updatedAt;
 
     @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
     private List<WebtoonAuthor> webtoonAuthorList = new ArrayList<>();
