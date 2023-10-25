@@ -1,4 +1,4 @@
-package com.example.kakao.episode;
+package com.example.kakao.comment;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,47 +8,60 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception404;
-import com.example.kakao.webtoon.Webtoon;
+import com.example.kakao.author.Author;
+import com.example.kakao.author.AuthorJPARepository;
+import com.example.kakao.entity.WebtoonAuthor;
+import com.example.kakao.episode.EpisodeRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Service
-public class EpisodeService {
+public class CommentService {
 
+    private final CommentJPARepository commmentRepository;
     private final EpisodeRepository episodeRepository;
 
-    public EpisodeResponse.FindByIdDTO findById(int webtoonId, int episodeId) {
-        Episode episode = episodeRepository.findById(episodeId)
-                .orElseThrow(() -> new Exception404(episodeId+"없음"));
-        
-        EpisodeResponse.FindByIdDTO responseDTO = new EpisodeResponse.FindByIdDTO(episode);
-        
-        if(responseDTO.getWebtoonId() != webtoonId){
-            throw new Exception400(webtoonId+"웹툰에 "+episodeId+"에피소드가 속하지않음");
-        }
-        
-        return responseDTO;
+    public List<CommentResponse.FindAllDTO> findAll(int episodeId) {
+
+        List<WebtoonAuthor> webtoonAuthorList = episodeRepository.findById(episodeId)
+                .orElseThrow(() -> new Exception404("오류"))
+                .getWebtoon().getWebtoonAuthorList();
+        List<Integer> authorUserIdList = webtoonAuthorList.stream()
+                .map(webtoonAuthor -> webtoonAuthor.getAuthor().getUser().getId())
+                .collect(Collectors.toList());
+
+                
+        List<Comment> commentList = commmentRepository.findByEpisodeId(episodeId);
+        List<CommentResponse.FindAllDTO> responseDTOList = commentList.stream()
+                .map( t -> new CommentResponse.FindAllDTO(t, authorUserIdList) )
+                .collect(Collectors.toList());
+
+        return responseDTOList;
     }
 
-
-    // (기능1) 상품 목록보기
-    // public List<WebtoonResponse.FindAllDTO> findAll(int page) {
-    // public List<EpisodeResponse.FindAllDTO> findAll() {
+    // // 웹툰목록보기
+    // // public List<WebtoonResponse.FindAllDTO> findAll(int page) {
+    // public List<WebtoonResponse.FindAllDTO> findAll() {
     //     List<Webtoon> webtoonList = webtoonRepository.findAll();
         
-    //     List<EpisodeResponse.FindAllDTO> dtoList =  webtoonList.stream()
-    //             .map( webtoon -> new EpisodeResponse.FindAllDTO(webtoon) )
+    //     List<WebtoonResponse.FindAllDTO> DTOList =  webtoonList.stream()
+    //             .map( webtoon -> new WebtoonResponse.FindAllDTO(webtoon) )
     //             .collect(Collectors.toList());
 
-    //     return dtoList;
+    //     return DTOList;
     // }
 
-    // // (기능2) 상품 상세보기
-    // public ProductResponse.FindByIdDTO findById(int id) {
-    //     return null;
+    // // 웹툰상세보기
+    // public WebtoonResponse.FindByIdDTO findById(int id) {
+        
+    //     Webtoon webtoon = webtoonRepository.findById(id)
+    //             .orElseThrow(() -> new Exception404(id+"없음"));
+        
+    //     return new WebtoonResponse.FindByIdDTO(webtoon);
     // }
+
 
     // // 상품조회 + 옵션조회
     // public ProductResponse.FindByIdV1DTO findByIdV1(int id) {

@@ -52,7 +52,7 @@ public class Webtoon {
     private Integer ageLimit; // 나이제한
 
     @Enumerated(EnumType.STRING)
-    private WebtoonWeekDayEnum webtoonWeekDayEnum; // 업로드요일 // 여러개가 되면?
+    private WebtoonWeekDayEnum webtoonWeekDayEnum; // 월, 화, 수, 목, 금, 토, 일 // 여러개가 되면?
 
     // @ColumnDefault("'없음'") // enum에는 작동 안하는거 같음
     @Enumerated(EnumType.STRING)

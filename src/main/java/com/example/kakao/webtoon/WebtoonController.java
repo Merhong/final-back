@@ -55,14 +55,13 @@ public class WebtoonController {
     public ResponseEntity<?> update(@RequestBody @Valid WebtoonRequest.CreateDTO requestDTO, Errors errors) {
         User sessionUser = (User) session.getAttribute("sessionUser");
         
-        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) && !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.AUTHOR)) ) {
+        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) // && !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.AUTHOR)) 
+        ) {
             throw new Exception403("일반유저못함");
         }
 
-        // UserResponse.updateResponseDTO responseDTO = userService.update(requestDTO, sessionUser);
-        
-        
-        System.out.println(sessionUser);
+        // webtoonService.create(requestDTO);
+        // TODO
         
         return ResponseEntity.ok().body(ApiUtils.success("responseDTO임시"));
     }

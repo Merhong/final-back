@@ -1301,19 +1301,24 @@ INSERT INTO like_episode_tb (`id`,`user_id`,`episode_id`,`is_like`,`created_at`)
 
 
 -- 댓글
-INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (1,1,1,'쌀댓글1',now());
-INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (2,1,1,'쌀댓글2',now());
-INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (3,1,1,'쌀댓글3',now());
-INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (4,1,1,'쌀댓글4',now());
-INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (5,1,1,'쌀댓글5',now());
-INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (6,1,1,'쌀댓글6',now());
-INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (7,2,1,'코스댓글1',now());
-INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (8,2,1,'코스댓글2',now());
-INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (9,2,1,'코스댓글3',now());
-INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (10,2,1,'코스댓글4',now());
-INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (11,2,1,'코스댓글5',now());
-INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (12,101,1,'작가댓글1',now());
-INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (13,101,1,'작가댓글2',now());
+INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (1,1,1,'에피소드1 쌀댓글1',now());
+INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (2,1,1,'에피소드1 쌀댓글2',now());
+INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (3,1,1,'에피소드1 쌀댓글3',now());
+INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (4,1,1,'에피소드1 쌀댓글4',now());
+INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (5,1,1,'에피소드1 쌀댓글5',now());
+INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (6,1,1,'에피소드1 쌀댓글6',now());
+INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (7,2,1,'에피소드1 코스댓글1',now());
+INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (8,2,1,'에피소드1 코스댓글2',now());
+INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (9,2,1,'에피소드1 코스댓글3',now());
+INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (10,2,1,'에피소드1 코스댓글4',now());
+INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (11,2,1,'에피소드1 코스댓글5',now());
+INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (12,101,1,'에피소드1 작가댓글1',now());
+INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (13,101,1,'에피소드1 작가댓글2',now());
+
+INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (14,1,2,'에피소드2 쌀댓글1',now());
+INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (15,2,2,'에피소드2 코스댓글1',now());
+INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (16,101,2,'에피소드2 작가댓글1',now());
+INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (17,101,2,'에피소드2 작가댓글2',now());
 
 
 -------------------------------------------------------------------------------------------------------------------------
