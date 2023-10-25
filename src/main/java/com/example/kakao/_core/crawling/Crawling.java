@@ -173,7 +173,7 @@ public class Crawling {
                 String authorStr="";
                 String WAStr="";
                 for (String author : authorList) {
-
+                    //////////////////// enum 수정해야함
                 userStr = "INSERT INTO user_tb (`id`,`email`,`password`,`username`) VALUES ('"+userCount+"', 'dummyAuthor"+authorCount+"@naver.com', '1234', '"+author.trim()+"');";
 
                 System.out.println(userStr);

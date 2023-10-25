@@ -25,7 +25,7 @@ public class EpisodeService {
                 .orElseThrow(() -> new Exception404(episodeId+"없음"));
         
         EpisodeResponse.FindByIdDTO responseDTO = new EpisodeResponse.FindByIdDTO(episode);
-        System.out.println(responseDTO);
+        
         if(responseDTO.getWebtoonId() != webtoonId){
             throw new Exception400(webtoonId+"웹툰에 "+episodeId+"에피소드가 속하지않음");
         }

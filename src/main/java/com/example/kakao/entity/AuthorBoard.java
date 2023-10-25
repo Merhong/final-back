@@ -31,7 +31,7 @@ public class AuthorBoard{
 
     private String title;
 
-    private String content;
+    private String text;
 
     private String photo;
 

@@ -13,6 +13,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.example.kakao.entity.WebtoonAuthor;
+import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
+import com.example.kakao.entity.enums.WebtoonWeekDayEnum;
 import com.example.kakao.episode.Episode;
 
 @Getter
@@ -49,9 +51,12 @@ public class Webtoon {
 
     private Integer ageLimit; // 나이제한
 
-    private String weekDay; // 업로드요일 // 여러개가 되면?
+    @Enumerated(EnumType.STRING)
+    private WebtoonWeekDayEnum webtoonWeekDayEnum; // 업로드요일 // 여러개가 되면?
 
-    private String specially; // 휴재, 완결, 무료, 순위, 신작 // 여러개가 되면?
+    // @ColumnDefault("'없음'") // enum에는 작동 안하는거 같음
+    @Enumerated(EnumType.STRING)
+    private WebtoonSpeciallyEnum webtoonSpeciallyEnum; // 없음, 휴재, 완결, 무료, 순위, 신작 // 여러개가 되면?
 
     @CreationTimestamp
     private Timestamp createdAt;
@@ -61,16 +66,26 @@ public class Webtoon {
 
 
 
+    @Builder
+    public Webtoon(Integer id, List<WebtoonAuthor> webtoonAuthorList, List<Episode> episodeList, String title,
+            String intro, Double starScore, Double starCount, String image, String detailImage, Integer ageLimit,
+            WebtoonWeekDayEnum webtoonWeekDayEnum, WebtoonSpeciallyEnum webtoonSpeciallyEnum, Timestamp createdAt, Timestamp updatedAt) {
+        this.id = id;
+        this.webtoonAuthorList = webtoonAuthorList;
+        this.episodeList = episodeList;
+        this.title = title;
+        this.intro = intro;
+        this.starScore = starScore;
+        this.starCount = starCount;
+        this.image = image;
+        this.detailImage = detailImage;
+        this.ageLimit = ageLimit;
+        this.webtoonWeekDayEnum = webtoonWeekDayEnum;
+        this.webtoonSpeciallyEnum = webtoonSpeciallyEnum;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 
 
-    // private Integer likeCount; // 좋아요 테이블 개수 세야함
-
-    // private String hashtag; // 테이블 추가로
-
-    // @ManyToOne(fetch = FetchType.LAZY)
-    // private Author author;
-
-    // @ManyToOne(fetch = FetchType.LAZY)
-    // private WebtoonType webtoonType;
 
 }

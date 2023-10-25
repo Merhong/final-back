@@ -31,18 +31,22 @@ public class ReComment {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Comment comment;
+
+    @OneToMany(mappedBy = "reComment", fetch = FetchType.LAZY)
+    private List<LikeReComment> likeReCommentList = new ArrayList<>();
     
     @ColumnDefault("false")
     private Boolean isDelete;
 
     @Column(length = 200, nullable = false)
-    private String content;
+    private String text;
 
     @CreationTimestamp
     private Timestamp createdAt;
     
-    @UpdateTimestamp
-    private Timestamp updatedAt;
+    // 댓글은 수정 기능 없다
+    // @UpdateTimestamp 
+    // private Timestamp updatedAt;
     
 
 }

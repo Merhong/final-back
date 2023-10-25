@@ -23,6 +23,7 @@ import com.example.kakao._core.errors.exception.Exception401;
 import com.example.kakao._core.utils.ApiUtils;
 import com.example.kakao._core.utils.JwtTokenUtils;
 import com.example.kakao._core.utils.ApiUtils.ApiResult;
+import com.example.kakao.entity.enums.UserTypeEnum;
 import com.example.kakao.user.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -44,6 +45,7 @@ public class JwtAuthorizationFilter implements Filter {
 
         String jwt = request.getHeader("Authorization");
         if (jwt == null || jwt.isEmpty()) {
+            System.out.println("토큰없음");
             onError(response, "토큰이 없습니다");
             return;
         }
@@ -52,17 +54,32 @@ public class JwtAuthorizationFilter implements Filter {
             DecodedJWT decodedJWT = JwtTokenUtils.verify(jwt);
             int userId = decodedJWT.getClaim("id").asInt();
             String email = decodedJWT.getClaim("email").asString();
+            int cookie = decodedJWT.getClaim("cookie").asInt();
+            String username = decodedJWT.getClaim("username").asString();
+            String userTypeEnum = decodedJWT.getClaim("userTypeEnum").asString();
 
             // 컨트롤러에서 꺼내쓰기 쉽게하려고!!
-            User sessionUser = User.builder().id(userId).email(email).build();
+            User sessionUser = User.builder().id(userId).email(email).cookie(cookie).username(username).build();
+            
+            sessionUser.setUserTypeEnum(UserTypeEnum.NORMAL);
+            if(userTypeEnum.equals("AUTHOR")){
+                sessionUser.setUserTypeEnum(UserTypeEnum.AUTHOR);
+            }
+            if(userTypeEnum.equals("ADMIN")){
+                sessionUser.setUserTypeEnum(UserTypeEnum.ADMIN);
+            }
+            
+
 
             HttpSession session = request.getSession();
             session.setAttribute("sessionUser", sessionUser);
 
             chain.doFilter(request, response);
         } catch (SignatureVerificationException | JWTDecodeException e1) {
+            System.out.println("토큰검증실패");
             onError(response, "토큰 검증 실패");
         } catch (TokenExpiredException e2){
+            System.out.println("토큰시간만료");
             onError(response, "토큰 시간 만료");
         }
     }

@@ -30,7 +30,7 @@ public class LikeReComment{
     private User user;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    private ReComment recomment;
+    private ReComment reComment;
 
     // 본인껀 못하는 로직 필요
     private Boolean isLike; // true좋아요 / false 싫어요

@@ -12,6 +12,9 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.example.kakao.entity.EpisodePhoto;
+import com.example.kakao.entity.LikeComment;
+import com.example.kakao.entity.ReComment;
 import com.example.kakao.episode.Episode;
 import com.example.kakao.user.User;
 
@@ -32,11 +35,17 @@ public class Comment {
     @ManyToOne(fetch = FetchType.LAZY)
     private Episode episode;
     
+    @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY)
+    private List<LikeComment> likeCommentList = new ArrayList<>();
+    
+    @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY)
+    private List<ReComment> reCommentList = new ArrayList<>();
+
     @ColumnDefault("false")
     private Boolean isDelete;
 
     @Column(length = 200, nullable = false)
-    private String content;
+    private String text;
 
     @CreationTimestamp
     private Timestamp createdAt;

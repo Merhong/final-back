@@ -24,7 +24,6 @@ public class EpisodeController {
     public ResponseEntity<?> findById(@PathVariable int webtoonId, @PathVariable int episodeId) {
         // System.out.println(webtoonId+"/"+episodeId);
         EpisodeResponse.FindByIdDTO responseDTO = episodeService.findById(webtoonId, episodeId);
-
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
 

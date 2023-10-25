@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.sql.Timestamp;
 
@@ -18,6 +19,7 @@ import com.example.kakao.author.Author;
 import com.example.kakao.entity.enums.UserTypeEnum;
 
 
+@ToString
 @Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -88,6 +90,7 @@ public class User{
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
+
     
 
 
