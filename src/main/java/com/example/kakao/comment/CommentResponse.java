@@ -1,29 +1,17 @@
 package com.example.kakao.comment;
 
-import java.sql.Timestamp;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.CreationTimestamp;
-
-import com.example.kakao.comment.Comment;
-import com.example.kakao.entity.EpisodePhoto;
 import com.example.kakao.entity.ReComment;
-import com.example.kakao.user.User;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.sql.Timestamp;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class CommentResponse {
 
 
-    
     @Getter
     @Setter
     @ToString

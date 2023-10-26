@@ -1,23 +1,17 @@
 package com.example.kakao.entity;
 
+import com.example.kakao.episode.Episode;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.*;
-
-import com.example.kakao.episode.Episode;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name="episode_photo_tb")
-public class EpisodePhoto{
+@Table(name = "episode_photo_tb")
+public class EpisodePhoto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

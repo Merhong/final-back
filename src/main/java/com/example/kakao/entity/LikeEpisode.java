@@ -1,27 +1,20 @@
 package com.example.kakao.entity;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.*;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import com.example.kakao.episode.Episode;
 import com.example.kakao.user.User;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+
+import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name="like_episode_tb")
-public class LikeEpisode{
+@Table(name = "like_episode_tb")
+public class LikeEpisode {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +22,7 @@ public class LikeEpisode{
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Episode episode;
 
@@ -41,6 +34,6 @@ public class LikeEpisode{
     @CreationTimestamp
     private Timestamp createdAt;
 
-    //두개 공통 중복이면 안되게 유니크 제약조건 필요
-    
+    // 두개 공통 중복이면 안되게 유니크 제약조건 필요
+
 }
