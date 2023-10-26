@@ -1,4 +1,4 @@
-package com.example.kakao.episode;
+package com.example.kakao.comment;
 
 import java.util.List;
 
@@ -15,16 +15,17 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
-public class EpisodeController {
+public class CommentController {
 
-    private final EpisodeService episodeService; // 자바에서 final 변수는 반드시 초기화되어야 함.
+    private final CommentService commentService; // 자바에서 final 변수는 반드시 초기화되어야 함.
 
-    // 웹툰 에피소드 1편 보기
-    @GetMapping("/episodes/{episodeId}")
+    // 웹툰   에피소드 1편 보기
+    @GetMapping("/comments/{episodeId}")
     public ResponseEntity<?> findById(@PathVariable int episodeId) {
-        // System.out.println(webtoonId+"/"+episodeId);
-        EpisodeResponse.FindByIdDTO responseDTO = episodeService.findById(episodeId);
-        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+
+        List<CommentResponse.FindAllDTO> responseDTOList = commentService.findAll(episodeId);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTOList));
     }
 
     // (기능1) 상품 목록보기

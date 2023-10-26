@@ -36,18 +36,20 @@ public class EpisodeResponse {
         private String authorName;
         private Integer webtoonId;
         private String webtoonName;
+        private Integer cookieCost;
         private Integer likeEpisodeCount;
-        private List<CommentDTO> commentList;
+        private Integer commentCount;
+        // private List<CommentDTO> commentList;
         private List<PhotoDTO> PhotoList;
 
         public FindByIdDTO(Episode episode) {
             this.episodeId = episode.getId();
             this.detailTitle = episode.getDetailTitle();
             this.starScore = episode.getStarScore();
-
             this.starCount = episode.getStarCount();
             this.createdAt = episode.getCreatedAt();
             this.authorText = episode.getAuthorText();
+            this.cookieCost = episode.getCookieCost();
 
 
             this.webtoonId = episode.getWebtoon().getId();
@@ -62,11 +64,13 @@ public class EpisodeResponse {
                     .map( t -> (t.getIsLike() == true) ? 1 : -1 )
                     .reduce(0, (a, b) -> a + b);
 
-            List<Integer> authorUserIdList = episode.getWebtoon().getWebtoonAuthorList().stream()
-                    .map(webtoonAuthor -> webtoonAuthor.getAuthor().getUser().getId())
-                    .collect(Collectors.toList());
-            this.commentList = episode.getCommentList().stream()
-                    .map(t -> new CommentDTO(t, authorUserIdList)).collect(Collectors.toList());
+            // List<Integer> authorUserIdList = episode.getWebtoon().getWebtoonAuthorList().stream()
+            //         .map(webtoonAuthor -> webtoonAuthor.getAuthor().getUser().getId())
+            //         .collect(Collectors.toList());
+            // this.commentList = episode.getCommentList().stream()
+            //         .map(t -> new CommentDTO(t, authorUserIdList)).collect(Collectors.toList());
+
+            this.commentCount = episode.getCommentList().size();
 
             this.PhotoList = episode.getEpisodePhotoList().stream()
                     .map(t -> new PhotoDTO(t)).collect(Collectors.toList());

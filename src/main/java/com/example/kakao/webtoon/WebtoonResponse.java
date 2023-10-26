@@ -113,18 +113,24 @@ public class WebtoonResponse {
             private Integer episodeId;
             private String detailTitle;
             private String thumbnail;
+            private String authorText;
             private Double starCount;
+            private Double starScore;
             private Integer cookieCost;
             private Timestamp createdAt;
+            private Timestamp updatedAt;
 
             EpisodeDTO(Episode episode) {
                 
                 this.episodeId = episode.getId();
                 this.detailTitle = episode.getDetailTitle();
                 this.thumbnail = episode.getThumbnail();
+                this.authorText = episode.getAuthorText();
                 this.starCount = episode.getStarCount();
+                this.starScore = episode.getStarScore();
                 this.cookieCost = episode.getCookieCost();
                 this.createdAt = episode.getCreatedAt();
+                this.updatedAt = episode.getUpdatedAt();
             }
         }
     }
