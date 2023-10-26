@@ -19,7 +19,7 @@ public class CommentController {
 
     private final CommentService commentService; // 자바에서 final 변수는 반드시 초기화되어야 함.
 
-    // 웹툰  에피소드 1편 보기
+    // 웹툰   에피소드 1편 보기
     @GetMapping("/comments/{episodeId}")
     public ResponseEntity<?> findById(@PathVariable int episodeId) {
 
