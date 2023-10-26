@@ -2,13 +2,26 @@ package com.example.kakao.webtoon;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.kakao._core.errors.exception.Exception401;
+import com.example.kakao._core.errors.exception.Exception403;
 import com.example.kakao._core.utils.ApiUtils;
+import com.example.kakao.entity.enums.UserTypeEnum;
+import com.example.kakao.user.User;
+import com.example.kakao.user.UserRequest;
+import com.example.kakao.user.UserResponse;
 
 import lombok.RequiredArgsConstructor;
 
@@ -17,6 +30,8 @@ import lombok.RequiredArgsConstructor;
 public class WebtoonController {
 
     private final WebtoonService webtoonService; // 자바에서 final 변수는 반드시 초기화되어야 함.
+    private final HttpSession session;
+
 
     // 웹툰 전체목록
     @GetMapping("/webtoons")
@@ -34,31 +49,21 @@ public class WebtoonController {
         return ResponseEntity.ok().body(ApiUtils.success(DTO));
     }
 
-    // // 상품조회 + 옵션조회
-    // @GetMapping("/products/{id}/v1")
-    // public ResponseEntity<?> findByIdV1(@PathVariable int id) {
-    //     ProductResponse.FindByIdV1DTO responseDTO = productService.findByIdV1(id);
-    //     return ResponseEntity.ok(responseDTO);
-    // }
 
-    // // 상품조회 양방향 매핑
-    // @GetMapping("/products/{id}/v2")
-    // public ResponseEntity<?> findByIdV2(@PathVariable int id) {
-    //     ProductResponse.FindByIdV2DTO responseDTO = productService.findByIdV2(id);
-    //     return ResponseEntity.ok(responseDTO);
-    // }
+    // 웹툰 추가
+    @PostMapping("/webtoons/author/{id}")
+    public ResponseEntity<?> update(@RequestBody @Valid WebtoonRequest.CreateDTO requestDTO, Errors errors) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        
+        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) // && !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.AUTHOR)) 
+        ) {
+            throw new Exception403("일반유저못함");
+        }
 
-    // // 옵션조회
-    // @GetMapping("/products/{id}/v3")
-    // public ResponseEntity<?> findByIdV3(@PathVariable int id) {
-    //     ProductResponse.FindByIdV3DTO responseDTO = productService.findByIdV3(id);
-    //     return ResponseEntity.ok(responseDTO);
-    // }
+        // webtoonService.create(requestDTO);
+        // TODO
+        
+        return ResponseEntity.ok().body(ApiUtils.success("responseDTO임시"));
+    }
 
-    // // 옵션조회
-    // @GetMapping("/products/{id}/v4")
-    // public ResponseEntity<?> findByIdV4(@PathVariable int id) {
-    //     List<Option> responseDTO = productService.findByIdV4(id);
-    //     return ResponseEntity.ok(responseDTO);
-    // }
 }

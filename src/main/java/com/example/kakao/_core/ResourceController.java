@@ -1,4 +1,4 @@
-package com.example.kakao;
+package com.example.kakao._core;
 
 import java.io.IOException;
 import java.nio.file.Files;

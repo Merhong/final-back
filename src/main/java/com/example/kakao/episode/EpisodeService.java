@@ -6,7 +6,9 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception404;
+import com.example.kakao.webtoon.Webtoon;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,6 +18,20 @@ import lombok.RequiredArgsConstructor;
 public class EpisodeService {
 
     private final EpisodeRepository episodeRepository;
+
+    public EpisodeResponse.FindByIdDTO findById(int episodeId) {
+        Episode episode = episodeRepository.findById(episodeId)
+                .orElseThrow(() -> new Exception404(episodeId+"없음"));
+        
+        EpisodeResponse.FindByIdDTO responseDTO = new EpisodeResponse.FindByIdDTO(episode);
+        
+        // if(responseDTO.getWebtoonId() != webtoonId){
+        //     throw new Exception400(webtoonId+"웹툰에 "+episodeId+"에피소드가 속하지않음");
+        // }
+        
+        return responseDTO;
+    }
+
 
     // (기능1) 상품 목록보기
     // public List<WebtoonResponse.FindAllDTO> findAll(int page) {

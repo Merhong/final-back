@@ -4,7 +4,10 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 import com.example.kakao.Author.Author;
+import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
+import com.example.kakao.entity.enums.WebtoonWeekDayEnum;
 import com.example.kakao.episode.Episode;
 
 import lombok.Getter;
@@ -23,8 +26,8 @@ public class WebtoonResponse {
         private Double starCount;
         private String image;
         private Integer ageLimit;
-        private String specially;
-        private String weekDay;
+        private WebtoonSpeciallyEnum webtoonSpeciallyEnum;
+        private WebtoonWeekDayEnum webtoonWeekDayEnum;
         private List<String> authorNicknameList;
 
         public FindAllDTO(Webtoon webtoon) {
@@ -34,8 +37,8 @@ public class WebtoonResponse {
             this.starCount = webtoon.getStarCount();
             this.image = webtoon.getImage();
             this.ageLimit = webtoon.getAgeLimit();
-            this.specially = webtoon.getSpecially();
-            this.weekDay = webtoon.getWeekDay();
+            this.webtoonSpeciallyEnum = webtoon.getWebtoonSpeciallyEnum();
+            this.webtoonWeekDayEnum = webtoon.getWebtoonWeekDayEnum();
             // this.authorDTO = new AuthorDTO(webtoon.getAuthor());
             this.authorNicknameList = webtoon.getWebtoonAuthorList()
                     .stream().map(t -> t.getAuthor().getAuthorNickname())
@@ -57,8 +60,8 @@ public class WebtoonResponse {
         private String image;
         private String detailImage;
         private Integer ageLimit;
-        private String weekDay;
-        private String specially;
+        private WebtoonWeekDayEnum webtoonWeekDayEnum;
+        private WebtoonSpeciallyEnum webtoonSpeciallyEnum;
         private Timestamp createdAt;
         private Timestamp updatedAt;
         private List<EpisodeDTO> episodeList;
@@ -74,8 +77,8 @@ public class WebtoonResponse {
             this.image = webtoon.getImage();
             this.detailImage = webtoon.getDetailImage();
             this.ageLimit = webtoon.getAgeLimit();
-            this.weekDay = webtoon.getWeekDay();
-            this.specially = webtoon.getSpecially();
+            this.webtoonWeekDayEnum = webtoon.getWebtoonWeekDayEnum();
+            this.webtoonSpeciallyEnum = webtoon.getWebtoonSpeciallyEnum();
             this.createdAt = webtoon.getCreatedAt();
             this.updatedAt = webtoon.getUpdatedAt();
             // this.authorDTO = new AuthorDTO(webtoon.getAuthor());
@@ -111,18 +114,24 @@ public class WebtoonResponse {
             private Integer episodeId;
             private String detailTitle;
             private String thumbnail;
+            private String authorText;
             private Double starCount;
+            private Double starScore;
             private Integer cookieCost;
             private Timestamp createdAt;
+            private Timestamp updatedAt;
 
             EpisodeDTO(Episode episode) {
                 
                 this.episodeId = episode.getId();
                 this.detailTitle = episode.getDetailTitle();
                 this.thumbnail = episode.getThumbnail();
+                this.authorText = episode.getAuthorText();
                 this.starCount = episode.getStarCount();
+                this.starScore = episode.getStarScore();
                 this.cookieCost = episode.getCookieCost();
                 this.createdAt = episode.getCreatedAt();
+                this.updatedAt = episode.getUpdatedAt();
             }
         }
     }

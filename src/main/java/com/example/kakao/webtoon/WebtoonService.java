@@ -17,7 +17,7 @@ public class WebtoonService {
 
     private final WebtoonRepository webtoonRepository;
 
-    // (기능1) 상품 목록보기
+    // 웹툰목록보기
     // public List<WebtoonResponse.FindAllDTO> findAll(int page) {
     public List<WebtoonResponse.FindAllDTO> findAll() {
         List<Webtoon> webtoonList = webtoonRepository.findAll();
@@ -29,7 +29,7 @@ public class WebtoonService {
         return DTOList;
     }
 
-    // (기능2) 상품 상세보기
+    // 웹툰상세보기
     public WebtoonResponse.FindByIdDTO findById(int id) {
         
         Webtoon webtoon = webtoonRepository.findById(id)
@@ -37,6 +37,7 @@ public class WebtoonService {
         
         return new WebtoonResponse.FindByIdDTO(webtoon);
     }
+
 
     // // 상품조회 + 옵션조회
     // public ProductResponse.FindByIdV1DTO findByIdV1(int id) {
