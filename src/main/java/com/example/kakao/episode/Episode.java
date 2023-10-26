@@ -45,6 +45,7 @@ public class Episode {
 
     private String thumbnail;
 
+    @ColumnDefault("'작가의말 없음'")
     private String authorText;
 
     @ColumnDefault("0")

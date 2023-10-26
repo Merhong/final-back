@@ -20,10 +20,10 @@ public class EpisodeController {
     private final EpisodeService episodeService; // 자바에서 final 변수는 반드시 초기화되어야 함.
 
     // 웹툰 에피소드 1편 보기
-    @GetMapping("/webtoons/{webtoonId}/{episodeId}")
-    public ResponseEntity<?> findById(@PathVariable int webtoonId, @PathVariable int episodeId) {
+    @GetMapping("/episodes/{episodeId}")
+    public ResponseEntity<?> findById(@PathVariable int episodeId) {
         // System.out.println(webtoonId+"/"+episodeId);
-        EpisodeResponse.FindByIdDTO responseDTO = episodeService.findById(webtoonId, episodeId);
+        EpisodeResponse.FindByIdDTO responseDTO = episodeService.findById(episodeId);
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
 

@@ -19,15 +19,15 @@ public class EpisodeService {
 
     private final EpisodeRepository episodeRepository;
 
-    public EpisodeResponse.FindByIdDTO findById(int webtoonId, int episodeId) {
+    public EpisodeResponse.FindByIdDTO findById(int episodeId) {
         Episode episode = episodeRepository.findById(episodeId)
                 .orElseThrow(() -> new Exception404(episodeId+"없음"));
         
         EpisodeResponse.FindByIdDTO responseDTO = new EpisodeResponse.FindByIdDTO(episode);
         
-        if(responseDTO.getWebtoonId() != webtoonId){
-            throw new Exception400(webtoonId+"웹툰에 "+episodeId+"에피소드가 속하지않음");
-        }
+        // if(responseDTO.getWebtoonId() != webtoonId){
+        //     throw new Exception400(webtoonId+"웹툰에 "+episodeId+"에피소드가 속하지않음");
+        // }
         
         return responseDTO;
     }
