@@ -8,6 +8,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception404;
+import com.example.kakao.author.Author;
+import com.example.kakao.author.AuthorResponse;
+import com.example.kakao.entity.InterestAuthor;
+import com.example.kakao.entity.LikeEpisode;
+import com.example.kakao.repository.LikeEpisodeRepository;
+import com.example.kakao.user.User;
 import com.example.kakao.webtoon.Webtoon;
 
 import lombok.RequiredArgsConstructor;
@@ -18,7 +24,129 @@ import lombok.RequiredArgsConstructor;
 public class EpisodeService {
 
     private final EpisodeRepository episodeRepository;
+    private final LikeEpisodeRepository likeEpisodeRepository;
 
+
+    // 에피소드 좋아요
+    @Transactional
+    public EpisodeResponse.LikeDTO likeSave(int userId, int episodeId) {
+
+        Episode episode = episodeRepository.findById(episodeId)
+            .orElseThrow(() -> new Exception404(episodeId+"없음"));
+
+        List<LikeEpisode> leList = likeEpisodeRepository.findByUserIdAndEpisodeId(userId, episodeId);
+        
+        // 좋아요랑 별점 테이블 하나로 처리하려고
+        if(leList.size() != 0){
+            LikeEpisode le = leList.get(0);
+            
+            if( le.getIsLike()==null  ||  le.getIsLike()==false ){
+                le.setIsLike(true);
+                EpisodeResponse.LikeDTO responseDTO = new EpisodeResponse.LikeDTO(le);
+                return responseDTO;
+            }
+            throw new Exception400("이미했음");
+        }
+
+
+        LikeEpisode le = LikeEpisode.builder()
+                .user(User.builder().id(userId).build())
+                .episode(Episode.builder().id(episodeId).build())
+                .isLike(true)
+                .build();
+
+        likeEpisodeRepository.save(le);
+
+        EpisodeResponse.LikeDTO responseDTO = new EpisodeResponse.LikeDTO(le);
+        return responseDTO;
+    }
+
+
+    // 에피소드 좋아요 취소
+    @Transactional
+    public EpisodeResponse.LikeDTO likeCancel(int userId, int episodeId) {
+
+        Episode episode = episodeRepository.findById(episodeId)
+            .orElseThrow(() -> new Exception404(episodeId+"없음"));
+
+        List<LikeEpisode> leList = likeEpisodeRepository.findByUserIdAndEpisodeId(userId, episodeId);
+        
+        // 좋아요랑 별점 테이블 하나로 처리하려고
+        if(leList.size() != 0){
+            LikeEpisode le = leList.get(0);
+            
+            if( le.getIsLike()==null  ||  le.getIsLike()==true ){
+                le.setIsLike(false);
+                EpisodeResponse.LikeDTO responseDTO = new EpisodeResponse.LikeDTO(le);
+                return responseDTO;
+            }
+            throw new Exception400("이미했음");
+        }
+
+
+        LikeEpisode le = LikeEpisode.builder()
+                .user(User.builder().id(userId).build())
+                .episode(Episode.builder().id(episodeId).build())
+                .isLike(false)
+                .build();
+
+        likeEpisodeRepository.save(le);
+
+        EpisodeResponse.LikeDTO responseDTO = new EpisodeResponse.LikeDTO(le);
+        return responseDTO;
+    }
+
+
+
+    // 에피소드 별점 주기
+    @Transactional
+    public EpisodeResponse.StarDTO starSave(int userId, int episodeId, int score) {
+
+        Episode episode = episodeRepository.findById(episodeId)
+            .orElseThrow(() -> new Exception404(episodeId+"없음"));
+
+        double afterCount = episode.getStarCount()+1;
+        double afterScore = episode.getStarScore()+score;
+        
+        
+        List<LikeEpisode> leList = likeEpisodeRepository.findByUserIdAndEpisodeId(userId, episodeId);
+        
+        // 좋아요랑 별점 테이블 하나로 처리하려고
+        if(leList.size() != 0){
+            LikeEpisode le = leList.get(0);
+            
+            if( le.getIsStar()==null  ||  le.getIsStar()==false ){
+                le.setIsStar(true);
+
+                episode.setStarCount(afterCount);
+                episode.setStarScore(afterScore);
+
+                EpisodeResponse.StarDTO responseDTO = new EpisodeResponse.StarDTO(le, afterCount, afterScore);
+                return responseDTO;
+            }
+            throw new Exception400("이미했음");
+        }
+
+
+        LikeEpisode le = LikeEpisode.builder()
+                .user(User.builder().id(userId).build())
+                .episode(Episode.builder().id(episodeId).build())
+                .isStar(true)
+                .build();
+
+        episode.setStarCount(afterCount);
+        episode.setStarScore(afterScore);
+
+        likeEpisodeRepository.save(le);
+
+        EpisodeResponse.StarDTO responseDTO = new EpisodeResponse.StarDTO(le, afterCount, afterScore);
+        return responseDTO;
+    }
+
+
+
+
+    // 에피소드 한편 보기
     public EpisodeResponse.FindByIdDTO findById(int episodeId) {
         Episode episode = episodeRepository.findById(episodeId)
                 .orElseThrow(() -> new Exception404(episodeId+"없음"));

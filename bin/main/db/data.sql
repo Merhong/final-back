@@ -1,4 +1,9 @@
 
+
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
 INSERT INTO user_tb (`id`,`email`,`password`,`user_type_enum`,`username`) VALUES ('1', 'ssar@naver.com', '1234','NORMAL', '쌀');
 INSERT INTO user_tb (`id`,`email`,`password`,`user_type_enum`,`username`) VALUES ('2', 'cos@naver.com', '1234','NORMAL', '코스');
 INSERT INTO user_tb (`id`,`email`,`password`,`user_type_enum`,`username`) VALUES ('3', 'admin@naver.com', '1234','ADMIN', '관리자');

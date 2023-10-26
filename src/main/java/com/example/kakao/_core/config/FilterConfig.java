@@ -16,9 +16,10 @@ public class FilterConfig {
         // bean.addUrlPatterns("/carts/*");
         // bean.addUrlPatterns("/webtoons/author/*");
         bean.addUrlPatterns("/user");
-        // bean.addUrlPatterns("/webtoons/*");
-        // bean.addUrlPatterns("/episodes/*");
-        // bean.addUrlPatterns("/comments/*");
+        bean.addUrlPatterns("/webtoons/*");
+        bean.addUrlPatterns("/episodes/*");
+        bean.addUrlPatterns("/comments/*");
+        bean.addUrlPatterns("/authors/*");
         bean.setOrder(0); // 낮은 번호부터 실행됨
         return bean;
     }

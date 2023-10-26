@@ -4,10 +4,14 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import com.example.kakao.author.Author;
+import com.example.kakao.entity.InterestWebtoon;
 import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
 import com.example.kakao.entity.enums.WebtoonWeekDayEnum;
 import com.example.kakao.episode.Episode;
+import com.example.kakao.user.User;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -145,6 +149,29 @@ public class WebtoonResponse {
 
 
 
+    @Getter
+    @Setter
+    @ToString
+    public static class InterestDTO {
+        private int id;
+        private Boolean isAlarm;
+        private Timestamp createdAt;
+        private int userId;
+        private int webtoonId;
+        private int webtoonTotalInterest;
+
+
+        public InterestDTO(InterestWebtoon iw, int webtoonTotalInterest) {
+            this.id = iw.getId();
+            this.isAlarm = iw.getIsAlarm();
+            this.createdAt = iw.getCreatedAt();
+            this.userId = iw.getUser().getId();
+            this.webtoonId = iw.getWebtoon().getId();
+            this.webtoonTotalInterest = webtoonTotalInterest;
+        }
+
+        
+    }
 
 
 }

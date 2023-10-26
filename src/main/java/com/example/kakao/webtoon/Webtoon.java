@@ -18,6 +18,8 @@ import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
 import com.example.kakao.entity.enums.WebtoonWeekDayEnum;
 import com.example.kakao.episode.Episode;
 
+@ToString
+@Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -44,10 +46,10 @@ public class Webtoon {
     private String intro; // 소개글
 
     @ColumnDefault("0")
-    private Double starScore; // 별점 계산 분자값
+    private Double starScore; // 별점 계산 분자값 // 웹툰 자체 별점은 없고 각 에피소드별 합산임
     
     @ColumnDefault("0")
-    private Double starCount; // 별점 계산 분모값
+    private Double starCount; // 별점 계산 분모값 // 웹툰 자체 별점은 없고 각 에피소드별 합산임
 
     private String image; // 메인페이지 썸네일
 

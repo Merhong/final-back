@@ -18,6 +18,10 @@ import com.example.kakao.entity.LikeEpisode;
 import com.example.kakao.webtoon.Webtoon;
 
 
+
+
+@ToString
+@Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -63,7 +67,28 @@ public class Episode {
     @UpdateTimestamp
     private Timestamp updatedAt;
 
-    // 웹툰 내용 테이블 추가 필요
+
+    @Builder
+    public Episode(Integer id, Webtoon webtoon, List<EpisodePhoto> episodePhotoList, List<Comment> commentList,
+            List<LikeEpisode> likeEpisodeList, String detailTitle, String thumbnail, String authorText,
+            Integer cookieCost, Double starScore, Double starCount, Timestamp createdAt, Timestamp updatedAt) {
+        this.id = id;
+        this.webtoon = webtoon;
+        this.episodePhotoList = episodePhotoList;
+        this.commentList = commentList;
+        this.likeEpisodeList = likeEpisodeList;
+        this.detailTitle = detailTitle;
+        this.thumbnail = thumbnail;
+        this.authorText = authorText;
+        this.cookieCost = cookieCost;
+        this.starScore = starScore;
+        this.starCount = starCount;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+
+    
     
 
 }

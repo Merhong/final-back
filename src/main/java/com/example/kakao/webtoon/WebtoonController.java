@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,6 +48,29 @@ public class WebtoonController {
     public ResponseEntity<?> findById(@PathVariable int id) {
         WebtoonResponse.FindByIdDTO DTO = webtoonService.findById(id);
         return ResponseEntity.ok().body(ApiUtils.success(DTO));
+    }
+
+    // 관심웹툰 추가
+    @PostMapping("/webtoons/interest/{webtoonId}")
+    public ResponseEntity<?> interestSave(@PathVariable int webtoonId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        // System.out.println(sessionUser.getId());
+        // System.out.println(webtoonId);
+
+        WebtoonResponse.InterestDTO responseDTO = webtoonService.interestSave(sessionUser.getId(), webtoonId);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
+    // 관심웹툰 제거
+    @DeleteMapping("/webtoons/interest/{webtoonId}")
+    public ResponseEntity<?> interestDelete(@PathVariable int webtoonId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        WebtoonResponse.InterestDTO responseDTO = webtoonService.interestDelete(sessionUser.getId(), webtoonId);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
 
 

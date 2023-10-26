@@ -5,11 +5,14 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.utils.ApiUtils;
+import com.example.kakao.episode.EpisodeResponse;
+import com.example.kakao.user.User;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,7 +22,19 @@ public class CommentController {
 
     private final CommentService commentService; // 자바에서 final 변수는 반드시 초기화되어야 함.
 
-    // 웹툰   에피소드 1편 보기
+
+    // 댓글 좋아요
+    // @PostMapping("/comments/like/{commentId}")
+    // public ResponseEntity<?> likeSave(@PathVariable int episodeId) {
+    //     User sessionUser = (User) session.getAttribute("sessionUser");
+
+    //     EpisodeResponse.LikeDTO responseDTO = episodeService.likeSave(sessionUser.getId(), episodeId);
+
+    //     return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    // }
+
+    
+    // 에피소드의 댓글 보기
     @GetMapping("/comments/{episodeId}")
     public ResponseEntity<?> findById(@PathVariable int episodeId) {
 

@@ -11,6 +11,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.example.kakao.entity.enums.HashTagEnum;
 import com.example.kakao.webtoon.Webtoon;
 
 @Getter
@@ -26,7 +27,7 @@ public class WebtoonHashTag{
     @ManyToOne(fetch = FetchType.LAZY)
     private Webtoon webtoon;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private HashTag hashTag; // 그냥 코드테이블 안만들고 바로 적어야하나?
+    @Enumerated(EnumType.STRING)
+    private HashTagEnum hashTagEnum;
 
 }

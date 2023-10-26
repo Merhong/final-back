@@ -13,6 +13,8 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import com.example.kakao.comment.Comment;
 import com.example.kakao.entity.EpisodePhoto;
+import com.example.kakao.entity.InterestAuthor;
+import com.example.kakao.entity.LikeEpisode;
 import com.example.kakao.entity.ReComment;
 import com.example.kakao.user.User;
 
@@ -21,6 +23,64 @@ import lombok.Setter;
 import lombok.ToString;
 
 public class EpisodeResponse {
+
+
+    // 에피소드 좋아요 DTO
+    @Getter
+    @Setter
+    @ToString
+    public static class LikeDTO {
+        private Integer id;
+        private Integer userId;
+        private Integer episodeId;
+        private Boolean isStar;
+        private Boolean isLike;
+        private Timestamp createdAt;
+
+
+        public LikeDTO(LikeEpisode le) {
+            this.id = le.getId();
+            this.userId = le.getUser().getId();
+            this.episodeId = le.getEpisode().getId();
+            this.isStar = le.getIsStar();
+            this.isLike = le.getIsLike();
+            this.createdAt = le.getCreatedAt();
+        }
+
+        
+    }
+
+
+    // 에피소드 별점 DTO
+    @Getter
+    @Setter
+    @ToString
+    public static class StarDTO {
+        private Integer id;
+        private Integer userId;
+        private Integer episodeId;
+        private Boolean isStar;
+        private Boolean isLike;
+        private Timestamp createdAt;
+        private Double episodeStarCount;
+        private Double episodeStarScore;
+
+
+        public StarDTO(LikeEpisode le, Double afterCount, Double afterScore) {
+            this.id = le.getId();
+            this.userId = le.getUser().getId();
+            this.episodeId = le.getEpisode().getId();
+            this.isStar = le.getIsStar();
+            this.isLike = le.getIsLike();
+            this.createdAt = le.getCreatedAt();
+            this.episodeStarCount = afterCount;
+            this.episodeStarScore = afterScore;
+        }
+
+        
+    }
+
+
 
     // 웹툰 에피소드 1편 보기 DTO
     @Getter

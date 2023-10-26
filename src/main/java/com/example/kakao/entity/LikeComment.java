@@ -21,7 +21,9 @@ import com.example.kakao.user.User;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name="like_comment_tb")
+@Table(name = "like_comment_tb", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"user_id", "comment_id"})
+})
 public class LikeComment{
 
     @Id
@@ -39,7 +41,5 @@ public class LikeComment{
 
     @CreationTimestamp
     private Timestamp createdAt;
-
-    //두개 공통 중복이면 안되게 유니크 제약조건 필요
 
 }
