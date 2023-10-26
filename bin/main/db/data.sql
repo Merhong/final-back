@@ -1302,7 +1302,7 @@ INSERT INTO EPISODE_PHOTO_TB (`episode_id`,`photoURL`) VALUES  (2, 'testphoto6.j
 
 -- 에피소드 좋아요
 INSERT INTO like_episode_tb (`id`,`user_id`,`episode_id`,`is_like`,`created_at`) VALUES (1, 1,1,true,now());
-INSERT INTO like_episode_tb (`id`,`user_id`,`episode_id`,`is_like`,`created_at`) VALUES (2, 2,1,false,now());
+INSERT INTO like_episode_tb (`id`,`user_id`,`episode_id`,`is_like`,`created_at`) VALUES (2, 2,1,true,now());
 INSERT INTO like_episode_tb (`id`,`user_id`,`episode_id`,`is_like`,`created_at`) VALUES (3, 3,1,true,now());
 INSERT INTO like_episode_tb (`id`,`user_id`,`episode_id`,`is_like`,`created_at`) VALUES (4, 101,1,true,now());
 INSERT INTO like_episode_tb (`id`,`user_id`,`episode_id`,`is_like`,`created_at`) VALUES (5, 1,2,true,now());

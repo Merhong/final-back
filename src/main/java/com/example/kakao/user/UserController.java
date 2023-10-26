@@ -50,7 +50,7 @@ public class UserController {
 
     // 업데이트 //  쿠키 추가
     @PutMapping("/user")
-    public ResponseEntity<?> update(@RequestBody @Valid UserRequest.updateDTO requestDTO, Errors errors) {
+    public ResponseEntity<?> update(@RequestBody @Valid UserRequest.UpdateDTO requestDTO, Errors errors) {
         User sessionUser = (User) session.getAttribute("sessionUser");
         
         UserResponse.updateResponseDTO responseDTO = userService.update(requestDTO, sessionUser);

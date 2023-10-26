@@ -57,7 +57,7 @@ public class UserRequest {
     @Getter
     @Setter
     @ToString
-    public static class updateDTO {
+    public static class UpdateDTO {
 
         @NotEmpty
         private String email;

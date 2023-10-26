@@ -37,10 +37,10 @@ public class EpisodeController {
     
     // 에피소드 좋아요
     @PostMapping("/episodes/like/{episodeId}")
-    public ResponseEntity<?> likeSave(@PathVariable int episodeId) {
+    public ResponseEntity<?> like(@PathVariable int episodeId) {
         User sessionUser = (User) session.getAttribute("sessionUser");
 
-        EpisodeResponse.LikeDTO responseDTO = episodeService.likeSave(sessionUser.getId(), episodeId);
+        EpisodeResponse.LikeDTO responseDTO = episodeService.like(sessionUser.getId(), episodeId);
 
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
@@ -48,7 +48,7 @@ public class EpisodeController {
 
 
     // 에피소드 좋아요 취소
-    @PostMapping("/episodes/like/cancel/{episodeId}")
+    @PostMapping("/episodes/likecancel/{episodeId}")
     public ResponseEntity<?> likeCancel(@PathVariable int episodeId) {
         User sessionUser = (User) session.getAttribute("sessionUser");
 

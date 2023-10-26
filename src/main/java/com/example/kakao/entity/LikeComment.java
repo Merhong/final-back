@@ -4,6 +4,8 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -18,6 +20,8 @@ import com.example.kakao.comment.Comment;
 import com.example.kakao.episode.Episode;
 import com.example.kakao.user.User;
 
+@ToString
+@Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -42,4 +46,16 @@ public class LikeComment{
     @CreationTimestamp
     private Timestamp createdAt;
 
+
+
+    @Builder
+    public LikeComment(int id, User user, Comment comment, Boolean isLike, Timestamp createdAt) {
+        this.id = id;
+        this.user = user;
+        this.comment = comment;
+        this.isLike = isLike;
+        this.createdAt = createdAt;
+    }
+
+    
 }

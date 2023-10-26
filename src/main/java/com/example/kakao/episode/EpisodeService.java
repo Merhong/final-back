@@ -29,7 +29,7 @@ public class EpisodeService {
 
     // 에피소드 좋아요
     @Transactional
-    public EpisodeResponse.LikeDTO likeSave(int userId, int episodeId) {
+    public EpisodeResponse.LikeDTO like(int userId, int episodeId) {
 
         Episode episode = episodeRepository.findById(episodeId)
             .orElseThrow(() -> new Exception404(episodeId+"없음"));

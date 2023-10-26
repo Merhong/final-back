@@ -2,10 +2,16 @@ package com.example.kakao.comment;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,17 +27,41 @@ import lombok.RequiredArgsConstructor;
 public class CommentController {
 
     private final CommentService commentService; // 자바에서 final 변수는 반드시 초기화되어야 함.
+    private final HttpSession session;
+
 
 
     // 댓글 좋아요
-    // @PostMapping("/comments/like/{commentId}")
-    // public ResponseEntity<?> likeSave(@PathVariable int episodeId) {
-    //     User sessionUser = (User) session.getAttribute("sessionUser");
+    @PostMapping("/comments/like/{commentId}")
+    public ResponseEntity<?> like(@PathVariable int commentId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
 
-    //     EpisodeResponse.LikeDTO responseDTO = episodeService.likeSave(sessionUser.getId(), episodeId);
+        CommentResponse.LikeDTO responseDTO = commentService.like(sessionUser.getId(), commentId);
 
-    //     return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
-    // }
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
+
+    // 댓글 싫어요
+    @PostMapping("/comments/dislike/{commentId}")
+    public ResponseEntity<?> dislike(@PathVariable int commentId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        CommentResponse.LikeDTO responseDTO = commentService.dislike(sessionUser.getId(), commentId);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
+
+    // 댓글 좋아요/싫어요 삭제
+    @DeleteMapping("/comments/likecancel/{commentId}")
+    public ResponseEntity<?> likecancel(@PathVariable int commentId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        CommentResponse.LikeDTO responseDTO = commentService.likecancel(sessionUser.getId(), commentId);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
 
     
     // 에피소드의 댓글  보기
@@ -42,6 +72,21 @@ public class CommentController {
 
         return ResponseEntity.ok().body(ApiUtils.success(responseDTOList));
     }
+
+
+    // 댓글작성
+    @PostMapping("/comments/{episodeId}")
+    public ResponseEntity<?> save(@RequestBody @Valid CommentRequest.SaveRequestDTO requestDTO, Errors errors, @PathVariable int episodeId) {
+
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        CommentResponse.SaveCommentDTO responseDTO = commentService.save(requestDTO, sessionUser.getId(), episodeId);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
+
+
 
     // (기능1) 상품 목록보기
     // @GetMapping("/webtoons")

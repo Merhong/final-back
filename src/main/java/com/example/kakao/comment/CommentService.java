@@ -10,8 +10,14 @@ import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception404;
 import com.example.kakao.author.Author;
 import com.example.kakao.author.AuthorJPARepository;
+import com.example.kakao.entity.LikeComment;
+import com.example.kakao.entity.LikeEpisode;
 import com.example.kakao.entity.WebtoonAuthor;
+import com.example.kakao.episode.Episode;
 import com.example.kakao.episode.EpisodeRepository;
+import com.example.kakao.episode.EpisodeResponse;
+import com.example.kakao.repository.LikeCommentRepository;
+import com.example.kakao.user.User;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,9 +26,116 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class CommentService {
 
-    private final CommentJPARepository commmentRepository;
+    private final CommentJPARepository commentRepository;
     private final EpisodeRepository episodeRepository;
+    private final LikeCommentRepository likeCommentRepository;
 
+
+
+    // 댓글 좋아요
+    @Transactional
+    public CommentResponse.LikeDTO like(int userId, int commentId) {
+
+        Comment comment = commentRepository.findById(commentId)
+            .orElseThrow(() -> new Exception404(commentId+"없음"));
+        
+        List<LikeComment> lcList = likeCommentRepository.findByUserIdAndCommentId(userId, commentId);
+        
+        if(lcList.size() != 0){
+            LikeComment lc = lcList.get(0);
+            
+            if( lc.getIsLike()==null  ||  lc.getIsLike()==false ){
+                lc.setIsLike(true);
+                CommentResponse.LikeDTO responseDTO = new CommentResponse.LikeDTO(lc);
+                return responseDTO;
+            }
+            throw new Exception400("이미했음");
+        }
+
+        LikeComment lc = LikeComment.builder()
+                .user(User.builder().id(userId).build())
+                .comment(Comment.builder().id(commentId).build())
+                .isLike(true)
+                .build();
+
+        try {
+            likeCommentRepository.save(lc);
+        } catch (Exception e) {
+            throw new Exception400("이미했음");
+        }
+
+        CommentResponse.LikeDTO responseDTO = new CommentResponse.LikeDTO(lc);
+        return responseDTO;
+    }
+
+
+
+    // 댓글 싫어요
+    @Transactional
+    public CommentResponse.LikeDTO dislike(int userId, int commentId) {
+        
+        Comment comment = commentRepository.findById(commentId)
+            .orElseThrow(() -> new Exception404(commentId+"없음"));
+
+        List<LikeComment> lcList = likeCommentRepository.findByUserIdAndCommentId(userId, commentId);
+        
+        if(lcList.size() != 0){
+            LikeComment lc = lcList.get(0);
+            
+            if( lc.getIsLike()==null  ||  lc.getIsLike()==true ){
+                lc.setIsLike(false);
+                CommentResponse.LikeDTO responseDTO = new CommentResponse.LikeDTO(lc);
+                return responseDTO;
+            }
+            throw new Exception400("이미했음");
+        }
+
+        LikeComment lc = LikeComment.builder()
+                .user(User.builder().id(userId).build())
+                .comment(Comment.builder().id(commentId).build())
+                .isLike(false)
+                .build();
+
+        try {
+            likeCommentRepository.save(lc);
+        } catch (Exception e) {
+            throw new Exception400("이미했음");
+        }
+
+        CommentResponse.LikeDTO responseDTO = new CommentResponse.LikeDTO(lc);
+        return responseDTO;
+    }
+
+
+
+    // 댓글 좋아요/싫어요 삭제
+    @Transactional
+    public CommentResponse.LikeDTO likecancel(int userId, int commentId) {
+
+        Comment comment = commentRepository.findById(commentId)
+            .orElseThrow(() -> new Exception404(commentId+"없음"));
+
+        List<LikeComment> lcList = likeCommentRepository.findByUserIdAndCommentId(userId, commentId);
+        
+        if(lcList.size() == 0){
+            throw new Exception400("이미했음");
+        }
+
+        LikeComment lc = lcList.get(0);
+
+        CommentResponse.LikeDTO responseDTO = new CommentResponse.LikeDTO(lc);
+
+        likeCommentRepository.deleteById(lc.getId());
+
+        return responseDTO;
+    }
+
+
+
+
+
+
+    // 에피소드의 모든 댓글 보기
     public List<CommentResponse.FindAllDTO> findAll(int episodeId) {
 
         List<WebtoonAuthor> webtoonAuthorList = episodeRepository.findById(episodeId)
@@ -33,7 +146,7 @@ public class CommentService {
                 .collect(Collectors.toList());
 
                 
-        List<Comment> commentList = commmentRepository.findByEpisodeId(episodeId);
+        List<Comment> commentList = commentRepository.findByEpisodeId(episodeId);
         List<CommentResponse.FindAllDTO> responseDTOList = commentList.stream()
                 .map( t -> new CommentResponse.FindAllDTO(t, authorUserIdList) )
                 .collect(Collectors.toList());
@@ -41,26 +154,32 @@ public class CommentService {
         return responseDTOList;
     }
 
-    // // 웹툰목록보기
-    // // public List<WebtoonResponse.FindAllDTO> findAll(int page) {
-    // public List<WebtoonResponse.FindAllDTO> findAll() {
-    //     List<Webtoon> webtoonList = webtoonRepository.findAll();
-        
-    //     List<WebtoonResponse.FindAllDTO> DTOList =  webtoonList.stream()
-    //             .map( webtoon -> new WebtoonResponse.FindAllDTO(webtoon) )
-    //             .collect(Collectors.toList());
 
-    //     return DTOList;
-    // }
+    // 댓글 작성
+    @Transactional
+    public CommentResponse.SaveCommentDTO save(CommentRequest.SaveRequestDTO requestDTO, int userId, int episodeId) {
 
-    // // 웹툰상세보기
-    // public WebtoonResponse.FindByIdDTO findById(int id) {
-        
-    //     Webtoon webtoon = webtoonRepository.findById(id)
-    //             .orElseThrow(() -> new Exception404(id+"없음"));
-        
-    //     return new WebtoonResponse.FindByIdDTO(webtoon);
-    // }
+        Episode episode = episodeRepository.findById(episodeId)
+            .orElseThrow(() -> new Exception404(episodeId+"없음"));
+
+        Comment comment = Comment.builder()
+                .user(User.builder().id(userId).build())
+                .episode(Episode.builder().id(episodeId).build())
+                .isDelete(false)
+                .build();
+        comment.setText(requestDTO.getText());
+
+        commentRepository.save(comment);
+
+        CommentResponse.SaveCommentDTO responseDTO = new CommentResponse.SaveCommentDTO(comment);
+
+        return responseDTO;
+    }
+
+
+
+
+
 
 
     // // 상품조회 + 옵션조회

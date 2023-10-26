@@ -42,7 +42,7 @@ public class UserService {
     }
 
     @Transactional
-    public UserResponse.updateResponseDTO update(UserRequest.updateDTO requestDTO, User sessionUser) {
+    public UserResponse.updateResponseDTO update(UserRequest.UpdateDTO requestDTO, User sessionUser) {
 
         User user = userJPARepository.findById(sessionUser.getId())
         .orElseThrow(()-> new Exception400("오류 : "+requestDTO.getEmail()));

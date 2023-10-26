@@ -19,6 +19,9 @@ import com.example.kakao.episode.Episode;
 import com.example.kakao.user.User;
 
 
+
+@ToString
+@Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -49,6 +52,23 @@ public class Comment {
 
     @CreationTimestamp
     private Timestamp createdAt;
+
+    
+
+    @Builder
+    public Comment(Integer id, User user, Episode episode, List<LikeComment> likeCommentList,
+            List<ReComment> reCommentList, Boolean isDelete, String text, Timestamp createdAt) {
+        this.id = id;
+        this.user = user;
+        this.episode = episode;
+        this.likeCommentList = likeCommentList;
+        this.reCommentList = reCommentList;
+        this.isDelete = isDelete;
+        this.text = text;
+        this.createdAt = createdAt;
+    }
+
+    
     
     // 댓글은 수정 기능 없다
     // @UpdateTimestamp 
