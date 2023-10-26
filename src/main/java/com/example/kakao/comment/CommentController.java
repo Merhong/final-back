@@ -34,7 +34,7 @@ public class CommentController {
     // }
 
     
-    // 에피소드의 댓글 보기
+    // 에피소드의 댓글  보기
     @GetMapping("/comments/{episodeId}")
     public ResponseEntity<?> findById(@PathVariable int episodeId) {
 
