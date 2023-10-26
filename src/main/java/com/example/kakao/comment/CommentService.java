@@ -27,10 +27,10 @@ public class CommentService {
                 .map(webtoonAuthor -> webtoonAuthor.getAuthor().getUser().getId())
                 .collect(Collectors.toList());
 
-                
+
         List<Comment> commentList = commmentRepository.findByEpisodeId(episodeId);
         List<CommentResponse.FindAllDTO> responseDTOList = commentList.stream()
-                .map( t -> new CommentResponse.FindAllDTO(t, authorUserIdList) )
+                .map(t -> new CommentResponse.FindAllDTO(t, authorUserIdList))
                 .collect(Collectors.toList());
 
         return responseDTOList;
@@ -40,7 +40,7 @@ public class CommentService {
     // // public List<WebtoonResponse.FindAllDTO> findAll(int page) {
     // public List<WebtoonResponse.FindAllDTO> findAll() {
     //     List<Webtoon> webtoonList = webtoonRepository.findAll();
-        
+
     //     List<WebtoonResponse.FindAllDTO> DTOList =  webtoonList.stream()
     //             .map( webtoon -> new WebtoonResponse.FindAllDTO(webtoon) )
     //             .collect(Collectors.toList());
@@ -50,10 +50,10 @@ public class CommentService {
 
     // // 웹툰상세보기
     // public WebtoonResponse.FindByIdDTO findById(int id) {
-        
+
     //     Webtoon webtoon = webtoonRepository.findById(id)
     //             .orElseThrow(() -> new Exception404(id+"없음"));
-        
+
     //     return new WebtoonResponse.FindByIdDTO(webtoon);
     // }
 

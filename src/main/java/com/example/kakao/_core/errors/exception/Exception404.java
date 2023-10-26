@@ -12,11 +12,11 @@ public class Exception404 extends RuntimeException {
         super(message);
     }
 
-    public ApiUtils.ApiResult<?> body(){
+    public ApiUtils.ApiResult<?> body() {
         return ApiUtils.error(getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    public HttpStatus status(){
+    public HttpStatus status() {
         return HttpStatus.NOT_FOUND;
     }
 }

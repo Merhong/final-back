@@ -7,11 +7,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 
 
-
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
-    @Value("${file.path}") 
+    @Value("${file.path}")
     private String filePath; // ./images/
 
     @Override

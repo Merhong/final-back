@@ -17,7 +17,7 @@
 
 // public class Crawling {
 //     public static void main(String[] args) {
-        
+
 //         int authorCount = 201;
 //         int webtoonCount = 201;
 //         int userCount = 201;
@@ -143,7 +143,6 @@
 //         }
 
 
-
 //         for (CrawlingEntity et : entityList) {
 
 //             if (et.getAuthor().contains("/")) {
@@ -176,7 +175,7 @@
 //                         + et.getAuthor() + "','"+userCount+"');";
 
 //                 String WAStr = "INSERT INTO webtoon_author_tb (`id`,`webtoon_id`,`author_id`) VALUES ('"+WACount+"', '"+webtoonCount+"', '"+authorCount+"');";
-                        
+
 //                 webtoonCount++;
 //                 userCount++;
 //                 authorCount++;
