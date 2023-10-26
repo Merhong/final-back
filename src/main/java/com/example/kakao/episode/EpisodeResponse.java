@@ -1,24 +1,15 @@
 package com.example.kakao.episode;
 
-import java.sql.Timestamp;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.CreationTimestamp;
-
 import com.example.kakao.comment.Comment;
 import com.example.kakao.entity.EpisodePhoto;
 import com.example.kakao.entity.ReComment;
-import com.example.kakao.user.User;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.sql.Timestamp;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class EpisodeResponse {
 
@@ -61,7 +52,7 @@ public class EpisodeResponse {
 
             // this.likeEpisodeCount = episode.getLikeEpisodeList().size(); // 싫어요일수도 있음
             this.likeEpisodeCount = episode.getLikeEpisodeList().stream()
-                    .map( t -> (t.getIsLike() == true) ? 1 : -1 )
+                    .map(t -> (t.getIsLike() == true) ? 1 : -1)
                     .reduce(0, (a, b) -> a + b);
 
             // List<Integer> authorUserIdList = episode.getWebtoon().getWebtoonAuthorList().stream()
@@ -117,7 +108,7 @@ public class EpisodeResponse {
                 // }
 
                 this.likeCommentCount = comment.getLikeCommentList().stream()
-                        .map( t -> (t.getIsLike() == true) ? 1 : -1 )
+                        .map(t -> (t.getIsLike() == true) ? 1 : -1)
                         .reduce(0, (a, b) -> a + b);
 
             }
@@ -146,9 +137,9 @@ public class EpisodeResponse {
                     this.userId = reComment.getUser().getId();
                     this.userEmail = reComment.getUser().getEmail();
                     this.userUsername = reComment.getUser().getUsername();
-                    
+
                     this.likeReCommentCount = reComment.getLikeReCommentList().stream()
-                            .map( t -> (t.getIsLike() == true) ? 1 : -1 )
+                            .map(t -> (t.getIsLike() == true) ? 1 : -1)
                             .reduce(0, (a, b) -> a + b);
                 }
             }
@@ -183,8 +174,6 @@ public class EpisodeResponse {
         }
 
     }
-
-
 
 
     // @ToString

@@ -1,7 +1,9 @@
 package com.example.kakao._core.crawling;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -11,22 +13,18 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class CrawlingThumbnail {
     public static void main(String[] args) throws IOException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yy.MM.dd");
 
 
-        
         int WTid = 1;
 
 
-        
         Document doc = Jsoup
                 .connect("http://127.0.0.1:5500/src/main/java/com/example/kakao/_core/crawling/dummy/_target.html")
                 .get();
@@ -47,10 +45,6 @@ public class CrawlingThumbnail {
         // System.out.println(dates.get(4));
 
         List<CrawlingEntityEpisode> epList = new ArrayList<CrawlingEntityEpisode>();
-
-
-
-
 
 
         int i = 0;

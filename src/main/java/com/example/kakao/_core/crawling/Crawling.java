@@ -1,18 +1,18 @@
 package com.example.kakao._core.crawling;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Crawling {
     public static void main(String[] args) {
-        
+
         int authorCount = 301;
         int webtoonCount = 301;
         int userCount = 301;
@@ -138,12 +138,13 @@ public class Crawling {
         }
 
 
-
         for (CrawlingEntity et : entityList) {
 
             if (et.getAuthor().contains("/")) {
 
-                if(et.getAuthor().contains("네이버")){continue;}
+                if (et.getAuthor().contains("네이버")) {
+                    continue;
+                }
 
                 // int starCount = ((int)(Math.random()*10))+1; // 1~10명
                 // int starScore = starCount*(int)(Math.random()*6)+6;
@@ -151,13 +152,13 @@ public class Crawling {
                 // if(starScore>starCount*5){starScore=starCount*(int)(Math.random()*5)+(int)(Math.random()*3);}
                 // if(starScore>starCount*5){starScore=starCount*(int)(Math.random()*4);}
 
-                int starCount = ((int)(Math.random()*10))+1; // 1~10명
-                int starScore = ((int)(Math.random()*30))+21; // 0~29 + 21 = 21~50점
+                int starCount = ((int) (Math.random() * 10)) + 1; // 1~10명
+                int starScore = ((int) (Math.random() * 30)) + 21; // 0~29 + 21 = 21~50점
 
 
                 String defaultStr = "INSERT INTO webtoon_tb (`id`, `age_limit`,`title`,`star_count`,`star_score`,`week_day`,`intro`,`specially`,`image`,`created_at`) VALUES "
                         + " ('" + webtoonCount + "'," + et.getAge() + ", '" + et.getTitle()
-                        + "', "+starCount+","+starScore+",'"
+                        + "', " + starCount + "," + starScore + ",'"
                         + "" + et.getWeekDay() + ""
                         + "','" + et.getIntro() + "','" +
                         "" + et.getSpecial() + "','"
@@ -169,38 +170,39 @@ public class Crawling {
                 ArrayList<String> authorList = new ArrayList<>(Arrays.asList(authorArray));
 
 
-                String userStr="";
-                String authorStr="";
-                String WAStr="";
+                String userStr = "";
+                String authorStr = "";
+                String WAStr = "";
                 for (String author : authorList) {
                     //////////////////// enum 수정해야함
-                userStr = "INSERT INTO user_tb (`id`,`email`,`password`,`username`) VALUES ('"+userCount+"', 'dummyAuthor"+authorCount+"@naver.com', '1234', '"+author.trim()+"');";
+                    userStr = "INSERT INTO user_tb (`id`,`email`,`password`,`username`) VALUES ('" + userCount + "', 'dummyAuthor" + authorCount + "@naver.com', '1234', '" + author.trim() + "');";
 
-                System.out.println(userStr);
+                    System.out.println(userStr);
 
-                authorStr = "INSERT INTO author_tb (`id`,`author_nickname`,`user_id`) VALUES ('" + authorCount + "', '"
-                        + author.trim() + "','"+userCount+"');";
+                    authorStr = "INSERT INTO author_tb (`id`,`author_nickname`,`user_id`) VALUES ('" + authorCount + "', '"
+                            + author.trim() + "','" + userCount + "');";
 
-                System.out.println(authorStr);
+                    System.out.println(authorStr);
 
-                WAStr = "INSERT INTO webtoon_author_tb (`id`,`webtoon_id`,`author_id`) VALUES ('"+WACount+"', '"+webtoonCount+"', '"+authorCount+"');";
-                
-                System.out.println(WAStr);
+                    WAStr = "INSERT INTO webtoon_author_tb (`id`,`webtoon_id`,`author_id`) VALUES ('" + WACount + "', '" + webtoonCount + "', '" + authorCount + "');";
 
-                userCount++;
-                authorCount++;
-                WACount++;
-                
+                    System.out.println(WAStr);
+
+                    userCount++;
+                    authorCount++;
+                    WACount++;
+
 
                 }
 
 
-                
                 webtoonCount++;
 
             } else {
 
-                if(et.getAuthor().contains("네이버")){continue;}
+                if (et.getAuthor().contains("네이버")) {
+                    continue;
+                }
 
                 // int starCount = ((int)(Math.random()*10))+1; // 1~10명
                 // int starScore = starCount*(int)(Math.random()*6)+6;
@@ -208,25 +210,25 @@ public class Crawling {
                 // if(starScore>starCount*5){starScore=starCount*(int)(Math.random()*5)+(int)(Math.random()*3);}
                 // if(starScore>starCount*5){starScore=starCount*(int)(Math.random()*4);}
 
-                int starCount = ((int)(Math.random()*10))+1; // 1~10명
-                int starScore = ((int)(Math.random()*30))+21; // 0~29 + 21 = 21~50점
+                int starCount = ((int) (Math.random() * 10)) + 1; // 1~10명
+                int starScore = ((int) (Math.random() * 30)) + 21; // 0~29 + 21 = 21~50점
 
 
                 String defaultStr = "INSERT INTO webtoon_tb (`id`, `age_limit`,`title`,`star_count`,`star_score`,`week_day`,`intro`,`specially`,`image`,`created_at`) VALUES "
                         + " ('" + webtoonCount + "'," + et.getAge() + ", '" + et.getTitle()
-                        + "', "+starCount+","+starScore+",'"
+                        + "', " + starCount + "," + starScore + ",'"
                         + "" + et.getWeekDay() + ""
                         + "','" + et.getIntro() + "','" +
                         "" + et.getSpecial() + "','"
                         + et.getImage() + "',now());";
 
-                String userStr = "INSERT INTO user_tb (`id`,`email`,`password`,`username`) VALUES ('"+userCount+"', 'dummyAuthor"+authorCount+"@naver.com', '1234', '"+et.getAuthor()+"');";
+                String userStr = "INSERT INTO user_tb (`id`,`email`,`password`,`username`) VALUES ('" + userCount + "', 'dummyAuthor" + authorCount + "@naver.com', '1234', '" + et.getAuthor() + "');";
 
                 String authorStr = "INSERT INTO author_tb (`id`,`author_nickname`,`user_id`) VALUES ('" + authorCount + "', '"
-                        + et.getAuthor() + "','"+userCount+"');";
+                        + et.getAuthor() + "','" + userCount + "');";
 
-                String WAStr = "INSERT INTO webtoon_author_tb (`id`,`webtoon_id`,`author_id`) VALUES ('"+WACount+"', '"+webtoonCount+"', '"+authorCount+"');";
-                        
+                String WAStr = "INSERT INTO webtoon_author_tb (`id`,`webtoon_id`,`author_id`) VALUES ('" + WACount + "', '" + webtoonCount + "', '" + authorCount + "');";
+
                 webtoonCount++;
                 userCount++;
                 authorCount++;
