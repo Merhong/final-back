@@ -1,31 +1,16 @@
 package com.example.kakao.user;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.http.MediaType;
+import com.example.kakao._core.utils.ApiUtils;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.kakao._core.errors.exception.Exception404;
-import com.example.kakao._core.errors.exception.Exception500;
-import com.example.kakao._core.utils.ApiUtils;
-
-import lombok.RequiredArgsConstructor;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @RequiredArgsConstructor
 @RestController
@@ -45,22 +30,22 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody @Valid UserRequest.LoginDTO requestDTO, Errors errors) {
         UserResponse.loginResponseDTO responseDTO = userService.login(requestDTO);
-        return ResponseEntity.ok().header("Authorization", "Bearer "+responseDTO.getJwt()).body(ApiUtils.success(responseDTO));
+        return ResponseEntity.ok().header("Authorization", "Bearer " + responseDTO.getJwt()).body(ApiUtils.success(responseDTO));
     }
 
     // 업데이트 //  쿠키 추가
     @PutMapping("/user")
     public ResponseEntity<?> update(@RequestBody @Valid UserRequest.updateDTO requestDTO, Errors errors) {
         User sessionUser = (User) session.getAttribute("sessionUser");
-        
+
         UserResponse.updateResponseDTO responseDTO = userService.update(requestDTO, sessionUser);
-        
-        
+
+
         System.out.println(responseDTO);
-        
+
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
- 
+
     // JWT는 로그아웃 할 때 서버로 요청할 필요가 없음.(어짜피 스테스리스로 서버에 정보가 없으니까)
     // 로그아웃
     // @GetMapping("/logout")
@@ -69,6 +54,5 @@ public class UserController {
     //     return ResponseEntity.ok().body(ApiUtils.success(null));
     // }
 
-    
-    
+
 }

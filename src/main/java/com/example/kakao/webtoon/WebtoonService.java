@@ -1,14 +1,12 @@
 package com.example.kakao.webtoon;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
+import com.example.kakao._core.errors.exception.Exception404;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.kakao._core.errors.exception.Exception404;
-
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -21,9 +19,9 @@ public class WebtoonService {
     // public List<WebtoonResponse.FindAllDTO> findAll(int page) {
     public List<WebtoonResponse.FindAllDTO> findAll() {
         List<Webtoon> webtoonList = webtoonRepository.findAll();
-        
-        List<WebtoonResponse.FindAllDTO> DTOList =  webtoonList.stream()
-                .map( webtoon -> new WebtoonResponse.FindAllDTO(webtoon) )
+
+        List<WebtoonResponse.FindAllDTO> DTOList = webtoonList.stream()
+                .map(webtoon -> new WebtoonResponse.FindAllDTO(webtoon))
                 .collect(Collectors.toList());
 
         return DTOList;
@@ -31,10 +29,10 @@ public class WebtoonService {
 
     // 웹툰상세보기
     public WebtoonResponse.FindByIdDTO findById(int id) {
-        
+
         Webtoon webtoon = webtoonRepository.findById(id)
-                .orElseThrow(() -> new Exception404(id+"없음"));
-        
+                .orElseThrow(() -> new Exception404(id + "없음"));
+
         return new WebtoonResponse.FindByIdDTO(webtoon);
     }
 

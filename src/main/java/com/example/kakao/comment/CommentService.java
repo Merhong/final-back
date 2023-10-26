@@ -1,19 +1,14 @@
 package com.example.kakao.comment;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
+import com.example.kakao._core.errors.exception.Exception404;
+import com.example.kakao.entity.WebtoonAuthor;
+import com.example.kakao.episode.EpisodeRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.kakao._core.errors.exception.Exception400;
-import com.example.kakao._core.errors.exception.Exception404;
-import com.example.kakao.author.Author;
-import com.example.kakao.author.AuthorJPARepository;
-import com.example.kakao.entity.WebtoonAuthor;
-import com.example.kakao.episode.EpisodeRepository;
-
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -32,10 +27,10 @@ public class CommentService {
                 .map(webtoonAuthor -> webtoonAuthor.getAuthor().getUser().getId())
                 .collect(Collectors.toList());
 
-                
+
         List<Comment> commentList = commmentRepository.findByEpisodeId(episodeId);
         List<CommentResponse.FindAllDTO> responseDTOList = commentList.stream()
-                .map( t -> new CommentResponse.FindAllDTO(t, authorUserIdList) )
+                .map(t -> new CommentResponse.FindAllDTO(t, authorUserIdList))
                 .collect(Collectors.toList());
 
         return responseDTOList;
@@ -45,7 +40,7 @@ public class CommentService {
     // // public List<WebtoonResponse.FindAllDTO> findAll(int page) {
     // public List<WebtoonResponse.FindAllDTO> findAll() {
     //     List<Webtoon> webtoonList = webtoonRepository.findAll();
-        
+
     //     List<WebtoonResponse.FindAllDTO> DTOList =  webtoonList.stream()
     //             .map( webtoon -> new WebtoonResponse.FindAllDTO(webtoon) )
     //             .collect(Collectors.toList());
@@ -55,10 +50,10 @@ public class CommentService {
 
     // // 웹툰상세보기
     // public WebtoonResponse.FindByIdDTO findById(int id) {
-        
+
     //     Webtoon webtoon = webtoonRepository.findById(id)
     //             .orElseThrow(() -> new Exception404(id+"없음"));
-        
+
     //     return new WebtoonResponse.FindByIdDTO(webtoon);
     // }
 
