@@ -12,6 +12,7 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.example.kakao.entity.InterestWebtoon;
 import com.example.kakao.entity.WebtoonAuthor;
 import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
 import com.example.kakao.entity.enums.WebtoonWeekDayEnum;
@@ -32,6 +33,9 @@ public class Webtoon {
     
     @OneToMany(mappedBy = "webtoon", fetch = FetchType.LAZY)
     private List<Episode> episodeList = new ArrayList<>();
+    
+    @OneToMany(mappedBy = "webtoon", fetch = FetchType.LAZY)
+    private List<InterestWebtoon> interstWebtoonList = new ArrayList<>();
 
     @Column(length = 100, nullable = false)
     private String title;

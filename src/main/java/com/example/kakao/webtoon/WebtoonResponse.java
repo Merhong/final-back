@@ -65,6 +65,7 @@ public class WebtoonResponse {
         private Timestamp updatedAt;
         private List<EpisodeDTO> episodeList;
         private List<AuthorDTO> authorList;
+        private Integer interestCount;
 
 
         public FindByIdDTO(Webtoon webtoon) {
@@ -91,7 +92,12 @@ public class WebtoonResponse {
             this.episodeList = webtoon.getEpisodeList().stream()
                     .map( episode -> new EpisodeDTO(episode) )
                     .collect(Collectors.toList());
+            
+            this.interestCount = webtoon.getInterstWebtoonList().size();
+
         }
+
+
         @Getter
         @Setter
         @ToString

@@ -1281,12 +1281,15 @@ INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`star_score`,`
 
 -- 에피소드 사진
 INSERT INTO EPISODE_PHOTO_TB (`episode_id`,`photoURL`) VALUES  (1, 'testphoto1.jpg');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`,`photoURL`) VALUES  (1, 'testphoto2.jpg');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`,`photoURL`) VALUES  (1, 'testphoto3.jpg');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`,`photoURL`) VALUES  (1, 'testphoto4.jpg');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`,`photoURL`) VALUES  (1, 'testphoto5.jpg');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`,`photoURL`) VALUES  (1, 'testphoto6.jpg');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`,`photoURL`) VALUES  (1, 'testW.png');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`,`photoURL`) VALUES  (1, 'testH.png');
 
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`,`photoURL`) VALUES  (2, 'testphoto1.jpg');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`,`photoURL`) VALUES  (2, 'testphoto2.jpg');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`,`photoURL`) VALUES  (2, 'testphoto3.jpg');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`,`photoURL`) VALUES  (2, 'testphoto4.jpg');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`,`photoURL`) VALUES  (2, 'testphoto5.jpg');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`,`photoURL`) VALUES  (2, 'testphoto6.jpg');
 
 
 -------------------------------------------------------------------------------------------------------------------------
@@ -1296,6 +1299,10 @@ INSERT INTO EPISODE_PHOTO_TB (`episode_id`,`photoURL`) VALUES  (1, 'testphoto6.j
 INSERT INTO like_episode_tb (`id`,`user_id`,`episode_id`,`is_like`,`created_at`) VALUES (1, 1,1,true,now());
 INSERT INTO like_episode_tb (`id`,`user_id`,`episode_id`,`is_like`,`created_at`) VALUES (2, 2,1,false,now());
 INSERT INTO like_episode_tb (`id`,`user_id`,`episode_id`,`is_like`,`created_at`) VALUES (3, 3,1,true,now());
+INSERT INTO like_episode_tb (`id`,`user_id`,`episode_id`,`is_like`,`created_at`) VALUES (4, 101,1,true,now());
+INSERT INTO like_episode_tb (`id`,`user_id`,`episode_id`,`is_like`,`created_at`) VALUES (5, 1,2,true,now());
+INSERT INTO like_episode_tb (`id`,`user_id`,`episode_id`,`is_like`,`created_at`) VALUES (6, 2,2,true,now());
+INSERT INTO like_episode_tb (`id`,`user_id`,`episode_id`,`is_like`,`created_at`) VALUES (7, 3,2,true,now());
 
 
 
@@ -1356,6 +1363,22 @@ INSERT INTO like_re_comment_tb (`id`,`user_id`,`re_comment_id`,`is_like`,`create
 INSERT INTO like_re_comment_tb (`id`,`user_id`,`re_comment_id`,`is_like`,`created_at`) VALUES (2, 3,1,true,now());
 INSERT INTO like_re_comment_tb (`id`,`user_id`,`re_comment_id`,`is_like`,`created_at`) VALUES (3, 1,2,false,now());
 INSERT INTO like_re_comment_tb (`id`,`user_id`,`re_comment_id`,`is_like`,`created_at`) VALUES (4, 1,3,true,now());
+
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+-- 관심웹툰
+INSERT INTO interest_webtoon_tb (`id`,`user_id`,`webtoon_id`,`is_alarm`,`created_at`) VALUES (1, 1, 101,true,now());
+INSERT INTO interest_webtoon_tb (`id`,`user_id`,`webtoon_id`,`is_alarm`,`created_at`) VALUES (2, 1, 102,true,now());
+INSERT INTO interest_webtoon_tb (`id`,`user_id`,`webtoon_id`,`is_alarm`,`created_at`) VALUES (3, 1, 103,true,now());
+INSERT INTO interest_webtoon_tb (`id`,`user_id`,`webtoon_id`,`is_alarm`,`created_at`) VALUES (4, 1, 104,true,now());
+INSERT INTO interest_webtoon_tb (`id`,`user_id`,`webtoon_id`,`is_alarm`,`created_at`) VALUES (5, 1, 105,true,now());
+INSERT INTO interest_webtoon_tb (`id`,`user_id`,`webtoon_id`,`is_alarm`,`created_at`) VALUES (6, 2, 101,true,now());
+INSERT INTO interest_webtoon_tb (`id`,`user_id`,`webtoon_id`,`is_alarm`,`created_at`) VALUES (7, 2, 102,true,now());
+INSERT INTO interest_webtoon_tb (`id`,`user_id`,`webtoon_id`,`is_alarm`,`created_at`) VALUES (8, 3, 101,true,now());
 
 
 

@@ -32,6 +32,7 @@ public class CommentResponse {
         // private UserDTO user;
         private Integer episodeId;
         private Integer likeCommentCount;
+        private Integer dislikeCommentCount;
         private Boolean isDelete;
         private String text;
         private Boolean isAuthor = false;
@@ -65,7 +66,11 @@ public class CommentResponse {
             // }
 
             this.likeCommentCount = comment.getLikeCommentList().stream()
-                    .map(t -> (t.getIsLike() == true) ? 1 : -1)
+                    .map(t -> (t.getIsLike() == true) ? 1 : 0)
+                    .reduce(0, (a, b) -> a + b);
+
+            this.dislikeCommentCount = comment.getLikeCommentList().stream()
+                    .map(t -> (t.getIsLike() == false) ? 1 : 0)
                     .reduce(0, (a, b) -> a + b);
 
         }
@@ -80,6 +85,7 @@ public class CommentResponse {
             private String text;
             private Timestamp createdAt;
             private Integer likeReCommentCount;
+            private Integer dislikeReCommentCount;
             private Integer userId;
             private String userEmail;
             private String userUsername;
@@ -96,7 +102,11 @@ public class CommentResponse {
                 this.userUsername = reComment.getUser().getUsername();
 
                 this.likeReCommentCount = reComment.getLikeReCommentList().stream()
-                        .map(t -> (t.getIsLike() == true) ? 1 : -1)
+                        .map(t -> (t.getIsLike() == true) ? 1 : 0)
+                        .reduce(0, (a, b) -> a + b);
+
+                this.dislikeReCommentCount = reComment.getLikeReCommentList().stream()
+                        .map(t -> (t.getIsLike() == false) ? 1 : 0)
                         .reduce(0, (a, b) -> a + b);
             }
         }
