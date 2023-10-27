@@ -1,30 +1,22 @@
 package com.example.kakao.user;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
-import java.sql.Timestamp;
-
-import javax.persistence.*;
-
+import com.example.kakao.author.Author;
+import com.example.kakao.entity.enums.UserTypeEnum;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.example.kakao.author.Author;
-import com.example.kakao.entity.enums.UserTypeEnum;
+import javax.persistence.*;
+import java.sql.Timestamp;
 
 
 @Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name="user_tb")
-public class User{
+@Table(name = "user_tb")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,39 +33,39 @@ public class User{
 
     // @ColumnDefault("false")
     // private Boolean isAdmin; // true=관리자, false=일반유저
-    
+
     // @ColumnDefault("false")
     // private Boolean isAuthor; // true=작가, false=일반유저
 
     @Enumerated(EnumType.STRING)
     private UserTypeEnum userTypeEnum;
-    
+
     @OneToOne(mappedBy = "user")
     private Author author;
-    
+
     @ColumnDefault("0")
     private Integer cookie;
-    
+
     private String birth;
 
     private String gender;
 
     private String realName; // 실명
-    
+
     private String tel;
 
     private String photo;
 
     @CreationTimestamp
     private Timestamp createdAt;
-    
+
     @UpdateTimestamp
     private Timestamp updatedAt;
 
     @Builder
     public User(int id, String email, String password, String username, UserTypeEnum userTypeEnum, Author author,
-            Integer cookie, String birth, String gender, String realName, String tel, String photo, Timestamp createdAt,
-            Timestamp updatedAt) {
+                Integer cookie, String birth, String gender, String realName, String tel, String photo, Timestamp createdAt,
+                Timestamp updatedAt) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -89,8 +81,6 @@ public class User{
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
-
-    
 
 
 }

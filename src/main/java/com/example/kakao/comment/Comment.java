@@ -1,23 +1,17 @@
 package com.example.kakao.comment;
 
-import lombok.*;
-
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.*;
-
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import com.example.kakao.entity.EpisodePhoto;
 import com.example.kakao.entity.LikeComment;
 import com.example.kakao.entity.ReComment;
 import com.example.kakao.episode.Episode;
 import com.example.kakao.user.User;
+import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
 
+import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @ToString
@@ -25,7 +19,7 @@ import com.example.kakao.user.User;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name="comment_tb")
+@Table(name = "comment_tb")
 public class Comment {
 
     @Id
@@ -37,10 +31,10 @@ public class Comment {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Episode episode;
-    
+
     @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY)
     private List<LikeComment> likeCommentList = new ArrayList<>();
-    
+
     @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY)
     private List<ReComment> reCommentList = new ArrayList<>();
 
@@ -53,11 +47,10 @@ public class Comment {
     @CreationTimestamp
     private Timestamp createdAt;
 
-    
 
     @Builder
     public Comment(Integer id, User user, Episode episode, List<LikeComment> likeCommentList,
-            List<ReComment> reCommentList, Boolean isDelete, String text, Timestamp createdAt) {
+                   List<ReComment> reCommentList, Boolean isDelete, String text, Timestamp createdAt) {
         this.id = id;
         this.user = user;
         this.episode = episode;
@@ -68,13 +61,12 @@ public class Comment {
         this.createdAt = createdAt;
     }
 
-    
-    
+
     // 댓글은 수정 기능 없다
     // @UpdateTimestamp 
     // private Timestamp updatedAt;
 
     // 베스트댓글?
-    
+
 
 }

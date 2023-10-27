@@ -1,20 +1,16 @@
 package com.example.kakao.webtoon;
 
-import java.sql.Timestamp;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.hibernate.annotations.CreationTimestamp;
-
 import com.example.kakao.author.Author;
 import com.example.kakao.entity.InterestWebtoon;
 import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
 import com.example.kakao.episode.Episode;
-import com.example.kakao.user.User;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.sql.Timestamp;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class WebtoonResponse {
 
@@ -87,16 +83,16 @@ public class WebtoonResponse {
             this.updatedAt = webtoon.getUpdatedAt();
             // this.authorDTO = new AuthorDTO(webtoon.getAuthor());
             // this.authorList = webtoon.getAuthor()
-        
+
             this.authorList = webtoon.getWebtoonAuthorList().stream()
-                    .map( webtoonAuthor -> webtoonAuthor.getAuthor() )
-                    .map( author -> new AuthorDTO(author) )
+                    .map(webtoonAuthor -> webtoonAuthor.getAuthor())
+                    .map(author -> new AuthorDTO(author))
                     .collect(Collectors.toList());
 
             this.episodeList = webtoon.getEpisodeList().stream()
-                    .map( episode -> new EpisodeDTO(episode) )
+                    .map(episode -> new EpisodeDTO(episode))
                     .collect(Collectors.toList());
-            
+
             this.interestCount = webtoon.getInterstWebtoonList().size();
 
         }
@@ -131,7 +127,7 @@ public class WebtoonResponse {
             private Timestamp updatedAt;
 
             EpisodeDTO(Episode episode) {
-                
+
                 this.episodeId = episode.getId();
                 this.detailTitle = episode.getDetailTitle();
                 this.thumbnail = episode.getThumbnail();
@@ -144,9 +140,6 @@ public class WebtoonResponse {
             }
         }
     }
-
-
-
 
 
     @Getter
@@ -170,7 +163,30 @@ public class WebtoonResponse {
             this.webtoonTotalInterest = webtoonTotalInterest;
         }
 
-        
+
+    }
+
+    @Getter
+    @Setter
+    @ToString
+    public static class EndRecommendationDTO {
+        private Integer id;
+        private String title;
+        private String image;
+        private Integer episodeCount;
+        private List<String> authorNicknameList;
+
+        public EndRecommendationDTO(Webtoon webtoon) {
+            this.id = webtoon.getId();
+            this.title = webtoon.getTitle();
+            this.image = webtoon.getImage();
+            this.episodeCount = webtoon.getEpisodeList().size();
+            this.authorNicknameList = webtoon.getWebtoonAuthorList().stream()
+                    .map(t -> t.getAuthor().getAuthorNickname())
+                    .collect(Collectors.toList());
+        }
+
+
     }
 
 

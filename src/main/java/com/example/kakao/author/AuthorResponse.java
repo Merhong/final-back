@@ -1,21 +1,11 @@
 package com.example.kakao.author;
 
-import java.sql.Timestamp;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.hibernate.annotations.CreationTimestamp;
-
-import com.example.kakao.author.Author;
 import com.example.kakao.entity.InterestAuthor;
-import com.example.kakao.entity.InterestWebtoon;
-import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
-import com.example.kakao.episode.Episode;
-import com.example.kakao.user.User;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.sql.Timestamp;
 
 public class AuthorResponse {
 
@@ -40,7 +30,7 @@ public class AuthorResponse {
             // this.webtoonTotalInterest = webtoonTotalInterest;
         }
 
-        
+
     }
 
 

@@ -1,26 +1,15 @@
 package com.example.kakao.comment;
 
-import java.util.List;
+import com.example.kakao._core.utils.ApiUtils;
+import com.example.kakao.user.User;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.example.kakao._core.errors.exception.Exception400;
-import com.example.kakao._core.utils.ApiUtils;
-import com.example.kakao.episode.EpisodeResponse;
-import com.example.kakao.user.User;
-
-import lombok.RequiredArgsConstructor;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -28,7 +17,6 @@ public class CommentController {
 
     private final CommentService commentService; // 자바에서 final 변수는 반드시 초기화되어야 함.
     private final HttpSession session;
-
 
 
     // 댓글 좋아요
@@ -63,7 +51,7 @@ public class CommentController {
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
 
-    
+
     // 에피소드의 댓글  보기
     @GetMapping("/comments/{episodeId}")
     public ResponseEntity<?> findById(@PathVariable int episodeId) {
@@ -84,8 +72,6 @@ public class CommentController {
 
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
-
-
 
 
     // (기능1) 상품 목록보기

@@ -1,28 +1,21 @@
 package com.example.kakao.entity;
 
+import com.example.kakao.user.User;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import com.example.kakao.user.User;
+import java.sql.Timestamp;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "like_re_comment_tb", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"user_id", "re_comment_id"})
+        @UniqueConstraint(columnNames = {"user_id", "re_comment_id"})
 })
-public class LikeReComment{
+public class LikeReComment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +23,7 @@ public class LikeReComment{
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
     private ReComment reComment;
 

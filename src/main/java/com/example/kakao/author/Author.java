@@ -1,30 +1,23 @@
 package com.example.kakao.author;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.*;
-
+import com.example.kakao.entity.WebtoonAuthor;
+import com.example.kakao.user.User;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.example.kakao.entity.WebtoonAuthor;
-import com.example.kakao.user.User;
+import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @ToString
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name="author_tb")
-public class Author{
+@Table(name = "author_tb")
+public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +34,7 @@ public class Author{
 
     @CreationTimestamp
     private Timestamp createdAt;
-    
+
     @UpdateTimestamp
     private Timestamp updatedAt;
 
@@ -51,7 +44,7 @@ public class Author{
 
     @Builder
     public Author(int id, User user, String authorNickname, String authorPhoto, String siteURL, Timestamp createdAt,
-            Timestamp updatedAt, List<WebtoonAuthor> webtoonAuthorList) {
+                  Timestamp updatedAt, List<WebtoonAuthor> webtoonAuthorList) {
         this.id = id;
         this.user = user;
         this.authorNickname = authorNickname;
@@ -62,5 +55,5 @@ public class Author{
         this.webtoonAuthorList = webtoonAuthorList;
     }
 
-    
+
 }

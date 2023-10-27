@@ -1,10 +1,10 @@
 package com.example.kakao._core.crawling;
 
-import java.sql.Timestamp;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.sql.Timestamp;
 
 @Getter
 @Setter
