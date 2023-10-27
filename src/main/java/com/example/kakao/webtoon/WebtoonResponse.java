@@ -9,7 +9,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import com.example.kakao.author.Author;
 import com.example.kakao.entity.InterestWebtoon;
 import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
-import com.example.kakao.entity.enums.WebtoonWeekDayEnum;
 import com.example.kakao.episode.Episode;
 import com.example.kakao.user.User;
 
@@ -30,7 +29,7 @@ public class WebtoonResponse {
         private String image;
         private Integer ageLimit;
         private WebtoonSpeciallyEnum webtoonSpeciallyEnum;
-        private WebtoonWeekDayEnum webtoonWeekDayEnum;
+        private String webtoonWeekDayEnum;
         private List<String> authorNicknameList;
 
         public FindAllDTO(Webtoon webtoon) {
@@ -63,13 +62,14 @@ public class WebtoonResponse {
         private String image;
         private String detailImage;
         private Integer ageLimit;
-        private WebtoonWeekDayEnum webtoonWeekDayEnum;
+        private String webtoonWeekDayEnum;
         private WebtoonSpeciallyEnum webtoonSpeciallyEnum;
         private Timestamp createdAt;
         private Timestamp updatedAt;
         private List<EpisodeDTO> episodeList;
         private List<AuthorDTO> authorList;
         private Integer interestCount;
+        private Boolean isInterest;
 
 
         public FindByIdDTO(Webtoon webtoon) {

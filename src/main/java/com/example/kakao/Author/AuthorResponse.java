@@ -10,7 +10,6 @@ import com.example.kakao.author.Author;
 import com.example.kakao.entity.InterestAuthor;
 import com.example.kakao.entity.InterestWebtoon;
 import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
-import com.example.kakao.entity.enums.WebtoonWeekDayEnum;
 import com.example.kakao.episode.Episode;
 import com.example.kakao.user.User;
 

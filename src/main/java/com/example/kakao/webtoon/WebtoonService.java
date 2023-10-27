@@ -11,8 +11,11 @@ import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception401;
 import com.example.kakao._core.errors.exception.Exception404;
 import com.example.kakao.entity.InterestWebtoon;
+import com.example.kakao.entity.RecentWebtoon;
 import com.example.kakao.repository.InterestWebtoonRepository;
+import com.example.kakao.repository.RecentWebtoonRepository;
 import com.example.kakao.user.User;
+import com.example.kakao.user.UserJPARepository;
 import com.example.kakao.webtoon.WebtoonResponse;
 import com.example.kakao.webtoon.WebtoonResponse.InterestDTO;
 
@@ -24,6 +27,8 @@ import lombok.RequiredArgsConstructor;
 public class WebtoonService {
 
     private final WebtoonRepository webtoonRepository;
+    private final UserJPARepository userRepository;
+    // private final RecentWebtoonRepository recentWebtoonRepository;
     private final InterestWebtoonRepository interestWebtoonRepository;
     
 
@@ -61,11 +66,14 @@ public class WebtoonService {
     }
 
     // 웹툰상세보기
-    public WebtoonResponse.FindByIdDTO findById(int id) {
+    public WebtoonResponse.FindByIdDTO findById(int webtoonId, int userId) {
+
+        // User user = userRepository.findById(userId)
+        //         .orElseThrow(() -> new Exception404(userId+"없음"));
         
-        Webtoon webtoon = webtoonRepository.findById(id)
-                .orElseThrow(() -> new Exception404(id+"없음"));
-        
+        Webtoon webtoon = webtoonRepository.findById(webtoonId)
+                .orElseThrow(() -> new Exception404(webtoonId+"없음"));
+
         webtoon.setStarScore(
             webtoon.getEpisodeList().stream()
                     .map( episode -> episode.getStarScore() )
@@ -77,7 +85,17 @@ public class WebtoonService {
                     .reduce(0.0, (a, b) -> a + b)
         );
 
-        return new WebtoonResponse.FindByIdDTO(webtoon);
+        WebtoonResponse.FindByIdDTO responseDTO = new WebtoonResponse.FindByIdDTO(webtoon);
+
+        List<InterestWebtoon> interestWebtoonList = interestWebtoonRepository.findByUserIdAndWebtoonId(userId, webtoonId);
+        if(interestWebtoonList.size()==0){
+            responseDTO.setIsInterest(false);
+        }
+        if(interestWebtoonList.size()==1){
+            responseDTO.setIsInterest(true);
+        } 
+
+        return responseDTO;
     }
 
     // 관심웹툰추가
@@ -133,7 +151,7 @@ public class WebtoonService {
 
         interestWebtoonRepository.deleteById(iwCheckList.get(0).getId());
 
-        WebtoonResponse.InterestDTO responseDTO = new WebtoonResponse.InterestDTO(iwCheckList.get(0), webtoonTotalInterest);
+        WebtoonResponse.InterestDTO responseDTO = new WebtoonResponse.InterestDTO(iwCheckList.get(0), --webtoonTotalInterest);
 
         return responseDTO;
     }

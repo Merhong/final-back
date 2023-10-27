@@ -19,7 +19,6 @@ import com.example.kakao.author.Author;
 import com.example.kakao.entity.enums.UserTypeEnum;
 
 
-@ToString
 @Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

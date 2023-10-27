@@ -44,10 +44,12 @@ public class WebtoonController {
     }
 
     // 웹툰 상세보기
-    @GetMapping("/webtoons/{id}")
-    public ResponseEntity<?> findById(@PathVariable int id) {
-        WebtoonResponse.FindByIdDTO DTO = webtoonService.findById(id);
-        return ResponseEntity.ok().body(ApiUtils.success(DTO));
+    @GetMapping("/webtoons/{webtoonId}")
+    public ResponseEntity<?> findById(@PathVariable int webtoonId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        
+        WebtoonResponse.FindByIdDTO responseDTO = webtoonService.findById(webtoonId, sessionUser.getId());
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
 
     // 관심웹툰 추가
