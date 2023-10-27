@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception500;
 import com.example.kakao._core.utils.JwtTokenUtils;
+import com.example.kakao.entity.enums.UserTypeEnum;
 
 import lombok.RequiredArgsConstructor;
 
@@ -21,13 +22,18 @@ public class UserService {
     @Transactional
     public void join(UserRequest.JoinDTO requestDTO) {
         try {
-            userJPARepository.save(requestDTO.toEntity());
+            User user = requestDTO.toEntity();
+            user.setUserTypeEnum(UserTypeEnum.NORMAL); // 일반 가입창으로 가입하면 무조건 노말유저
+            user.setCookie(0);
+            userJPARepository.save(user);
         } catch (Exception e) {
             throw new Exception500("unknown server error");
         }
     }
+    
 
     public UserResponse.loginResponseDTO login(UserRequest.LoginDTO requestDTO) {
+        System.out.println("로그1");
         User userPS = userJPARepository.findByEmailAndPassword(requestDTO.getEmail(), requestDTO.getPassword())
             .orElseThrow(()-> new Exception400("email이나 password가 틀림 : "+requestDTO.getEmail()));
         
@@ -37,6 +43,8 @@ public class UserService {
         
         UserResponse.loginResponseDTO responseDTO = new UserResponse.loginResponseDTO(userPS);
         responseDTO.setJwt(jwt);
+
+        System.out.println("로그2");
 
         return responseDTO;
     }
