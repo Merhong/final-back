@@ -16,7 +16,6 @@ public class FilterConfig {
         // bean.addUrlPatterns("/carts/*");
         // bean.addUrlPatterns("/webtoons/author/*");
         bean.addUrlPatterns("/user");
-        bean.addUrlPatterns("/webtoons/*");
         bean.addUrlPatterns("/episodes/*");
         bean.addUrlPatterns("/comments/*");
         bean.addUrlPatterns("/authors/*");

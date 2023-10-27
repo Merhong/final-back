@@ -23,6 +23,8 @@ import com.example.kakao.entity.enums.UserTypeEnum;
 import com.example.kakao.user.User;
 import com.example.kakao.user.UserRequest;
 import com.example.kakao.user.UserResponse;
+import com.example.kakao.webtoon.WebtoonResponse.EndRecommendationDTO;
+
 
 import lombok.RequiredArgsConstructor;
 
@@ -89,5 +91,12 @@ public class WebtoonController {
         
         return ResponseEntity.ok().body(ApiUtils.success("responseDTO임시"));
     }
+
+    @GetMapping("/webtoons/recommend")
+    public ResponseEntity<?> endRecommendation() {
+        List<EndRecommendationDTO> endRecommendationDTOList = webtoonService.endRecommendation(); 
+        return ResponseEntity.ok().body(ApiUtils.success(endRecommendationDTOList));
+    }
+    
 
 }
