@@ -2,6 +2,7 @@ package com.example.kakao.webtoon;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception401;
 import com.example.kakao._core.errors.exception.Exception404;
 import com.example.kakao.entity.InterestWebtoon;
+import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
 import com.example.kakao.repository.InterestWebtoonRepository;
 import com.example.kakao.user.User;
 import com.example.kakao.webtoon.WebtoonResponse;
@@ -138,6 +140,13 @@ public class WebtoonService {
         return responseDTO;
     }
 
+    public List<WebtoonResponse.EndRecommendationDTO> endRecommendation(){
+        List<Webtoon> webtoonList = webtoonRepository.findByWebtoonSpeciallyEnum(WebtoonSpeciallyEnum.완결);
+        List<WebtoonResponse.EndRecommendationDTO> endRecommendationDTOList = webtoonList.stream()
+                                                                            .map(w -> new WebtoonResponse.EndRecommendationDTO(w))
+                                                                            .collect(Collectors.toList());
+        return endRecommendationDTOList;                                                                  
+
 
 
     // // 상품조회 + 옵션조회
@@ -169,4 +178,5 @@ public class WebtoonService {
     //     List<Option> optionsPS = optionJPARepository.findByProductId(id);
     //     return optionsPS;
     // }
+}
 }

@@ -12,6 +12,7 @@ import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
 import com.example.kakao.entity.enums.WebtoonWeekDayEnum;
 import com.example.kakao.episode.Episode;
 import com.example.kakao.user.User;
+import com.example.kakao.webtoon.WebtoonResponse.FindByIdDTO.AuthorDTO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -171,6 +172,30 @@ public class WebtoonResponse {
         }
 
         
+    }
+
+    @Getter
+    @Setter
+    @ToString
+    public static class EndRecommendationDTO{
+        private Integer id;
+        private String title;
+        private String image;
+        private Integer episodeCount;
+        private List<String> authorNicknameList;
+
+        public EndRecommendationDTO(Webtoon webtoon) {
+            this.id = webtoon.getId();
+            this.title = webtoon.getTitle();
+            this.image = webtoon.getImage();
+            this.episodeCount = webtoon.getEpisodeList().size();
+            this.authorNicknameList = webtoon.getWebtoonAuthorList().stream()
+            .map(t -> t.getAuthor().getAuthorNickname())
+                    .collect(Collectors.toList());
+        }
+        
+
+
     }
 
 
