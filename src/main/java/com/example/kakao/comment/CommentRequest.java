@@ -1,4 +1,4 @@
-package com.example.kakao.webtoon;
+package com.example.kakao.comment;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,48 +6,26 @@ import lombok.ToString;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.util.List;
 
 
-public class WebtoonRequest {
+public class CommentRequest {
+
+
     @Getter
     @Setter
     @ToString
-    public static class CreateDTO {
+    public static class SaveRequestDTO {
 
         @NotEmpty
-        private List<Integer> AuthorIdList;
+        @Size(min = 1, max = 100, message = "1에서 100자 이내여야 합니다.")
+        private String text;
 
-        @Size(min = 1, max = 100, message = "100자 이내여야 합니다.")
-        private String title;
-
-        @Size(min = 1, max = 500, message = "500자 이내여야 합니다.")
-        private String intro; // 소개글
-
-        @NotEmpty
-        private String image;
-
-        private String detailImage;
-
-        @NotEmpty
-        private Integer ageLimit;
-
-        @Size(min = 1, max = 5, message = "요일")
-        private String weekDay;
-
-        @Size(min = 2, max = 2, message = "휴재, 완결, 무료, 순위, 신작.")
-        private String specially;
-
-
-        // public Webtoon toEntity() {
-        //     return Webtoon.builder()
-        //             .email(email)
-        //             .password(password)
-        //             .username(username)
-        //             .build();
-        // }
+        public Comment toEntity() {
+            return Comment.builder()
+                    .text(text)
+                    .build();
+        }
     }
-
 
     // @Getter
     // @Setter
@@ -66,7 +44,7 @@ public class WebtoonRequest {
     // @Getter
     // @Setter
     // @ToString
-    // public static class updateDTO {
+    // public static class UpdateDTO {
 
     //     @NotEmpty
     //     private String email;

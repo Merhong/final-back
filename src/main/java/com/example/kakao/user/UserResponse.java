@@ -1,15 +1,15 @@
 package com.example.kakao.user;
 
 import com.example.kakao.entity.enums.UserTypeEnum;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 public class UserResponse {
 
-    @Getter @Setter
-    public static class FindById{
+    @Getter
+    @Setter
+    public static class FindById {
         private int id;
         private String username;
         private String email;
@@ -20,9 +20,11 @@ public class UserResponse {
             this.email = user.getEmail();
         }
     }
-    
-    @Getter @Setter @ToString
-    public static class loginResponseDTO{
+
+    @Getter
+    @Setter
+    @ToString
+    public static class loginResponseDTO {
         private int id;
         private String email;
         private String username;
@@ -32,7 +34,7 @@ public class UserResponse {
         private UserTypeEnum userTypeEnum;
         private Integer cookie;
         private String photo;
-    
+
 
         public loginResponseDTO(User user) {
             this.id = user.getId();
@@ -46,9 +48,11 @@ public class UserResponse {
         }
     }
 
-    
-    @Getter @Setter @ToString
-    public static class updateResponseDTO{
+
+    @Getter
+    @Setter
+    @ToString
+    public static class updateResponseDTO {
         private int id;
         private String password;
         private String email;

@@ -1,24 +1,15 @@
 package com.example.kakao.author;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-
+import com.example.kakao._core.errors.exception.Exception400;
+import com.example.kakao._core.errors.exception.Exception404;
+import com.example.kakao.entity.InterestAuthor;
+import com.example.kakao.repository.InterestAuthorRepository;
+import com.example.kakao.user.User;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.kakao._core.errors.exception.Exception400;
-import com.example.kakao._core.errors.exception.Exception401;
-import com.example.kakao._core.errors.exception.Exception404;
-import com.example.kakao.entity.InterestAuthor;
-import com.example.kakao.entity.InterestWebtoon;
-import com.example.kakao.repository.InterestAuthorRepository;
-import com.example.kakao.user.User;
-import com.example.kakao.webtoon.Webtoon;
-import com.example.kakao.webtoon.WebtoonResponse;
-import com.example.kakao.webtoon.WebtoonResponse.InterestDTO;
-
-import lombok.RequiredArgsConstructor;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -27,20 +18,20 @@ public class AuthorService {
 
     private final AuthorJPARepository authorRepository;
     private final InterestAuthorRepository interestAuthorRepository;
-    
+
 
     // 관심작가추가
     @Transactional
     public AuthorResponse.InterestDTO interestSave(int userId, int authorId) {
 
         InterestAuthor ia = InterestAuthor.builder()
-            .user(User.builder().id(userId).build())
-            .author(Author.builder().id(authorId).build())
-            .isAlarm(true)
-            .build();
+                .user(User.builder().id(userId).build())
+                .author(Author.builder().id(authorId).build())
+                .isAlarm(true)
+                .build();
 
         Author author = authorRepository.findById(authorId)
-            .orElseThrow(() -> new Exception404(authorId+"없음"));
+                .orElseThrow(() -> new Exception404(authorId + "없음"));
 
         try {
             interestAuthorRepository.save(ia);
@@ -56,13 +47,13 @@ public class AuthorService {
     // 관심작가 제거
     @Transactional
     public AuthorResponse.InterestDTO interestDelete(int userId, int authorId) {
-        
+
         List<InterestAuthor> iaCheckList = interestAuthorRepository.findByUserIdAndAuthorId(userId, authorId);
 
         Author author = authorRepository.findById(authorId)
-            .orElseThrow(() -> new Exception404(authorId+"없음"));
+                .orElseThrow(() -> new Exception404(authorId + "없음"));
 
-        if(iaCheckList.size() == 0){
+        if (iaCheckList.size() == 0) {
             throw new Exception400("이미삭제함");
         }
 
@@ -72,7 +63,6 @@ public class AuthorService {
 
         return responseDTO;
     }
-
 
 
     // // 상품조회 + 옵션조회

@@ -1,29 +1,60 @@
 package com.example.kakao.comment;
 
-import java.sql.Timestamp;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.CreationTimestamp;
-
-import com.example.kakao.comment.Comment;
-import com.example.kakao.entity.EpisodePhoto;
+import com.example.kakao.entity.LikeComment;
 import com.example.kakao.entity.ReComment;
-import com.example.kakao.user.User;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.sql.Timestamp;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class CommentResponse {
 
 
-    
+    @Getter
+    @Setter
+    @ToString
+    public static class SaveCommentDTO {
+        private Integer id;
+        private Integer userId;
+        private Integer episodeId;
+        private String text;
+        private Timestamp createdAt;
+
+
+        public SaveCommentDTO(Comment comment) {
+            this.id = comment.getId();
+            this.userId = comment.getUser().getId();
+            this.episodeId = comment.getEpisode().getId();
+            this.text = comment.getText();
+            this.createdAt = comment.getCreatedAt();
+        }
+    }
+
+
+    @Getter
+    @Setter
+    @ToString
+    public static class LikeDTO {
+        private Integer id;
+        private Integer userId;
+        private Integer commentId;
+        private Boolean isLike;
+        private Timestamp createdAt;
+
+
+        public LikeDTO(LikeComment lc) {
+            this.id = lc.getId();
+            this.userId = lc.getUser().getId();
+            this.commentId = lc.getComment().getId();
+            this.isLike = lc.getIsLike();
+            this.createdAt = lc.getCreatedAt();
+        }
+    }
+
+
     @Getter
     @Setter
     @ToString

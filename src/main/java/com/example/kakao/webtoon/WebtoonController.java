@@ -1,32 +1,18 @@
 package com.example.kakao.webtoon;
 
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.example.kakao._core.errors.exception.Exception401;
 import com.example.kakao._core.errors.exception.Exception403;
 import com.example.kakao._core.utils.ApiUtils;
 import com.example.kakao.entity.enums.UserTypeEnum;
 import com.example.kakao.user.User;
-import com.example.kakao.user.UserRequest;
-import com.example.kakao.user.UserResponse;
 import com.example.kakao.webtoon.WebtoonResponse.EndRecommendationDTO;
-
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -46,10 +32,12 @@ public class WebtoonController {
     }
 
     // 웹툰 상세보기
-    @GetMapping("/webtoons/{id}")
-    public ResponseEntity<?> findById(@PathVariable int id) {
-        WebtoonResponse.FindByIdDTO DTO = webtoonService.findById(id);
-        return ResponseEntity.ok().body(ApiUtils.success(DTO));
+    @GetMapping("/webtoons/{webtoonId}")
+    public ResponseEntity<?> findById(@PathVariable int webtoonId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        WebtoonResponse.FindByIdDTO responseDTO = webtoonService.findById(webtoonId, sessionUser.getId());
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
 
     // 관심웹툰 추가
@@ -80,23 +68,23 @@ public class WebtoonController {
     @PostMapping("/webtoons/author/{id}")
     public ResponseEntity<?> update(@RequestBody @Valid WebtoonRequest.CreateDTO requestDTO, Errors errors) {
         User sessionUser = (User) session.getAttribute("sessionUser");
-        
-        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) // && !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.AUTHOR)) 
+
+        if (!(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) // && !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.AUTHOR))
         ) {
             throw new Exception403("일반유저못함");
         }
 
         // webtoonService.create(requestDTO);
         // TODO
-        
+
         return ResponseEntity.ok().body(ApiUtils.success("responseDTO임시"));
     }
 
     @GetMapping("/webtoons/recommend")
     public ResponseEntity<?> endRecommendation() {
-        List<EndRecommendationDTO> endRecommendationDTOList = webtoonService.endRecommendation(); 
+        List<EndRecommendationDTO> endRecommendationDTOList = webtoonService.endRecommendation();
         return ResponseEntity.ok().body(ApiUtils.success(endRecommendationDTOList));
     }
-    
+
 
 }

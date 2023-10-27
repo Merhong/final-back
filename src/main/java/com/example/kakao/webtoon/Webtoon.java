@@ -1,22 +1,18 @@
 package com.example.kakao.webtoon;
 
+import com.example.kakao.entity.InterestWebtoon;
+import com.example.kakao.entity.WebtoonAuthor;
+import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
+import com.example.kakao.episode.Episode;
 import lombok.*;
-
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.*;
-
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.example.kakao.entity.InterestWebtoon;
-import com.example.kakao.entity.WebtoonAuthor;
-import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
-import com.example.kakao.entity.enums.WebtoonWeekDayEnum;
-import com.example.kakao.episode.Episode;
+import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @ToString
 @Setter
@@ -29,13 +25,13 @@ public class Webtoon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
+
     @OneToMany(mappedBy = "webtoon", fetch = FetchType.LAZY)
     private List<WebtoonAuthor> webtoonAuthorList = new ArrayList<>();
-    
+
     @OneToMany(mappedBy = "webtoon", fetch = FetchType.LAZY)
     private List<Episode> episodeList = new ArrayList<>();
-    
+
     @OneToMany(mappedBy = "webtoon", fetch = FetchType.LAZY)
     private List<InterestWebtoon> interstWebtoonList = new ArrayList<>();
 
@@ -46,10 +42,10 @@ public class Webtoon {
     private String intro; // 소개글
 
     @ColumnDefault("0")
-    private Double starScore; // 별점 계산 분자값 // 웹툰 자체 별점은 없고 각 에피소드별 합산임
-    
+    private Double starScore; // 별점 계산 분자값 // 웹툰 자체 별점은 없고 각 에피소드별 합산임. 그러니까 모두 0으로 하거나, 필드를 없애고 requestDTO에만 계산해서 줘야함
+
     @ColumnDefault("0")
-    private Double starCount; // 별점 계산 분모값 // 웹툰 자체 별점은 없고 각 에피소드별 합산임
+    private Double starCount; // 별점 계산 분모값 // 웹툰 자체 별점은 없고 각 에피소드별 합산임. 그러니까 모두 0으로 하거나, 필드를 없애고 requestDTO에만 계산해서 줘야함
 
     private String image; // 메인페이지 썸네일
 
@@ -57,8 +53,8 @@ public class Webtoon {
 
     private Integer ageLimit; // 나이제한
 
-    @Enumerated(EnumType.STRING)
-    private WebtoonWeekDayEnum webtoonWeekDayEnum; // 월, 화, 수, 목, 금, 토, 일 // 여러개가 되면?
+    // @Enumerated(EnumType.STRING)
+    private String webtoonWeekDayEnum; // 요일 여러개나 매일 올라오는거도 있어서 스트링으로 바꾸고 프론트에서 로직으로 구분하는걸로
 
     // @ColumnDefault("'없음'") // enum에는 작동 안하는거 같음
     @Enumerated(EnumType.STRING)
@@ -66,16 +62,15 @@ public class Webtoon {
 
     @CreationTimestamp
     private Timestamp createdAt;
-    
+
     @UpdateTimestamp
     private Timestamp updatedAt;
 
 
-
     @Builder
     public Webtoon(Integer id, List<WebtoonAuthor> webtoonAuthorList, List<Episode> episodeList, String title,
-            String intro, Double starScore, Double starCount, String image, String detailImage, Integer ageLimit,
-            WebtoonWeekDayEnum webtoonWeekDayEnum, WebtoonSpeciallyEnum webtoonSpeciallyEnum, Timestamp createdAt, Timestamp updatedAt) {
+                   String intro, Double starScore, Double starCount, String image, String detailImage, Integer ageLimit,
+                   String webtoonWeekDayEnum, WebtoonSpeciallyEnum webtoonSpeciallyEnum, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.webtoonAuthorList = webtoonAuthorList;
         this.episodeList = episodeList;
@@ -91,7 +86,6 @@ public class Webtoon {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
-
 
 
 }
