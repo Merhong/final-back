@@ -4,10 +4,14 @@ import com.example.kakao._core.utils.ApiUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -18,6 +22,38 @@ public class UserController {
 
     private final UserService userService;
     private final HttpSession session;
+
+
+    // 관심웹툰알람끄기
+    @PostMapping("/users/interest/alarmoff/{webtoonId}")
+    public ResponseEntity<?> interestAlarmOff(@PathVariable int webtoonId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        UserResponse.InterestWebtoonDTO responseDTO = userService.interestAlarmOff(sessionUser.getId(), webtoonId);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
+    // 관심웹툰알람켜기
+    @PostMapping("/users/interest/alarmon/{webtoonId}")
+    public ResponseEntity<?> interestAlarmOn(@PathVariable int webtoonId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        UserResponse.InterestWebtoonDTO responseDTO = userService.interestAlarmOn(sessionUser.getId(), webtoonId);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
+    // 관심웹툰목록보기
+    @GetMapping("/users/interest")
+    public ResponseEntity<?> interest() {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        List<UserResponse.InterestWebtoonDTO> responseDTOList = userService.interest(sessionUser.getId());
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTOList));
+    }
+
 
     // 회원가입
     @PostMapping("/join")
@@ -34,14 +70,11 @@ public class UserController {
     }
 
     // 업데이트 //  쿠키 추가
-    @PutMapping("/user")
+    @PutMapping("/users")
     public ResponseEntity<?> update(@RequestBody @Valid UserRequest.UpdateDTO requestDTO, Errors errors) {
         User sessionUser = (User) session.getAttribute("sessionUser");
 
         UserResponse.updateResponseDTO responseDTO = userService.update(requestDTO, sessionUser);
-
-
-        System.out.println(responseDTO);
 
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }

@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.ColumnDefault;
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -24,4 +26,5 @@ public class WebtoonHashTag {
     @Enumerated(EnumType.STRING)
     private HashTagEnum hashTagEnum;
 
+    private String hashTagName;
 }

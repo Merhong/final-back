@@ -35,13 +35,14 @@ public class Comment {
     @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY)
     private List<LikeComment> likeCommentList = new ArrayList<>();
 
+    @OrderBy("id DESC")
     @OneToMany(mappedBy = "comment", fetch = FetchType.LAZY)
     private List<ReComment> reCommentList = new ArrayList<>();
 
     @ColumnDefault("false")
     private Boolean isDelete;
 
-    @Column(length = 200, nullable = false)
+    @Column(length = 500, nullable = false)
     private String text;
 
     @CreationTimestamp

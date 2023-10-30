@@ -3,8 +3,16 @@ package com.example.kakao.user;
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception500;
 import com.example.kakao._core.utils.JwtTokenUtils;
+import com.example.kakao.entity.InterestWebtoon;
 import com.example.kakao.entity.enums.UserTypeEnum;
+import com.example.kakao.repository.InterestWebtoonRepository;
+import com.example.kakao.user.UserResponse.InterestWebtoonDTO;
+
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +21,71 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UserService {
     private final UserJPARepository userJPARepository;
+    private final InterestWebtoonRepository interestWebtoonRepository;
+
+
+
+
+
+    // 관심웹툰알람끄기
+    @Transactional
+    public UserResponse.InterestWebtoonDTO interestAlarmOff(int userId, int webtoonId) {
+
+        List<InterestWebtoon> interestWebtoonList = interestWebtoonRepository.findByUserIdAndWebtoonId(userId, webtoonId);
+
+        if (interestWebtoonList.size() != 1) {
+            throw new Exception400("관심웹툰이아닌데");
+        }
+
+        InterestWebtoon interestWebtoon = interestWebtoonList.get(0);
+
+        if(interestWebtoon.getIsAlarm() == false){
+            throw new Exception400("이미알람끄져있음");
+        }
+
+        interestWebtoon.setIsAlarm(false);
+
+        UserResponse.InterestWebtoonDTO responseDTO = new UserResponse.InterestWebtoonDTO(interestWebtoon);
+        return responseDTO;
+    }
+
+    // 관심웹툰알람켜기
+    @Transactional
+    public UserResponse.InterestWebtoonDTO interestAlarmOn(int userId, int webtoonId) {
+
+        List<InterestWebtoon> interestWebtoonList = interestWebtoonRepository.findByUserIdAndWebtoonId(userId, webtoonId);
+
+        if (interestWebtoonList.size() != 1) {
+            throw new Exception400("관심웹툰이아닌데");
+        }
+
+        InterestWebtoon interestWebtoon = interestWebtoonList.get(0);
+
+        if(interestWebtoon.getIsAlarm() == true){
+            throw new Exception400("이미알람켜져있음");
+        }
+
+        interestWebtoon.setIsAlarm(true);
+
+        UserResponse.InterestWebtoonDTO responseDTO = new UserResponse.InterestWebtoonDTO(interestWebtoon);
+        return responseDTO;
+    }
+
+
+    
+    // 관심웹툰목록
+    public List<UserResponse.InterestWebtoonDTO> interest(int userId) {
+
+        List<InterestWebtoon> interestWeboonList = interestWebtoonRepository.findByUserId(userId);
+        List<UserResponse.InterestWebtoonDTO> responseDTOList = interestWeboonList.stream()
+                .map(t -> new UserResponse.InterestWebtoonDTO(t))
+                .collect(Collectors.toList());
+
+        return responseDTOList;
+    }
+
+
+
 
     @Transactional
     public void join(UserRequest.JoinDTO requestDTO) {

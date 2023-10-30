@@ -2,13 +2,21 @@ package com.example.kakao.entity;
 
 import com.example.kakao.user.User;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 
+
+
+@ToString
+@Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -32,5 +40,17 @@ public class LikeReComment {
 
     @CreationTimestamp
     private Timestamp createdAt;
+
+
+    @Builder
+    public LikeReComment(int id, User user, ReComment reComment, Boolean isLike, Timestamp createdAt) {
+        this.id = id;
+        this.user = user;
+        this.reComment = reComment;
+        this.isLike = isLike;
+        this.createdAt = createdAt;
+    }
+
+    
 
 }

@@ -2,6 +2,7 @@ package com.example.kakao.webtoon;
 
 import com.example.kakao.entity.InterestWebtoon;
 import com.example.kakao.entity.WebtoonAuthor;
+import com.example.kakao.entity.WebtoonHashTag;
 import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
 import com.example.kakao.episode.Episode;
 import lombok.*;
@@ -30,10 +31,14 @@ public class Webtoon {
     private List<WebtoonAuthor> webtoonAuthorList = new ArrayList<>();
 
     @OneToMany(mappedBy = "webtoon", fetch = FetchType.LAZY)
+    @OrderBy("createdAt DESC") // 에피소드 최근 순서대로 정렬
     private List<Episode> episodeList = new ArrayList<>();
 
     @OneToMany(mappedBy = "webtoon", fetch = FetchType.LAZY)
     private List<InterestWebtoon> interstWebtoonList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "webtoon", fetch = FetchType.LAZY)
+    private List<WebtoonHashTag> webtoonHashTagList = new ArrayList<>();
 
     @Column(length = 100, nullable = false)
     private String title;

@@ -17,7 +17,7 @@ public class CommentRequest {
     public static class SaveRequestDTO {
 
         @NotEmpty
-        @Size(min = 1, max = 100, message = "1에서 100자 이내여야 합니다.")
+        @Size(min = 5, max = 500, message = "5에서 500자 이내여야 합니다.")
         private String text;
 
         public Comment toEntity() {
