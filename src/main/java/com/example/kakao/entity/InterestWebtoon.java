@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @ToString
+@Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity

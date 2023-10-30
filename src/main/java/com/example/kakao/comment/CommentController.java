@@ -19,6 +19,59 @@ public class CommentController {
     private final HttpSession session;
 
 
+
+
+    
+    // 대댓글 작성
+    @PostMapping("/recomments/{commentId}")
+    public ResponseEntity<?> reCommentSave(@RequestBody @Valid CommentRequest.SaveRequestDTO requestDTO, Errors errors, @PathVariable int commentId) {
+
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        CommentResponse.ReCommentDTO responseDTO = commentService.reCommentSave(requestDTO, sessionUser, commentId);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
+
+
+
+    // 대댓글 좋아요
+    @PostMapping("/recomments/like/{reCommentId}")
+    public ResponseEntity<?> reCommentLike(@PathVariable int reCommentId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        CommentResponse.LikeReCommentDTO responseDTO = commentService.reCommentLike(sessionUser.getId(), reCommentId);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
+
+    // 대댓글 싫어요
+    @PostMapping("/recomments/dislike/{reCommentId}")
+    public ResponseEntity<?> reCommentDislike(@PathVariable int reCommentId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        CommentResponse.LikeReCommentDTO responseDTO = commentService.reCommentDislike(sessionUser.getId(), reCommentId);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
+
+
+    // 대댓글 좋아요/싫어요 삭제
+    @DeleteMapping("/recomments/likecancel/{reCommentId}")
+    public ResponseEntity<?> reCommentLikecancel(@PathVariable int reCommentId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        CommentResponse.LikeReCommentDTO responseDTO = commentService.reCommentLikecancel(sessionUser.getId(), reCommentId);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
+
+
+
     // 댓글 좋아요
     @PostMapping("/comments/like/{commentId}")
     public ResponseEntity<?> like(@PathVariable int commentId) {
@@ -52,26 +105,30 @@ public class CommentController {
     }
 
 
-    // 에피소드의 댓글  보기
-    @GetMapping("/comments/{episodeId}")
-    public ResponseEntity<?> findById(@PathVariable int episodeId) {
-
-        List<CommentResponse.FindAllDTO> responseDTOList = commentService.findAll(episodeId);
-
-        return ResponseEntity.ok().body(ApiUtils.success(responseDTOList));
-    }
-
-
     // 댓글작성
     @PostMapping("/comments/{episodeId}")
     public ResponseEntity<?> save(@RequestBody @Valid CommentRequest.SaveRequestDTO requestDTO, Errors errors, @PathVariable int episodeId) {
 
         User sessionUser = (User) session.getAttribute("sessionUser");
 
-        CommentResponse.SaveCommentDTO responseDTO = commentService.save(requestDTO, sessionUser.getId(), episodeId);
+        CommentResponse.CommentDTO responseDTO = commentService.save(requestDTO, sessionUser, episodeId);
 
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
+
+
+
+    // 에피소드의 댓글  보기
+    @GetMapping("/comments/{episodeId}")
+    public ResponseEntity<?> findById(@PathVariable int episodeId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        List<CommentResponse.CommentDTO> responseDTOList = commentService.findAll(episodeId, sessionUser.getId());
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTOList));
+    }
+
+
 
 
     // (기능1) 상품 목록보기

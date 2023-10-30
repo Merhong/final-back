@@ -34,6 +34,7 @@ public class Episode {
     private List<EpisodePhoto> episodePhotoList = new ArrayList<>();
 
     @OneToMany(mappedBy = "episode", fetch = FetchType.LAZY)
+    @OrderBy("createdAt DESC") // 코멘트 최근 순서대로 정렬
     private List<Comment> commentList = new ArrayList<>();
 
     @OneToMany(mappedBy = "episode", fetch = FetchType.LAZY)

@@ -9,4 +9,8 @@ public interface InterestWebtoonRepository extends JpaRepository<InterestWebtoon
 
     List<InterestWebtoon> findByUserIdAndWebtoonId(int userId, int webtoonId);
 
+    List<InterestWebtoon> findByUserId(int userId);
+
+    
+
 }

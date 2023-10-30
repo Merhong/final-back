@@ -1,7 +1,10 @@
 package com.example.kakao.comment;
 
 import com.example.kakao.entity.LikeComment;
+import com.example.kakao.entity.LikeReComment;
 import com.example.kakao.entity.ReComment;
+import com.example.kakao.entity.enums.UserTypeEnum;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -12,27 +15,45 @@ import java.util.stream.Collectors;
 
 public class CommentResponse {
 
+    // @Getter
+    // @Setter
+    // @ToString
+    // public static class SaveCommentDTO {
+    // private Integer id;
+    // private Integer userId;
+    // private Integer episodeId;
+    // private String text;
+    // private Timestamp createdAt;
+
+    // public SaveCommentDTO(Comment comment) {
+    // this.id = comment.getId();
+    // this.userId = comment.getUser().getId();
+    // this.episodeId = comment.getEpisode().getId();
+    // this.text = comment.getText();
+    // this.createdAt = comment.getCreatedAt();
+    // }
+    // }
 
     @Getter
     @Setter
     @ToString
-    public static class SaveCommentDTO {
+    public static class LikeReCommentDTO {
         private Integer id;
         private Integer userId;
-        private Integer episodeId;
-        private String text;
+        private Integer reCommentId;
+        private Integer commentId;
+        private Boolean isLike;
         private Timestamp createdAt;
 
-
-        public SaveCommentDTO(Comment comment) {
-            this.id = comment.getId();
-            this.userId = comment.getUser().getId();
-            this.episodeId = comment.getEpisode().getId();
-            this.text = comment.getText();
-            this.createdAt = comment.getCreatedAt();
+        public LikeReCommentDTO(LikeReComment lrc, int commentId) {
+            this.id = lrc.getId();
+            this.userId = lrc.getUser().getId();
+            this.reCommentId = lrc.getReComment().getId();
+            this.commentId = commentId;
+            this.isLike = lrc.getIsLike();
+            this.createdAt = lrc.getCreatedAt();
         }
     }
-
 
     @Getter
     @Setter
@@ -44,7 +65,6 @@ public class CommentResponse {
         private Boolean isLike;
         private Timestamp createdAt;
 
-
         public LikeDTO(LikeComment lc) {
             this.id = lc.getId();
             this.userId = lc.getUser().getId();
@@ -54,11 +74,10 @@ public class CommentResponse {
         }
     }
 
-
     @Getter
     @Setter
     @ToString
-    public static class FindAllDTO {
+    public static class CommentDTO {
         private Integer id;
         // private UserDTO user;
         private Integer episodeId;
@@ -67,13 +86,16 @@ public class CommentResponse {
         private Boolean isDelete;
         private String text;
         private Boolean isAuthor = false;
+        private Boolean isAdmin = false;
         private Timestamp createdAt;
         private Integer userId;
         private String userEmail;
         private String userUsername;
         private List<ReCommentDTO> reCommentList;
+        private Boolean isMyLike = false;
+        private Boolean isMyDislike = false;
 
-        FindAllDTO(Comment comment, List<Integer> authorUserIdList) {
+        CommentDTO(Comment comment, List<Integer> authorUserIdList, int sessionUserId) {
             this.id = comment.getId();
             this.isDelete = comment.getIsDelete();
             this.text = comment.getText();
@@ -85,9 +107,6 @@ public class CommentResponse {
             this.userEmail = comment.getUser().getEmail();
             this.userUsername = comment.getUser().getUsername();
 
-            this.reCommentList = comment.getReCommentList().stream()
-                    .map(t -> new ReCommentDTO(t)).collect(Collectors.toList());
-
             this.isAuthor = authorUserIdList.stream()
                     .anyMatch(t -> t == comment.getUser().getId());
             // for (Integer authorUserId : authorUserIdList ) {
@@ -95,6 +114,11 @@ public class CommentResponse {
             // this.isAuthor = true;
             // }
             // }
+
+            this.isAdmin = comment.getUser().getUserTypeEnum() == UserTypeEnum.ADMIN ? true : false;
+
+            this.reCommentList = comment.getReCommentList().stream()
+                    .map(t -> new ReCommentDTO(t, sessionUserId)).collect(Collectors.toList());
 
             this.likeCommentCount = comment.getLikeCommentList().stream()
                     .map(t -> (t.getIsLike() == true) ? 1 : 0)
@@ -104,42 +128,21 @@ public class CommentResponse {
                     .map(t -> (t.getIsLike() == false) ? 1 : 0)
                     .reduce(0, (a, b) -> a + b);
 
-        }
+            comment.getLikeCommentList().stream()
+                    // .filter(likeComment -> likeComment.getUser().getId() == userId)
+                    // .anyMatch(likeComment -> likeComment.getUser().getId() == userId);
+                    .filter(likeComment -> likeComment.getUser().getId() == sessionUserId)
+                    .findFirst()
+                    // .map(likeComment -> likeComment.getIsLike() == true ? this.isMyLike=true :
+                    // this.isMyDislike=true)
+                    .ifPresent(likeComment -> {
+                        if (likeComment.getIsLike() == true) {
+                            this.isMyLike = true;
+                        } else {
+                            this.isMyDislike = true;
+                        }
+                    });
 
-        @Getter
-        @Setter
-        @ToString
-        class ReCommentDTO {
-            private Integer id;
-            private Integer commentId;
-            private Boolean isDelete;
-            private String text;
-            private Timestamp createdAt;
-            private Integer likeReCommentCount;
-            private Integer dislikeReCommentCount;
-            private Integer userId;
-            private String userEmail;
-            private String userUsername;
-
-            public ReCommentDTO(ReComment reComment) {
-                this.id = reComment.getId();
-                this.isDelete = reComment.getIsDelete();
-                this.text = reComment.getText();
-                this.createdAt = reComment.getCreatedAt();
-                this.commentId = reComment.getComment().getId();
-
-                this.userId = reComment.getUser().getId();
-                this.userEmail = reComment.getUser().getEmail();
-                this.userUsername = reComment.getUser().getUsername();
-
-                this.likeReCommentCount = reComment.getLikeReCommentList().stream()
-                        .map(t -> (t.getIsLike() == true) ? 1 : 0)
-                        .reduce(0, (a, b) -> a + b);
-
-                this.dislikeReCommentCount = reComment.getLikeReCommentList().stream()
-                        .map(t -> (t.getIsLike() == false) ? 1 : 0)
-                        .reduce(0, (a, b) -> a + b);
-            }
         }
 
         // @Getter
@@ -158,4 +161,56 @@ public class CommentResponse {
         // }
 
     }
+
+    @Getter
+    @Setter
+    @ToString
+    
+    public static class ReCommentDTO {
+        private Integer id;
+        private Integer commentId;
+        private Boolean isDelete;
+        private String text;
+        private Timestamp createdAt;
+        private Integer likeReCommentCount;
+        private Integer dislikeReCommentCount;
+        private Integer userId;
+        private String userEmail;
+        private String userUsername;
+        private Boolean isMyLike = false;
+        private Boolean isMyDislike = false;
+
+        public ReCommentDTO(ReComment reComment, int sessionUserId) {
+            this.id = reComment.getId();
+            this.isDelete = reComment.getIsDelete();
+            this.text = reComment.getText();
+            this.createdAt = reComment.getCreatedAt();
+            this.commentId = reComment.getComment().getId();
+
+            this.userId = reComment.getUser().getId();
+            this.userEmail = reComment.getUser().getEmail();
+            this.userUsername = reComment.getUser().getUsername();
+
+            this.likeReCommentCount = reComment.getLikeReCommentList().stream()
+                    .map(t -> (t.getIsLike() == true) ? 1 : 0)
+                    .reduce(0, (a, b) -> a + b);
+
+            this.dislikeReCommentCount = reComment.getLikeReCommentList().stream()
+                    .map(t -> (t.getIsLike() == false) ? 1 : 0)
+                    .reduce(0, (a, b) -> a + b);
+
+            reComment.getLikeReCommentList().stream()
+                    .filter(likeReComment -> likeReComment.getUser().getId() == sessionUserId)
+                    .findFirst()
+                    .ifPresent(likeReComment -> {
+                        if (likeReComment.getIsLike() == true) {
+                            this.isMyLike = true;
+                        } else {
+                            this.isMyDislike = true;
+                        }
+                    });
+
+        }
+    }
+
 }

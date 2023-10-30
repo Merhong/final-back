@@ -83,9 +83,11 @@ public class WebtoonService {
         List<InterestWebtoon> interestWebtoonList = interestWebtoonRepository.findByUserIdAndWebtoonId(userId, webtoonId);
         if (interestWebtoonList.size() == 0) {
             responseDTO.setIsInterest(false);
+            responseDTO.setIsAlarm(false);
         }
         if (interestWebtoonList.size() == 1) {
             responseDTO.setIsInterest(true);
+            responseDTO.setIsAlarm(interestWebtoonList.get(0).getIsAlarm());
         }
 
         return responseDTO;
