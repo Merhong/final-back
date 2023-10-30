@@ -34,6 +34,50 @@ public class CommentResponse {
     // }
     // }
 
+
+    
+    
+    @Getter
+    @Setter
+    @ToString
+    public static class ReCommentDeleteDTO {
+        private Integer id;
+        private Integer userId;
+        private Integer commentId;
+        private Integer deletedId;
+        private Boolean isDelete;
+
+        public ReCommentDeleteDTO(ReComment reComment) {
+            this.id = reComment.getId();
+            this.userId = reComment.getUser().getId();
+            this.commentId = reComment.getComment().getId();
+            this.deletedId = reComment.getId();
+            this.isDelete = reComment.getIsDelete();
+        }
+    }
+
+
+
+
+    @Getter
+    @Setter
+    @ToString
+    public static class DeleteDTO {
+        private Integer id;
+        private Integer userId;
+        private Integer deletedId;
+        private Boolean isDelete;
+
+        public DeleteDTO(Comment comment) {
+            this.id = comment.getId();
+            this.userId = comment.getUser().getId();
+            this.deletedId = comment.getId();
+            this.isDelete = comment.getIsDelete();
+        }
+    }
+
+
+
     @Getter
     @Setter
     @ToString

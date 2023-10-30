@@ -24,6 +24,20 @@ public class UserController {
     private final HttpSession session;
 
 
+    
+    // MY댓글목록보기
+    @GetMapping("/users/comments")
+    public ResponseEntity<?> comment() {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        List<UserResponse.MyCommentDTO> responseDTOList = userService.comment(sessionUser.getId());
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTOList));
+    }
+
+
+
+
     // 관심웹툰알람끄기
     @PostMapping("/users/interest/alarmoff/{webtoonId}")
     public ResponseEntity<?> interestAlarmOff(@PathVariable int webtoonId) {
@@ -44,7 +58,7 @@ public class UserController {
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
 
-    // 관심웹툰목록보기
+    // MY관심웹툰목록보기
     @GetMapping("/users/interest")
     public ResponseEntity<?> interest() {
         User sessionUser = (User) session.getAttribute("sessionUser");

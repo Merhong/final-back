@@ -3,6 +3,8 @@ package com.example.kakao.user;
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception500;
 import com.example.kakao._core.utils.JwtTokenUtils;
+import com.example.kakao.comment.Comment;
+import com.example.kakao.comment.CommentJPARepository;
 import com.example.kakao.entity.InterestWebtoon;
 import com.example.kakao.entity.enums.UserTypeEnum;
 import com.example.kakao.repository.InterestWebtoonRepository;
@@ -13,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +25,24 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
     private final UserJPARepository userJPARepository;
     private final InterestWebtoonRepository interestWebtoonRepository;
+    private final CommentJPARepository commentRepository;
+
+
+
+
+    
+    
+    // MY댓글목록
+    public List<UserResponse.MyCommentDTO> comment(int userId) {
+
+        List<Comment> commentList = commentRepository.findByUserId(userId);
+
+        List<UserResponse.MyCommentDTO> responseDTOList = commentList.stream()
+                .map(t -> new UserResponse.MyCommentDTO(t, userId))
+                .collect(Collectors.toList());
+
+        return responseDTOList;
+    }
 
 
 
@@ -73,10 +94,10 @@ public class UserService {
 
 
     
-    // 관심웹툰목록
+    // MY 관심웹툰목록
     public List<UserResponse.InterestWebtoonDTO> interest(int userId) {
 
-        List<InterestWebtoon> interestWeboonList = interestWebtoonRepository.findByUserId(userId);
+        List<InterestWebtoon> interestWeboonList = interestWebtoonRepository.findByUserId(userId, Sort.by(Sort.Order.desc("id")));
         List<UserResponse.InterestWebtoonDTO> responseDTOList = interestWeboonList.stream()
                 .map(t -> new UserResponse.InterestWebtoonDTO(t))
                 .collect(Collectors.toList());

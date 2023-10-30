@@ -59,13 +59,17 @@ public class WebtoonService {
     }
 
     // 웹툰상세보기
-    public WebtoonResponse.FindByIdDTO findById(int webtoonId, int userId) {
+    public WebtoonResponse.FindByIdDTO findById(int webtoonId, int sessionUserId) {
 
-        // User user = userRepository.findById(userId)
-        //         .orElseThrow(() -> new Exception404(userId+"없음"));
-
-        Webtoon webtoon = webtoonRepository.findById(webtoonId)
-                .orElseThrow(() -> new Exception404(webtoonId + "없음"));
+        Webtoon webtoon;
+        if(webtoonId == -1){
+            List<Webtoon> webtoonRandomList = webtoonRepository.findAll();
+            int randomInt = (int) (Math.random() * webtoonRandomList.size());
+            webtoon = webtoonRandomList.get(randomInt);
+        } else{
+            webtoon = webtoonRepository.findById(webtoonId)
+                    .orElseThrow(() -> new Exception404(webtoonId + "없음"));
+        }
 
         webtoon.setStarScore(
                 webtoon.getEpisodeList().stream()
@@ -80,7 +84,7 @@ public class WebtoonService {
 
         WebtoonResponse.FindByIdDTO responseDTO = new WebtoonResponse.FindByIdDTO(webtoon);
 
-        List<InterestWebtoon> interestWebtoonList = interestWebtoonRepository.findByUserIdAndWebtoonId(userId, webtoonId);
+        List<InterestWebtoon> interestWebtoonList = interestWebtoonRepository.findByUserIdAndWebtoonId(sessionUserId, webtoonId);
         if (interestWebtoonList.size() == 0) {
             responseDTO.setIsInterest(false);
             responseDTO.setIsAlarm(false);

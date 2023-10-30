@@ -287,6 +287,57 @@ public class CommentService {
     }
 
 
+    // 대댓글 삭제
+    @Transactional
+    public CommentResponse.ReCommentDeleteDTO reCommentDelete(int sessionUserId, int reCommentId) {
+        
+        ReComment reComment = reCommentRepository.findById(reCommentId)
+                .orElseThrow(() -> new Exception404(reCommentId + "없음"));
+                
+        
+        if(reComment.getIsDelete() == true){
+            throw new Exception400(reCommentId + "이미삭제상태");
+        }
+
+        if(reComment.getUser().getId() != sessionUserId){
+            throw new Exception400(reCommentId + "내댓글아님");
+        }
+
+        reComment.setIsDelete(true);
+
+        CommentResponse.ReCommentDeleteDTO responseDTO = new CommentResponse.ReCommentDeleteDTO(reComment);
+
+        return responseDTO;
+    }
+
+
+
+
+    // 댓글 삭제
+    @Transactional
+    public CommentResponse.DeleteDTO delete(int sessionUserId, int commentId) {
+        
+        Comment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new Exception404(commentId + "없음"));
+                
+        
+        if(comment.getIsDelete() == true){
+            throw new Exception400(commentId + "이미삭제상태");
+        }
+
+        if(comment.getUser().getId() != sessionUserId){
+            throw new Exception400(commentId + "내댓글아님");
+        }
+
+        comment.setIsDelete(true);
+
+        CommentResponse.DeleteDTO responseDTO = new CommentResponse.DeleteDTO(comment);
+
+        return responseDTO;
+    }
+
+
+
     // 댓글 작성
     @Transactional
     public CommentResponse.CommentDTO save(CommentRequest.SaveRequestDTO requestDTO, User sessionUser, int episodeId) {

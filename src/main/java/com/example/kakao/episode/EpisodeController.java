@@ -64,7 +64,11 @@ public class EpisodeController {
 
     // 에피소드 별점 주기
     @PostMapping("/episodes/star/{episodeId}")
-    public ResponseEntity<?> starSave(@PathVariable int episodeId, int score) {
+    public ResponseEntity<?> starSave(@PathVariable int episodeId, Integer score) {
+        
+        if (score == null) {
+            throw new Exception400("score null임");
+        }
 
         if (!(0 <= score && score <= 10)) {
             throw new Exception400("1~10점만");

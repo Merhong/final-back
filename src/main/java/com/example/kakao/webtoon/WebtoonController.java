@@ -40,6 +40,15 @@ public class WebtoonController {
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
 
+    // 웹툰 랜덤작품 상세보기
+    @GetMapping("/webtoons/random")
+    public ResponseEntity<?> findByRandom() {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        WebtoonResponse.FindByIdDTO responseDTO = webtoonService.findById(-1, sessionUser.getId());
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
     // 관심웹툰 추가
     @PostMapping("/webtoons/interest/{webtoonId}")
     public ResponseEntity<?> interestSave(@PathVariable int webtoonId) {
@@ -65,13 +74,13 @@ public class WebtoonController {
 
 
     // 웹툰 추가
-    @PostMapping("/webtoons/author/{id}")
-    public ResponseEntity<?> update(@RequestBody @Valid WebtoonRequest.CreateDTO requestDTO, Errors errors) {
+    @PostMapping("/webtoons")
+    public ResponseEntity<?> create(@RequestBody @Valid WebtoonRequest.CreateDTO requestDTO, Errors errors) {
         User sessionUser = (User) session.getAttribute("sessionUser");
 
         if (!(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) // && !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.AUTHOR))
         ) {
-            throw new Exception403("일반유저못함");
+            throw new Exception403("어드민만 가능함");
         }
 
         // webtoonService.create(requestDTO);
