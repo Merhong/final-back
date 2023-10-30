@@ -137,17 +137,26 @@ public class EpisodeService {
 
 
     // 에피소드 한편 보기
-    public EpisodeResponse.FindByIdDTO findById(int episodeId) {
+    public EpisodeResponse.FindByIdDTO findById(int episodeId, Integer userId) {
         Episode episode = episodeRepository.findById(episodeId)
                 .orElseThrow(() -> new Exception404(episodeId + "없음"));
+        if (userId != null) {
+            List<LikeEpisode> likeEpisode = likeEpisodeRepository.findByUserIdAndEpisodeId(userId, episodeId);
+            EpisodeResponse.FindByIdDTO responseDTO = new EpisodeResponse.FindByIdDTO(episode, likeEpisode);
+            return responseDTO;
+        } else {
+           EpisodeResponse.FindByIdDTO responseDTO = new EpisodeResponse.FindByIdDTO(episode, null);
+           responseDTO.setLike(false);
+           return responseDTO;            
+        }
+        
 
-        EpisodeResponse.FindByIdDTO responseDTO = new EpisodeResponse.FindByIdDTO(episode);
-
+       
         // if(responseDTO.getWebtoonId() != webtoonId){
         //     throw new Exception400(webtoonId+"웹툰에 "+episodeId+"에피소드가 속하지않음");
         // }
 
-        return responseDTO;
+
     }
 
 
