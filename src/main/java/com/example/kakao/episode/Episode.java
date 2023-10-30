@@ -1,23 +1,18 @@
 package com.example.kakao.episode;
 
-import lombok.*;
-
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.*;
-
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import com.example.kakao.comment.Comment;
 import com.example.kakao.entity.EpisodePhoto;
 import com.example.kakao.entity.LikeEpisode;
 import com.example.kakao.webtoon.Webtoon;
+import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
-
+import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @ToString
@@ -25,7 +20,7 @@ import com.example.kakao.webtoon.Webtoon;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name="episode_tb")
+@Table(name = "episode_tb")
 public class Episode {
 
     @Id
@@ -34,13 +29,14 @@ public class Episode {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Webtoon webtoon;
-    
+
     @OneToMany(mappedBy = "episode", fetch = FetchType.LAZY)
     private List<EpisodePhoto> episodePhotoList = new ArrayList<>();
-    
+
     @OneToMany(mappedBy = "episode", fetch = FetchType.LAZY)
+    @OrderBy("createdAt DESC") // 코멘트 최근 순서대로 정렬
     private List<Comment> commentList = new ArrayList<>();
-    
+
     @OneToMany(mappedBy = "episode", fetch = FetchType.LAZY)
     private List<LikeEpisode> likeEpisodeList = new ArrayList<>();
 
@@ -54,24 +50,24 @@ public class Episode {
 
     @ColumnDefault("0")
     private Integer cookieCost;
-    
+
     @ColumnDefault("0")
     private Double starScore; // 별점 계산 분자값
-    
+
     @ColumnDefault("0")
     private Double starCount; // 별점 계산 분모값
 
     @CreationTimestamp
     private Timestamp createdAt;
-    
+
     @UpdateTimestamp
     private Timestamp updatedAt;
 
 
     @Builder
     public Episode(Integer id, Webtoon webtoon, List<EpisodePhoto> episodePhotoList, List<Comment> commentList,
-            List<LikeEpisode> likeEpisodeList, String detailTitle, String thumbnail, String authorText,
-            Integer cookieCost, Double starScore, Double starCount, Timestamp createdAt, Timestamp updatedAt) {
+                   List<LikeEpisode> likeEpisodeList, String detailTitle, String thumbnail, String authorText,
+                   Integer cookieCost, Double starScore, Double starCount, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.webtoon = webtoon;
         this.episodePhotoList = episodePhotoList;
@@ -87,8 +83,5 @@ public class Episode {
         this.updatedAt = updatedAt;
     }
 
-
-    
-    
 
 }

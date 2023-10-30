@@ -1,22 +1,15 @@
 package com.example.kakao.episode;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception404;
-import com.example.kakao.author.Author;
-import com.example.kakao.author.AuthorResponse;
-import com.example.kakao.entity.InterestAuthor;
 import com.example.kakao.entity.LikeEpisode;
 import com.example.kakao.repository.LikeEpisodeRepository;
 import com.example.kakao.user.User;
-import com.example.kakao.webtoon.Webtoon;
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -29,18 +22,18 @@ public class EpisodeService {
 
     // 에피소드 좋아요
     @Transactional
-    public EpisodeResponse.LikeDTO likeSave(int userId, int episodeId) {
+    public EpisodeResponse.LikeDTO like(int userId, int episodeId) {
 
         Episode episode = episodeRepository.findById(episodeId)
-            .orElseThrow(() -> new Exception404(episodeId+"없음"));
+                .orElseThrow(() -> new Exception404(episodeId + "없음"));
 
         List<LikeEpisode> leList = likeEpisodeRepository.findByUserIdAndEpisodeId(userId, episodeId);
-        
+
         // 좋아요랑 별점 테이블 하나로 처리하려고
-        if(leList.size() != 0){
+        if (leList.size() != 0) {
             LikeEpisode le = leList.get(0);
-            
-            if( le.getIsLike()==null  ||  le.getIsLike()==false ){
+
+            if (le.getIsLike() == null || le.getIsLike() == false) {
                 le.setIsLike(true);
                 EpisodeResponse.LikeDTO responseDTO = new EpisodeResponse.LikeDTO(le);
                 return responseDTO;
@@ -67,15 +60,15 @@ public class EpisodeService {
     public EpisodeResponse.LikeDTO likeCancel(int userId, int episodeId) {
 
         Episode episode = episodeRepository.findById(episodeId)
-            .orElseThrow(() -> new Exception404(episodeId+"없음"));
+                .orElseThrow(() -> new Exception404(episodeId + "없음"));
 
         List<LikeEpisode> leList = likeEpisodeRepository.findByUserIdAndEpisodeId(userId, episodeId);
-        
+
         // 좋아요랑 별점 테이블 하나로 처리하려고
-        if(leList.size() != 0){
+        if (leList.size() != 0) {
             LikeEpisode le = leList.get(0);
-            
-            if( le.getIsLike()==null  ||  le.getIsLike()==true ){
+
+            if (le.getIsLike() == null || le.getIsLike() == true) {
                 le.setIsLike(false);
                 EpisodeResponse.LikeDTO responseDTO = new EpisodeResponse.LikeDTO(le);
                 return responseDTO;
@@ -97,25 +90,24 @@ public class EpisodeService {
     }
 
 
-
     // 에피소드 별점 주기
     @Transactional
     public EpisodeResponse.StarDTO starSave(int userId, int episodeId, int score) {
 
         Episode episode = episodeRepository.findById(episodeId)
-            .orElseThrow(() -> new Exception404(episodeId+"없음"));
+                .orElseThrow(() -> new Exception404(episodeId + "없음"));
 
-        double afterCount = episode.getStarCount()+1;
-        double afterScore = episode.getStarScore()+score;
-        
-        
+        double afterCount = episode.getStarCount() + 1;
+        double afterScore = episode.getStarScore() + score;
+
+
         List<LikeEpisode> leList = likeEpisodeRepository.findByUserIdAndEpisodeId(userId, episodeId);
-        
+
         // 좋아요랑 별점 테이블 하나로 처리하려고
-        if(leList.size() != 0){
+        if (leList.size() != 0) {
             LikeEpisode le = leList.get(0);
-            
-            if( le.getIsStar()==null  ||  le.getIsStar()==false ){
+
+            if (le.getIsStar() == null || le.getIsStar() == false) {
                 le.setIsStar(true);
 
                 episode.setStarCount(afterCount);
@@ -144,19 +136,17 @@ public class EpisodeService {
     }
 
 
-
-
     // 에피소드 한편 보기
     public EpisodeResponse.FindByIdDTO findById(int episodeId) {
         Episode episode = episodeRepository.findById(episodeId)
-                .orElseThrow(() -> new Exception404(episodeId+"없음"));
-        
+                .orElseThrow(() -> new Exception404(episodeId + "없음"));
+
         EpisodeResponse.FindByIdDTO responseDTO = new EpisodeResponse.FindByIdDTO(episode);
-        
+
         // if(responseDTO.getWebtoonId() != webtoonId){
         //     throw new Exception400(webtoonId+"웹툰에 "+episodeId+"에피소드가 속하지않음");
         // }
-        
+
         return responseDTO;
     }
 
@@ -165,7 +155,7 @@ public class EpisodeService {
     // public List<WebtoonResponse.FindAllDTO> findAll(int page) {
     // public List<EpisodeResponse.FindAllDTO> findAll() {
     //     List<Webtoon> webtoonList = webtoonRepository.findAll();
-        
+
     //     List<EpisodeResponse.FindAllDTO> dtoList =  webtoonList.stream()
     //             .map( webtoon -> new EpisodeResponse.FindAllDTO(webtoon) )
     //             .collect(Collectors.toList());

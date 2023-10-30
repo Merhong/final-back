@@ -1,31 +1,22 @@
 package com.example.kakao.entity;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.*;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import com.example.kakao.user.User;
 import com.example.kakao.webtoon.Webtoon;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+
+import javax.persistence.*;
+import java.sql.Timestamp;
 
 @ToString
+@Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "interest_webtoon_tb", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"user_id", "webtoon_id"})
+        @UniqueConstraint(columnNames = {"user_id", "webtoon_id"})
 })
-public class InterestWebtoon{
+public class InterestWebtoon {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,6 +41,6 @@ public class InterestWebtoon{
         this.isAlarm = isAlarm;
         this.createdAt = createdAt;
     }
-    
+
 
 }

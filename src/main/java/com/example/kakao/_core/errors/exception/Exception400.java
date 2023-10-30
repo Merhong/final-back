@@ -13,11 +13,11 @@ public class Exception400 extends RuntimeException {
         super(message);
     }
 
-    public ApiUtils.ApiResult<?> body(){
+    public ApiUtils.ApiResult<?> body() {
         return ApiUtils.error(getMessage(), HttpStatus.BAD_REQUEST);
     }
 
-    public HttpStatus status(){
+    public HttpStatus status() {
         return HttpStatus.BAD_REQUEST;
     }
 }

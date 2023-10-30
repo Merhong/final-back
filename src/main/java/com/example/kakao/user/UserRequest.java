@@ -1,16 +1,10 @@
 package com.example.kakao.user;
 
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import javax.validation.constraints.*;
 
 
 public class UserRequest {
@@ -57,7 +51,7 @@ public class UserRequest {
     @Getter
     @Setter
     @ToString
-    public static class updateDTO {
+    public static class UpdateDTO {
 
         @NotEmpty
         private String email;

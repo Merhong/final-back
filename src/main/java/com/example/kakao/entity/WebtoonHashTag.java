@@ -1,24 +1,20 @@
 package com.example.kakao.entity;
 
+import com.example.kakao.entity.enums.HashTagEnum;
+import com.example.kakao.webtoon.Webtoon;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.*;
 
-import com.example.kakao.entity.enums.HashTagEnum;
-import com.example.kakao.webtoon.Webtoon;
+import org.hibernate.annotations.ColumnDefault;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name="webtoon_hash_tag_tb")
-public class WebtoonHashTag{
+@Table(name = "webtoon_hash_tag_tb")
+public class WebtoonHashTag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,4 +26,5 @@ public class WebtoonHashTag{
     @Enumerated(EnumType.STRING)
     private HashTagEnum hashTagEnum;
 
+    private String hashTagName;
 }
