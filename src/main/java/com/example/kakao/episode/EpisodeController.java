@@ -38,10 +38,11 @@ public class EpisodeController {
     // 에피소드 좋아요
     @PostMapping("/episodes/like/{episodeId}")
     public ResponseEntity<?> likeSave(@PathVariable int episodeId) {
+        System.out.println("여긴되나??");
         User sessionUser = (User) session.getAttribute("sessionUser");
-
+        System.out.println("22222222222222222");
         EpisodeResponse.LikeDTO responseDTO = episodeService.likeSave(sessionUser.getId(), episodeId);
-
+        System.out.println(responseDTO.getUserId()+"3333333333333333");
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
     // 에피소드 싫어요 기능은 원래 없음
