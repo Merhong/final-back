@@ -90,8 +90,9 @@ public class EpisodeResponse {
         private Integer commentCount;
         // private List<CommentDTO> commentList;
         private List<PhotoDTO> PhotoList;
+        private boolean isLike;
 
-        public FindByIdDTO(Episode episode) {
+        public FindByIdDTO(Episode episode, List<LikeEpisode> likeEpisode) {
             this.episodeId = episode.getId();
             this.detailTitle = episode.getDetailTitle();
             this.starScore = episode.getStarScore();
@@ -110,7 +111,7 @@ public class EpisodeResponse {
 
             // this.likeEpisodeCount = episode.getLikeEpisodeList().size(); // 싫어요일수도 있음
             this.likeEpisodeCount = episode.getLikeEpisodeList().stream()
-                    .map(t -> (t.getIsLike() == true) ? 1 : -1)
+                    .map(t -> (t.getIsLike() == true) ? 1 : 0)
                     .reduce(0, (a, b) -> a + b);
 
             // List<Integer> authorUserIdList = episode.getWebtoon().getWebtoonAuthorList().stream()
@@ -123,6 +124,12 @@ public class EpisodeResponse {
 
             this.PhotoList = episode.getEpisodePhotoList().stream()
                     .map(t -> new PhotoDTO(t)).collect(Collectors.toList());
+
+            if (likeEpisode.size() != 0) {
+                this.isLike = likeEpisode.get(0).getIsLike();
+            } else {
+                this.isLike = false;
+            }
         }
 
         @Getter

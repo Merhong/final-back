@@ -22,9 +22,21 @@ public class EpisodeController {
     // 에피소드 1편 보기
     @GetMapping("/episodes/{episodeId}")
     public ResponseEntity<?> findById(@PathVariable int episodeId) {
+        System.out.println("여기 실행되는 거 아닌가???????");
         // System.out.println(webtoonId+"/"+episodeId);
-        EpisodeResponse.FindByIdDTO responseDTO = episodeService.findById(episodeId);
-        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+        //로그인 한 경우와 안 한 경우로 나눔
+        if (session != null) {
+        
+            User sessionUser = (User) session.getAttribute("sessionUser");
+            EpisodeResponse.FindByIdDTO responseDTO = episodeService.findById(episodeId, sessionUser.getId());
+            return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+        }else{
+        
+            EpisodeResponse.FindByIdDTO responseDTO = episodeService.findById(episodeId, null);
+            return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+        }
+        
+        
     }
 
 
@@ -32,9 +44,7 @@ public class EpisodeController {
     @PostMapping("/episodes/like/{episodeId}")
     public ResponseEntity<?> like(@PathVariable int episodeId) {
         User sessionUser = (User) session.getAttribute("sessionUser");
-
         EpisodeResponse.LikeDTO responseDTO = episodeService.like(sessionUser.getId(), episodeId);
-
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
     // 에피소드 싫어요 기능은 원래 없음

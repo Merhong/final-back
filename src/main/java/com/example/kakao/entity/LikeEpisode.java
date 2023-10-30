@@ -32,7 +32,7 @@ public class LikeEpisode {
     private Boolean isStar; // 별점 주기 취소안됨
 
     // 본인껀 못하는 로직 필요
-    private Boolean isLike; // true좋아요 / 에피소드는 싫어요 없음
+    private Boolean isLike ; // true좋아요 / 에피소드는 싫어요 없음
 
     @CreationTimestamp
     private Timestamp createdAt;
