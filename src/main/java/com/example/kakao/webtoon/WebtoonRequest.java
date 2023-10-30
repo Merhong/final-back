@@ -32,10 +32,10 @@ public class WebtoonRequest {
         @NotEmpty
         private Integer ageLimit;
 
-        @Size(min = 1, max = 5, message = "요일")
+        @Size(min = 1, max = 5, message = "월화수목금토일 중에서 여러개가능")
         private String weekDay;
 
-        @Size(min = 2, max = 2, message = "휴재, 완결, 무료, 순위, 신작.")
+        @Size(min = 2, max = 2, message = "없음, 휴재, 완결, 무료, 순위, 신작 중에서")
         private String specially;
 
 

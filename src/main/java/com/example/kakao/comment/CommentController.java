@@ -69,6 +69,16 @@ public class CommentController {
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
 
+    // 대댓글 삭제
+    @DeleteMapping("/recomments/{reCommentId}")
+    public ResponseEntity<?> reCommentDelete(@PathVariable int reCommentId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        CommentResponse.ReCommentDeleteDTO responseDTO = commentService.reCommentDelete(sessionUser.getId(), reCommentId);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
 
 
 
@@ -105,6 +115,17 @@ public class CommentController {
     }
 
 
+    // 댓글 삭제
+    @DeleteMapping("/comments/{commentId}")
+    public ResponseEntity<?> delete(@PathVariable int commentId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        CommentResponse.DeleteDTO responseDTO = commentService.delete(sessionUser.getId(), commentId);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
+
     // 댓글작성
     @PostMapping("/comments/{episodeId}")
     public ResponseEntity<?> save(@RequestBody @Valid CommentRequest.SaveRequestDTO requestDTO, Errors errors, @PathVariable int episodeId) {
@@ -115,6 +136,7 @@ public class CommentController {
 
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
+
 
 
 

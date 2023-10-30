@@ -110,7 +110,7 @@ public class EpisodeResponse {
 
             // this.likeEpisodeCount = episode.getLikeEpisodeList().size(); // 싫어요일수도 있음
             this.likeEpisodeCount = episode.getLikeEpisodeList().stream()
-                    .map(t -> (t.getIsLike() == true) ? 1 : -1)
+                    .map(t -> (t.getIsLike() == true) ? 1 : 0)
                     .reduce(0, (a, b) -> a + b);
 
             // List<Integer> authorUserIdList = episode.getWebtoon().getWebtoonAuthorList().stream()
