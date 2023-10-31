@@ -22,8 +22,8 @@ public class CrawlingThumbnail {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yy.MM.dd");
 
 
-        int WTid = 1;
-
+        int WTid = 302;
+        int WTstarCount = 7;
 
         Document doc = Jsoup
                 .connect("http://127.0.0.1:5500/src/main/java/com/example/kakao/_core/crawling/dummy/_target.html")
@@ -90,8 +90,17 @@ public class CrawlingThumbnail {
 
                 i++;
 
-                String sql = "INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`,`thumbnail`,`created_at`) VALUES "
-                        + " (" + WTid + ",'" + episode.getDetailTitle() + "', " + episode.getStarCount() + ", '"
+
+                int WTstarScore = (3+  ((int)(Math.random()*3))  ) * WTstarCount;
+                if(WTstarScore < WTstarCount*5){
+                    WTstarScore = WTstarScore + (int)(Math.random()*7);
+                }
+                if(WTstarScore == WTstarCount*5){
+                    WTstarScore = WTstarScore-(int)(Math.random()*4);
+                }
+
+                String sql = "INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)"
+                        + "\nVALUES (" + WTid + ",'" + episode.getDetailTitle() + "', '"+WTstarCount+"', " + WTstarScore + ", '"
                         + episode.getThumbnail() + "','" + episode.getCreatedAt() + "');";
 
                 System.out.println(sql);
