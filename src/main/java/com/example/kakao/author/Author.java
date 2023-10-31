@@ -1,5 +1,6 @@
 package com.example.kakao.author;
 
+import com.example.kakao.entity.AuthorBoard;
 import com.example.kakao.entity.WebtoonAuthor;
 import com.example.kakao.user.User;
 import lombok.*;
@@ -40,6 +41,10 @@ public class Author {
 
     @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
     private List<WebtoonAuthor> webtoonAuthorList = new ArrayList<>();
+
+    @OrderBy("createdAt DESC") // 최근 순서대로 정렬
+    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
+    private List<AuthorBoard> authorBoardList = new ArrayList<>();
 
 
     @Builder

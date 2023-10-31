@@ -19,8 +19,8 @@ VALUES ('4', 'love@naver.com', '1234', 'NORMAL', '럽브');
 
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('101', 'dummyAuthor101@naver.com', '1234', '박태준');
-INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('101', '박태준', '101');
+INSERT INTO author_tb (`id`, `author_nickname`, `user_id`, `author_photo`)
+VALUES ('101', '박태준', '101', 'beautiful-fall-mountain-scenery-free-photo.jpg');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
 VALUES ('101', 0, '외모지상주의', 7, 30, '월수금', '못생기고 뚱뚱하다고 괴롭힘을 당하며  루저 인생만 살아온 내가 잘생겨졌다는 이유로 인싸가 됐다.어느 날 자고 일어났더니 갑자기 완벽한 외모와 몸을 지닌 사람이 되어 깨어난다면?', '순위', 'thumbnail_IMAG21_01672165-03c8-44b1-ba0e-ef82c9cfcd10.jpg', '2022-05-14');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
@@ -31,20 +31,20 @@ VALUES ('102', 8, '광마회귀', 5, 42, '화목토',
         'thumbnail_IMAG21_7365135131254864183.jpg', '2022-06-12');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('102', 'dummyAuthor102@naver.com', '1234', 'JP');
-INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('102', 'JP ', '102');
+INSERT INTO author_tb (`id`, `author_nickname`, `user_id`, `author_photo`)
+VALUES ('102', 'JP', '102', 'happy-dog-in-ghost-halloween-costume-free-photo.jpg');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('102', '102', '102');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('103', 'dummyAuthor103@naver.com', '1234', '이히');
-INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('103', ' 이히 ', '103');
+INSERT INTO author_tb (`id`, `author_nickname`, `user_id`, `author_photo`)
+VALUES ('103', '이히', '103', 'woman-in-coat-holding-her-white-smartphone-in-hands-during-sunny-fall-free-photo.jpg');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('103', '102', '103');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('104', 'dummyAuthor104@naver.com', '1234', '유진성');
-INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('104', ' 유진성', '104');
+INSERT INTO author_tb (`id`, `author_nickname`, `user_id`, `author_photo`)
+VALUES ('104', '유진성', '104', 'golden-hour-in-old-park-romantic-fall-nature-with-old-bridge-free-photo.jpg');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('104', '102', '104');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -54,19 +54,19 @@ VALUES ('103', 0, '나 혼자 만렙 뉴비', 2, 48, '금토',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('105', 'dummyAuthor105@naver.com', '1234', 'WAN.Z');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('105', 'WAN.Z ', '105');
+VALUES ('105', 'WAN.Z', '105');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('105', '103', '105');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('106', 'dummyAuthor106@naver.com', '1234', '스윙뱃');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('106', ' 스윙뱃 ', '106');
+VALUES ('106', '스윙뱃', '106');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('106', '103', '106');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('107', 'dummyAuthor107@naver.com', '1234', '메슬로우');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('107', ' 메슬로우', '107');
+VALUES ('107', '메슬로우', '107');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('107', '103', '107');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -93,19 +93,19 @@ VALUES ('106', 0, '재혼 황후', 7, 27, '월화수목금토일', '동대제국
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('110', 'dummyAuthor110@naver.com', '1234', '히어리');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('110', '히어리 ', '110');
+VALUES ('110', '히어리', '110');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('110', '106', '110');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('111', 'dummyAuthor111@naver.com', '1234', '숨풀');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('111', ' 숨풀 ', '111');
+VALUES ('111', '숨풀', '111');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('111', '106', '111');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('112', 'dummyAuthor112@naver.com', '1234', '알파타르트');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('112', ' 알파타르트', '112');
+VALUES ('112', '알파타르트', '112');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('112', '106', '112');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -114,19 +114,19 @@ VALUES ('107', 0, '역대급 영지 설계사', 10, 26, '금일', '소설 속 �
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('113', 'dummyAuthor113@naver.com', '1234', '이현민');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('113', '이현민 ', '113');
+VALUES ('113', '이현민', '113');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('113', '107', '113');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('114', 'dummyAuthor114@naver.com', '1234', '김현수');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('114', ' 김현수 ', '114');
+VALUES ('114', '김현수', '114');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('114', '107', '114');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('115', 'dummyAuthor115@naver.com', '1234', '문백경');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('115', ' 문백경', '115');
+VALUES ('115', '문백경', '115');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('115', '107', '115');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -151,19 +151,19 @@ VALUES ('110', 12, '상남자', 3, 42, '화수', '오로지 성공만을 바라�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('118', 'dummyAuthor118@naver.com', '1234', '하늘소');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('118', '하늘소 ', '118');
+VALUES ('118', '하늘소', '118');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('118', '110', '118');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('119', 'dummyAuthor119@naver.com', '1234', '도가도');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('119', ' 도가도 ', '119');
+VALUES ('119', '도가도', '119');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('119', '110', '119');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('120', 'dummyAuthor120@naver.com', '1234', '김태궁');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('120', ' 김태궁', '120');
+VALUES ('120', '김태궁', '120');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('120', '110', '120');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -172,19 +172,19 @@ VALUES ('111', 0, '언니, 이번 생엔 내가 왕비야', 10, 37, '화일', '�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('121', 'dummyAuthor121@naver.com', '1234', 'Omin');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('121', 'Omin ', '121');
+VALUES ('121', 'Omin', '121');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('121', '111', '121');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('122', 'dummyAuthor122@naver.com', '1234', '테미스');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('122', ' 테미스 ', '122');
+VALUES ('122', '테미스', '122');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('122', '111', '122');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('123', 'dummyAuthor123@naver.com', '1234', '레팔진프');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('123', ' 레팔진프', '123');
+VALUES ('123', '레팔진프', '123');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('123', '111', '123');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -192,13 +192,13 @@ VALUES ('112', 8, '1초', 2, 39, '화수', '구조율 100%의 전설적인 소�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('124', 'dummyAuthor124@naver.com', '1234', '시니');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('124', '시니 ', '124');
+VALUES ('124', '시니', '124');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('124', '112', '124');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('125', 'dummyAuthor125@naver.com', '1234', '광운');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('125', ' 광운', '125');
+VALUES ('125', '광운', '125');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('125', '112', '125');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -207,19 +207,19 @@ VALUES ('113', 8, '낙향문사전', 2, 38, '월화', '온갖 비리가 가득�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('126', 'dummyAuthor126@naver.com', '1234', '바킹독');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('126', '바킹독 ', '126');
+VALUES ('126', '바킹독', '126');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('126', '113', '126');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('127', 'dummyAuthor127@naver.com', '1234', '팀 페가수스');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('127', ' 팀 페가수스 ', '127');
+VALUES ('127', '팀 페가수스', '127');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('127', '113', '127');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('128', 'dummyAuthor128@naver.com', '1234', '언라이팅');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('128', ' 언라이팅', '128');
+VALUES ('128', '언라이팅', '128');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('128', '113', '128');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -229,13 +229,13 @@ VALUES ('114', 0, '죽지 않으려면', 6, 24, '월수금',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('129', 'dummyAuthor129@naver.com', '1234', '파래');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('129', '파래 ', '129');
+VALUES ('129', '파래', '129');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('129', '114', '129');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('130', 'dummyAuthor130@naver.com', '1234', '임진국');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('130', ' 임진국', '130');
+VALUES ('130', '임진국', '130');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('130', '114', '130');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -244,13 +244,13 @@ VALUES ('115', 0, '천하제일 대사형', 7, 27, '수일', '잔혹했던 정�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('131', 'dummyAuthor131@naver.com', '1234', 'YooN');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('131', 'YooN ', '131');
+VALUES ('131', 'YooN', '131');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('131', '115', '131');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('132', 'dummyAuthor132@naver.com', '1234', '북미혼');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('132', ' 북미혼', '132');
+VALUES ('132', '북미혼', '132');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('132', '115', '132');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -269,13 +269,13 @@ VALUES ('117', 15, '사신', 9, 38, '화목', '형의 복수를 위해 살천문
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('134', 'dummyAuthor134@naver.com', '1234', '임재원');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('134', '임재원 ', '134');
+VALUES ('134', '임재원', '134');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('134', '117', '134');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('135', 'dummyAuthor135@naver.com', '1234', '설봉');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('135', ' 설봉', '135');
+VALUES ('135', '설봉', '135');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('135', '117', '135');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -285,13 +285,13 @@ VALUES ('118', 0, '흑요석의 신부', 4, 39, '화토',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('136', 'dummyAuthor136@naver.com', '1234', '왕보라청푸름');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('136', '왕보라청푸름 ', '136');
+VALUES ('136', '왕보라청푸름', '136');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('136', '118', '136');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('137', 'dummyAuthor137@naver.com', '1234', '팀 쿼츠');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('137', ' 팀 쿼츠', '137');
+VALUES ('137', '팀 쿼츠', '137');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('137', '118', '137');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -301,19 +301,19 @@ VALUES ('119', 0, '전남편의 미친개를 길들였다', 3, 22, '수일',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('138', 'dummyAuthor138@naver.com', '1234', '철무장미');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('138', '철무장미 ', '138');
+VALUES ('138', '철무장미', '138');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('138', '119', '138');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('139', 'dummyAuthor139@naver.com', '1234', '자개');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('139', ' 자개 ', '139');
+VALUES ('139', '자개', '139');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('139', '119', '139');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('140', 'dummyAuthor140@naver.com', '1234', '재겸');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('140', ' 재겸', '140');
+VALUES ('140', '재겸', '140');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('140', '119', '140');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -323,19 +323,19 @@ VALUES ('120', 0, '나혼자 탑에서 농사', 2, 36, '월목일',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('141', 'dummyAuthor141@naver.com', '1234', '임형');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('141', '임형 ', '141');
+VALUES ('141', '임형', '141');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('141', '120', '141');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('142', 'dummyAuthor142@naver.com', '1234', '이하경');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('142', ' 이하경 ', '142');
+VALUES ('142', '이하경', '142');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('142', '120', '142');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('143', 'dummyAuthor143@naver.com', '1234', 'sdcknight');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('143', ' sdcknight', '143');
+VALUES ('143', 'sdcknight', '143');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('143', '120', '143');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -344,19 +344,19 @@ VALUES ('121', 12, '서울역 드루이드', 2, 28, '수토', '이세계로 사�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('144', 'dummyAuthor144@naver.com', '1234', '문성호');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('144', '문성호 ', '144');
+VALUES ('144', '문성호', '144');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('144', '121', '144');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('145', 'dummyAuthor145@naver.com', '1234', '활성곰');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('145', ' 활성곰 ', '145');
+VALUES ('145', '활성곰', '145');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('145', '121', '145');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('146', 'dummyAuthor146@naver.com', '1234', '진설우');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('146', ' 진설우', '146');
+VALUES ('146', '진설우', '146');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('146', '121', '146');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -364,13 +364,13 @@ VALUES ('122', 0, '삼국지톡', 10, 28, '월목', '"유비, 조조, 손권 등
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('147', 'dummyAuthor147@naver.com', '1234', '무적핑크');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('147', '무적핑크 ', '147');
+VALUES ('147', '무적핑크', '147');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('147', '122', '147');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('148', 'dummyAuthor148@naver.com', '1234', '이리');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('148', ' 이리', '148');
+VALUES ('148', '이리', '148');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('148', '122', '148');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -379,13 +379,13 @@ VALUES ('123', 0, '약탈 신부', 3, 39, '월수금', '베르크 남작가의 �
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('149', 'dummyAuthor149@naver.com', '1234', '팀 카푸치노');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('149', '팀 카푸치노 ', '149');
+VALUES ('149', '팀 카푸치노', '149');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('149', '123', '149');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('150', 'dummyAuthor150@naver.com', '1234', '강희자매');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('150', ' 강희자매', '150');
+VALUES ('150', '강희자매', '150');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('150', '123', '150');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -403,13 +403,13 @@ VALUES ('125', 15, '커플브레이커', 10, 30, '목일',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('152', 'dummyAuthor152@naver.com', '1234', '기맹기');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('152', '기맹기 ', '152');
+VALUES ('152', '기맹기', '152');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('152', '125', '152');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('153', 'dummyAuthor153@naver.com', '1234', '태건');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('153', ' 태건', '153');
+VALUES ('153', '태건', '153');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('153', '125', '153');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -417,13 +417,13 @@ VALUES ('126', 15, '말년용사', 8, 29, '목금', '전역하기 3일 전 어�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('154', 'dummyAuthor154@naver.com', '1234', '후딩');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('154', '후딩 ', '154');
+VALUES ('154', '후딩', '154');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('154', '126', '154');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('155', 'dummyAuthor155@naver.com', '1234', '신마니');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('155', ' 신마니', '155');
+VALUES ('155', '신마니', '155');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('155', '126', '155');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -442,13 +442,13 @@ VALUES ('128', 12, '문제적 왕자님', 2, 26, '수',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('157', 'dummyAuthor157@naver.com', '1234', '선인장');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('157', '선인장 ', '157');
+VALUES ('157', '선인장', '157');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('157', '128', '157');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('158', 'dummyAuthor158@naver.com', '1234', '솔체');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('158', ' 솔체', '158');
+VALUES ('158', '솔체', '158');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('158', '128', '158');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -492,13 +492,13 @@ VALUES ('133', 15, '폭군님은 착하게 살고 싶어', 9, 46, '월화수목�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('163', 'dummyAuthor163@naver.com', '1234', '람글');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('163', '람글 ', '163');
+VALUES ('163', '람글', '163');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('163', '133', '163');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('164', 'dummyAuthor164@naver.com', '1234', '카콘');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('164', ' 카콘', '164');
+VALUES ('164', '카콘', '164');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('164', '133', '164');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -507,13 +507,13 @@ VALUES ('134', 0, '히어로 킬러', 1, 28, '토', '전쟁은 빌런들의 패�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('165', 'dummyAuthor165@naver.com', '1234', '꿀벌');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('165', '꿀벌 ', '165');
+VALUES ('165', '꿀벌', '165');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('165', '134', '165');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('166', 'dummyAuthor166@naver.com', '1234', '벌꿀');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('166', ' 벌꿀', '166');
+VALUES ('166', '벌꿀', '166');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('166', '134', '166');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -523,13 +523,13 @@ VALUES ('135', 0, '브레이커 : 이터널 포스', 6, 45, '월화수목금토�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('167', 'dummyAuthor167@naver.com', '1234', '전극진');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('167', '전극진 ', '167');
+VALUES ('167', '전극진', '167');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('167', '135', '167');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('168', 'dummyAuthor168@naver.com', '1234', '박진환');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('168', ' 박진환', '168');
+VALUES ('168', '박진환', '168');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('168', '135', '168');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -537,13 +537,13 @@ VALUES ('136', 8, '더 게이머', 5, 25, '화', '이유도 모른 채 현실이
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('169', 'dummyAuthor169@naver.com', '1234', '성상영');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('169', '성상영 ', '169');
+VALUES ('169', '성상영', '169');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('169', '136', '169');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('170', 'dummyAuthor170@naver.com', '1234', '상아');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('170', ' 상아', '170');
+VALUES ('170', '상아', '170');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('170', '136', '170');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -552,19 +552,19 @@ VALUES ('137', 12, '야수라는 공작에게 시집왔는데', 7, 22, '수', '�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('171', 'dummyAuthor171@naver.com', '1234', '나양');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('171', '나양 ', '171');
+VALUES ('171', '나양', '171');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('171', '137', '171');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('172', 'dummyAuthor172@naver.com', '1234', '김승혁');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('172', ' 김승혁 ', '172');
+VALUES ('172', '김승혁', '172');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('172', '137', '172');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('173', 'dummyAuthor173@naver.com', '1234', '박약초');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('173', ' 박약초', '173');
+VALUES ('173', '박약초', '173');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('173', '137', '173');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -573,19 +573,19 @@ VALUES ('138', 0, '그 기사가 레이디로 사는 법', 8, 45, '토', '가장
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('174', 'dummyAuthor174@naver.com', '1234', '아인');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('174', '아인 ', '174');
+VALUES ('174', '아인', '174');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('174', '138', '174');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('175', 'dummyAuthor175@naver.com', '1234', 'Ink.');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('175', ' Ink. ', '175');
+VALUES ('175', 'Ink.', '175');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('175', '138', '175');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('176', 'dummyAuthor176@naver.com', '1234', '성혜림');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('176', ' 성혜림', '176');
+VALUES ('176', '성혜림', '176');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('176', '138', '176');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -593,13 +593,13 @@ VALUES ('139', 8, '플레이어', 2, 21, '화', '베댓 공약으로 어쩌다 �
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('177', 'dummyAuthor177@naver.com', '1234', '박종석');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('177', '박종석 ', '177');
+VALUES ('177', '박종석', '177');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('177', '139', '177');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('178', 'dummyAuthor178@naver.com', '1234', '오현준');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('178', ' 오현준', '178');
+VALUES ('178', '오현준', '178');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('178', '139', '178');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -607,13 +607,13 @@ VALUES ('140', 0, '도깨비의 밤', 9, 36, '목금', '도깨비의 피를 물�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('179', 'dummyAuthor179@naver.com', '1234', '문식');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('179', '문식 ', '179');
+VALUES ('179', '문식', '179');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('179', '140', '179');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('180', 'dummyAuthor180@naver.com', '1234', '도올');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('180', ' 도올', '180');
+VALUES ('180', '도올', '180');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('180', '140', '180');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -623,19 +623,19 @@ VALUES ('141', 0, '대위님! 이번 전쟁터는 이곳인가요?', 7, 46, '월
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('181', 'dummyAuthor181@naver.com', '1234', '보살');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('181', '보살 ', '181');
+VALUES ('181', '보살', '181');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('181', '141', '181');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('182', 'dummyAuthor182@naver.com', '1234', '비터버');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('182', ' 비터버 ', '182');
+VALUES ('182', '비터버', '182');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('182', '141', '182');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('183', 'dummyAuthor183@naver.com', '1234', '리묘');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('183', ' 리묘', '183');
+VALUES ('183', '리묘', '183');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('183', '141', '183');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -643,7 +643,7 @@ VALUES ('184', 'dummyAuthor184@naver.com', '1234', 'siAm');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
 VALUES ('184', 'siAm', '184');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
-VALUES ('142', 15, '소름일기', 10, 42, '월화수목금토일', ' 내 눈 에는 보이지만 남들에게는 보이지 않는  그것 들.어릴 적부터 남들과는 조금 다른 체질로 인해 겪었던 남들에게 말 못할 여러 기이한 경험들을오래된 일기장 넘기듯 풀어내는 실화기반 심령 공포썰.<모태솔로 수용소>,<미드나잇체이서> 작가의 신작!', '무료',
+VALUES ('142', 15, '소름일기', 10, 42, '월화수목금토일', '내 눈 에는 보이지만 남들에게는 보이지 않는  그것 들.어릴 적부터 남들과는 조금 다른 체질로 인해 겪었던 남들에게 말 못할 여러 기이한 경험들을오래된 일기장 넘기듯 풀어내는 실화기반 심령 공포썰.<모태솔로 수용소>,<미드나잇체이서> 작가의 신작!', '무료',
         'thumbnail_IMAG21_11721c44-7e70-45e2-bd2e-da1e4a51922b.jpg', '2023-10-10');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('184', '142', '184');
@@ -697,13 +697,13 @@ VALUES ('148', 0, '평화식당', 8, 40, '월', '여러 차원이 뒤섞여 아�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('190', 'dummyAuthor190@naver.com', '1234', '턍');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('190', '턍 ', '190');
+VALUES ('190', '턍', '190');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('190', '148', '190');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('191', 'dummyAuthor191@naver.com', '1234', '서우서우');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('191', ' 서우서우', '191');
+VALUES ('191', '서우서우', '191');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('191', '148', '191');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -718,25 +718,25 @@ VALUES ('192', '149', '192');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('193', 'dummyAuthor193@naver.com', '1234', '유다');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('193', ' 유다', '193');
+VALUES ('193', '유다', '193');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('193', '149', '193');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('194', 'dummyAuthor194@naver.com', '1234', '앵뚜');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('194', ' 앵뚜 ', '194');
+VALUES ('194', '앵뚜', '194');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('194', '149', '194');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('195', 'dummyAuthor195@naver.com', '1234', '로주');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('195', ' 로주 ', '195');
+VALUES ('195', '로주', '195');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('195', '149', '195');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('196', 'dummyAuthor196@naver.com', '1234', '미나토');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('196', ' 미나토', '196');
+VALUES ('196', '미나토', '196');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('196', '149', '196');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -746,19 +746,19 @@ VALUES ('150', 15, '로또 황녀님', 9, 21, '목',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('197', 'dummyAuthor197@naver.com', '1234', '무무경');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('197', '무무경 ', '197');
+VALUES ('197', '무무경', '197');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('197', '150', '197');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('198', 'dummyAuthor198@naver.com', '1234', '도힌');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('198', ' 도힌', '198');
+VALUES ('198', '도힌', '198');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('198', '150', '198');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('199', 'dummyAuthor199@naver.com', '1234', '보리멸');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('199', ' 보리멸', '199');
+VALUES ('199', '보리멸', '199');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('199', '150', '199');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -775,19 +775,19 @@ VALUES ('152', 8, '킬 더 드래곤', 6, 29, '화', '"필사적으로 살아남
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('201', 'dummyAuthor201@naver.com', '1234', '현가');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('201', '현가 ', '201');
+VALUES ('201', '현가', '201');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('201', '152', '201');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('202', 'dummyAuthor202@naver.com', '1234', '미스 지수');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('202', ' 미스 지수 ', '202');
+VALUES ('202', '미스 지수', '202');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('202', '152', '202');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('203', 'dummyAuthor203@naver.com', '1234', '백수귀족');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('203', ' 백수귀족', '203');
+VALUES ('203', '백수귀족', '203');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('203', '152', '203');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -796,13 +796,13 @@ VALUES ('153', 8, '신컨의 원 코인 클리어', 8, 28, '화', '가입자 30�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('204', 'dummyAuthor204@naver.com', '1234', '스튜디오 호호이');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('204', '스튜디오 호호이 ', '204');
+VALUES ('204', '스튜디오 호호이', '204');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('204', '153', '204');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('205', 'dummyAuthor205@naver.com', '1234', 'Akheres');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('205', ' Akheres', '205');
+VALUES ('205', 'Akheres', '205');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('205', '153', '205');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -882,19 +882,19 @@ VALUES ('162', 0, '멜빈이 그들에게 남긴 것', 10, 25, '월',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('214', 'dummyAuthor214@naver.com', '1234', '삼칠13');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('214', '삼칠13 ', '214');
+VALUES ('214', '삼칠13', '214');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('214', '162', '214');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('215', 'dummyAuthor215@naver.com', '1234', '팀 해피게리');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('215', ' 팀 해피게리 ', '215');
+VALUES ('215', '팀 해피게리', '215');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('215', '162', '215');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('216', 'dummyAuthor216@naver.com', '1234', '류희온');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('216', ' 류희온', '216');
+VALUES ('216', '류희온', '216');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('216', '162', '216');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -918,32 +918,32 @@ VALUES ('218', '164', '218');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('219', 'dummyAuthor219@naver.com', '1234', '신여름');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('219', ' 신여름', '219');
+VALUES ('219', '신여름', '219');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('219', '164', '219');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('220', 'dummyAuthor220@naver.com', '1234', '임상윤');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('220', ' 임상윤', '220');
+VALUES ('220', '임상윤', '220');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('220', '164', '220');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('221', 'dummyAuthor221@naver.com', '1234', '서나래');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('221', ' 서나래 ', '221');
+VALUES ('221', '서나래', '221');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('221', '164', '221');
 -- INSERT INTO user_tb (`id`,`email`,`password`,`username`) VALUES ('222', 'dummyAuthor222@naver.com', '1234', '김대훈');
--- INSERT INTO author_tb (`id`,`author_nickname`,`user_id`) VALUES ('222', ' 김대훈','222');
+-- INSERT INTO author_tb (`id`,`author_nickname`,`user_id`) VALUES ('222', '김대훈','222');
 -- INSERT INTO webtoon_author_tb (`id`,`webtoon_id`,`author_id`) VALUES ('222', '164', '222');
 -- INSERT INTO user_tb (`id`,`email`,`password`,`username`) VALUES ('223', 'dummyAuthor223@naver.com', '1234', '신여름');
--- INSERT INTO author_tb (`id`,`author_nickname`,`user_id`) VALUES ('223', ' 신여름','223');
+-- INSERT INTO author_tb (`id`,`author_nickname`,`user_id`) VALUES ('223', '신여름','223');
 -- INSERT INTO webtoon_author_tb (`id`,`webtoon_id`,`author_id`) VALUES ('223', '164', '223');
 -- INSERT INTO user_tb (`id`,`email`,`password`,`username`) VALUES ('224', 'dummyAuthor224@naver.com', '1234', '만두인');
--- INSERT INTO author_tb (`id`,`author_nickname`,`user_id`) VALUES ('224', ' 만두인','224');
+-- INSERT INTO author_tb (`id`,`author_nickname`,`user_id`) VALUES ('224', '만두인','224');
 -- INSERT INTO webtoon_author_tb (`id`,`webtoon_id`,`author_id`) VALUES ('224', '164', '224');
 -- INSERT INTO user_tb (`id`,`email`,`password`,`username`) VALUES ('225', 'dummyAuthor225@naver.com', '1234', '서나래');
--- INSERT INTO author_tb (`id`,`author_nickname`,`user_id`) VALUES ('225', ' 서나래','225');
+-- INSERT INTO author_tb (`id`,`author_nickname`,`user_id`) VALUES ('225', '서나래','225');
 -- INSERT INTO webtoon_author_tb (`id`,`webtoon_id`,`author_id`) VALUES ('225', '164', '225');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
 VALUES ('165', 8, '바스티안', 9, 30, '화',
@@ -952,11 +952,11 @@ VALUES ('165', 8, '바스티안', 9, 30, '화',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('226', 'dummyAuthor226@naver.com', '1234', '아빈');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('226', '아빈 ', '226');
+VALUES ('226', '아빈', '226');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('226', '165', '226');
 -- INSERT INTO user_tb (`id`,`email`,`password`,`username`) VALUES ('227', 'dummyAuthor227@naver.com', '1234', '솔체'); --158 중복
--- INSERT INTO author_tb (`id`,`author_nickname`,`user_id`) VALUES ('227', ' 솔체','227'); --158 중복
+-- INSERT INTO author_tb (`id`,`author_nickname`,`user_id`) VALUES ('227', '솔체','227'); --158 중복
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('227', '165', '158');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1018,13 +1018,13 @@ VALUES ('172', 0, '재앙의 날', 3, 31, '토', '2009년, 한 산골마을에�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('234', 'dummyAuthor234@naver.com', '1234', '환상특급');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('234', '환상특급 ', '234');
+VALUES ('234', '환상특급', '234');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('234', '172', '234');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('235', 'dummyAuthor235@naver.com', '1234', '이승찬');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('235', ' 이승찬', '235');
+VALUES ('235', '이승찬', '235');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('235', '172', '235');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1041,13 +1041,13 @@ VALUES ('174', 0, '백년게임', 5, 32, '일', '"당신의 게임은 여기까�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('237', 'dummyAuthor237@naver.com', '1234', '하람');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('237', '하람 ', '237');
+VALUES ('237', '하람', '237');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('237', '174', '237');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('238', 'dummyAuthor238@naver.com', '1234', '지야');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('238', ' 지야', '238');
+VALUES ('238', '지야', '238');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('238', '174', '238');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1092,13 +1092,13 @@ VALUES ('179', 15, '하나는 적고 둘은 너무 많아', 6, 49, '목', '전 �
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('243', 'dummyAuthor243@naver.com', '1234', '젤리피쉬');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('243', '젤리피쉬 ', '243');
+VALUES ('243', '젤리피쉬', '243');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('243', '179', '243');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('244', 'dummyAuthor244@naver.com', '1234', '손모모');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('244', ' 손모모', '244');
+VALUES ('244', '손모모', '244');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('244', '179', '244');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -1108,13 +1108,13 @@ VALUES ('180', 0, '천상의 주인', 2, 24, '일',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('245', 'dummyAuthor245@naver.com', '1234', '권러프');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('245', '권러프 ', '245');
+VALUES ('245', '권러프', '245');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('245', '180', '245');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('246', 'dummyAuthor246@naver.com', '1234', 'MOOHAK');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('246', ' MOOHAK', '246');
+VALUES ('246', 'MOOHAK', '246');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('246', '180', '246');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -1123,19 +1123,19 @@ VALUES ('181', 0, '푸른 밤, 황홀의 윤무', 9, 29, '토', '평범한 회�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('247', 'dummyAuthor247@naver.com', '1234', '호찌');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('247', '호찌 ', '247');
+VALUES ('247', '호찌', '247');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('247', '181', '247');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('248', 'dummyAuthor248@naver.com', '1234', '해독');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('248', ' 해독 ', '248');
+VALUES ('248', '해독', '248');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('248', '181', '248');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('249', 'dummyAuthor249@naver.com', '1234', '유안나');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('249', ' 유안나', '249');
+VALUES ('249', '유안나', '249');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('249', '181', '249');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -1143,13 +1143,13 @@ VALUES ('182', 0, '비밀친구', 10, 48, '일', '세상의 모든 비밀을 알
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('250', 'dummyAuthor250@naver.com', '1234', '이밤애');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('250', '이밤애 ', '250');
+VALUES ('250', '이밤애', '250');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('250', '182', '250');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('251', 'dummyAuthor251@naver.com', '1234', '사바싸');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('251', ' 사바싸', '251');
+VALUES ('251', '사바싸', '251');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('251', '182', '251');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1200,19 +1200,19 @@ VALUES ('256', '187', '256');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('257', 'dummyAuthor257@naver.com', '1234', '느리');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('257', ' 느리 ', '257');
+VALUES ('257', '느리', '257');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('257', '187', '257');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('258', 'dummyAuthor258@naver.com', '1234', 'ZZING');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('258', ' ZZING ', '258');
+VALUES ('258', 'ZZING', '258');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('258', '187', '258');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('259', 'dummyAuthor259@naver.com', '1234', '김빵');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('259', ' 김빵', '259');
+VALUES ('259', '김빵', '259');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('259', '187', '259');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1228,17 +1228,17 @@ VALUES ('260', '188', '260');
 
 
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
-VALUES ('301', 0, '뷰티풀 군바리', 6, 36, '일', ' 여자도 군대에 간다면? 본격 여자도 군대 가는 만화!', '없음', 'thumbnail_IMAG21_d9398229-cbfd-47dc-9208-0a6fb936f3a7.jpg', '2023-10-10');
+VALUES ('301', 0, '뷰티풀 군바리', 6, 36, '일', '여자도 군대에 간다면? 본격 여자도 군대 가는 만화!', '없음', 'thumbnail_IMAG21_d9398229-cbfd-47dc-9208-0a6fb936f3a7.jpg', '2023-10-10');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('301', 'dummyAuthor301@naver.com', '1234', '설이');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('301', '설이 ', '301');
+VALUES ('301', '설이', '301');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('301', '301', '301');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('302', 'dummyAuthor302@naver.com', '1234', '윤성원');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('302', ' 윤성원', '302');
+VALUES ('302', '윤성원', '302');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('302', '301', '302');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1254,13 +1254,13 @@ VALUES ('303', 0, '참교육', 9, 24, '일', '무너진 교권을 지키기 위�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('304', 'dummyAuthor304@naver.com', '1234', '채용택');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('304', '채용택 ', '304');
+VALUES ('304', '채용택', '304');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('304', '303', '304');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('305', 'dummyAuthor305@naver.com', '1234', '한가람');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('305', ' 한가람', '305');
+VALUES ('305', '한가람', '305');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('305', '303', '305');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1284,19 +1284,19 @@ VALUES ('307', '305', '307');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('308', 'dummyAuthor308@naver.com', '1234', '유누니');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('308', ' 유누니 ', '308');
+VALUES ('308', '유누니', '308');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('308', '305', '308');
 -- INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 -- VALUES ('309', 'dummyAuthor309@naver.com', '1234', '박태준 만화회사');
 -- INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
--- VALUES ('309', ' 박태준 만화회사', '309');
+-- VALUES ('309', '박태준 만화회사', '309');
 -- INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 -- VALUES ('309', '305', '309');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('310', 'dummyAuthor310@naver.com', '1234', '태완');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('310', ' 태완', '310');
+VALUES ('310', '태완', '310');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('310', '305', '310');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1312,13 +1312,13 @@ VALUES ('307', 0, '장씨세가 호위무사', 6, 47, '월', '‘당신이 부�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('312', 'dummyAuthor312@naver.com', '1234', '김인호');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('312', '김인호 ', '312');
+VALUES ('312', '김인호', '312');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('312', '307', '312');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('313', 'dummyAuthor313@naver.com', '1234', '조형근');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('313', ' 조형근', '313');
+VALUES ('313', '조형근', '313');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('313', '307', '313');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1335,13 +1335,13 @@ VALUES ('309', 0, '신화급 귀속 아이템을 손에 넣었다', 4, 28, '월'
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('315', 'dummyAuthor315@naver.com', '1234', '정선율');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('315', '정선율 ', '315');
+VALUES ('315', '정선율', '315');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('315', '309', '315');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('316', 'dummyAuthor316@naver.com', '1234', '헤스');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('316', ' 헤스', '316');
+VALUES ('316', '헤스', '316');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('316', '309', '316');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1368,19 +1368,19 @@ VALUES ('312', 0, '절대검감', 4, 26, '일', '단전이 부숴졌다는 이�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('319', 'dummyAuthor319@naver.com', '1234', '김두루미');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('319', '김두루미 ', '319');
+VALUES ('319', '김두루미', '319');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('319', '312', '319');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('320', 'dummyAuthor320@naver.com', '1234', '티아이');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('320', ' 티아이 ', '320');
+VALUES ('320', '티아이', '320');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('320', '312', '320');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('321', 'dummyAuthor321@naver.com', '1234', '한중월야');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('321', ' 한중월야', '321');
+VALUES ('321', '한중월야', '321');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('321', '312', '321');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1403,13 +1403,13 @@ VALUES ('323', '314', '323');
 -- INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 -- VALUES ('324', 'dummyAuthor324@naver.com', '1234', '임형2');
 -- INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
--- VALUES ('324', ' 임형2 ', '324');
+-- VALUES ('324', '임형2', '324');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('324', '314', '141');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('325', 'dummyAuthor325@naver.com', '1234', '미노');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('325', ' 미노', '325');
+VALUES ('325', '미노', '325');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('325', '314', '325');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1453,19 +1453,19 @@ VALUES ('319', 0, '미친 재능의 플레이어', 1, 43, '금', '세상의 운�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('330', 'dummyAuthor330@naver.com', '1234', 'S-Nanyc');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('330', 'S-Nanyc ', '330');
+VALUES ('330', 'S-Nanyc', '330');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('330', '319', '330');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('331', 'dummyAuthor331@naver.com', '1234', 'H.로마');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('331', ' H.로마 ', '331');
+VALUES ('331', 'H.로마', '331');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('331', '319', '331');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('332', 'dummyAuthor332@naver.com', '1234', '체나');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('332', ' 체나', '332');
+VALUES ('332', '체나', '332');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('332', '319', '332');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -1474,19 +1474,19 @@ VALUES ('320', 0, '리턴 투 플레이어', 8, 44, '금', '어느 날, 게임�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('333', 'dummyAuthor333@naver.com', '1234', '레포');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('333', '레포 ', '333');
+VALUES ('333', '레포', '333');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('333', '320', '333');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('334', 'dummyAuthor334@naver.com', '1234', '세혼');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('334', ' 세혼 ', '334');
+VALUES ('334', '세혼', '334');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('334', '320', '334');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('335', 'dummyAuthor335@naver.com', '1234', '인덱스');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('335', ' 인덱스', '335');
+VALUES ('335', '인덱스', '335');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('335', '320', '335');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -1496,19 +1496,19 @@ VALUES ('321', 12, '악당 가족이 독립을 반대한다', 9, 25, '수',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('336', 'dummyAuthor336@naver.com', '1234', '밋츄');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('336', '밋츄 ', '336');
+VALUES ('336', '밋츄', '336');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('336', '321', '336');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('337', 'dummyAuthor337@naver.com', '1234', '하티');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('337', ' 하티 ', '337');
+VALUES ('337', '하티', '337');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('337', '321', '337');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('338', 'dummyAuthor338@naver.com', '1234', '이흰');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('338', ' 이흰', '338');
+VALUES ('338', '이흰', '338');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('338', '321', '338');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -1517,19 +1517,19 @@ VALUES ('322', 0, '좀비묵시록 82-08', 1, 38, '토', '탕-!의문의 선박 
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('339', 'dummyAuthor339@naver.com', '1234', '달아');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('339', '달아 ', '339');
+VALUES ('339', '달아', '339');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('339', '322', '339');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('340', 'dummyAuthor340@naver.com', '1234', '경우');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('340', ' 경우 ', '340');
+VALUES ('340', '경우', '340');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('340', '322', '340');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('341', 'dummyAuthor341@naver.com', '1234', '박스오피스');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('341', ' 박스오피스', '341');
+VALUES ('341', '박스오피스', '341');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('341', '322', '341');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -1538,19 +1538,19 @@ VALUES ('323', 0, '천재 타자가 강속구를 숨김', 5, 29, '토', '부와 
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('342', 'dummyAuthor342@naver.com', '1234', '황지성');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('342', '황지성 ', '342');
+VALUES ('342', '황지성', '342');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('342', '323', '342');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('343', 'dummyAuthor343@naver.com', '1234', '스튜디오MW');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('343', ' 스튜디오MW ', '343');
+VALUES ('343', '스튜디오MW', '343');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('343', '323', '343');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('344', 'dummyAuthor344@naver.com', '1234', '이블라인');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('344', ' 이블라인', '344');
+VALUES ('344', '이블라인', '344');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('344', '323', '344');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1583,19 +1583,19 @@ VALUES ('327', 12, '제왕', 9, 33, '수', '깡패, 검사, 국회의원...절�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('348', 'dummyAuthor348@naver.com', '1234', '김남규');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('348', '김남규 ', '348');
+VALUES ('348', '김남규', '348');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('348', '327', '348');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('349', 'dummyAuthor349@naver.com', '1234', '애풍');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('349', ' 애풍', '349');
+VALUES ('349', '애풍', '349');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('349', '327', '349');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('350', 'dummyAuthor350@naver.com', '1234', '콘티메이커');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('350', ' 콘티메이커', '350');
+VALUES ('350', '콘티메이커', '350');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('350', '327', '350');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1635,13 +1635,13 @@ VALUES ('354', '331', '354');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('355', 'dummyAuthor355@naver.com', '1234', '김장훈');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('355', ' 김장훈 ', '355');
+VALUES ('355', '김장훈', '355');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('355', '331', '355');
 -- INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 -- VALUES ('356', 'dummyAuthor356@naver.com', '1234', '박수봉');
 -- INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
--- VALUES ('356', ' 박수봉', '356');
+-- VALUES ('356', '박수봉', '356');
 -- INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 -- VALUES ('356', '331', '354');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -1651,13 +1651,13 @@ VALUES ('332', 0, '시한부의 아이까지 뺏으려 합니다', 6, 32, '월',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('357', 'dummyAuthor357@naver.com', '1234', '랍스타');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('357', '랍스타 ', '357');
+VALUES ('357', '랍스타', '357');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('357', '332', '357');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('358', 'dummyAuthor358@naver.com', '1234', '이루이');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('358', ' 이루이', '358');
+VALUES ('358', '이루이', '358');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('358', '332', '358');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -1666,13 +1666,13 @@ VALUES ('333', 0, '아슈타르테', 5, 41, '일', '무한한 영광을 가져�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('359', 'dummyAuthor359@naver.com', '1234', 'SOON');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('359', 'SOON ', '359');
+VALUES ('359', 'SOON', '359');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('359', '333', '359');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('360', 'dummyAuthor360@naver.com', '1234', '안다온');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('360', ' 안다온', '360');
+VALUES ('360', '안다온', '360');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('360', '333', '360');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -1682,13 +1682,13 @@ VALUES ('334', 0, '제국 제일의 상속녀가 되었습니다', 9, 36, '금',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('361', 'dummyAuthor361@naver.com', '1234', '한강');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('361', '한강 ', '361');
+VALUES ('361', '한강', '361');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('361', '334', '361');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('362', 'dummyAuthor362@naver.com', '1234', '요정용');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('362', ' 요정용', '362');
+VALUES ('362', '요정용', '362');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('362', '334', '362');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -1698,13 +1698,13 @@ VALUES ('335', 15, '오빠집이 비어서', 3, 26, '목',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('363', 'dummyAuthor363@naver.com', '1234', '이서희');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('363', '이서희 ', '363');
+VALUES ('363', '이서희', '363');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('363', '335', '363');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('364', 'dummyAuthor364@naver.com', '1234', '태소영');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('364', ' 태소영', '364');
+VALUES ('364', '태소영', '364');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('364', '335', '364');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -1713,13 +1713,13 @@ VALUES ('336', 8, '파운더', 10, 25, '화', '1970년대 각하에 대한 과�
 -- INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 -- VALUES ('365', 'dummyAuthor365@naver.com', '1234', '임상윤');
 -- INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
--- VALUES ('365', '임상윤 ', '365');
+-- VALUES ('365', '임상윤', '365');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('365', '336', '220');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('366', 'dummyAuthor366@naver.com', '1234', '만두인');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('366', ' 만두인', '366');
+VALUES ('366', '만두인', '366');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('366', '336', '366');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1756,13 +1756,13 @@ VALUES ('340', 0, '팔이피플', 3, 40, '일', '<마스크걸>, <위대한 방�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('370', 'dummyAuthor370@naver.com', '1234', '매미');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('370', '매미 ', '370');
+VALUES ('370', '매미', '370');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('370', '340', '370');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('371', 'dummyAuthor371@naver.com', '1234', '희세');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('371', ' 희세', '371');
+VALUES ('371', '희세', '371');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('371', '340', '371');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1780,19 +1780,19 @@ VALUES ('342', 0, '서브 남주가 파업하면 생기는 일', 9, 50, '금',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('373', 'dummyAuthor373@naver.com', '1234', '쓰레빠인간');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('373', '쓰레빠인간 ', '373');
+VALUES ('373', '쓰레빠인간', '373');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('373', '342', '373');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('374', 'dummyAuthor374@naver.com', '1234', '해그늘');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('374', ' 해그늘 ', '374');
+VALUES ('374', '해그늘', '374');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('374', '342', '374');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('375', 'dummyAuthor375@naver.com', '1234', '숙임');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('375', ' 숙임', '375');
+VALUES ('375', '숙임', '375');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('375', '342', '375');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -1802,19 +1802,19 @@ VALUES ('343', 0, '쥴리에타의 드레스 업', 6, 41, '금',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('376', 'dummyAuthor376@naver.com', '1234', '말차');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('376', '말차 ', '376');
+VALUES ('376', '말차', '376');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('376', '343', '376');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('377', 'dummyAuthor377@naver.com', '1234', '유자차');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('377', ' 유자차 ', '377');
+VALUES ('377', '유자차', '377');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('377', '343', '377');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('378', 'dummyAuthor378@naver.com', '1234', '채하빈');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('378', ' 채하빈', '378');
+VALUES ('378', '채하빈', '378');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('378', '343', '378');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1831,7 +1831,7 @@ VALUES ('380', 'dummyAuthor380@naver.com', '1234', '곽백수');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
 VALUES ('380', '곽백수', '380');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
-VALUES ('345', 0, '파견체', 8, 31, '토', ' 단 하나의 지성이 온 우주의 종말을 가져올 수 있다. 빅뱅 38억년 한 지성체의 폭주로 우주 종말의 위기를 겪은우주의 지성체들은  전우주관리국 이란 연합기구를 만들어우주 전체의 지성체들을 감시 통제하고 있다.이미 지구도 300만년 전부터 인간을 복제한  파견체 들이란 존재들을 통해 비밀리에감시를 받아오고 있었는데....', '무료',
+VALUES ('345', 0, '파견체', 8, 31, '토', '단 하나의 지성이 온 우주의 종말을 가져올 수 있다. 빅뱅 38억년 한 지성체의 폭주로 우주 종말의 위기를 겪은우주의 지성체들은  전우주관리국 이란 연합기구를 만들어우주 전체의 지성체들을 감시 통제하고 있다.이미 지구도 300만년 전부터 인간을 복제한  파견체 들이란 존재들을 통해 비밀리에감시를 받아오고 있었는데....', '무료',
         'thumbnail_IMAG21_3833187132113172581.jpg', '2023-10-10');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('380', '345', '380');
@@ -1841,13 +1841,13 @@ VALUES ('346', 0, '사이다걸', 6, 40, '일', '어느새 세상은 고구마�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('381', 'dummyAuthor381@naver.com', '1234', '김드루');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('381', '김드루 ', '381');
+VALUES ('381', '김드루', '381');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('381', '346', '381');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('382', 'dummyAuthor382@naver.com', '1234', '김그루');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('382', ' 김그루', '382');
+VALUES ('382', '김그루', '382');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('382', '346', '382');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1863,13 +1863,13 @@ VALUES ('348', 15, '입술이 예쁜 남자', 10, 49, '목', '10년 전 첫키�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('384', 'dummyAuthor384@naver.com', '1234', '고도');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('384', '고도 ', '384');
+VALUES ('384', '고도', '384');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('384', '348', '384');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('385', 'dummyAuthor385@naver.com', '1234', '플라비');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('385', ' 플라비', '385');
+VALUES ('385', '플라비', '385');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('385', '348', '385');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1887,7 +1887,7 @@ VALUES ('387', 'dummyAuthor387@naver.com', '1234', '호');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
 VALUES ('387', '호', '387');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
-VALUES ('350', 12, '피폐물의 해피엔딩을 위하여', 7, 29, '수', ' 나 는 피폐한 남주인공들이 신녀 ‘벨’을 소유하기 위해 수단과 방법을 가리지 않는 배드 엔딩 소설 [여명의 기적] 속으로 빙의했다. 주인공의 행복을 방해하는 걸림돌 로지아나로 환생한 나는 생각한다. "어쩌면 내가 이 소설의 엔딩을 바꿀 수 있지 않을까?"', '완결',
+VALUES ('350', 12, '피폐물의 해피엔딩을 위하여', 7, 29, '수', '나 는 피폐한 남주인공들이 신녀 ‘벨’을 소유하기 위해 수단과 방법을 가리지 않는 배드 엔딩 소설 [여명의 기적] 속으로 빙의했다. 주인공의 행복을 방해하는 걸림돌 로지아나로 환생한 나는 생각한다. "어쩌면 내가 이 소설의 엔딩을 바꿀 수 있지 않을까?"', '완결',
         'thumbnail_IMAG21_e830e751-20be-4c57-a6ff-f299588d05b6.jpg', '2023-10-10');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('387', '350', '387');
@@ -1907,13 +1907,13 @@ VALUES ('352', 0, '컨트롤X', 4, 22, '금', '10년 사귄 전남친  다니엘
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('389', 'dummyAuthor389@naver.com', '1234', '사이렌');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('389', '사이렌 ', '389');
+VALUES ('389', '사이렌', '389');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('389', '352', '389');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('390', 'dummyAuthor390@naver.com', '1234', '서클');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('390', ' 서클', '390');
+VALUES ('390', '서클', '390');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('390', '352', '390');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1930,13 +1930,13 @@ VALUES ('354', 0, '랭커', 5, 38, '금', '극비리로 진행되는 멤버쉽 �
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('392', 'dummyAuthor392@naver.com', '1234', '신건');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('392', '신건 ', '392');
+VALUES ('392', '신건', '392');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('392', '354', '392');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('393', 'dummyAuthor393@naver.com', '1234', 'taibogi');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('393', ' taibogi', '393');
+VALUES ('393', 'taibogi', '393');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('393', '354', '393');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -1945,19 +1945,19 @@ VALUES ('355', 0, '악당과 악당이 만나면', 4, 45, '토', '귀족들을 �
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('394', 'dummyAuthor394@naver.com', '1234', '삵');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('394', '삵 ', '394');
+VALUES ('394', '삵', '394');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('394', '355', '394');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('395', 'dummyAuthor395@naver.com', '1234', '쏘가리');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('395', ' 쏘가리 ', '395');
+VALUES ('395', '쏘가리', '395');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('395', '355', '395');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('396', 'dummyAuthor396@naver.com', '1234', '임하얌');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('396', ' 임하얌', '396');
+VALUES ('396', '임하얌', '396');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('396', '355', '396');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -1993,13 +1993,13 @@ VALUES ('359', 15, '최후의 금빛아이', 10, 39, '목',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('400', 'dummyAuthor400@naver.com', '1234', '알깨');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('400', '알깨 ', '400');
+VALUES ('400', '알깨', '400');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('400', '359', '400');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('401', 'dummyAuthor401@naver.com', '1234', '새몽');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('401', ' 새몽', '401');
+VALUES ('401', '새몽', '401');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('401', '359', '401');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -2008,13 +2008,13 @@ VALUES ('360', 0, '어느날 짝남에게 공작님이 빙의했다', 1, 45, '�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('402', 'dummyAuthor402@naver.com', '1234', '다담');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('402', '다담 ', '402');
+VALUES ('402', '다담', '402');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('402', '360', '402');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('403', 'dummyAuthor403@naver.com', '1234', '죽순');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('403', ' 죽순', '403');
+VALUES ('403', '죽순', '403');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('403', '360', '403');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -2098,19 +2098,19 @@ VALUES ('369', 15, '슈퍼스타 천대리', 9, 39, '목',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('412', 'dummyAuthor412@naver.com', '1234', 'Do8');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('412', 'Do8 ', '412');
+VALUES ('412', 'Do8', '412');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('412', '369', '412');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('413', 'dummyAuthor413@naver.com', '1234', '이재국');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('413', ' 이재국 ', '413');
+VALUES ('413', '이재국', '413');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('413', '369', '413');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('414', 'dummyAuthor414@naver.com', '1234', '박경원');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('414', ' 박경원', '414');
+VALUES ('414', '박경원', '414');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('414', '369', '414');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -2144,19 +2144,19 @@ VALUES ('417', '372', '417');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('418', 'dummyAuthor418@naver.com', '1234', 'ARC');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('418', ' ARC', '418');
+VALUES ('418', 'ARC', '418');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('418', '372', '418');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('419', 'dummyAuthor419@naver.com', '1234', 'Ubisoft');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('419', ' Ubisoft ', '419');
+VALUES ('419', 'Ubisoft', '419');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('419', '372', '419');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('420', 'dummyAuthor420@naver.com', '1234', 'Tabii');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('420', ' Tabii', '420');
+VALUES ('420', 'Tabii', '420');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('420', '372', '420');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -2166,13 +2166,13 @@ VALUES ('373', 0, '모스크바의 여명', 8, 42, '월',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('421', 'dummyAuthor421@naver.com', '1234', '이샨오');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('421', '이샨오 ', '421');
+VALUES ('421', '이샨오', '421');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('421', '373', '421');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('422', 'dummyAuthor422@naver.com', '1234', '황장미');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('422', ' 황장미', '422');
+VALUES ('422', '황장미', '422');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('422', '373', '422');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -2182,19 +2182,19 @@ VALUES ('374', 8, '포스트 팬데믹', 4, 29, '화',
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('423', 'dummyAuthor423@naver.com', '1234', '좡좡');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('423', '좡좡 ', '423');
+VALUES ('423', '좡좡', '423');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('423', '374', '423');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('424', 'dummyAuthor424@naver.com', '1234', '영명');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('424', ' 영명 ', '424');
+VALUES ('424', '영명', '424');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('424', '374', '424');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('425', 'dummyAuthor425@naver.com', '1234', '한산이가');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('425', ' 한산이가', '425');
+VALUES ('425', '한산이가', '425');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('425', '374', '425');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -2203,19 +2203,19 @@ VALUES ('375', 0, '퇴근 후에 만나요', 2, 50, '금', '2억짜리 영혼결
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('426', 'dummyAuthor426@naver.com', '1234', '박한나');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('426', '박한나 ', '426');
+VALUES ('426', '박한나', '426');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('426', '375', '426');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('427', 'dummyAuthor427@naver.com', '1234', '햄친');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('427', ' 햄친 ', '427');
+VALUES ('427', '햄친', '427');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('427', '375', '427');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('428', 'dummyAuthor428@naver.com', '1234', '로즈빈');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('428', ' 로즈빈', '428');
+VALUES ('428', '로즈빈', '428');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('428', '375', '428');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -2224,19 +2224,19 @@ VALUES ('376', 15, '루크 비셸 따라잡기', 5, 21, '목', '세상 두려울
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('429', 'dummyAuthor429@naver.com', '1234', '앙꼬빵');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('429', '앙꼬빵 ', '429');
+VALUES ('429', '앙꼬빵', '429');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('429', '376', '429');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('430', 'dummyAuthor430@naver.com', '1234', '학뚜벅');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('430', ' 학뚜벅 ', '430');
+VALUES ('430', '학뚜벅', '430');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('430', '376', '430');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('431', 'dummyAuthor431@naver.com', '1234', '에슈티');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('431', ' 에슈티', '431');
+VALUES ('431', '에슈티', '431');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('431', '376', '431');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -2254,19 +2254,19 @@ VALUES ('378', 0, '북부 공작님을 유혹하겠습니다', 5, 24, '금', '�
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('433', 'dummyAuthor433@naver.com', '1234', '가천가');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('433', '가천가 ', '433');
+VALUES ('433', '가천가', '433');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('433', '378', '433');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('434', 'dummyAuthor434@naver.com', '1234', '은하수');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('434', ' 은하수 ', '434');
+VALUES ('434', '은하수', '434');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('434', '378', '434');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('435', 'dummyAuthor435@naver.com', '1234', '주시하');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('435', ' 주시하', '435');
+VALUES ('435', '주시하', '435');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('435', '378', '435');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
@@ -2368,7 +2368,7 @@ INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('104', '102');
 INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('105', '106');
 INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('105', '105');
 INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('106', '103');
-INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('107', '101');
+INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('106', '107');
 INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('108', '101');
 
 
@@ -2743,7 +2743,6 @@ VALUES (7, 3, 2, true, '2023-10-10');
 
 
 -- 댓글
-<<<<<<< HEAD
 INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
 VALUES (1, 1, 1, '에피소드1 쌀댓글1', '2020-11-21');
 INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
@@ -2779,110 +2778,6 @@ INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
 VALUES (16, 101, 2, '에피소드2 작가댓글1', '2022-06-16');
 INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
 VALUES (17, 101, 2, '에피소드2 작가댓글2', '2022-07-21');
-=======
-
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (1,2,65,'dictum magna. Ut tincidunt orci','2022-11-14 19:50:04');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (2,3,41,'lectus rutrum urna, nec luctus felis purus','2024-07-08 08:23:43');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (3,2,18,'nisi nibh lacinia orci, consectetuer euismod est arcu ac orci. Ut','2023-07-13 09:19:18');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (4,400,21,'In condimentum. Donec','2023-05-29 14:55:20');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (5,4,68,'Sed eu nibh vulputate mauris sagittis placerat.','2024-03-08 02:25:27');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (6,4,94,'netus et','2024-08-19 00:15:15');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (7,1,44,'feugiat nec, diam. Duis mi enim, condimentum eget, volutpat ornare, facilisis eget, ipsum. Donec sollicitudin adipiscing','2024-01-15 18:00:48');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (8,390,33,'Ut nec urna et arcu imperdiet ullamcorper.','2024-02-24 22:15:55');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (9,1,63,'nec, eleifend non, dapibus rutrum, justo.','2024-05-21 01:45:36');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (10,410,35,'mattis','2024-06-14 09:49:14');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (11,1,21,'nec, cursus a, enim. Suspendisse aliquet,','2023-06-05 04:02:40');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (12,412,105,'scelerisque sed, sapien. Nunc','2024-02-18 06:32:27');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (13,2,42,'sed orci lobortis augue scelerisque mollis. Phasellus','2023-05-21 21:36:08');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (14,1,57,'Quisque tincidunt pede ac urna. Ut tincidunt vehicula risus. Nulla eget','2023-08-24 10:22:48');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (15,430,106,'egestas, urna justo faucibus lectus, a sollicitudin orci sem eget massa. Suspendisse eleifend.','2023-01-13 21:57:33');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (16,400,59,'vel lectus. Cum','2023-12-22 10:19:21');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (17,1,52,'fermentum fermentum','2023-10-19 11:30:49');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (18,2,83,'tristique pharetra. Quisque ac libero nec ligula consectetuer rhoncus. Nullam velit dui, semper et, lacinia','2023-05-15 17:12:38');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (20,4,76,'rhoncus. Donec','2022-12-17 05:45:08');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (21,4,16,'metus facilisis','2024-10-19 16:54:02');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (22,421,34,'cursus non, egestas a, dui. Cras pellentesque. Sed dictum. Proin eget odio. Aliquam vulputate','2023-08-04 14:08:59');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (23,1,38,'mollis','2024-10-24 04:25:41');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (24,3,87,'sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet','2023-07-29 20:01:23');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (25,432,41,'Aliquam ultrices iaculis odio. Nam interdum enim non','2023-08-06 09:40:43');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (26,440,95,'Donec feugiat metus sit amet ante. Vivamus non','2023-05-16 18:51:11');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (27,1,32,'egestas a, dui. Cras','2024-05-03 20:34:16');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (28,391,34,'accumsan sed, facilisis vitae, orci. Phasellus dapibus quam quis diam. Pellentesque habitant','2023-09-26 21:13:12');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (29,392,106,'et risus. Quisque libero lacus, varius et, euismod et, commodo at, libero. Morbi accumsan laoreet ipsum.','2023-08-13 00:05:55');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (30,3,62,'nibh enim, gravida sit amet,','2023-04-27 21:06:17');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (31,2,31,'odio a purus. Duis elementum,','2024-07-16 10:09:27');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (32,397,59,'eleifend vitae, erat.','2023-07-01 15:04:19');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (33,395,58,'rutrum non, hendrerit id, ante.','2023-04-23 16:30:33');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (34,411,23,'tortor nibh sit amet orci. Ut','2024-06-19 23:21:26');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (35,412,9,'quam a felis ullamcorper viverra. Maecenas iaculis aliquet diam. Sed','2024-04-18 20:09:05');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (36,415,49,'sagittis. Duis gravida. Praesent eu nulla at sem molestie sodales. Mauris','2024-01-04 16:47:00');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (37,3,66,'tellus. Aenean egestas hendrerit neque. In ornare sagittis felis. Donec tempor, est','2024-10-09 05:11:02');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (38,422,9,'quis urna. Nunc quis arcu','2022-12-17 19:25:01');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (39,4,102,'dolor egestas rhoncus. Proin nisl sem, consequat nec, mollis vitae, posuere at, velit. Cras','2023-11-22 04:56:00');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (40,411,54,'vel turpis. Aliquam adipiscing lobortis risus. In mi pede,','2023-06-18 12:26:34');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (41,1,46,'primis in faucibus orci luctus et ultrices posuere cubilia','2024-10-18 23:48:18');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (42,4,88,'mauris eu elit. Nulla facilisi. Sed neque. Sed eget lacus.','2024-01-02 23:47:47');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (43,403,7,'mollis lectus pede et risus. Quisque libero lacus, varius et, euismod','2023-09-01 02:56:07');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (44,412,38,'et malesuada fames ac turpis egestas. Fusce aliquet magna','2024-04-17 07:57:56');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (45,2,38,'cursus a, enim. Suspendisse aliquet, sem ut cursus luctus, ipsum leo elementum sem, vitae','2022-12-02 09:11:40');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (46,4,100,'magnis dis parturient montes,','2024-02-12 18:51:11');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (47,411,32,'ut odio vel est tempor bibendum. Donec felis orci, adipiscing non,','2024-07-03 07:23:25');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (48,389,100,'Donec nibh enim, gravida sit amet, dapibus','2023-12-19 00:41:56');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (49,388,84,'eu, ligula. Aenean euismod mauris eu elit. Nulla facilisi. Sed neque. Sed eget lacus. Mauris','2023-12-16 13:29:58');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (50,392,108,'odio. Phasellus at augue id ante dictum cursus. Nunc mauris elit,','2022-11-17 02:20:20');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (51,400,15,'libero nec ligula consectetuer','2024-07-11 00:42:34');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (52,406,11,'nascetur ridiculus mus. Proin vel arcu eu odio tristique','2023-09-13 20:17:26');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (53,404,75,'convallis ligula. Donec luctus aliquet odio. Etiam ligula tortor, dictum','2023-03-21 07:15:33');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (54,4,37,'magnis dis parturient montes, nascetur ridiculus mus. Proin vel arcu eu odio tristique pharetra.','2023-10-29 12:06:20');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (55,3,107,'mauris','2024-06-09 21:23:51');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (56,1,104,'a felis ullamcorper viverra. Maecenas iaculis aliquet diam. Sed diam','2024-04-16 00:08:47');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (57,1,104,'feugiat nec, diam. Duis mi enim, condimentum eget, volutpat ornare, facilisis eget, ipsum. Donec sollicitudin adipiscing','2024-09-07 23:38:14');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (58,4,77,'ultrices. Duis volutpat nunc sit amet metus. Aliquam erat volutpat. Nulla facilisis. Suspendisse commodo tincidunt nibh. Phasellus','2024-07-07 06:33:35');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (59,4,82,'ligula. Aliquam erat volutpat. Nulla dignissim. Maecenas ornare egestas ligula. Nullam feugiat placerat','2023-05-09 01:05:09');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (60,4,64,'et malesuada fames ac turpis egestas. Fusce aliquet magna a neque. Nullam ut nisi a','2023-01-20 07:01:48');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (61,1,103,'ultrices iaculis odio. Nam interdum enim non nisi. Aenean eget metus. In nec','2023-11-20 05:22:02');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (62,4,35,'Integer sem elit, pharetra','2023-03-07 10:40:16');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (63,2,13,'torquent per conubia nostra, per inceptos hymenaeos. Mauris ut quam vel sapien imperdiet ornare. In faucibus.','2022-12-16 07:47:02');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (64,4,22,'Integer aliquam adipiscing lacus. Ut nec urna et arcu imperdiet ullamcorper. Duis at lacus. Quisque purus','2024-03-02 11:53:24');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (65,4,103,'Etiam bibendum','2024-10-15 03:31:24');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (66,4,84,'aliquet odio. Etiam ligula tortor, dictum eu, placerat eget,','2023-09-14 03:25:59');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (67,2,38,'enim, sit','2023-12-26 22:46:52');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (68,4,45,'mus. Proin vel arcu eu odio tristique pharetra. Quisque','2024-03-31 20:15:54');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (69,4,25,'feugiat metus sit amet ante.','2024-07-01 14:24:59');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (70,3,75,'sagittis augue, eu tempor erat neque non quam. Pellentesque habitant morbi tristique senectus et netus et malesuada','2024-04-23 17:04:14');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (71,411,98,'scelerisque neque sed sem egestas','2023-03-19 07:22:48');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (72,1,32,'egestas. Duis ac arcu. Nunc mauris. Morbi non sapien','2024-05-26 06:57:54');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (73,1,79,'rutrum urna, nec luctus','2024-03-07 16:11:17');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (74,2,58,'Aliquam ultrices','2023-11-29 04:30:16');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (75,4,46,'penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec dignissim magna a tortor. Nunc commodo auctor velit.','2023-01-03 09:33:50');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (76,3,77,'enim. Mauris quis turpis vitae purus gravida sagittis. Duis gravida. Praesent eu nulla at sem','2023-09-07 20:58:31');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (77,4,58,'velit. Aliquam nisl. Nulla eu neque pellentesque massa lobortis ultrices. Vivamus rhoncus. Donec est. Nunc ullamcorper, velit','2023-08-08 04:45:14');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (78,1,2,'dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus','2022-11-21 14:02:40');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (79,1,107,'eget lacus. Mauris non dui nec urna suscipit nonummy. Fusce fermentum fermentum arcu. Vestibulum ante','2023-05-11 23:27:55');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (80,4,6,'Cras dolor dolor, tempus non, lacinia at, iaculis quis, pede. Praesent eu dui. Cum sociis natoque','2023-07-25 20:53:39');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (81,1,91,'nisi magna sed dui. Fusce aliquam, enim nec tempus scelerisque, lorem ipsum sodales purus,','2024-06-24 12:00:14');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (82,1,83,'amet, consectetuer','2024-05-24 17:03:15');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (83,4,13,'erat volutpat. Nulla dignissim. Maecenas','2023-04-29 10:47:08');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (84,417,16,'ridiculus mus. Proin vel arcu eu odio tristique pharetra. Quisque ac libero nec','2024-01-14 08:23:50');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (85,2,47,'mauris. Suspendisse aliquet molestie tellus. Aenean egestas','2023-11-18 11:05:17');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (86,3,81,'diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id, mollis','2024-08-17 21:39:27');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (87,2,72,'ultrices sit amet, risus.','2023-04-30 07:30:50');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (88,1,1,'enim, condimentum','2023-11-27 12:12:06');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (89,411,8,'Aliquam ultrices iaculis odio. Nam interdum enim non nisi. Aenean','2022-11-13 14:37:24');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (90,3,37,'adipiscing ligula. Aenean','2024-09-19 11:23:14');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (91,3,67,'nostra, per inceptos hymenaeos. Mauris ut quam vel sapien imperdiet ornare. In faucibus.','2024-05-08 06:30:35');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (92,433,67,'sem, vitae aliquam eros turpis non','2024-06-07 15:49:15');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (93,3,57,'mi lacinia mattis. Integer eu lacus. Quisque imperdiet, erat nonummy ultricies ornare, elit','2024-05-28 13:58:57');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (94,1,8,'magna. Phasellus','2023-06-20 11:21:23');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (95,3,33,'aliquet. Phasellus fermentum convallis ligula. Donec luctus aliquet odio. Etiam ligula tortor, dictum eu,','2023-10-18 01:25:25');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (96,4,62,'ornare egestas ligula. Nullam feugiat placerat velit. Quisque varius. Nam porttitor scelerisque neque. Nullam nisl.','2023-02-23 08:34:07');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (97,411,103,'vitae, erat. Vivamus nisi. Mauris nulla. Integer urna. Vivamus molestie dapibus ligula.','2023-10-28 21:36:51');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (98,390,71,'lorem vitae odio sagittis semper. Nam tempor','2023-09-30 08:30:31');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (99,3,102,'elementum, dui quis accumsan convallis, ante lectus convallis est, vitae sodales nisi magna sed dui. Fusce aliquam,','2024-01-08 18:32:51');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (100,4,87,'libero at auctor','2023-04-02 14:38:53');
-
->>>>>>> dev
-
 
 -------------------------------------------------------------------------------------------------------------------------
 
@@ -2995,6 +2890,39 @@ VALUES (8, 3, 101, true, '2022-09-11');
 -------------------------------------------------------------------------------------------------------------------------
 
 
+-- 관심작가
+INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `created_at`)
+VALUES (1, 1, 101, true, '2020-08-06');
+INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `created_at`)
+VALUES (2, 1, 102, true, '2020-10-12');
+INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `created_at`)
+VALUES (3, 1, 103, true, '2020-11-21');
+INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `created_at`)
+VALUES (4, 1, 104, true, '2020-12-20');
+
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+-- 작가 글
+INSERT INTO author_board_tb (`id`, `author_id`, `title`, `text`, `created_at`)
+VALUES (1, 101, '작가1글1제목', '작가글1내용', '2020-08-06');
+INSERT INTO author_board_tb (`id`, `author_id`, `title`, `text`, `created_at`)
+VALUES (2, 101, '작가1글2제목', '작가글2내용', '2021-04-13');
+INSERT INTO author_board_tb (`id`, `author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (3, 101, '작가1글3제목', '작가글3내용', 'test.jpg', now());
+INSERT INTO author_board_tb (`id`, `author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (4, 102, '작가2글4제목', '작가글4내용', 'test.jpg', '2023-10-29');
+INSERT INTO author_board_tb (`id`, `author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (5, 103, '작가3글5제목', '작가글5내용', 'test.jpg', '2023-10-31');
+
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+
 -- 임시 설정용
 
 UPDATE USER_TB
@@ -3038,6 +2966,13 @@ UPDATE WEBTOON_TB
 SET UPDATED_AT = CREATED_AT
 WHERE UPDATED_AT IS NULL;
 
+UPDATE AUTHOR_BOARD_TB
+SET UPDATED_AT = CREATED_AT
+WHERE UPDATED_AT IS NULL;
+
+UPDATE AUTHOR_TB
+SET author_photo = 'defaultAuthorPhoto.jpg'
+WHERE author_photo IS NULL;
 
 
 
