@@ -13,5 +13,7 @@ public interface CommentJPARepository extends JpaRepository<Comment, Integer> {
     List<Comment> findByEpisodeId(int episodeId, Sort sort);
 
     List<Comment> findByUserId(int userId);
+    
+    List<Comment> findByUserId(int userId, Sort sort);
 
 }
