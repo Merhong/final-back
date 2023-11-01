@@ -36,6 +36,26 @@ public class UserController {
     }
 
 
+    // 관심 작가 알람켜기
+    @PostMapping("/users/interest/author/alarmon/{authorId}")
+    public ResponseEntity<?> interestAuthorAlarmOn(@PathVariable int authorId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        UserResponse.InterestAuthorDTO responseDTO = userService.interestAuthorAlarmOn(sessionUser.getId(), authorId);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
+
+    // 관심 작가 알람끄기
+    @PostMapping("/users/interest/author/alarmoff/{authorId}")
+    public ResponseEntity<?> interestAuthorAlarmOff(@PathVariable int authorId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        UserResponse.InterestAuthorDTO responseDTO = userService.interestAuthorAlarmOff(sessionUser.getId(), authorId);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
 
 
     // 관심웹툰알람끄기

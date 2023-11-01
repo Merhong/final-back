@@ -39,9 +39,10 @@ public class UserService {
     // MY댓글목록
     public List<UserResponse.MyCommentDTO> comment(int userId) {
 
-        List<Comment> commentList = commentRepository.findByUserId(userId);
+        List<Comment> commentList = commentRepository.findByUserId(userId, Sort.by(Sort.Order.desc("id")));
 
         List<UserResponse.MyCommentDTO> responseDTOList = commentList.stream()
+                .filter(t -> t.getIsDelete() == false)
                 .map(t -> new UserResponse.MyCommentDTO(t, userId))
                 .collect(Collectors.toList());
 
@@ -110,6 +111,56 @@ public class UserService {
     }
 
     
+
+    // 관심 작가 알림켜기
+    @Transactional
+    public UserResponse.InterestAuthorDTO interestAuthorAlarmOn(int userId, int authorId) {
+
+        List<InterestAuthor> interestAuthorList = interestAuthorRepository.findByUserIdAndAuthorId(userId, authorId);
+
+        if (interestAuthorList.size() != 1) {
+            throw new Exception400("관심웹툰이아닌데");
+        }
+
+        InterestAuthor interestAuthor = interestAuthorList.get(0);
+
+        if(interestAuthor.getIsAlarm() == true){
+            throw new Exception400("이미알람켜져있음");
+        }
+
+        interestAuthor.setIsAlarm(true);
+
+        UserResponse.InterestAuthorDTO responseDTO = new UserResponse.InterestAuthorDTO(interestAuthor);
+        return responseDTO;
+    }
+
+
+
+
+    // 관심 작가 알림끄기
+    @Transactional
+    public UserResponse.InterestAuthorDTO interestAuthorAlarmOff(int userId, int authorId) {
+
+        List<InterestAuthor> interestAuthorList = interestAuthorRepository.findByUserIdAndAuthorId(userId, authorId);
+
+        if (interestAuthorList.size() != 1) {
+            throw new Exception400("관심웹툰이아닌데");
+        }
+
+        InterestAuthor interestAuthor = interestAuthorList.get(0);
+
+        if(interestAuthor.getIsAlarm() == false){
+            throw new Exception400("이미알람꺼져있음");
+        }
+
+        interestAuthor.setIsAlarm(false);
+
+        UserResponse.InterestAuthorDTO responseDTO = new UserResponse.InterestAuthorDTO(interestAuthor);
+        return responseDTO;
+    }
+
+
+
     // MY 관심작가목록
     public List<UserResponse.InterestAuthorDTO> interestAuthor(int userId) {
 

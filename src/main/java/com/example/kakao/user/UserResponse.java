@@ -37,6 +37,7 @@ public class UserResponse {
         private String webtoonTitle;
         private Integer likeCommentCount;
         private Integer dislikeCommentCount;
+        private Integer reCommentCount;
 
         public MyCommentDTO(Comment comment, int sessionUserId) {
             this.id = comment.getId();
@@ -60,6 +61,8 @@ public class UserResponse {
             this.dislikeCommentCount = comment.getLikeCommentList().stream()
                     .map(t -> (t.getIsLike() == false) ? 1 : 0)
                     .reduce(0, (a, b) -> a + b);
+
+            this.reCommentCount = comment.getReCommentList().size();
         }
     }
 
