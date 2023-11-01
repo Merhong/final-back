@@ -68,6 +68,16 @@ public class UserController {
         return ResponseEntity.ok().body(ApiUtils.success(responseDTOList));
     }
 
+    // MY관심작가목록보기
+    @GetMapping("/users/interest/author")
+    public ResponseEntity<?> interestAuthor() {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        List<UserResponse.InterestAuthorDTO> responseDTOList = userService.interestAuthor(sessionUser.getId());
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTOList));
+    }
+
 
     // 회원가입
     @PostMapping("/join")

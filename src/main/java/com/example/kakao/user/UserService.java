@@ -5,9 +5,12 @@ import com.example.kakao._core.errors.exception.Exception500;
 import com.example.kakao._core.utils.JwtTokenUtils;
 import com.example.kakao.comment.Comment;
 import com.example.kakao.comment.CommentJPARepository;
+import com.example.kakao.entity.InterestAuthor;
 import com.example.kakao.entity.InterestWebtoon;
 import com.example.kakao.entity.enums.UserTypeEnum;
+import com.example.kakao.repository.InterestAuthorRepository;
 import com.example.kakao.repository.InterestWebtoonRepository;
+import com.example.kakao.user.UserResponse.InterestAuthorDTO;
 import com.example.kakao.user.UserResponse.InterestWebtoonDTO;
 
 import lombok.RequiredArgsConstructor;
@@ -25,6 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
     private final UserJPARepository userJPARepository;
     private final InterestWebtoonRepository interestWebtoonRepository;
+    private final InterestAuthorRepository interestAuthorRepository;
     private final CommentJPARepository commentRepository;
 
 
@@ -100,6 +104,18 @@ public class UserService {
         List<InterestWebtoon> interestWeboonList = interestWebtoonRepository.findByUserId(userId, Sort.by(Sort.Order.desc("id")));
         List<UserResponse.InterestWebtoonDTO> responseDTOList = interestWeboonList.stream()
                 .map(t -> new UserResponse.InterestWebtoonDTO(t))
+                .collect(Collectors.toList());
+
+        return responseDTOList;
+    }
+
+    
+    // MY 관심작가목록
+    public List<UserResponse.InterestAuthorDTO> interestAuthor(int userId) {
+
+        List<InterestAuthor> interestAuthorList = interestAuthorRepository.findByUserId(userId, Sort.by(Sort.Order.desc("id")));
+        List<UserResponse.InterestAuthorDTO> responseDTOList = interestAuthorList.stream()
+                .map(t -> new UserResponse.InterestAuthorDTO(t))
                 .collect(Collectors.toList());
 
         return responseDTOList;

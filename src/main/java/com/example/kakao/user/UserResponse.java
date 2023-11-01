@@ -2,8 +2,11 @@ package com.example.kakao.user;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.example.kakao.comment.Comment;
+import com.example.kakao.entity.AuthorBoard;
+import com.example.kakao.entity.InterestAuthor;
 import com.example.kakao.entity.InterestWebtoon;
 import com.example.kakao.entity.enums.UserTypeEnum;
 import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
@@ -59,6 +62,47 @@ public class UserResponse {
                     .reduce(0, (a, b) -> a + b);
         }
     }
+
+
+    @ToString
+    @Getter
+    @Setter
+    public static class InterestAuthorDTO {
+        private int id;
+        private int userId;
+        private int authorId;
+        private String authorPhoto;
+        private String authorNickname;
+        private String authorSiteURL;
+        private List<String> authorWebtoonNameList;
+        private Boolean isAlarm;
+        private Timestamp authorBoardCreateAt;
+        private Timestamp createdAt;
+
+        public InterestAuthorDTO(InterestAuthor ia) {
+            this.id = ia.getId();
+            this.userId = ia.getUser().getId();
+            this.authorId = ia.getAuthor().getId();
+            this.authorNickname = ia.getAuthor().getAuthorNickname();
+            this.authorPhoto = ia.getAuthor().getAuthorPhoto() == null ? "default_profile.png" : ia.getAuthor().getAuthorPhoto();
+            this.authorSiteURL = ia.getAuthor().getSiteURL() == null? "없음" : ia.getAuthor().getSiteURL();
+            this.isAlarm = ia.getIsAlarm();
+            this.createdAt = ia.getCreatedAt();
+
+            this.authorWebtoonNameList = ia.getAuthor().getWebtoonAuthorList().stream()
+                    .map(webtoonAuthor -> webtoonAuthor.getWebtoon().getTitle())
+                    .collect(Collectors.toList());
+
+            List<AuthorBoard> tempAuthorBoardList = ia.getAuthor().getAuthorBoardList();
+            if(tempAuthorBoardList.size() > 0){
+                this.authorBoardCreateAt = tempAuthorBoardList.get(0).getCreatedAt();
+            } else {
+                this.authorBoardCreateAt = ia.getAuthor().getCreatedAt();
+            }
+
+        }
+    }
+
 
 
 
