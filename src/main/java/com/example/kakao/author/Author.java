@@ -1,7 +1,7 @@
 package com.example.kakao.author;
 
-import com.example.kakao.entity.AuthorBoard;
-import com.example.kakao.entity.WebtoonAuthor;
+import com.example.kakao._entity.AuthorBoard;
+import com.example.kakao._entity.WebtoonAuthor;
 import com.example.kakao.user.User;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

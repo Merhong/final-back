@@ -6406,6 +6406,10 @@ INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `creat
 VALUES (5, 1, 302, false, '2021-06-03');
 INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `created_at`)
 VALUES (6, 1, 304, true, '2021-07-13');
+INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `created_at`)
+VALUES (7, 1, 305, true, '2021-08-13');
+INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `created_at`)
+VALUES (8, 1, 306, true, '2021-10-21');
 
 
 
@@ -6425,6 +6429,25 @@ VALUES (4, 102, '작가2글4제목', '작가글4내용', 'test.jpg', '2023-10-29
 INSERT INTO author_board_tb (`id`, `author_id`, `title`, `text`, `photo`, `created_at`)
 VALUES (5, 103, '작가3글5제목', '작가글5내용', 'test.jpg', '2023-10-31');
 
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+-- 메인 광고
+INSERT INTO advertising_main_tb (`id`, `webtoon_id`, `main_text`, `photo`, `created_at`)
+VALUES (1, 108, '메인광고1', 'EpisodeThumbnail/thumbnail_202x120_117b3cf8-0843-4cba-8b0f-a4bf5322a877.jpg', now());
+INSERT INTO advertising_main_tb (`id`, `webtoon_id`, `main_text`, `photo`, `created_at`)
+VALUES (2, 109, '메인광고2', 'EpisodeThumbnail/thumbnail_202x120_0b4fa1a4-a79b-4d9c-a710-8ffa648dbe69.jpg', now());
+INSERT INTO advertising_main_tb (`id`, `webtoon_id`, `main_text`, `photo`, `created_at`)
+VALUES (3, 110, '메인광고3', 'EpisodeThumbnail/thumbnail_202x120_887e0e0a-d005-44df-8393-f41e566da090.jpg', now());
+INSERT INTO advertising_main_tb (`id`, `webtoon_id`, `main_text`, `photo`, `created_at`)
+VALUES (4, 111, '메인광고4', 'EpisodeThumbnail/thumbnail_202x120_1235eae9-b2ff-48f4-aa57-4728cb7bdbe6.jpg', now());
+INSERT INTO advertising_main_tb (`id`, `webtoon_id`, `main_text`, `photo`, `created_at`)
+VALUES (5, 112, '메인광고5', 'EpisodeThumbnail/thumbnail_202x120_b58e2d6f-822f-4e95-a3f9-a9c739f5b444.jpg', now());
+INSERT INTO advertising_main_tb (`id`, `webtoon_id`, `main_text`, `photo`, `created_at`)
+VALUES (6, 113, '메인광고6', 'EpisodeThumbnail/thumbnail_202x120_c6625196-d1c2-4c14-ab34-1d531419b942.jpg', now());
 
 
 -------------------------------------------------------------------------------------------------------------------------

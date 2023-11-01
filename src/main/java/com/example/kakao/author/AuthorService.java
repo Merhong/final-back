@@ -2,8 +2,8 @@ package com.example.kakao.author;
 
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception404;
-import com.example.kakao.entity.InterestAuthor;
-import com.example.kakao.repository.InterestAuthorRepository;
+import com.example.kakao._entity.InterestAuthor;
+import com.example.kakao._repository.InterestAuthorRepository;
 import com.example.kakao.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

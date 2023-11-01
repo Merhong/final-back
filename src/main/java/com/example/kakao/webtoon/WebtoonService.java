@@ -2,9 +2,11 @@ package com.example.kakao.webtoon;
 
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception404;
-import com.example.kakao.entity.InterestWebtoon;
-import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
-import com.example.kakao.repository.InterestWebtoonRepository;
+import com.example.kakao._entity.AdvertisingMain;
+import com.example.kakao._entity.InterestWebtoon;
+import com.example.kakao._entity.enums.WebtoonSpeciallyEnum;
+import com.example.kakao._repository.AdvertisingMainRepository;
+import com.example.kakao._repository.InterestWebtoonRepository;
 import com.example.kakao.user.User;
 import com.example.kakao.user.UserJPARepository;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +25,25 @@ public class WebtoonService {
     private final UserJPARepository userRepository;
     // private final RecentWebtoonRepository recentWebtoonRepository;
     private final InterestWebtoonRepository interestWebtoonRepository;
+    private final AdvertisingMainRepository advertisingMainRepository;
+
+
+
+
+
+    public List<WebtoonResponse.AdvertisingMainDTO> advertisingMain() {
+        
+        List<AdvertisingMain> advertisingMainList = advertisingMainRepository.findAll();
+
+        List<WebtoonResponse.AdvertisingMainDTO> responseDTOList = advertisingMainList.stream()
+                .map(advertisingMain -> new WebtoonResponse.AdvertisingMainDTO(advertisingMain))
+                .collect(Collectors.toList());
+
+        return responseDTOList;
+    }
+
+
+
 
 
     // 웹툰목록보기

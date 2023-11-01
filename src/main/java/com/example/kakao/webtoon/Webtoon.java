@@ -1,9 +1,11 @@
 package com.example.kakao.webtoon;
 
-import com.example.kakao.entity.InterestWebtoon;
-import com.example.kakao.entity.WebtoonAuthor;
-import com.example.kakao.entity.WebtoonHashTag;
-import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
+import com.example.kakao._entity.AdvertisingMain;
+import com.example.kakao._entity.InterestWebtoon;
+import com.example.kakao._entity.WebtoonAuthor;
+import com.example.kakao._entity.WebtoonHashTag;
+import com.example.kakao._entity.enums.WebtoonSpeciallyEnum;
+import com.example.kakao.author.Author;
 import com.example.kakao.episode.Episode;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -39,6 +41,9 @@ public class Webtoon {
 
     @OneToMany(mappedBy = "webtoon", fetch = FetchType.LAZY)
     private List<WebtoonHashTag> webtoonHashTagList = new ArrayList<>();
+
+    @OneToOne(mappedBy = "webtoon")
+    private AdvertisingMain advertisingMain;
 
     @Column(length = 100, nullable = false)
     private String title;

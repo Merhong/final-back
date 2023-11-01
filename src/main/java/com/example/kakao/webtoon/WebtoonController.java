@@ -2,7 +2,7 @@ package com.example.kakao.webtoon;
 
 import com.example.kakao._core.errors.exception.Exception403;
 import com.example.kakao._core.utils.ApiUtils;
-import com.example.kakao.entity.enums.UserTypeEnum;
+import com.example.kakao._entity.enums.UserTypeEnum;
 import com.example.kakao.user.User;
 import com.example.kakao.webtoon.WebtoonResponse.EndRecommendationDTO;
 import lombok.RequiredArgsConstructor;
@@ -22,10 +22,19 @@ public class WebtoonController {
     private final HttpSession session;
 
 
+    
+    // 메인 광고
+    @GetMapping("/webtoons/advertising/main")
+    public ResponseEntity<?> advertisingMain() {
+        List<WebtoonResponse.AdvertisingMainDTO> responseDTOList = webtoonService.advertisingMain();
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTOList));
+    }
+
+
+
     // 웹툰 전체목록
     @GetMapping("/webtoons")
     public ResponseEntity<?> findAll(@RequestParam(value = "page", defaultValue = "0") Integer page) {
-        System.out.println("테스트 : findAll()");
         // List<WebtoonResponse.FindAllDTO> responseDTOs = webtoonService.findAll(page);
         List<WebtoonResponse.FindAllDTO> DTOList = webtoonService.findAll();
         return ResponseEntity.ok().body(ApiUtils.success(DTOList));

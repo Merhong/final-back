@@ -1,7 +1,8 @@
 package com.example.kakao.webtoon;
 
-import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.kakao._entity.enums.WebtoonSpeciallyEnum;
 
 import java.util.List;
 
