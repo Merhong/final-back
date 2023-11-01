@@ -252,6 +252,7 @@ public class WebtoonResponse {
         private String title;
         private String image;
         private Integer episodeCount;
+        private String intro;
         private List<String> authorNicknameList;
 
         public EndRecommendationDTO(Webtoon webtoon) {
@@ -259,6 +260,7 @@ public class WebtoonResponse {
             this.title = webtoon.getTitle();
             this.image = webtoon.getImage();
             this.episodeCount = webtoon.getEpisodeList().size();
+            this.intro = webtoon.getIntro();
             this.authorNicknameList = webtoon.getWebtoonAuthorList().stream()
                     .map(t -> t.getAuthor().getAuthorNickname())
                     .collect(Collectors.toList());

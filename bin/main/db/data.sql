@@ -2743,7 +2743,6 @@ VALUES (7, 3, 2, true, '2023-10-10');
 
 
 -- 댓글
-<<<<<<< HEAD
 INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
 VALUES (1, 1, 1, '에피소드1 쌀댓글1', '2020-11-21');
 INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
@@ -2779,110 +2778,6 @@ INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
 VALUES (16, 101, 2, '에피소드2 작가댓글1', '2022-06-16');
 INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
 VALUES (17, 101, 2, '에피소드2 작가댓글2', '2022-07-21');
-=======
-
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (1,2,65,'dictum magna. Ut tincidunt orci','2022-11-14 19:50:04');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (2,3,41,'lectus rutrum urna, nec luctus felis purus','2024-07-08 08:23:43');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (3,2,18,'nisi nibh lacinia orci, consectetuer euismod est arcu ac orci. Ut','2023-07-13 09:19:18');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (4,400,21,'In condimentum. Donec','2023-05-29 14:55:20');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (5,4,68,'Sed eu nibh vulputate mauris sagittis placerat.','2024-03-08 02:25:27');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (6,4,94,'netus et','2024-08-19 00:15:15');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (7,1,44,'feugiat nec, diam. Duis mi enim, condimentum eget, volutpat ornare, facilisis eget, ipsum. Donec sollicitudin adipiscing','2024-01-15 18:00:48');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (8,390,33,'Ut nec urna et arcu imperdiet ullamcorper.','2024-02-24 22:15:55');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (9,1,63,'nec, eleifend non, dapibus rutrum, justo.','2024-05-21 01:45:36');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (10,410,35,'mattis','2024-06-14 09:49:14');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (11,1,21,'nec, cursus a, enim. Suspendisse aliquet,','2023-06-05 04:02:40');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (12,412,105,'scelerisque sed, sapien. Nunc','2024-02-18 06:32:27');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (13,2,42,'sed orci lobortis augue scelerisque mollis. Phasellus','2023-05-21 21:36:08');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (14,1,57,'Quisque tincidunt pede ac urna. Ut tincidunt vehicula risus. Nulla eget','2023-08-24 10:22:48');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (15,430,106,'egestas, urna justo faucibus lectus, a sollicitudin orci sem eget massa. Suspendisse eleifend.','2023-01-13 21:57:33');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (16,400,59,'vel lectus. Cum','2023-12-22 10:19:21');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (17,1,52,'fermentum fermentum','2023-10-19 11:30:49');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (18,2,83,'tristique pharetra. Quisque ac libero nec ligula consectetuer rhoncus. Nullam velit dui, semper et, lacinia','2023-05-15 17:12:38');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (20,4,76,'rhoncus. Donec','2022-12-17 05:45:08');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (21,4,16,'metus facilisis','2024-10-19 16:54:02');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (22,421,34,'cursus non, egestas a, dui. Cras pellentesque. Sed dictum. Proin eget odio. Aliquam vulputate','2023-08-04 14:08:59');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (23,1,38,'mollis','2024-10-24 04:25:41');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (24,3,87,'sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet','2023-07-29 20:01:23');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (25,432,41,'Aliquam ultrices iaculis odio. Nam interdum enim non','2023-08-06 09:40:43');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (26,440,95,'Donec feugiat metus sit amet ante. Vivamus non','2023-05-16 18:51:11');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (27,1,32,'egestas a, dui. Cras','2024-05-03 20:34:16');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (28,391,34,'accumsan sed, facilisis vitae, orci. Phasellus dapibus quam quis diam. Pellentesque habitant','2023-09-26 21:13:12');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (29,392,106,'et risus. Quisque libero lacus, varius et, euismod et, commodo at, libero. Morbi accumsan laoreet ipsum.','2023-08-13 00:05:55');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (30,3,62,'nibh enim, gravida sit amet,','2023-04-27 21:06:17');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (31,2,31,'odio a purus. Duis elementum,','2024-07-16 10:09:27');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (32,397,59,'eleifend vitae, erat.','2023-07-01 15:04:19');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (33,395,58,'rutrum non, hendrerit id, ante.','2023-04-23 16:30:33');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (34,411,23,'tortor nibh sit amet orci. Ut','2024-06-19 23:21:26');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (35,412,9,'quam a felis ullamcorper viverra. Maecenas iaculis aliquet diam. Sed','2024-04-18 20:09:05');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (36,415,49,'sagittis. Duis gravida. Praesent eu nulla at sem molestie sodales. Mauris','2024-01-04 16:47:00');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (37,3,66,'tellus. Aenean egestas hendrerit neque. In ornare sagittis felis. Donec tempor, est','2024-10-09 05:11:02');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (38,422,9,'quis urna. Nunc quis arcu','2022-12-17 19:25:01');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (39,4,102,'dolor egestas rhoncus. Proin nisl sem, consequat nec, mollis vitae, posuere at, velit. Cras','2023-11-22 04:56:00');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (40,411,54,'vel turpis. Aliquam adipiscing lobortis risus. In mi pede,','2023-06-18 12:26:34');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (41,1,46,'primis in faucibus orci luctus et ultrices posuere cubilia','2024-10-18 23:48:18');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (42,4,88,'mauris eu elit. Nulla facilisi. Sed neque. Sed eget lacus.','2024-01-02 23:47:47');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (43,403,7,'mollis lectus pede et risus. Quisque libero lacus, varius et, euismod','2023-09-01 02:56:07');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (44,412,38,'et malesuada fames ac turpis egestas. Fusce aliquet magna','2024-04-17 07:57:56');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (45,2,38,'cursus a, enim. Suspendisse aliquet, sem ut cursus luctus, ipsum leo elementum sem, vitae','2022-12-02 09:11:40');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (46,4,100,'magnis dis parturient montes,','2024-02-12 18:51:11');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (47,411,32,'ut odio vel est tempor bibendum. Donec felis orci, adipiscing non,','2024-07-03 07:23:25');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (48,389,100,'Donec nibh enim, gravida sit amet, dapibus','2023-12-19 00:41:56');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (49,388,84,'eu, ligula. Aenean euismod mauris eu elit. Nulla facilisi. Sed neque. Sed eget lacus. Mauris','2023-12-16 13:29:58');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (50,392,108,'odio. Phasellus at augue id ante dictum cursus. Nunc mauris elit,','2022-11-17 02:20:20');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (51,400,15,'libero nec ligula consectetuer','2024-07-11 00:42:34');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (52,406,11,'nascetur ridiculus mus. Proin vel arcu eu odio tristique','2023-09-13 20:17:26');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (53,404,75,'convallis ligula. Donec luctus aliquet odio. Etiam ligula tortor, dictum','2023-03-21 07:15:33');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (54,4,37,'magnis dis parturient montes, nascetur ridiculus mus. Proin vel arcu eu odio tristique pharetra.','2023-10-29 12:06:20');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (55,3,107,'mauris','2024-06-09 21:23:51');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (56,1,104,'a felis ullamcorper viverra. Maecenas iaculis aliquet diam. Sed diam','2024-04-16 00:08:47');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (57,1,104,'feugiat nec, diam. Duis mi enim, condimentum eget, volutpat ornare, facilisis eget, ipsum. Donec sollicitudin adipiscing','2024-09-07 23:38:14');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (58,4,77,'ultrices. Duis volutpat nunc sit amet metus. Aliquam erat volutpat. Nulla facilisis. Suspendisse commodo tincidunt nibh. Phasellus','2024-07-07 06:33:35');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (59,4,82,'ligula. Aliquam erat volutpat. Nulla dignissim. Maecenas ornare egestas ligula. Nullam feugiat placerat','2023-05-09 01:05:09');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (60,4,64,'et malesuada fames ac turpis egestas. Fusce aliquet magna a neque. Nullam ut nisi a','2023-01-20 07:01:48');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (61,1,103,'ultrices iaculis odio. Nam interdum enim non nisi. Aenean eget metus. In nec','2023-11-20 05:22:02');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (62,4,35,'Integer sem elit, pharetra','2023-03-07 10:40:16');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (63,2,13,'torquent per conubia nostra, per inceptos hymenaeos. Mauris ut quam vel sapien imperdiet ornare. In faucibus.','2022-12-16 07:47:02');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (64,4,22,'Integer aliquam adipiscing lacus. Ut nec urna et arcu imperdiet ullamcorper. Duis at lacus. Quisque purus','2024-03-02 11:53:24');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (65,4,103,'Etiam bibendum','2024-10-15 03:31:24');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (66,4,84,'aliquet odio. Etiam ligula tortor, dictum eu, placerat eget,','2023-09-14 03:25:59');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (67,2,38,'enim, sit','2023-12-26 22:46:52');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (68,4,45,'mus. Proin vel arcu eu odio tristique pharetra. Quisque','2024-03-31 20:15:54');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (69,4,25,'feugiat metus sit amet ante.','2024-07-01 14:24:59');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (70,3,75,'sagittis augue, eu tempor erat neque non quam. Pellentesque habitant morbi tristique senectus et netus et malesuada','2024-04-23 17:04:14');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (71,411,98,'scelerisque neque sed sem egestas','2023-03-19 07:22:48');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (72,1,32,'egestas. Duis ac arcu. Nunc mauris. Morbi non sapien','2024-05-26 06:57:54');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (73,1,79,'rutrum urna, nec luctus','2024-03-07 16:11:17');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (74,2,58,'Aliquam ultrices','2023-11-29 04:30:16');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (75,4,46,'penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec dignissim magna a tortor. Nunc commodo auctor velit.','2023-01-03 09:33:50');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (76,3,77,'enim. Mauris quis turpis vitae purus gravida sagittis. Duis gravida. Praesent eu nulla at sem','2023-09-07 20:58:31');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (77,4,58,'velit. Aliquam nisl. Nulla eu neque pellentesque massa lobortis ultrices. Vivamus rhoncus. Donec est. Nunc ullamcorper, velit','2023-08-08 04:45:14');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (78,1,2,'dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus','2022-11-21 14:02:40');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (79,1,107,'eget lacus. Mauris non dui nec urna suscipit nonummy. Fusce fermentum fermentum arcu. Vestibulum ante','2023-05-11 23:27:55');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (80,4,6,'Cras dolor dolor, tempus non, lacinia at, iaculis quis, pede. Praesent eu dui. Cum sociis natoque','2023-07-25 20:53:39');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (81,1,91,'nisi magna sed dui. Fusce aliquam, enim nec tempus scelerisque, lorem ipsum sodales purus,','2024-06-24 12:00:14');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (82,1,83,'amet, consectetuer','2024-05-24 17:03:15');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (83,4,13,'erat volutpat. Nulla dignissim. Maecenas','2023-04-29 10:47:08');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (84,417,16,'ridiculus mus. Proin vel arcu eu odio tristique pharetra. Quisque ac libero nec','2024-01-14 08:23:50');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (85,2,47,'mauris. Suspendisse aliquet molestie tellus. Aenean egestas','2023-11-18 11:05:17');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (86,3,81,'diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id, mollis','2024-08-17 21:39:27');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (87,2,72,'ultrices sit amet, risus.','2023-04-30 07:30:50');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (88,1,1,'enim, condimentum','2023-11-27 12:12:06');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (89,411,8,'Aliquam ultrices iaculis odio. Nam interdum enim non nisi. Aenean','2022-11-13 14:37:24');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (90,3,37,'adipiscing ligula. Aenean','2024-09-19 11:23:14');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (91,3,67,'nostra, per inceptos hymenaeos. Mauris ut quam vel sapien imperdiet ornare. In faucibus.','2024-05-08 06:30:35');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (92,433,67,'sem, vitae aliquam eros turpis non','2024-06-07 15:49:15');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (93,3,57,'mi lacinia mattis. Integer eu lacus. Quisque imperdiet, erat nonummy ultricies ornare, elit','2024-05-28 13:58:57');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (94,1,8,'magna. Phasellus','2023-06-20 11:21:23');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (95,3,33,'aliquet. Phasellus fermentum convallis ligula. Donec luctus aliquet odio. Etiam ligula tortor, dictum eu,','2023-10-18 01:25:25');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (96,4,62,'ornare egestas ligula. Nullam feugiat placerat velit. Quisque varius. Nam porttitor scelerisque neque. Nullam nisl.','2023-02-23 08:34:07');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (97,411,103,'vitae, erat. Vivamus nisi. Mauris nulla. Integer urna. Vivamus molestie dapibus ligula.','2023-10-28 21:36:51');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (98,390,71,'lorem vitae odio sagittis semper. Nam tempor','2023-09-30 08:30:31');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (99,3,102,'elementum, dui quis accumsan convallis, ante lectus convallis est, vitae sodales nisi magna sed dui. Fusce aliquam,','2024-01-08 18:32:51');
-  INSERT INTO comment_tb (`id`,`user_id`,`episode_id`,`text`,`created_at`) VALUES (100,4,87,'libero at auctor','2023-04-02 14:38:53');
-
->>>>>>> dev
-
 
 -------------------------------------------------------------------------------------------------------------------------
 
