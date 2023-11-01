@@ -7,14 +7,18 @@ import com.example.kakao.comment.Comment;
 import com.example.kakao.comment.CommentJPARepository;
 import com.example.kakao.entity.InterestAuthor;
 import com.example.kakao.entity.InterestWebtoon;
+import com.example.kakao.entity.ReComment;
 import com.example.kakao.entity.enums.UserTypeEnum;
 import com.example.kakao.repository.InterestAuthorRepository;
 import com.example.kakao.repository.InterestWebtoonRepository;
+import com.example.kakao.repository.ReCommentRepository;
 import com.example.kakao.user.UserResponse.InterestAuthorDTO;
 import com.example.kakao.user.UserResponse.InterestWebtoonDTO;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +34,7 @@ public class UserService {
     private final InterestWebtoonRepository interestWebtoonRepository;
     private final InterestAuthorRepository interestAuthorRepository;
     private final CommentJPARepository commentRepository;
+    private final ReCommentRepository reCommentRepository;
 
 
 
@@ -39,12 +44,27 @@ public class UserService {
     // MY댓글목록
     public List<UserResponse.MyCommentDTO> comment(int userId) {
 
-        List<Comment> commentList = commentRepository.findByUserId(userId, Sort.by(Sort.Order.desc("id")));
+        List<Comment> onlyCommentList = commentRepository.findByUserId(userId, Sort.by(Sort.Order.desc("id")));
+        
+        List<UserResponse.MyCommentDTO> onlyCommentDTOList = onlyCommentList.stream()
+        .filter(comment -> comment.getIsDelete() == false)
+        .map(comment -> new UserResponse.MyCommentDTO(comment, userId))
+        .collect(Collectors.toList());
+        
+        
+        List<ReComment> onlyReCommentList = reCommentRepository.findByUserId(userId, Sort.by(Sort.Order.desc("id")));
 
-        List<UserResponse.MyCommentDTO> responseDTOList = commentList.stream()
-                .filter(t -> t.getIsDelete() == false)
-                .map(t -> new UserResponse.MyCommentDTO(t, userId))
-                .collect(Collectors.toList());
+        List<UserResponse.MyCommentDTO> onlyReCommentDTOList = onlyReCommentList.stream()
+        .filter(reComment -> reComment.getIsDelete() == false)
+        .map(reComment -> new UserResponse.MyCommentDTO(reComment, userId))
+        .collect(Collectors.toList());
+        
+        List<UserResponse.MyCommentDTO> responseDTOList = new ArrayList<>();
+        responseDTOList.addAll(onlyCommentDTOList);
+        responseDTOList.addAll(onlyReCommentDTOList);
+
+        // responseDTOList.sort((dto1, dto2) -> dto1.getCreatedAt().compareTo(dto2.getCreatedAt()));
+        responseDTOList.sort(Collections.reverseOrder((dto1, dto2) -> dto1.getCreatedAt().compareTo(dto2.getCreatedAt())));
 
         return responseDTOList;
     }

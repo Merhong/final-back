@@ -3374,7 +3374,7 @@ VALUES (104, '프롤로그 - 롤백', 11, 35, 'thumbnail_202x120_3cbccb02-0c9e-4
 
 
 
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'random1000/dummy (70).png');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'random1000/dummy (4).png');
 INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'random1000/dummy (441).png');
 INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'random1000/dummy (693).png');
 INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'random1000/dummy (617).png');
