@@ -32,6 +32,38 @@ public class WebtoonService {
 
 
 
+
+
+
+
+    // 검색
+    public List<WebtoonResponse.SearchDTO> search(String searchText) {
+        List<Webtoon> webtoonList = webtoonRepository.findByWebtoonByTitleAndAuthorNickname(searchText, searchText);
+
+        List<WebtoonResponse.SearchDTO> responseDTOList = webtoonList.stream()
+                .map(webtoon -> {
+                    double totalStarCount = webtoon.getEpisodeList().stream()
+                            .map(episode -> episode.getStarCount())
+                            .reduce(0.0, (a, b) -> a + b);
+                    webtoon.setStarCount(totalStarCount);
+                    return webtoon;
+                })
+                .map(webtoon -> {
+                    double totalStarScore = webtoon.getEpisodeList().stream()
+                            .map(episode -> episode.getStarScore())
+                            .reduce(0.0, (a, b) -> a + b);
+                    webtoon.setStarScore(totalStarScore);
+                    return webtoon;
+                })
+                .map(webtoon -> new WebtoonResponse.SearchDTO(webtoon))
+                .collect(Collectors.toList());
+
+        return responseDTOList;
+    }
+
+
+
+    // 서브 광고
     public List<WebtoonResponse.AdvertisingSubDTO> advertisingSub() {
         
         List<AdvertisingSub> advertisingMainList = advertisingSubRepository.findAll();
@@ -45,7 +77,7 @@ public class WebtoonService {
 
 
 
-
+    // 메인 광고
     public List<WebtoonResponse.AdvertisingMainDTO> advertisingMain() {
         
         List<AdvertisingMain> advertisingMainList = advertisingMainRepository.findAll();

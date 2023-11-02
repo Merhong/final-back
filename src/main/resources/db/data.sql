@@ -1246,7 +1246,7 @@ VALUES ('303', 'dummyAuthor303@naver.com', '1234', 'SIU');
 INSERT INTO author_tb (`id`, `author_nickname`, `user_id`, `author_photo`)
 VALUES ('303', 'SIU', '303', 'authorId303.jpg');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
-VALUES ('302', 0, '신의 탑', 5, 47, '월화수', '자신의 모든 것이었던 소녀를 쫓아 탑에 들어온 소년그리고 그런 소년을 시험하는 탑', '무료', 'thumbnail_IMAG21_5f3fec31-5c95-4afe-a73f-3046288edb47.jpg', '2023-10-10');
+VALUES ('302', 0, '신의 탑', 5, 47, '월화수', '자신의 모든 것이었던 소녀를 쫓아 탑에 들어온 소년 그리고 그런 소년을 시험하는 탑', '무료', 'thumbnail_IMAG21_5f3fec31-5c95-4afe-a73f-3046288edb47.jpg', '2023-10-10');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('303', '302', '303');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)

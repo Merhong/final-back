@@ -24,6 +24,16 @@ public class WebtoonController {
 
 
 
+    // 검색
+    @GetMapping("/search")
+    public ResponseEntity<?> search(String searchText) {
+        List<WebtoonResponse.SearchDTO> responseDTOList = webtoonService.search(searchText);
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTOList));
+    }
+
+
+
+
     // 서브 광고
     @GetMapping("/webtoons/advertising/sub")
     public ResponseEntity<?> advertisingSub() {

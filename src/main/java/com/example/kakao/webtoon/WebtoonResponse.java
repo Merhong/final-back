@@ -24,6 +24,51 @@ public class WebtoonResponse {
 
 
 
+
+    @ToString
+    @Getter
+    @Setter
+    public static class SearchDTO {
+        private Integer id;
+        private String title;
+        private Double starScore;
+        private Double starCount;
+        private String image;
+        // private Integer ageLimit;
+        private WebtoonSpeciallyEnum webtoonSpeciallyEnum;
+        // private String webtoonWeekDayEnum;
+        private List<String> authorNicknameList;
+        
+        private Timestamp episodeUpdatedAt;
+
+        public SearchDTO(Webtoon webtoon) {
+            this.id = webtoon.getId();
+            this.title = webtoon.getTitle();
+            this.starScore = webtoon.getStarScore();
+            this.starCount = webtoon.getStarCount();
+
+            // this.image = webtoon.getEpisodeList().size() >= 1 ? webtoon.getEpisodeList().get(0).getThumbnail() : webtoon.getImage();
+            this.image = webtoon.getImage();
+
+            // this.ageLimit = webtoon.getAgeLimit();
+            this.webtoonSpeciallyEnum = webtoon.getWebtoonSpeciallyEnum();
+            // this.webtoonWeekDayEnum = webtoon.getWebtoonWeekDayEnum();
+            // this.authorDTO = new AuthorDTO(webtoon.getAuthor());
+            this.authorNicknameList = webtoon.getWebtoonAuthorList().stream()
+                    .map(t -> t.getAuthor().getAuthorNickname())
+                    .collect(Collectors.toList());
+
+            this.episodeUpdatedAt = webtoon.getEpisodeList().size() != 0
+                ? webtoon.getEpisodeList().get(0).getCreatedAt()
+                : webtoon.getCreatedAt();
+        }
+
+    }
+
+
+
+
+
     @ToString
     @Getter
     @Setter
@@ -254,10 +299,12 @@ public class WebtoonResponse {
         class AuthorDTO {
             private Integer id;
             private String authorNickname;
+            private String authorPhoto;
 
             AuthorDTO(Author author) {
                 this.id = author.getId();
                 this.authorNickname = author.getAuthorNickname();
+                this.authorPhoto = author.getAuthorPhoto();
             }
         }
 
