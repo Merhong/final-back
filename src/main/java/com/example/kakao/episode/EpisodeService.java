@@ -2,8 +2,8 @@ package com.example.kakao.episode;
 
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception404;
-import com.example.kakao.entity.LikeEpisode;
-import com.example.kakao.repository.LikeEpisodeRepository;
+import com.example.kakao._entity.LikeEpisode;
+import com.example.kakao._repository.LikeEpisodeRepository;
 import com.example.kakao.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

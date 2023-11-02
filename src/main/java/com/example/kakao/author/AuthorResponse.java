@@ -1,11 +1,12 @@
 package com.example.kakao.author;
 
-import com.example.kakao.entity.InterestAuthor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import java.sql.Timestamp;
+
+import com.example.kakao._entity.InterestAuthor;
 
 public class AuthorResponse {
 

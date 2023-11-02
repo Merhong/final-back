@@ -1,10 +1,12 @@
 package com.example.kakao.webtoon;
 
+import com.example.kakao._entity.AdvertisingMain;
+import com.example.kakao._entity.AdvertisingSub;
+import com.example.kakao._entity.InterestWebtoon;
+import com.example.kakao._entity.WebtoonHashTag;
+import com.example.kakao._entity.enums.HashTagEnum;
+import com.example.kakao._entity.enums.WebtoonSpeciallyEnum;
 import com.example.kakao.author.Author;
-import com.example.kakao.entity.InterestWebtoon;
-import com.example.kakao.entity.WebtoonHashTag;
-import com.example.kakao.entity.enums.HashTagEnum;
-import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
 import com.example.kakao.episode.Episode;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,6 +21,76 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 public class WebtoonResponse {
+
+
+
+    @ToString
+    @Getter
+    @Setter
+    public static class AdvertisingSubDTO {
+        private int id;
+        private String photo;
+        private String linkURL;
+        private Timestamp createdAt;
+        private Timestamp updatedAt;
+        private Timestamp endDate;
+
+        public AdvertisingSubDTO(AdvertisingSub advertisingSub) {
+            this.id = advertisingSub.getId();
+            this.photo = advertisingSub.getPhoto();
+            this.linkURL = advertisingSub.getLinkURL();
+            this.createdAt = advertisingSub.getCreatedAt();
+            this.updatedAt = advertisingSub.getUpdatedAt();
+            this.endDate = advertisingSub.getEndDate();
+        }
+    }
+
+
+
+    @ToString
+    @Getter
+    @Setter
+    public static class AdvertisingMainDTO {
+        private int id;
+        private String mainText;
+        private String subText;
+        private String photo;
+        private String linkURL;
+        private Timestamp createdAt;
+        private Timestamp updatedAt;
+        private Timestamp endDate;
+        private int webtoonId;
+        private String webtoonTitle;
+        private WebtoonSpeciallyEnum webtoonSpeciallyEnum;
+        private List<String> authorNicknameList;
+        
+        private Boolean isWebLink = true;
+
+        public AdvertisingMainDTO(AdvertisingMain advertisingMain) {
+            this.id = advertisingMain.getId();
+            this.mainText = advertisingMain.getMainText();
+            this.subText = advertisingMain.getSubText();
+            this.photo = advertisingMain.getPhoto();
+            this.linkURL = advertisingMain.getLinkURL();
+            this.createdAt = advertisingMain.getCreatedAt();
+            this.updatedAt = advertisingMain.getUpdatedAt();
+            this.endDate = advertisingMain.getEndDate();
+
+            if(advertisingMain.getIsWebLink()== false){
+                this.isWebLink = false;
+                this.webtoonId = advertisingMain.getWebtoon().getId();
+                this.webtoonTitle = advertisingMain.getWebtoon().getTitle();
+                this.webtoonSpeciallyEnum = advertisingMain.getWebtoon().getWebtoonSpeciallyEnum();
+                
+                this.authorNicknameList = advertisingMain.getWebtoon().getWebtoonAuthorList().stream()
+                        .map(t -> t.getAuthor().getAuthorNickname())
+                        .collect(Collectors.toList());
+            }
+
+        }
+    }
+
+
 
     @ToString
     @Getter

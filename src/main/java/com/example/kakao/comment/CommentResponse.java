@@ -1,10 +1,5 @@
 package com.example.kakao.comment;
 
-import com.example.kakao.entity.LikeComment;
-import com.example.kakao.entity.LikeReComment;
-import com.example.kakao.entity.ReComment;
-import com.example.kakao.entity.enums.UserTypeEnum;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -12,6 +7,11 @@ import lombok.ToString;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.example.kakao._entity.LikeComment;
+import com.example.kakao._entity.LikeReComment;
+import com.example.kakao._entity.ReComment;
+import com.example.kakao._entity.enums.UserTypeEnum;
 
 public class CommentResponse {
 

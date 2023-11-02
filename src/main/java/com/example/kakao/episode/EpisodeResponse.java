@@ -1,9 +1,10 @@
 package com.example.kakao.episode;
 
+import com.example.kakao._entity.EpisodePhoto;
+import com.example.kakao._entity.LikeEpisode;
+import com.example.kakao._entity.ReComment;
 import com.example.kakao.comment.Comment;
-import com.example.kakao.entity.EpisodePhoto;
-import com.example.kakao.entity.LikeEpisode;
-import com.example.kakao.entity.ReComment;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

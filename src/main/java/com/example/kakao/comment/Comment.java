@@ -1,7 +1,7 @@
 package com.example.kakao.comment;
 
-import com.example.kakao.entity.LikeComment;
-import com.example.kakao.entity.ReComment;
+import com.example.kakao._entity.LikeComment;
+import com.example.kakao._entity.ReComment;
 import com.example.kakao.episode.Episode;
 import com.example.kakao.user.User;
 import lombok.*;
