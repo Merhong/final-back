@@ -22,6 +22,16 @@ public class WebtoonController {
     private final HttpSession session;
 
 
+
+
+    // 서브 광고
+    @GetMapping("/webtoons/advertising/sub")
+    public ResponseEntity<?> advertisingSub() {
+        List<WebtoonResponse.AdvertisingSubDTO> responseDTOList = webtoonService.advertisingSub();
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTOList));
+    }
+
+
     
     // 메인 광고
     @GetMapping("/webtoons/advertising/main")

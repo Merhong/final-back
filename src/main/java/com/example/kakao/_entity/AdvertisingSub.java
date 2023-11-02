@@ -21,12 +21,8 @@ public class AdvertisingSub {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne
-    private Webtoon webtoon;
-
-    private String mainText;
-
-    private String subText;
+    // @OneToOne
+    // private Webtoon webtoon;
 
     private String photo;
 

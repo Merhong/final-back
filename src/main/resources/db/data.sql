@@ -2728,7 +2728,7 @@ VALUES (116, '[수] 범철과 2주차', 11, 45, 'thumbnail_202x120_085de48b-dadb
 
 
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
-VALUES (108,'171화-인적성', '9', 36, 'thumbnail_202x120_caa01f32-f046-45e5-9b6d-8fbc80aee90e.jpg','2023-10-30 00:00:00.0');
+VALUES (108,'171화-인적성', '9', 36, 'thumbnail_202x120_caa01f32-f046-45e5-9b6d-8fbc80aee90e.jpg', now());
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
 VALUES (108,'170화-서류 전형(3)', '9', 41, 'thumbnail_202x120_2ba0c033-fbbd-407a-b057-49cdba2a5d70.jpg','2023-10-26 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
@@ -2978,7 +2978,7 @@ VALUES (113,'2부 92화. 당문 풍운', '12', 60, 'thumbnail_202x120_83c092e5-b
 
 
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
-VALUES (301,'402화_863K 전역 (2)', '13', 61, 'thumbnail_202x120_b1c9f06f-63a1-4055-9435-cf0c0487709c.jpg','2023-10-29 00:00:00.0');
+VALUES (301,'402화_863K 전역 (2)', '13', 61, 'thumbnail_202x120_b1c9f06f-63a1-4055-9435-cf0c0487709c.jpg', now());
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
 VALUES (301,'401화_863K 전역', '13', 53, 'thumbnail_202x120_50b4b2d6-6391-4ca4-9359-043e521c3196.jpg','2023-10-22 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
@@ -6436,18 +6436,43 @@ VALUES (5, 103, '작가3글5제목', '작가글5내용', 'test.jpg', '2023-10-31
 
 
 -- 메인 광고
-INSERT INTO advertising_main_tb (`id`, `webtoon_id`, `main_text`, `photo`, `created_at`)
-VALUES (1, 108, '메인광고1', 'EpisodeThumbnail/thumbnail_202x120_117b3cf8-0843-4cba-8b0f-a4bf5322a877.jpg', now());
-INSERT INTO advertising_main_tb (`id`, `webtoon_id`, `main_text`, `photo`, `created_at`)
-VALUES (2, 109, '메인광고2', 'EpisodeThumbnail/thumbnail_202x120_0b4fa1a4-a79b-4d9c-a710-8ffa648dbe69.jpg', now());
-INSERT INTO advertising_main_tb (`id`, `webtoon_id`, `main_text`, `photo`, `created_at`)
-VALUES (3, 110, '메인광고3', 'EpisodeThumbnail/thumbnail_202x120_887e0e0a-d005-44df-8393-f41e566da090.jpg', now());
-INSERT INTO advertising_main_tb (`id`, `webtoon_id`, `main_text`, `photo`, `created_at`)
-VALUES (4, 111, '메인광고4', 'EpisodeThumbnail/thumbnail_202x120_1235eae9-b2ff-48f4-aa57-4728cb7bdbe6.jpg', now());
-INSERT INTO advertising_main_tb (`id`, `webtoon_id`, `main_text`, `photo`, `created_at`)
-VALUES (5, 112, '메인광고5', 'EpisodeThumbnail/thumbnail_202x120_b58e2d6f-822f-4e95-a3f9-a9c739f5b444.jpg', now());
-INSERT INTO advertising_main_tb (`id`, `webtoon_id`, `main_text`, `photo`, `created_at`)
-VALUES (6, 113, '메인광고6', 'EpisodeThumbnail/thumbnail_202x120_c6625196-d1c2-4c14-ab34-1d531419b942.jpg', now());
+INSERT INTO advertising_main_tb (`photo`, `created_at`, `is_web_link`, `linkURL`, `main_text`, `sub_text`)
+VALUES ('AD_main_test1.jpg', now(), true, 'https://naver.com', '네이버 링크', '클릭');
+INSERT INTO advertising_main_tb (`photo`, `created_at`, `is_web_link`, `linkURL`, `main_text`, `sub_text`)
+VALUES ('AD_main_test2.jpg', now(), true, 'https://github.com/Merhong/final-back', 'github back', '클릭');
+INSERT INTO advertising_main_tb (`photo`, `created_at`, `is_web_link`, `linkURL`, `main_text`, `sub_text`)
+VALUES ('AD_main_test3.jpg', now(), true, 'https://github.com/Merhong/final-front', 'github front', '클릭');
+
+INSERT INTO advertising_main_tb (`webtoon_id`, `photo`, `created_at`, `is_web_link`)
+VALUES (108, 'EpisodeThumbnail/thumbnail_202x120_117b3cf8-0843-4cba-8b0f-a4bf5322a877.jpg', now(), false);
+INSERT INTO advertising_main_tb (`webtoon_id`, `photo`, `created_at`, `is_web_link`)
+VALUES (109, 'EpisodeThumbnail/thumbnail_202x120_0b4fa1a4-a79b-4d9c-a710-8ffa648dbe69.jpg', now(), false);
+INSERT INTO advertising_main_tb (`webtoon_id`, `photo`, `created_at`, `is_web_link`)
+VALUES (110, 'EpisodeThumbnail/thumbnail_202x120_887e0e0a-d005-44df-8393-f41e566da090.jpg', now(), false);
+INSERT INTO advertising_main_tb (`webtoon_id`, `photo`, `created_at`, `is_web_link`)
+VALUES (111, 'EpisodeThumbnail/thumbnail_202x120_1235eae9-b2ff-48f4-aa57-4728cb7bdbe6.jpg', now(), false);
+INSERT INTO advertising_main_tb (`webtoon_id`, `photo`, `created_at`, `is_web_link`)
+VALUES (112, 'EpisodeThumbnail/thumbnail_202x120_b58e2d6f-822f-4e95-a3f9-a9c739f5b444.jpg', now(), false);
+INSERT INTO advertising_main_tb (`webtoon_id`, `photo`, `created_at`, `is_web_link`)
+VALUES (113, 'EpisodeThumbnail/thumbnail_202x120_c6625196-d1c2-4c14-ab34-1d531419b942.jpg', now(), false);
+
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+-- 서브 광고
+INSERT INTO advertising_sub_tb (`photo`, `created_at`, `linkURL`)
+VALUES ('AD_sub_test1.jpg', now(), 'https://naver.com');
+INSERT INTO advertising_sub_tb (`photo`, `created_at`, `linkURL`)
+VALUES ('AD_sub_test2.jpg', now(), 'https://github.com/Merhong/final-front');
+INSERT INTO advertising_sub_tb (`photo`, `created_at`, `linkURL`)
+VALUES ('AD_sub_test3.jpg', now(), 'https://github.com/Merhong/final-back');
+INSERT INTO advertising_sub_tb (`photo`, `created_at`, `linkURL`)
+VALUES ('AD_sub_test4.jpg', now(), 'https://www.google.co.kr');
+INSERT INTO advertising_sub_tb (`photo`, `created_at`, `linkURL`)
+VALUES ('AD_sub_test5.jpg', now(), 'https://chat.openai.com');
 
 
 -------------------------------------------------------------------------------------------------------------------------

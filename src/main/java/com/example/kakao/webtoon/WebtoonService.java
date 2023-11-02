@@ -3,9 +3,11 @@ package com.example.kakao.webtoon;
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception404;
 import com.example.kakao._entity.AdvertisingMain;
+import com.example.kakao._entity.AdvertisingSub;
 import com.example.kakao._entity.InterestWebtoon;
 import com.example.kakao._entity.enums.WebtoonSpeciallyEnum;
 import com.example.kakao._repository.AdvertisingMainRepository;
+import com.example.kakao._repository.AdvertisingSubRepository;
 import com.example.kakao._repository.InterestWebtoonRepository;
 import com.example.kakao.user.User;
 import com.example.kakao.user.UserJPARepository;
@@ -26,7 +28,20 @@ public class WebtoonService {
     // private final RecentWebtoonRepository recentWebtoonRepository;
     private final InterestWebtoonRepository interestWebtoonRepository;
     private final AdvertisingMainRepository advertisingMainRepository;
+    private final AdvertisingSubRepository advertisingSubRepository;
 
+
+
+    public List<WebtoonResponse.AdvertisingSubDTO> advertisingSub() {
+        
+        List<AdvertisingSub> advertisingMainList = advertisingSubRepository.findAll();
+
+        List<WebtoonResponse.AdvertisingSubDTO> responseDTOList = advertisingMainList.stream()
+                .map(advertisingSub -> new WebtoonResponse.AdvertisingSubDTO(advertisingSub))
+                .collect(Collectors.toList());
+
+        return responseDTOList;
+    }
 
 
 

@@ -32,6 +32,8 @@ public class AdvertisingMain {
 
     private String linkURL;
 
+    private Boolean isWebLink;
+
     @CreationTimestamp
     private Timestamp createdAt;
 

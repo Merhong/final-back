@@ -1,6 +1,7 @@
 package com.example.kakao.webtoon;
 
 import com.example.kakao._entity.AdvertisingMain;
+import com.example.kakao._entity.AdvertisingSub;
 import com.example.kakao._entity.InterestWebtoon;
 import com.example.kakao._entity.WebtoonHashTag;
 import com.example.kakao._entity.enums.HashTagEnum;
@@ -26,6 +27,29 @@ public class WebtoonResponse {
     @ToString
     @Getter
     @Setter
+    public static class AdvertisingSubDTO {
+        private int id;
+        private String photo;
+        private String linkURL;
+        private Timestamp createdAt;
+        private Timestamp updatedAt;
+        private Timestamp endDate;
+
+        public AdvertisingSubDTO(AdvertisingSub advertisingSub) {
+            this.id = advertisingSub.getId();
+            this.photo = advertisingSub.getPhoto();
+            this.linkURL = advertisingSub.getLinkURL();
+            this.createdAt = advertisingSub.getCreatedAt();
+            this.updatedAt = advertisingSub.getUpdatedAt();
+            this.endDate = advertisingSub.getEndDate();
+        }
+    }
+
+
+
+    @ToString
+    @Getter
+    @Setter
     public static class AdvertisingMainDTO {
         private int id;
         private String mainText;
@@ -40,7 +64,7 @@ public class WebtoonResponse {
         private WebtoonSpeciallyEnum webtoonSpeciallyEnum;
         private List<String> authorNicknameList;
         
-        private Timestamp episodeUpdatedAt;
+        private Boolean isWebLink = true;
 
         public AdvertisingMainDTO(AdvertisingMain advertisingMain) {
             this.id = advertisingMain.getId();
@@ -52,13 +76,17 @@ public class WebtoonResponse {
             this.updatedAt = advertisingMain.getUpdatedAt();
             this.endDate = advertisingMain.getEndDate();
 
-            this.webtoonId = advertisingMain.getWebtoon().getId();
-            this.webtoonTitle = advertisingMain.getWebtoon().getTitle();
-            this.webtoonSpeciallyEnum = advertisingMain.getWebtoon().getWebtoonSpeciallyEnum();
-            
-            this.authorNicknameList = advertisingMain.getWebtoon().getWebtoonAuthorList().stream()
-                    .map(t -> t.getAuthor().getAuthorNickname())
-                    .collect(Collectors.toList());
+            if(advertisingMain.getIsWebLink()== false){
+                this.isWebLink = false;
+                this.webtoonId = advertisingMain.getWebtoon().getId();
+                this.webtoonTitle = advertisingMain.getWebtoon().getTitle();
+                this.webtoonSpeciallyEnum = advertisingMain.getWebtoon().getWebtoonSpeciallyEnum();
+                
+                this.authorNicknameList = advertisingMain.getWebtoon().getWebtoonAuthorList().stream()
+                        .map(t -> t.getAuthor().getAuthorNickname())
+                        .collect(Collectors.toList());
+            }
+
         }
     }
 
