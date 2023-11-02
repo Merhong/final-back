@@ -7,14 +7,18 @@ import com.example.kakao.comment.Comment;
 import com.example.kakao.comment.CommentJPARepository;
 import com.example.kakao.entity.InterestAuthor;
 import com.example.kakao.entity.InterestWebtoon;
+import com.example.kakao.entity.ReComment;
 import com.example.kakao.entity.enums.UserTypeEnum;
 import com.example.kakao.repository.InterestAuthorRepository;
 import com.example.kakao.repository.InterestWebtoonRepository;
+import com.example.kakao.repository.ReCommentRepository;
 import com.example.kakao.user.UserResponse.InterestAuthorDTO;
 import com.example.kakao.user.UserResponse.InterestWebtoonDTO;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +34,7 @@ public class UserService {
     private final InterestWebtoonRepository interestWebtoonRepository;
     private final InterestAuthorRepository interestAuthorRepository;
     private final CommentJPARepository commentRepository;
+    private final ReCommentRepository reCommentRepository;
 
 
 
@@ -39,11 +44,27 @@ public class UserService {
     // MY댓글목록
     public List<UserResponse.MyCommentDTO> comment(int userId) {
 
-        List<Comment> commentList = commentRepository.findByUserId(userId);
+        List<Comment> onlyCommentList = commentRepository.findByUserId(userId, Sort.by(Sort.Order.desc("id")));
+        
+        List<UserResponse.MyCommentDTO> onlyCommentDTOList = onlyCommentList.stream()
+        .filter(comment -> comment.getIsDelete() == false)
+        .map(comment -> new UserResponse.MyCommentDTO(comment, userId))
+        .collect(Collectors.toList());
+        
+        
+        List<ReComment> onlyReCommentList = reCommentRepository.findByUserId(userId, Sort.by(Sort.Order.desc("id")));
 
-        List<UserResponse.MyCommentDTO> responseDTOList = commentList.stream()
-                .map(t -> new UserResponse.MyCommentDTO(t, userId))
-                .collect(Collectors.toList());
+        List<UserResponse.MyCommentDTO> onlyReCommentDTOList = onlyReCommentList.stream()
+        .filter(reComment -> reComment.getIsDelete() == false)
+        .map(reComment -> new UserResponse.MyCommentDTO(reComment, userId))
+        .collect(Collectors.toList());
+        
+        List<UserResponse.MyCommentDTO> responseDTOList = new ArrayList<>();
+        responseDTOList.addAll(onlyCommentDTOList);
+        responseDTOList.addAll(onlyReCommentDTOList);
+
+        // responseDTOList.sort((dto1, dto2) -> dto1.getCreatedAt().compareTo(dto2.getCreatedAt()));
+        responseDTOList.sort(Collections.reverseOrder((dto1, dto2) -> dto1.getCreatedAt().compareTo(dto2.getCreatedAt())));
 
         return responseDTOList;
     }
@@ -110,6 +131,56 @@ public class UserService {
     }
 
     
+
+    // 관심 작가 알림켜기
+    @Transactional
+    public UserResponse.InterestAuthorDTO interestAuthorAlarmOn(int userId, int authorId) {
+
+        List<InterestAuthor> interestAuthorList = interestAuthorRepository.findByUserIdAndAuthorId(userId, authorId);
+
+        if (interestAuthorList.size() != 1) {
+            throw new Exception400("관심웹툰이아닌데");
+        }
+
+        InterestAuthor interestAuthor = interestAuthorList.get(0);
+
+        if(interestAuthor.getIsAlarm() == true){
+            throw new Exception400("이미알람켜져있음");
+        }
+
+        interestAuthor.setIsAlarm(true);
+
+        UserResponse.InterestAuthorDTO responseDTO = new UserResponse.InterestAuthorDTO(interestAuthor);
+        return responseDTO;
+    }
+
+
+
+
+    // 관심 작가 알림끄기
+    @Transactional
+    public UserResponse.InterestAuthorDTO interestAuthorAlarmOff(int userId, int authorId) {
+
+        List<InterestAuthor> interestAuthorList = interestAuthorRepository.findByUserIdAndAuthorId(userId, authorId);
+
+        if (interestAuthorList.size() != 1) {
+            throw new Exception400("관심웹툰이아닌데");
+        }
+
+        InterestAuthor interestAuthor = interestAuthorList.get(0);
+
+        if(interestAuthor.getIsAlarm() == false){
+            throw new Exception400("이미알람꺼져있음");
+        }
+
+        interestAuthor.setIsAlarm(false);
+
+        UserResponse.InterestAuthorDTO responseDTO = new UserResponse.InterestAuthorDTO(interestAuthor);
+        return responseDTO;
+    }
+
+
+
     // MY 관심작가목록
     public List<UserResponse.InterestAuthorDTO> interestAuthor(int userId) {
 

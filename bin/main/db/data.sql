@@ -3374,7 +3374,7 @@ VALUES (104, '프롤로그 - 롤백', 11, 35, 'thumbnail_202x120_3cbccb02-0c9e-4
 
 
 
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'random1000/dummy (70).png');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'random1000/dummy (4).png');
 INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'random1000/dummy (441).png');
 INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'random1000/dummy (693).png');
 INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'random1000/dummy (617).png');
@@ -6266,15 +6266,15 @@ INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
 VALUES (9, 2, 1, '에피소드1 코스댓글3', '2022-06-18');
 INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
 VALUES (10, 3, 1, '에피소드1 어드민댓글1', '2022-07-17');
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`, `is_delete`)
-VALUES (11, 3, 1, '에피소드1 어드민댓글2 삭제', '2022-08-21', true);
+INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
+VALUES (11, 3, 1, '에피소드1 어드민댓글2', '2022-08-21');
 INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
 VALUES (12, 101, 1, '에피소드1 작가댓글1', '2022-09-22');
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`, `is_delete`)
-VALUES (13, 101, 1, '에피소드1 작가댓글2 삭제', '2022-11-02', true);
+INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
+VALUES (13, 101, 1, '에피소드1 작가댓글2', '2022-11-02');
 
 INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
-VALUES (14, 1, 2, '에피소드2 쌀댓글1', '2022-01-01');
+VALUES (14, 1, 2, '에피소드2 쌀댓글1', '2022-01-05');
 INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
 VALUES (15, 2, 2, '에피소드2 코스댓글1', '2022-04-12');
 INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
@@ -6321,12 +6321,12 @@ INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
 VALUES (5, 101, 1, '댓글1 작가 대댓글1', '2021-12-14');
 INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
 VALUES (6, 101, 1, '댓글1 작가 대댓글2', '2022-05-21');
-INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`, `is_delete`)
-VALUES (7, 101, 1, '댓글1 작가 대댓글3 삭제', '2022-06-01', true);
+INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
+VALUES (7, 101, 1, '댓글1 작가 대댓글3', '2022-06-01');
 INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`, `is_delete`)
 VALUES (8, 101, 1, '댓글1 쌀 대댓글3 삭제', '2022-09-02', true);
-INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`, `is_delete`)
-VALUES (9, 101, 1, '댓글1 어드민 대댓글2 삭제', '2022-12-04', true);
+INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
+VALUES (9, 101, 1, '댓글1 어드민 대댓글2', '2022-12-04');
 
 INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
 VALUES (10, 1, 2, '댓글2 쌀 대댓글1', '2021-05-16');

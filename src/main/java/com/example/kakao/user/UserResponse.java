@@ -8,6 +8,7 @@ import com.example.kakao.comment.Comment;
 import com.example.kakao.entity.AuthorBoard;
 import com.example.kakao.entity.InterestAuthor;
 import com.example.kakao.entity.InterestWebtoon;
+import com.example.kakao.entity.ReComment;
 import com.example.kakao.entity.enums.UserTypeEnum;
 import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
 import com.example.kakao.episode.Episode;
@@ -26,7 +27,7 @@ public class UserResponse {
     @Getter
     @Setter
     public static class MyCommentDTO {
-        private int id;
+        private int commentId;
         private String text;
         private Timestamp createdAt;
         private int userId;
@@ -38,8 +39,47 @@ public class UserResponse {
         private Integer likeCommentCount;
         private Integer dislikeCommentCount;
 
+        private Integer reCommentCount = -1;
+
+        private int reCommentId = -1;
+
+        private Boolean isReComment;
+
+
+
+        public MyCommentDTO(ReComment reComment, int sessionUserId) {
+            this.commentId = reComment.getComment().getId();
+            this.text = reComment.getText();
+            this.createdAt = reComment.getCreatedAt();
+            this.userId = sessionUserId;
+
+            // this.episodeDTO = comment.getEpisode();
+            Episode tempEpisode = reComment.getComment().getEpisode();
+            this.episodeId = tempEpisode.getId();
+            this.episodeTitle = tempEpisode.getDetailTitle();
+            this.episodeThumbnail = tempEpisode.getThumbnail();
+
+            this.webtoonId = tempEpisode.getWebtoon().getId();
+            this.webtoonTitle = tempEpisode.getWebtoon().getTitle();
+            
+            this.likeCommentCount = reComment.getLikeReCommentList().stream()
+                    .map(t -> (t.getIsLike() == true) ? 1 : 0)
+                    .reduce(0, (a, b) -> a + b);
+
+            this.dislikeCommentCount = reComment.getLikeReCommentList().stream()
+                    .map(t -> (t.getIsLike() == false) ? 1 : 0)
+                    .reduce(0, (a, b) -> a + b);
+            
+            this.reCommentId = reComment.getId();
+
+            this.isReComment = true;
+        }
+
+
+
+
         public MyCommentDTO(Comment comment, int sessionUserId) {
-            this.id = comment.getId();
+            this.commentId = comment.getId();
             this.text = comment.getText();
             this.createdAt = comment.getCreatedAt();
             this.userId = sessionUserId;
@@ -60,6 +100,10 @@ public class UserResponse {
             this.dislikeCommentCount = comment.getLikeCommentList().stream()
                     .map(t -> (t.getIsLike() == false) ? 1 : 0)
                     .reduce(0, (a, b) -> a + b);
+
+            this.reCommentCount = comment.getReCommentList().size();
+
+            this.isReComment = false;
         }
     }
 
