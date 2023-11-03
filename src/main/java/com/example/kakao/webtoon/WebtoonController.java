@@ -24,6 +24,31 @@ public class WebtoonController {
 
 
 
+    // 최근본웹툰 목록
+    @GetMapping("/webtoons/recent")
+    public ResponseEntity<?> recentFindAll() {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        List<WebtoonResponse.RecentDTO> responseDTOList = webtoonService.recentFindAll(sessionUser.getId());
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTOList));
+    }
+
+
+
+    
+    // 최근본웹툰 추가
+    @PostMapping("/webtoons/recent/{episodeId}")
+    public ResponseEntity<?> recentSave(@PathVariable int episodeId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        WebtoonResponse.RecentDTO responseDTO = webtoonService.recentSave(sessionUser.getId(), episodeId);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
+
+
     // 검색
     @GetMapping("/search")
     public ResponseEntity<?> search(String searchText) {

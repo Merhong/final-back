@@ -5,17 +5,26 @@ import com.example.kakao._core.errors.exception.Exception404;
 import com.example.kakao._entity.AdvertisingMain;
 import com.example.kakao._entity.AdvertisingSub;
 import com.example.kakao._entity.InterestWebtoon;
+import com.example.kakao._entity.RecentWebtoon;
 import com.example.kakao._entity.enums.WebtoonSpeciallyEnum;
 import com.example.kakao._repository.AdvertisingMainRepository;
 import com.example.kakao._repository.AdvertisingSubRepository;
 import com.example.kakao._repository.InterestWebtoonRepository;
+import com.example.kakao._repository.RecentWebtoonRepository;
+import com.example.kakao.episode.Episode;
+import com.example.kakao.episode.EpisodeRepository;
 import com.example.kakao.user.User;
 import com.example.kakao.user.UserJPARepository;
 import lombok.RequiredArgsConstructor;
+
+import org.apache.logging.log4j.util.PropertySource.Comparator;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -25,13 +34,82 @@ public class WebtoonService {
 
     private final WebtoonRepository webtoonRepository;
     private final UserJPARepository userRepository;
-    // private final RecentWebtoonRepository recentWebtoonRepository;
     private final InterestWebtoonRepository interestWebtoonRepository;
     private final AdvertisingMainRepository advertisingMainRepository;
     private final AdvertisingSubRepository advertisingSubRepository;
+    private final EpisodeRepository episodeRepository;
+    private final RecentWebtoonRepository recentWebtoonRepository;
 
 
 
+    // 최근본웹툰 목록
+    @Transactional
+    public List<WebtoonResponse.RecentDTO> recentFindAll(int sessionUserId) {
+
+        List<RecentWebtoon> recentWebtoonList = recentWebtoonRepository.findByUserId(sessionUserId);
+        // List<RecentWebtoon> recentWebtoonList = recentWebtoonRepository.findByUserId(sessionUserId);
+        
+        Map<Integer, RecentWebtoon> latestByWebtoonId = recentWebtoonList.stream()
+        .collect(Collectors.toMap(
+            recentWebtoon -> recentWebtoon.getWebtoon().getId(), // Map의 키 Integer
+            recentWebtoon -> recentWebtoon, // Map의 밸류 RecentWebtoon
+            (a, b) -> a.getUpdatedAt().after(b.getUpdatedAt()) ? a : b 
+            ));
+            
+        List<RecentWebtoon> filterList = new ArrayList<>(latestByWebtoonId.values());
+
+        // System.out.println(recentWebtoonList.size());
+        // System.out.println(filterList.size());
+
+        // for (RecentWebtoon asd : recentWebtoonList) {
+        //     System.out.println(asd.getEpisode().getDetailTitle());
+        // }
+        // System.out.println("테스트++++++++++++++++++++++++++++++++");
+        // for (RecentWebtoon recentWebtoon2 : filterList) {
+        //     System.out.println(recentWebtoon2.getEpisode().getDetailTitle());
+        // }
+
+        List<WebtoonResponse.RecentDTO> responseDTOList = filterList.stream()
+                .map(recentWebtoon -> new WebtoonResponse.RecentDTO(recentWebtoon))
+                .collect(Collectors.toList());
+
+        return responseDTOList;
+    }
+
+
+    // 최근본웹툰 추가
+    @Transactional
+    public WebtoonResponse.RecentDTO recentSave(int sessionUserId, int episodeId) {
+        Episode episode = episodeRepository.findById(episodeId)
+                .orElseThrow(() -> new Exception404(episodeId + "없음"));
+
+        List<RecentWebtoon> findRecentWebtoonList = recentWebtoonRepository.findByUserIdAndEpisodeId(sessionUserId, episodeId);
+
+        RecentWebtoon recentWebtoon;
+        if(findRecentWebtoonList.size()==0){
+            System.out.println("테스트 if 새로만듬");
+            recentWebtoon = RecentWebtoon.builder()
+            .user(User.builder().id(sessionUserId).build())
+            .episode(episode)
+            .webtoon(episode.getWebtoon())
+            .build();
+            recentWebtoonRepository.save(recentWebtoon);
+        } else{
+            System.out.println("테스트 else 있는거임");
+            recentWebtoon = findRecentWebtoonList.get(0);
+            recentWebtoon.setUpdatedAt(null);
+        }
+
+        // try {
+        //     recentWebtoonRepository.save(recentWebtoon); // 더티체킹으로 하면 updatedAt 갱신이 되나?
+        // } catch (Exception e) {
+        //     throw new Exception400("실패하면안돼는데");
+        // }
+
+        WebtoonResponse.RecentDTO responseDTO = new WebtoonResponse.RecentDTO(recentWebtoon);
+
+        return responseDTO;
+    }
 
 
 

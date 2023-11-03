@@ -3,6 +3,7 @@ package com.example.kakao.webtoon;
 import com.example.kakao._entity.AdvertisingMain;
 import com.example.kakao._entity.AdvertisingSub;
 import com.example.kakao._entity.InterestWebtoon;
+import com.example.kakao._entity.RecentWebtoon;
 import com.example.kakao._entity.WebtoonHashTag;
 import com.example.kakao._entity.enums.HashTagEnum;
 import com.example.kakao._entity.enums.WebtoonSpeciallyEnum;
@@ -21,6 +22,41 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 public class WebtoonResponse {
+
+
+
+    @ToString
+    @Getter
+    @Setter
+    public static class RecentDTO {
+        private int id;
+        private int recentEpisodeId;
+        private String recentEpisodeTitle;
+        private String recentEpisodeThumbnail;
+        private int webtoonId;
+        private String webtoonTitle;
+        private WebtoonSpeciallyEnum webtoonSpeciallyEnum;
+        private Timestamp updatedAt;
+        // private String webtoonImage; // 최근본웹툰이면 에피소드 하나는 무조건 본거니까 에피소드 사진으로
+
+        public RecentDTO(RecentWebtoon recentWebtoon) {
+            this.id = recentWebtoon.getId();
+
+            Episode episode = recentWebtoon.getEpisode();
+            this.recentEpisodeId = episode.getId();
+            this.recentEpisodeTitle = episode.getDetailTitle();
+            this.recentEpisodeThumbnail = episode.getThumbnail();
+
+            Webtoon webtoon = recentWebtoon.getWebtoon();
+            this.webtoonId = webtoon.getId();
+            this.webtoonTitle = webtoon.getTitle();
+            this.webtoonSpeciallyEnum = webtoon.getWebtoonSpeciallyEnum();
+
+            this.updatedAt = recentWebtoon.getUpdatedAt();
+        }
+
+        
+    }
 
 
 
