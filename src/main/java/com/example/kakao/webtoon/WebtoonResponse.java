@@ -361,6 +361,7 @@ public class WebtoonResponse {
             private Integer cookieCost;
             private Timestamp createdAt;
             private Timestamp updatedAt;
+            private Boolean isView = false;
 
             EpisodeDTO(Episode episode) {
 

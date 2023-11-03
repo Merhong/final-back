@@ -2,6 +2,7 @@ package com.example.kakao.episode;
 
 import com.example.kakao._entity.EpisodePhoto;
 import com.example.kakao._entity.LikeEpisode;
+import com.example.kakao._entity.RecentWebtoon;
 import com.example.kakao.comment.Comment;
 import com.example.kakao.webtoon.Webtoon;
 import lombok.*;
@@ -39,6 +40,9 @@ public class Episode {
 
     @OneToMany(mappedBy = "episode", fetch = FetchType.LAZY)
     private List<LikeEpisode> likeEpisodeList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "episode", fetch = FetchType.LAZY)
+    private List<RecentWebtoon> recentWebtoonList = new ArrayList<>();
 
     @Column(length = 100, nullable = false)
     private String detailTitle;

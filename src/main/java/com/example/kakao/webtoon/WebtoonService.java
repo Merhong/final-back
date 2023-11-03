@@ -15,6 +15,8 @@ import com.example.kakao.episode.Episode;
 import com.example.kakao.episode.EpisodeRepository;
 import com.example.kakao.user.User;
 import com.example.kakao.user.UserJPARepository;
+import com.example.kakao.webtoon.WebtoonResponse.FindByIdDTO.EpisodeDTO;
+
 import lombok.RequiredArgsConstructor;
 
 import org.apache.logging.log4j.util.PropertySource.Comparator;
@@ -265,6 +267,44 @@ public class WebtoonService {
             responseDTO.setIsInterest(true);
             responseDTO.setIsAlarm(interestWebtoonList.get(0).getIsAlarm());
         }
+
+
+        List<RecentWebtoon> recentWebtoonList = recentWebtoonRepository.findByUserIdAndWebtoonId(sessionUserId, webtoonId);
+
+        List<Integer> idList = recentWebtoonList.stream()
+                .map(recentWebtoon -> recentWebtoon.getEpisode().getId())
+                .collect(Collectors.toList());
+
+        // responseDTO.getEpisodeList().stream()
+        //         .filter(episoseDTO -> episoseDTO.getEpisodeId().contains(idList) )
+        //         .collect(Collectors.toList());
+
+                
+        List<EpisodeDTO> filteredEpisodeList = responseDTO.getEpisodeList().stream()
+                .map(
+                        episodeDTO -> {
+                            if(idList.contains(episodeDTO.getEpisodeId())){
+                                episodeDTO.setIsView(true);
+                            }
+                            return episodeDTO;
+                        }
+                )
+                .collect(Collectors.toList());
+
+        
+        
+        // (recentWebtoon -> {
+        //     if (episodeIds.contains(recentWebtoon.getWebtoon().getId())) {
+        //         recentWebtoon.setIsView(true);
+        //     }
+        // });
+
+        
+
+        // List<EpisodeDTO> episodeList = responseDTO.getEpisodeList();
+
+        // episodeList.stream().
+
 
         return responseDTO;
     }
