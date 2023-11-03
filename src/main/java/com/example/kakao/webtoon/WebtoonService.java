@@ -49,14 +49,16 @@ public class WebtoonService {
         List<RecentWebtoon> recentWebtoonList = recentWebtoonRepository.findByUserId(sessionUserId);
         // List<RecentWebtoon> recentWebtoonList = recentWebtoonRepository.findByUserId(sessionUserId);
         
-        Map<Integer, RecentWebtoon> latestByWebtoonId = recentWebtoonList.stream()
+        
+
+        Map<Integer, RecentWebtoon> filterMap = recentWebtoonList.stream()
         .collect(Collectors.toMap(
             recentWebtoon -> recentWebtoon.getWebtoon().getId(), // Map의 키 Integer
             recentWebtoon -> recentWebtoon, // Map의 밸류 RecentWebtoon
             (a, b) -> a.getUpdatedAt().after(b.getUpdatedAt()) ? a : b 
             ));
             
-        List<RecentWebtoon> filterList = new ArrayList<>(latestByWebtoonId.values());
+        List<RecentWebtoon> filterList = new ArrayList<>(filterMap.values());
 
         // System.out.println(recentWebtoonList.size());
         // System.out.println(filterList.size());
@@ -72,6 +74,30 @@ public class WebtoonService {
         List<WebtoonResponse.RecentDTO> responseDTOList = filterList.stream()
                 .map(recentWebtoon -> new WebtoonResponse.RecentDTO(recentWebtoon))
                 .collect(Collectors.toList());
+
+        responseDTOList = responseDTOList.stream()
+                .map(recentDTO -> {
+                        int totalCount = recentWebtoonList.stream()
+                                // .map(recentWebtoon -> recentWebtoon.getWebtoon())
+                                // .findFirst()
+                                .filter(recentWebtoon -> recentWebtoon.getWebtoon().getId() == recentDTO.getWebtoonId())
+                                .findFirst()
+                                .map(recentWebtoon -> recentWebtoon.getWebtoon().getEpisodeList().size())
+                                .orElse(-1);
+
+                        int viewCount = (int) recentWebtoonList.stream()
+                                .filter(recentWebtoon -> recentWebtoon.getWebtoon().getId() == recentDTO.getWebtoonId())
+                                .count();
+
+                        recentDTO.setTotalCount(totalCount);
+                        recentDTO.setViewCount(viewCount);
+                        // System.err.println("테스트"+totalCount);
+                        // System.err.println("테스트"+viewCount);
+                    return recentDTO;
+                })
+                .collect(Collectors.toList());
+
+
 
         return responseDTOList;
     }

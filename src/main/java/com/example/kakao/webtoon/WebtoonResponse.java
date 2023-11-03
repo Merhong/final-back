@@ -37,6 +37,9 @@ public class WebtoonResponse {
         private String webtoonTitle;
         private WebtoonSpeciallyEnum webtoonSpeciallyEnum;
         private Timestamp updatedAt;
+        private Integer totalCount;
+        private Integer viewCount;
+
         // private String webtoonImage; // 최근본웹툰이면 에피소드 하나는 무조건 본거니까 에피소드 사진으로
 
         public RecentDTO(RecentWebtoon recentWebtoon) {

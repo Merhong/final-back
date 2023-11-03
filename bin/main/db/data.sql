@@ -2684,6 +2684,11 @@ VALUES (103, '99화. 세력 선택(1)', 11, 55, 'thumbnail_202x120_e1fd4e23-d364
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
 VALUES (103, '98화. 가면무도회(2)', 11, 51, 'thumbnail_202x120_3bb77bf0-6260-4f12-9d64-5f4932e084a8.jpg', '2023-06-08 10:00:00.0');
 
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (103, '97화. 가면무도회(1)', 11, 43, 'thumbnail_202x120_178828c0-e69c-4841-9b99-41ee92ed5ac1.jpg', '2023-06-01 10:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (103, '96화. 짧은 쉼표', 11, 47, 'thumbnail_202x120_3a4a4475-f4aa-44c2-881d-5294ba3f3929.jpg', '2023-05-25 10:00:00.0');
+
 
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
 VALUES (116, '[월] 은우와 5주차', 11, 43, 'thumbnail_202x120_7e3575ed-30dd-4b14-ad3a-1c98f11d8c83.jpg', now());
@@ -3017,6 +3022,10 @@ INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,
 VALUES (301,'384화_대립', '13', 60, 'thumbnail_202x120_d0182ff4-fc7b-4480-9d8e-44134664ac32.jpg','2023-06-25 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
 VALUES (301,'383화_인연 (2)', '13', 61, 'thumbnail_202x120_5740a5c6-37ad-45aa-81c1-1a4699d3e7dd.JPG','2023-06-18 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
+VALUES (301,'382화_인연', '13', 55, 'thumbnail_202x120_6a43d177-cf46-4cc1-9b96-c33729265040.jpg','2023-06-11 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
+VALUES (301,'381화_미소년 학살자', '13', 54, 'thumbnail_202x120_a20a87c7-bd4d-43ac-ba85-dd2c9cd5c0ad.jpg','2023-06-04 00:00:00.0');
 
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
 VALUES (302,'3부 170화', '9', 32, 'thumbnail_202x120_fafa5106-a4dd-4b8c-b357-ac21a490f930.jpg','2023-10-29 00:00:00.0');
@@ -6539,3 +6548,8 @@ WHERE author_photo IS NULL;
 -- INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`, `author_text`)
 -- VALUES (101, '마지막임ㅁ', 555, 1, 'thumbnail_202x120_e3dd5cd4-0d3f-4b76-bb49-386c23221c2a.jpg', '2023-10-10', '에피소드1작가의말');
 
+
+-- INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+-- VALUES (103, '97화. 가면무도회(1)', 11, 43, 'thumbnail_202x120_178828c0-e69c-4841-9b99-41ee92ed5ac1.jpg', '2023-06-01 10:00:00.0');
+-- INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+-- VALUES (103, '96화. 짧은 쉼표', 11, 47, 'thumbnail_202x120_3a4a4475-f4aa-44c2-881d-5294ba3f3929.jpg', '2023-05-25 10:00:00.0');
