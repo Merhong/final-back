@@ -351,7 +351,7 @@ public class WebtoonResponse {
         @Getter
         @Setter
         @ToString
-        class EpisodeDTO {
+        public static class EpisodeDTO { // TODO public static 
             private Integer episodeId;
             private String detailTitle;
             private String thumbnail;
@@ -362,6 +362,7 @@ public class WebtoonResponse {
             private Timestamp createdAt;
             private Timestamp updatedAt;
             private Boolean isView = false;
+            private Boolean isLastView = false;
 
             EpisodeDTO(Episode episode) {
 

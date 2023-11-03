@@ -49,7 +49,6 @@ public class WebtoonService {
     public List<WebtoonResponse.RecentDTO> recentFindAll(int sessionUserId) {
 
         List<RecentWebtoon> recentWebtoonList = recentWebtoonRepository.findByUserId(sessionUserId);
-        // List<RecentWebtoon> recentWebtoonList = recentWebtoonRepository.findByUserId(sessionUserId);
         
         
 
@@ -271,43 +270,78 @@ public class WebtoonService {
 
         List<RecentWebtoon> recentWebtoonList = recentWebtoonRepository.findByUserIdAndWebtoonId(sessionUserId, webtoonId);
 
+
+        
         List<Integer> idList = recentWebtoonList.stream()
                 .map(recentWebtoon -> recentWebtoon.getEpisode().getId())
                 .collect(Collectors.toList());
 
-        // responseDTO.getEpisodeList().stream()
-        //         .filter(episoseDTO -> episoseDTO.getEpisodeId().contains(idList) )
-        //         .collect(Collectors.toList());
-
-                
-        List<EpisodeDTO> filteredEpisodeList = responseDTO.getEpisodeList().stream()
-                .map(
-                        episodeDTO -> {
-                            if(idList.contains(episodeDTO.getEpisodeId())){
-                                episodeDTO.setIsView(true);
-                            }
-                            return episodeDTO;
+        List<EpisodeDTO> episodeDTOList = responseDTO.getEpisodeList().stream()
+                .map(episodeDTO -> {
+                        if(idList.contains(episodeDTO.getEpisodeId())){
+                            episodeDTO.setIsView(true);
                         }
-                )
+                        return episodeDTO;
+                    })
                 .collect(Collectors.toList());
 
+
+
+         if(recentWebtoonList.size()<1){
+             System.err.println("테스트 끝남");
+            return responseDTO;
+        }
+
+        System.err.println("테스트 진행됨");
+
+
+        Map<Integer, RecentWebtoon> filterMap = recentWebtoonList.stream()
+                .collect(Collectors.toMap(
+                        recentWebtoon -> recentWebtoon.getWebtoon().getId(), // Map의 키 Integer
+                        recentWebtoon -> recentWebtoon, // Map의 밸류 RecentWebtoon
+                        (a, b) -> a.getUpdatedAt().after(b.getUpdatedAt()) ? a : b 
+                ));
+        List<RecentWebtoon> filterList = new ArrayList<>(filterMap.values());
+
+        System.out.println("테스트 진행됨2");
+        for (RecentWebtoon recentWebtoon22 : filterList) {
+            System.err.println("테스트 진행됨3  "+recentWebtoon22.getEpisode().getDetailTitle());
+            
+        }
         
+        System.err.println("테스트 진행4");
+        int filterInt = filterList.get(0).getId();
+        System.err.println("테스트 진행5 filterInt"+filterInt);
+
+        for (WebtoonResponse.FindByIdDTO.EpisodeDTO episodeDTO : episodeDTOList) {
+            if(episodeDTO.getEpisodeId() == filterInt){
+                episodeDTO.setIsLastView(true);
+                 System.err.println("ㅁㅁㅁㅁ테스트 진행5-2"); // id가 순서랑 다르니까 바꿔야함
+            }
+             System.err.println("테스트 진행5-3");
+        }
+
+        System.err.println("테스트 진6");
+        responseDTO.setEpisodeList(episodeDTOList);
+        System.err.println("테스트 진행7");
+        // int lastId = -1;
+        // if(filterList.size() != 0){
+        //     lastId = filterList.get(0).getId();
+        // }
         
-        // (recentWebtoon -> {
-        //     if (episodeIds.contains(recentWebtoon.getWebtoon().getId())) {
-        //         recentWebtoon.setIsView(true);
+        // for (EpisodeDTO episode : responseDTO.getEpisodeList()) {
+        //     if(episode.getEpisodeId() == lastId){
+        //         episode.setIsLastView(true);
         //     }
-        // });
+        // }
 
-        
-
-        // List<EpisodeDTO> episodeList = responseDTO.getEpisodeList();
-
-        // episodeList.stream().
 
 
         return responseDTO;
     }
+
+
+
 
     // 관심웹툰추가
     @Transactional
