@@ -25,6 +25,82 @@ public class WebtoonResponse {
 
 
 
+    
+
+    @Getter
+    @Setter
+    @ToString
+    public static class CreateDTO {
+        private Integer id;
+        private String title;
+        private String intro;
+        private String image;
+        private Integer ageLimit;
+        private String webtoonWeekDayEnum;
+        private WebtoonSpeciallyEnum webtoonSpeciallyEnum;
+        private Timestamp createdAt;
+        private Timestamp updatedAt;
+        // private List<AuthorDTO> authorList;
+        // private List<HashTagDTO> hashTagList;
+
+        public CreateDTO(Webtoon webtoon) {
+            this.id = webtoon.getId();
+            this.title = webtoon.getTitle();
+            this.intro = webtoon.getIntro();
+            this.image = webtoon.getImage();
+            this.ageLimit = webtoon.getAgeLimit();
+            this.webtoonWeekDayEnum = webtoon.getWebtoonWeekDayEnum();
+            this.webtoonSpeciallyEnum = webtoon.getWebtoonSpeciallyEnum();
+            this.createdAt = webtoon.getCreatedAt();
+            this.updatedAt = webtoon.getUpdatedAt();
+
+            // this.authorList = webtoon.getWebtoonAuthorList().stream()
+            //         .map(webtoonAuthor -> webtoonAuthor.getAuthor())
+            //         .map(author -> new AuthorDTO(author))
+            //         .collect(Collectors.toList());
+            
+            // this.hashTagList = webtoon.getWebtoonHashTagList().stream()
+            //         .map(hashTag -> new HashTagDTO(hashTag))
+            //         .collect(Collectors.toList());
+        }
+
+        // @Getter
+        // @Setter
+        // @ToString
+        // class HashTagDTO {
+        //     private int id;
+        //     private HashTagEnum hashTagEnum;
+        //     private String hashTagName;
+
+        //     HashTagDTO(WebtoonHashTag webtoonHashTag) {
+        //         this.id = webtoonHashTag.getId();
+        //         this.hashTagEnum = webtoonHashTag.getHashTagEnum();
+        //         this.hashTagName = webtoonHashTag.getHashTagName();
+        //     }
+        // }
+
+
+        // @Getter
+        // @Setter
+        // @ToString
+        // class AuthorDTO {
+        //     private Integer id;
+        //     private String authorNickname;
+        //     private String authorPhoto;
+
+        //     AuthorDTO(Author author) {
+        //         this.id = author.getId();
+        //         this.authorNickname = author.getAuthorNickname();
+        //         this.authorPhoto = author.getAuthorPhoto();
+        //     }
+        // }
+
+    }
+
+    
+
+
+
     @ToString
     @Getter
     @Setter
@@ -224,7 +300,7 @@ public class WebtoonResponse {
         private Double starScore;
         private Double starCount;
         private String image;
-        private String detailImage;
+        // private String detailImage;
         private Integer ageLimit;
         private String webtoonWeekDayEnum;
         private WebtoonSpeciallyEnum webtoonSpeciallyEnum;
@@ -245,7 +321,6 @@ public class WebtoonResponse {
             this.starScore = webtoon.getStarScore();
             this.starCount = webtoon.getStarCount();
             this.image = webtoon.getImage();
-            this.detailImage = webtoon.getDetailImage();
             this.ageLimit = webtoon.getAgeLimit();
             this.webtoonWeekDayEnum = webtoon.getWebtoonWeekDayEnum();
             this.webtoonSpeciallyEnum = webtoon.getWebtoonSpeciallyEnum();

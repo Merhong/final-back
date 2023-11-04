@@ -3,13 +3,21 @@ package com.example.kakao.author;
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception404;
 import com.example.kakao._entity.InterestAuthor;
+import com.example.kakao._entity.WebtoonAuthor;
+import com.example.kakao._entity.enums.UserTypeEnum;
 import com.example.kakao._repository.InterestAuthorRepository;
 import com.example.kakao.user.User;
+import com.example.kakao.user.UserJPARepository;
+import com.example.kakao.webtoon.Webtoon;
+import com.example.kakao.webtoon.WebtoonRequest;
+import com.example.kakao.webtoon.WebtoonResponse;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -18,6 +26,34 @@ public class AuthorService {
 
     private final AuthorJPARepository authorRepository;
     private final InterestAuthorRepository interestAuthorRepository;
+    private final UserJPARepository userRepository;
+
+
+
+
+
+    // 작가 추가
+    @Transactional
+    public AuthorResponse.CreateDTO create(AuthorRequest.CreateDTO requestDTO) {
+        
+        User authorUser = userRepository.findById(requestDTO.getUserId())
+                .orElseThrow(() -> new Exception404("유저없음 "+requestDTO.getUserId()));
+
+        if(authorUser.getUserTypeEnum()!=UserTypeEnum.NORMAL){
+            throw new Exception400("일반유저아님 "+requestDTO.getUserId());
+        }
+
+        Author author = requestDTO.toEntity();
+        authorRepository.save(author);
+
+        authorUser.setUserTypeEnum(UserTypeEnum.AUTHOR);
+
+
+        AuthorResponse.CreateDTO responseDTO = new AuthorResponse.CreateDTO(author);
+        return responseDTO;
+    }
+
+
 
 
     // 관심작가추가

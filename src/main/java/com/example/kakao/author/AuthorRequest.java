@@ -1,9 +1,10 @@
-package com.example.kakao.webtoon;
+package com.example.kakao.author;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -11,50 +12,71 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.example.kakao._entity.AuthorBoard;
 import com.example.kakao._entity.enums.WebtoonSpeciallyEnum;
+import com.example.kakao.user.User;
 
 import java.util.List;
 
 
-public class WebtoonRequest {
+public class AuthorRequest {
+
+
+    // @Getter
+    // @Setter
+    // @ToString
+    // public static class CreateBoardDTO {
+
+    //     @Size(min = 1, max = 45, message = "45자 이내여야 합니다.")
+    //     private String authorNickname; // 그냥 유저네임
+
+    //     @NotEmpty
+    //     private String authorPhoto;
+
+    //     private String siteURL;
+        
+    //     private String introduce;
+
+    //     @NotNull
+    //     private int userId;
+
+    //     public AuthorBoard toEntity() {
+    //         return AuthorBoard.builder()
+    //                 .authorNickname(authorNickname)
+    //                 .authorPhoto(authorPhoto)
+    //                 .siteURL(siteURL == null ? "https://naver.com" : siteURL)
+    //                 .introduce(introduce)
+    //                 .user(User.builder().id(userId).build())
+    //                 .build();
+    //     }
+    // }
+
+
     @Getter
     @Setter
     @ToString
     public static class CreateDTO {
 
-        @NotEmpty
-        private List<Integer> authorIdList;
-
-        @Size(min = 1, max = 30, message = "30자 이내여야 합니다.")
-        private String title;
-
-        @Size(min = 1, max = 300, message = "300자 이내여야 합니다.")
-        private String intro; // 소개글
+        @Size(min = 1, max = 45, message = "45자 이내여야 합니다.")
+        private String authorNickname; // 그냥 유저네임
 
         @NotEmpty
-        private String image;
+        private String authorPhoto;
 
-        @Min(0)
-        @Max(20)
-        private Integer ageLimit;
+        private String siteURL;
+        
+        private String introduce;
 
-        @Size(min = 1, max = 5, message = "월화수목금토일 중에서 여러개가능")
-        private String webtoonWeekDayEnum;
+        @NotNull
+        private int userId;
 
-        // @Size(min = 1, max = 2, message = "없음, 휴재, 완결, 무료, 순위, 신작 중에서")
-        @Pattern(regexp = "없음|휴재|완결|무료|순위|신작", message = "없음, 휴재, 완결, 무료, 순위, 신작 중에서")
-        private String webtoonSpeciallyEnum;
-
-
-        public Webtoon toEntity() {
-            return Webtoon.builder()
-                    .title(title)
-                    .intro(intro)
-                    .image(image)
-                    .ageLimit(ageLimit)
-                    .webtoonWeekDayEnum(webtoonWeekDayEnum)
-                    .webtoonSpeciallyEnum(WebtoonSpeciallyEnum.valueOf(webtoonSpeciallyEnum))
-                    // .webtoonAuthorList() // 로직 필요
+        public Author toEntity() {
+            return Author.builder()
+                    .authorNickname(authorNickname)
+                    .authorPhoto(authorPhoto)
+                    .siteURL(siteURL == null ? "https://naver.com" : siteURL)
+                    .introduce(introduce)
+                    .user(User.builder().id(userId).build())
                     .build();
         }
     }

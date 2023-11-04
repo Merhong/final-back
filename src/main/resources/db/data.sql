@@ -6538,6 +6538,13 @@ UPDATE AUTHOR_TB
 SET author_photo = 'defaultAuthorPhoto.jpg'
 WHERE author_photo IS NULL;
 
+UPDATE AUTHOR_TB
+SET siteURL = 'https://naver.com'
+WHERE siteURL IS NULL;
+
+UPDATE AUTHOR_TB
+SET introduce = '작가소개없음'
+WHERE introduce IS NULL;
 
 
 -------------------------------------------------------------------------------------------------------------------------

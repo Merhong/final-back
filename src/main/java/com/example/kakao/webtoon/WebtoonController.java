@@ -127,21 +127,30 @@ public class WebtoonController {
     }
 
 
+    // {
+    //     "authorIdList" : [101, 102], // userId아님
+    //     "title" : "웹3툰제목1",
+    //     "intro" : "웹툰설명1",
+    //     "image" : "default_webtoon_Thumbnail.jpg",
+    //     "ageLimit" : 8,
+    //     "webtoonWeekDayEnum" : "월",
+    //     "webtoonSpeciallyEnum" : "신작"
+    // }
     // 웹툰 추가
     @PostMapping("/webtoons")
     public ResponseEntity<?> create(@RequestBody @Valid WebtoonRequest.CreateDTO requestDTO, Errors errors) {
         User sessionUser = (User) session.getAttribute("sessionUser");
 
-        if (!(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) // && !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.AUTHOR))
-        ) {
+        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) ) {
             throw new Exception403("어드민만 가능함");
         }
 
-        // webtoonService.create(requestDTO);
-        // TODO
+        WebtoonResponse.CreateDTO responseDTO = webtoonService.create(requestDTO);
 
-        return ResponseEntity.ok().body(ApiUtils.success("responseDTO임시"));
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
+
+
 
     @GetMapping("/webtoons/recommend")
     public ResponseEntity<?> endRecommendation() {

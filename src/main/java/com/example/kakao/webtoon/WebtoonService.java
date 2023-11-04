@@ -1,16 +1,20 @@
 package com.example.kakao.webtoon;
 
 import com.example.kakao._core.errors.exception.Exception400;
+import com.example.kakao._core.errors.exception.Exception401;
 import com.example.kakao._core.errors.exception.Exception404;
 import com.example.kakao._entity.AdvertisingMain;
 import com.example.kakao._entity.AdvertisingSub;
 import com.example.kakao._entity.InterestWebtoon;
 import com.example.kakao._entity.RecentWebtoon;
+import com.example.kakao._entity.WebtoonAuthor;
 import com.example.kakao._entity.enums.WebtoonSpeciallyEnum;
 import com.example.kakao._repository.AdvertisingMainRepository;
 import com.example.kakao._repository.AdvertisingSubRepository;
 import com.example.kakao._repository.InterestWebtoonRepository;
 import com.example.kakao._repository.RecentWebtoonRepository;
+import com.example.kakao._repository.WebtoonAuthorRepository;
+import com.example.kakao.author.Author;
 import com.example.kakao.episode.Episode;
 import com.example.kakao.episode.EpisodeRepository;
 import com.example.kakao.user.User;
@@ -41,6 +45,42 @@ public class WebtoonService {
     private final AdvertisingSubRepository advertisingSubRepository;
     private final EpisodeRepository episodeRepository;
     private final RecentWebtoonRepository recentWebtoonRepository;
+    private final WebtoonAuthorRepository webtoonAuthorRepository;
+
+
+    
+    
+    
+    // 웹툰 추가
+    @Transactional
+    public WebtoonResponse.CreateDTO create(WebtoonRequest.CreateDTO requestDTO) {
+        
+        List<Webtoon> titleCheckList = webtoonRepository.findByTitle(requestDTO.getTitle());
+        if(titleCheckList.size() != 0){
+            throw new Exception400("웹툰제목중복 : "+requestDTO.getTitle());
+        }
+        
+        List<Integer> authorIdList = requestDTO.getAuthorIdList();
+        
+        Webtoon webtoon = requestDTO.toEntity();
+        webtoonRepository.save(webtoon);
+        // Webtoon webtoon = webtoonRepository.findByTitle(requestDTO.getTitle()).get(0);
+
+        List<WebtoonAuthor> webtoonAuthorList = authorIdList.stream()
+                .map( authorId -> WebtoonAuthor.builder()
+                        .author(Author.builder().id(authorId).build())
+                        .webtoon(webtoon)
+                        .build() )
+                .collect(Collectors.toList());
+        webtoonAuthorList.stream()
+                .map(t -> webtoonAuthorRepository.save(t))
+                .collect(Collectors.toList());
+                
+        WebtoonResponse.CreateDTO responseDTO = new WebtoonResponse.CreateDTO(webtoon);
+        return responseDTO;
+    }
+
+
 
 
 
@@ -103,10 +143,10 @@ public class WebtoonService {
         if(findRecentWebtoonList.size()==0){
             System.out.println("테스트 if 새로만듬");
             recentWebtoon = RecentWebtoon.builder()
-            .user(User.builder().id(sessionUserId).build())
-            .episode(episode)
-            .webtoon(episode.getWebtoon())
-            .build();
+                    .user(User.builder().id(sessionUserId).build())
+                    .episode(episode)
+                    .webtoon(episode.getWebtoon())
+                    .build();
             recentWebtoonRepository.save(recentWebtoon);
         } else{
             System.out.println("테스트 else 있는거임");

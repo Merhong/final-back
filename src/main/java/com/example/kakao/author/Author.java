@@ -27,11 +27,14 @@ public class Author {
     @OneToOne
     private User user;
 
+    @Column(length = 45, nullable = false, unique = true)
     private String authorNickname;
 
     private String authorPhoto;
 
     private String siteURL;
+
+    private String introduce;
 
     @CreationTimestamp
     private Timestamp createdAt;
@@ -48,17 +51,22 @@ public class Author {
 
 
     @Builder
-    public Author(int id, User user, String authorNickname, String authorPhoto, String siteURL, Timestamp createdAt,
-                  Timestamp updatedAt, List<WebtoonAuthor> webtoonAuthorList) {
+    public Author(int id, User user, String authorNickname, String authorPhoto, String siteURL, String introduce,
+            Timestamp createdAt, Timestamp updatedAt, List<WebtoonAuthor> webtoonAuthorList,
+            List<AuthorBoard> authorBoardList) {
         this.id = id;
         this.user = user;
         this.authorNickname = authorNickname;
         this.authorPhoto = authorPhoto;
         this.siteURL = siteURL;
+        this.introduce = introduce;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.webtoonAuthorList = webtoonAuthorList;
+        this.authorBoardList = authorBoardList;
     }
 
+
+    
 
 }
