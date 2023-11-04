@@ -3,6 +3,7 @@ package com.example.kakao.webtoon;
 import com.example.kakao._entity.AdvertisingMain;
 import com.example.kakao._entity.AdvertisingSub;
 import com.example.kakao._entity.InterestWebtoon;
+import com.example.kakao._entity.RecentWebtoon;
 import com.example.kakao._entity.WebtoonHashTag;
 import com.example.kakao._entity.enums.HashTagEnum;
 import com.example.kakao._entity.enums.WebtoonSpeciallyEnum;
@@ -21,6 +22,89 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 public class WebtoonResponse {
+
+
+
+    @ToString
+    @Getter
+    @Setter
+    public static class RecentDTO {
+        private int id;
+        private int recentEpisodeId;
+        private String recentEpisodeTitle;
+        private String recentEpisodeThumbnail;
+        private int webtoonId;
+        private String webtoonTitle;
+        private WebtoonSpeciallyEnum webtoonSpeciallyEnum;
+        private Timestamp updatedAt;
+        private Integer totalCount;
+        private Integer viewCount;
+
+        // private String webtoonImage; // 최근본웹툰이면 에피소드 하나는 무조건 본거니까 에피소드 사진으로
+
+        public RecentDTO(RecentWebtoon recentWebtoon) {
+            this.id = recentWebtoon.getId();
+
+            Episode episode = recentWebtoon.getEpisode();
+            this.recentEpisodeId = episode.getId();
+            this.recentEpisodeTitle = episode.getDetailTitle();
+            this.recentEpisodeThumbnail = episode.getThumbnail();
+
+            Webtoon webtoon = recentWebtoon.getWebtoon();
+            this.webtoonId = webtoon.getId();
+            this.webtoonTitle = webtoon.getTitle();
+            this.webtoonSpeciallyEnum = webtoon.getWebtoonSpeciallyEnum();
+
+            this.updatedAt = recentWebtoon.getUpdatedAt();
+        }
+
+        
+    }
+
+
+
+
+    @ToString
+    @Getter
+    @Setter
+    public static class SearchDTO {
+        private Integer id;
+        private String title;
+        private Double starScore;
+        private Double starCount;
+        private String image;
+        // private Integer ageLimit;
+        private WebtoonSpeciallyEnum webtoonSpeciallyEnum;
+        // private String webtoonWeekDayEnum;
+        private List<String> authorNicknameList;
+        
+        private Timestamp episodeUpdatedAt;
+
+        public SearchDTO(Webtoon webtoon) {
+            this.id = webtoon.getId();
+            this.title = webtoon.getTitle();
+            this.starScore = webtoon.getStarScore();
+            this.starCount = webtoon.getStarCount();
+
+            // this.image = webtoon.getEpisodeList().size() >= 1 ? webtoon.getEpisodeList().get(0).getThumbnail() : webtoon.getImage();
+            this.image = webtoon.getImage();
+
+            // this.ageLimit = webtoon.getAgeLimit();
+            this.webtoonSpeciallyEnum = webtoon.getWebtoonSpeciallyEnum();
+            // this.webtoonWeekDayEnum = webtoon.getWebtoonWeekDayEnum();
+            // this.authorDTO = new AuthorDTO(webtoon.getAuthor());
+            this.authorNicknameList = webtoon.getWebtoonAuthorList().stream()
+                    .map(t -> t.getAuthor().getAuthorNickname())
+                    .collect(Collectors.toList());
+
+            this.episodeUpdatedAt = webtoon.getEpisodeList().size() != 0
+                ? webtoon.getEpisodeList().get(0).getCreatedAt()
+                : webtoon.getCreatedAt();
+        }
+
+    }
+
+
 
 
 
@@ -254,10 +338,12 @@ public class WebtoonResponse {
         class AuthorDTO {
             private Integer id;
             private String authorNickname;
+            private String authorPhoto;
 
             AuthorDTO(Author author) {
                 this.id = author.getId();
                 this.authorNickname = author.getAuthorNickname();
+                this.authorPhoto = author.getAuthorPhoto();
             }
         }
 
@@ -265,7 +351,7 @@ public class WebtoonResponse {
         @Getter
         @Setter
         @ToString
-        class EpisodeDTO {
+        public static class EpisodeDTO { // TODO public static 
             private Integer episodeId;
             private String detailTitle;
             private String thumbnail;
@@ -275,6 +361,8 @@ public class WebtoonResponse {
             private Integer cookieCost;
             private Timestamp createdAt;
             private Timestamp updatedAt;
+            private Boolean isView = false;
+            private Boolean isLastView = false;
 
             EpisodeDTO(Episode episode) {
 
