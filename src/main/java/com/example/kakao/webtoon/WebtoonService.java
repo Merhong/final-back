@@ -228,7 +228,7 @@ public class WebtoonService {
         WebtoonResponse.AdvertisingMainDTO responseDTO = new WebtoonResponse.AdvertisingMainDTO(advertisingMain);
 
         advertisingMainRepository.delete(advertisingMain);
-
+        
         return responseDTO;
     }
 
