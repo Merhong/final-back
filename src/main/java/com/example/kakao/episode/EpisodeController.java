@@ -40,18 +40,14 @@ public class EpisodeController {
     // public ResponseEntity<?> createBoard(@RequestBody @Valid AuthorRequest.CreateBoardDTO requestDTO, MultipartFile photo, Errors errors) {
     public ResponseEntity<?> create(EpisodeRequest.CreateDTO requestDTO, MultipartFile thumbnailPhoto, List<MultipartFile> photoList) {
 
-        // System.err.println("테스트1");
-        // System.out.println(requestDTO.getThumbnailPhoto().getOriginalFilename());
-        // System.out.println(photoList.get(0).getOriginalFilename());
-        // System.out.println(photoList.get(1).getOriginalFilename());
-        
+
         User sessionUser = (User) session.getAttribute("sessionUser");
         
-        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.AUTHOR)) ) {
-            throw new Exception403("작가만 가능함");
+        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) && !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.AUTHOR))) {
+            throw new Exception403("작가나 어드민만 가능함");
         }
 
-        EpisodeResponse.CreateDTO responseDTO = episodeService.create(requestDTO, sessionUser, photoList);
+        EpisodeResponse.CreateDTO responseDTO = episodeService.create(requestDTO, photoList, sessionUser);
 
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }

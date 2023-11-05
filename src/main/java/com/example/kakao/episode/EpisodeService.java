@@ -1,17 +1,21 @@
 package com.example.kakao.episode;
 
 import com.example.kakao._core.errors.exception.Exception400;
+import com.example.kakao._core.errors.exception.Exception401;
+import com.example.kakao._core.errors.exception.Exception403;
 import com.example.kakao._core.errors.exception.Exception404;
 import com.example.kakao._core.utils.ImageUtils;
 import com.example.kakao._entity.AuthorBoard;
 import com.example.kakao._entity.EpisodePhoto;
 import com.example.kakao._entity.LikeEpisode;
+import com.example.kakao._entity.enums.UserTypeEnum;
 import com.example.kakao._repository.EpisodePhotoRepository;
 import com.example.kakao._repository.LikeEpisodeRepository;
 import com.example.kakao.author.AuthorRequest;
 import com.example.kakao.author.AuthorResponse;
 import com.example.kakao.user.User;
 import com.example.kakao.webtoon.Webtoon;
+import com.example.kakao.webtoon.WebtoonRepository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,6 +33,7 @@ public class EpisodeService {
     private final EpisodeRepository episodeRepository;
     private final LikeEpisodeRepository likeEpisodeRepository;
     private final EpisodePhotoRepository episodePhotoRepository;
+    private final WebtoonRepository webtoonRepository;
 
 
 
@@ -36,7 +41,22 @@ public class EpisodeService {
 
     // 에피소드 추가
     @Transactional
-    public EpisodeResponse.CreateDTO create(EpisodeRequest.CreateDTO requestDTO, User sessionUser, List<MultipartFile> photoList) {
+    public EpisodeResponse.CreateDTO create(EpisodeRequest.CreateDTO requestDTO, List<MultipartFile> photoList, User sessionUser) {
+
+        Webtoon webtoon = webtoonRepository.findById(requestDTO.getWebtoonId())
+                .orElseThrow(() -> new Exception404(requestDTO.getWebtoonId() + "없음"));
+
+        if(sessionUser.getUserTypeEnum() == UserTypeEnum.AUTHOR){
+            webtoon.getWebtoonAuthorList().stream()
+                    .map(webtoonAuthor -> webtoonAuthor.getAuthor().getUser().getId())
+                    .filter(userId -> userId == sessionUser.getId())
+                    .findFirst()
+                    .orElseThrow(() -> new Exception403("어드민이 아니고 웹툰"+requestDTO.getWebtoonId()+"의 작가도 아님"));
+        }
+        
+        if(requestDTO.getThumbnailPhoto()==null){
+            throw new Exception400("썸네일 없음");
+        }
 
         String thumbnailFileName = ImageUtils.updateImage(requestDTO.getThumbnailPhoto(), "EpisodeThumbnail/");
 
@@ -50,29 +70,40 @@ public class EpisodeService {
                 .starScore(0.0)
                 .build();
 
-        episodeRepository.save(episode);
+        try {
+            episodeRepository.save(episode);
+        } catch (Exception e) {
+            throw new Exception400("에피소드타이틀중복");
+        }
         
         System.err.println("episode세이브됨");
         System.err.println(episode.getId());
         System.err.println("2episode세이브됨");
 
-        List<EpisodePhoto> episodePhotoList = photoList.stream()
-                .map(multipartFile -> {
-                    String fileName = ImageUtils.updateImage(multipartFile, "EpisodePhoto/");
-                    EpisodePhoto episodePhoto = EpisodePhoto.builder().episode(episode).photoURL(fileName).build();
-                    episodePhotoRepository.save(episodePhoto);
-                    System.err.println("스트림실행에피소드포토저장1번");
-                    return episodePhoto;
-                })
-                .collect(Collectors.toList());
+        try {
+            photoList.stream()
+                    .map(multipartFile -> {
+                        System.err.println("스트림실행에피소드포토저장1-1");
+                        String fileName = ImageUtils.updateImage(multipartFile, "EpisodePhoto/");
+                        EpisodePhoto episodePhoto = EpisodePhoto.builder().episode(episode).photoURL(fileName).build();
+                        episodePhotoRepository.save(episodePhoto);
+                        System.err.println("스트림실행에피소드포토저장1-2");
+                        return episodePhoto;
+                    })
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            System.err.println("스트림 캐치로");
+            throw new Exception400("에피소드 사진 없음");
+        }
 
         System.out.println("스트림끝");
-        System.out.println(episodePhotoList.get(0).getEpisode().getId());
         
 
         EpisodeResponse.CreateDTO responseDTO = new EpisodeResponse.CreateDTO(episode);
         return responseDTO;
     }
+
+
 
 
 

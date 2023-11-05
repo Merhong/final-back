@@ -20,7 +20,9 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name = "episode_tb")
+@Table(name = "episode_tb", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"webtoon_id", "detailTitle"})
+})
 public class Episode {
 
     @Id
@@ -46,6 +48,7 @@ public class Episode {
     @Column(length = 45, nullable = false)
     private String detailTitle;
 
+    @Column(nullable = false)
     private String thumbnail;
 
     @ColumnDefault("'작가의말 없음'")
