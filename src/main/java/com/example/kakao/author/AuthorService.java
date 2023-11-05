@@ -117,17 +117,17 @@ public class AuthorService {
 
         Author author = authorRepository.findByUserId(sessionUser.getId())
                 .orElseThrow(() -> new Exception404("작가수정실패 작가못찾음"));
-    
-        if( requestDTO.getAuthorPhoto() != null & !(requestDTO.getAuthorPhoto().isEmpty()) ){
+        
+        if( requestDTO.getAuthorPhoto() != null && !(requestDTO.getAuthorPhoto().isEmpty()) ){
             String fileName = ImageUtils.updateImage(requestDTO.getAuthorPhoto(), "AuthorPhoto/");
             author.setAuthorPhoto(fileName);
             author.getAuthorPhoto();
         System.err.println("실행1");
         }
-        if( requestDTO.getIntroduce() != null & !(requestDTO.getIntroduce().isEmpty()) ){
+        if( requestDTO.getIntroduce() != null && !(requestDTO.getIntroduce().isEmpty()) ){
             author.setIntroduce(requestDTO.getIntroduce());
         }
-        if( requestDTO.getSiteURL() != null & !(requestDTO.getSiteURL().isEmpty()) ){
+        if( requestDTO.getSiteURL() != null && !(requestDTO.getSiteURL().isEmpty()) ){
             author.setSiteURL(requestDTO.getSiteURL());
         }
 

@@ -209,6 +209,20 @@ public class UserService {
         }
     }
 
+    public UserResponse.loginResponseDTO autologin(User sessionUser) {
+
+        User userPS = userJPARepository.findById(sessionUser.getId())
+                .orElseThrow(() -> new Exception400("자동로그인 오류"));
+
+        String jwt = JwtTokenUtils.create(userPS);
+
+        UserResponse.loginResponseDTO responseDTO = new UserResponse.loginResponseDTO(userPS);
+        responseDTO.setJwt(jwt);
+
+
+        return responseDTO;
+    }
+
 
     public UserResponse.loginResponseDTO login(UserRequest.LoginDTO requestDTO) {
         System.out.println("로그1");

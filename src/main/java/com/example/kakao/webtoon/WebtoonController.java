@@ -1,5 +1,6 @@
 package com.example.kakao.webtoon;
 
+import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception403;
 import com.example.kakao._core.utils.ApiUtils;
 import com.example.kakao._entity.enums.UserTypeEnum;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -74,6 +76,64 @@ public class WebtoonController {
         List<WebtoonResponse.AdvertisingMainDTO> responseDTOList = webtoonService.advertisingMain();
         return ResponseEntity.ok().body(ApiUtils.success(responseDTOList));
     }
+
+
+
+
+    // 메인 광고 제거
+    @DeleteMapping("/webtoons/advertising/main/{advertisingMainId}")
+    public ResponseEntity<?> advertisingMainDelete(@PathVariable int advertisingMainId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) ) {
+            throw new Exception403("어드민만 가능함");
+        }
+
+        WebtoonResponse.AdvertisingMainDTO responseDTO = webtoonService.advertisingMainDelete(advertisingMainId);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
+
+
+
+
+    // 메인 광고 추가
+    @PostMapping("/webtoons/advertising/main")
+    public ResponseEntity<?> advertisingMainSave(WebtoonRequest.AdvertisingMainDTO requestDTO, MultipartFile photo) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) ) {
+            throw new Exception403("어드민만 가능함");
+        }
+        
+        if(requestDTO.getIsWebLink() == null){
+            throw new Exception400("isWebLink없음");
+        }
+
+        WebtoonResponse.AdvertisingMainDTO responseDTO = webtoonService.advertisingMainSave(requestDTO);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
+
+
+    // 서브 광고 추가
+    @PostMapping("/webtoons/advertising/sub")
+    public ResponseEntity<?> advertisingSubSave(WebtoonRequest.AdvertisingSubDTO requestDTO, MultipartFile photo) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) ) {
+            throw new Exception403("어드민만 가능함");
+        }
+
+        WebtoonResponse.AdvertisingSubDTO responseDTO = webtoonService.advertisingSubSave(requestDTO);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
+
+
 
 
 

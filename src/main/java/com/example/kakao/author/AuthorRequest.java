@@ -55,23 +55,23 @@ public class AuthorRequest {
 
         @Size(min = 1, max = 45, message = "45자 이내여야 합니다.")
         private String authorNickname; // 그냥 유저네임
-
-        @NotEmpty
-        private String authorPhoto;
-
-        private String siteURL;
         
-        private String introduce;
-
         @NotNull
         private int userId;
+
+        // private String authorPhoto;
+
+        // private String siteURL;
+        
+        // private String introduce;
+
 
         public Author toEntity() {
             return Author.builder()
                     .authorNickname(authorNickname)
-                    .authorPhoto(authorPhoto)
-                    .siteURL(siteURL == null ? "https://naver.com" : siteURL)
-                    .introduce(introduce)
+                    .authorPhoto("defaultAuthorPhoto.jpg")
+                    .siteURL("https://naver.com")
+                    .introduce("작가 소개 없음")
                     .user(User.builder().id(userId).build())
                     .build();
         }

@@ -11,12 +11,71 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import com.example.kakao._core.errors.exception.Exception404;
+import com.example.kakao._entity.AdvertisingMain;
+import com.example.kakao._entity.AdvertisingSub;
 import com.example.kakao._entity.enums.WebtoonSpeciallyEnum;
 
 import java.util.List;
 
 
 public class WebtoonRequest {
+
+
+
+
+
+
+    @Getter
+    @Setter
+    @ToString
+    public static class AdvertisingSubDTO {
+
+        private String linkURL;
+    
+        private MultipartFile photo;
+    
+
+        // public AdvertisingSub toEntity() {
+            // return AdvertisingSub.builder()
+            //         .build();
+        // }
+    }
+
+
+
+
+    @Getter
+    @Setter
+    @ToString
+    public static class AdvertisingMainDTO {
+
+        private Boolean isWebLink;
+
+        private Integer webtoonId;
+
+        private String linkURL;
+
+        private String mainText;
+
+        private String subText;
+    
+        private MultipartFile photo;
+    
+
+        // public AdvertisingMain toEntity() {
+        //     return AdvertisingMain.builder()
+        //             .isWebLink(isWebLink)
+        //             .build();
+        // }
+    }
+
+
+
+
+
     @Getter
     @Setter
     @ToString

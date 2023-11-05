@@ -220,9 +220,9 @@ public class WebtoonResponse {
         private Timestamp updatedAt;
         private Timestamp endDate;
         private int webtoonId;
-        private String webtoonTitle;
-        private WebtoonSpeciallyEnum webtoonSpeciallyEnum;
-        private List<String> authorNicknameList;
+        // private String webtoonTitle;
+        // private WebtoonSpeciallyEnum webtoonSpeciallyEnum;
+        // private List<String> authorNicknameList;
         
         private Boolean isWebLink = true;
 
@@ -231,20 +231,24 @@ public class WebtoonResponse {
             this.mainText = advertisingMain.getMainText();
             this.subText = advertisingMain.getSubText();
             this.photo = advertisingMain.getPhoto();
-            this.linkURL = advertisingMain.getLinkURL();
             this.createdAt = advertisingMain.getCreatedAt();
             this.updatedAt = advertisingMain.getUpdatedAt();
             this.endDate = advertisingMain.getEndDate();
 
-            if(advertisingMain.getIsWebLink()== false){
+            if(advertisingMain.getIsWebLink() == true){
+                this.isWebLink = true;
+                this.linkURL = advertisingMain.getLinkURL();
+            }
+
+            if(advertisingMain.getIsWebLink() == false){
                 this.isWebLink = false;
                 this.webtoonId = advertisingMain.getWebtoon().getId();
-                this.webtoonTitle = advertisingMain.getWebtoon().getTitle();
-                this.webtoonSpeciallyEnum = advertisingMain.getWebtoon().getWebtoonSpeciallyEnum();
+                // this.webtoonTitle = advertisingMain.getWebtoon().getTitle();
+                // this.webtoonSpeciallyEnum = advertisingMain.getWebtoon().getWebtoonSpeciallyEnum();
                 
-                this.authorNicknameList = advertisingMain.getWebtoon().getWebtoonAuthorList().stream()
-                        .map(t -> t.getAuthor().getAuthorNickname())
-                        .collect(Collectors.toList());
+                // this.authorNicknameList = advertisingMain.getWebtoon().getWebtoonAuthorList().stream()
+                //         .map(t -> t.getAuthor().getAuthorNickname())
+                //         .collect(Collectors.toList());
             }
 
         }

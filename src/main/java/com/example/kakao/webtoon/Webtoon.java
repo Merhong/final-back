@@ -41,8 +41,8 @@ public class Webtoon {
     @OneToMany(mappedBy = "webtoon", fetch = FetchType.LAZY)
     private List<WebtoonHashTag> webtoonHashTagList = new ArrayList<>();
 
-    @OneToOne(mappedBy = "webtoon")
-    private AdvertisingMain advertisingMain;
+    // @OneToOne(mappedBy = "webtoon")
+    // private AdvertisingMain advertisingMain;
 
     @Column(length = 100, nullable = false, unique = true)
     private String title;
