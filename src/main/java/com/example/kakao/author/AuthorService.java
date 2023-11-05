@@ -1,6 +1,7 @@
 package com.example.kakao.author;
 
 import com.example.kakao._core.errors.exception.Exception400;
+import com.example.kakao._core.errors.exception.Exception403;
 import com.example.kakao._core.errors.exception.Exception404;
 import com.example.kakao._core.utils.ImageUtils;
 import com.example.kakao._entity.AuthorBoard;
@@ -11,6 +12,8 @@ import com.example.kakao._repository.AuthorBoardRepository;
 import com.example.kakao._repository.InterestAuthorRepository;
 import com.example.kakao.user.User;
 import com.example.kakao.user.UserJPARepository;
+import com.example.kakao.user.UserRequest;
+import com.example.kakao.user.UserResponse;
 import com.example.kakao.webtoon.Webtoon;
 import com.example.kakao.webtoon.WebtoonRequest;
 import com.example.kakao.webtoon.WebtoonResponse;
@@ -39,7 +42,8 @@ public class AuthorService {
         String fileName = ImageUtils.updateImage(requestDTO.getPhoto(), "AuthorBoard/");
 
         AuthorBoard authorBoard = AuthorBoard.builder()
-                .author(authorRepository.findByUserId(sessionUser.getId()))
+                .author(authorRepository.findByUserId(sessionUser.getId())
+                        .orElseThrow(() -> new Exception404("작가가없음")))
                 .title(requestDTO.getTitle())
                 .text(requestDTO.getText())
                 .photo(fileName)
@@ -76,6 +80,34 @@ public class AuthorService {
         return responseDTO;
     }
 
+
+
+
+    // 작가 수정
+    @Transactional
+    public AuthorResponse.UpdateDTO update(AuthorRequest.UpdateDTO requestDTO, User sessionUser) {
+
+        Author author = authorRepository.findByUserId(sessionUser.getId())
+                .orElseThrow(() -> new Exception404("작가수정실패 작가못찾음"));
+    
+        if( requestDTO.getAuthorPhoto() != null & !(requestDTO.getAuthorPhoto().isEmpty()) ){
+            String fileName = ImageUtils.updateImage(requestDTO.getAuthorPhoto(), "AuthorPhoto/");
+            author.setAuthorPhoto(fileName);
+            author.getAuthorPhoto();
+        System.err.println("실행1");
+        }
+        if( requestDTO.getIntroduce() != null & !(requestDTO.getIntroduce().isEmpty()) ){
+            author.setIntroduce(requestDTO.getIntroduce());
+        }
+        if( requestDTO.getSiteURL() != null & !(requestDTO.getSiteURL().isEmpty()) ){
+            author.setSiteURL(requestDTO.getSiteURL());
+        }
+
+        System.err.println("실행2");
+
+        AuthorResponse.UpdateDTO responseDTO = new AuthorResponse.UpdateDTO(author);
+        return responseDTO;
+    }
 
 
 

@@ -40,7 +40,30 @@ public class AuthorResponse {
     }
 
 
-    
+
+
+    @Getter
+    @Setter
+    @ToString
+    public static class UpdateDTO {
+        private int id;
+        private String authorNickname;
+        private String authorPhoto;
+        private String siteURL;
+        private String introduce;
+
+
+        public UpdateDTO(Author author) {
+            this.id = author.getId();
+            this.authorNickname = author.getAuthorNickname();
+            this.authorPhoto = author.getAuthorPhoto();
+            this.siteURL = author.getSiteURL();
+            this.introduce = author.getIntroduce();
+        }
+    }
+
+
+
 
     @Getter
     @Setter

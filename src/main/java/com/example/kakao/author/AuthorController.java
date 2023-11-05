@@ -4,12 +4,16 @@ import com.example.kakao._core.errors.exception.Exception403;
 import com.example.kakao._core.utils.ApiUtils;
 import com.example.kakao._entity.enums.UserTypeEnum;
 import com.example.kakao.user.User;
+import com.example.kakao.user.UserRequest;
+import com.example.kakao.user.UserResponse;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,17 +31,10 @@ public class AuthorController {
 
 
 
-
     
     
-    // {
-    //     "title" : "작가글제목",
-    //     "text" : "작가글본문"
-    //     "photo" : "MultipartFile??"
-    // }
     // 작가의글 추가
     @PostMapping("/authors/board")
-    // public ResponseEntity<?> createBoard(@RequestBody @Valid AuthorRequest.CreateBoardDTO requestDTO, MultipartFile photo, Errors errors) {
     public ResponseEntity<?> createBoard(AuthorRequest.CreateBoardDTO requestDTO, MultipartFile photo) {
 
         User sessionUser = (User) session.getAttribute("sessionUser");
@@ -74,6 +71,23 @@ public class AuthorController {
 
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
+
+
+    // 작가 수정
+    @PutMapping("/authors")
+    public ResponseEntity<?> update(@Valid AuthorRequest.UpdateDTO requestDTO, MultipartFile authorPhoto) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.AUTHOR)) ) {
+            throw new Exception403("작가만 가능함");
+        }
+
+        AuthorResponse.UpdateDTO responseDTO = authorService.update(requestDTO, sessionUser);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
+
 
 
 

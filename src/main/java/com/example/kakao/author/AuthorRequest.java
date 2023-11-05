@@ -78,6 +78,40 @@ public class AuthorRequest {
     }
 
 
+
+
+    @Getter
+    @Setter
+    @ToString
+    public static class UpdateDTO {
+
+        private MultipartFile authorPhoto;
+
+        private String siteURL;
+        
+        private String introduce;
+
+
+
+        // public Author toEntity() {
+        //     return Author.builder()
+        //             .id(authorId)
+        //             .authorPhoto(authorPhoto)
+        //             .siteURL(siteURL == null ? "https://naver.com" : siteURL)
+        //             .introduce(introduce)
+        //             // .user(User.builder().id(userId).build())
+        //             .build();
+        // }
+    }
+
+
+
+
+
+
+
+
+
     // @Getter
     // @Setter
     // @ToString

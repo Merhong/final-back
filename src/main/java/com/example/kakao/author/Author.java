@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@ToString
+@Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity

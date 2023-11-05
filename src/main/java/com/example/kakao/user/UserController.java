@@ -118,7 +118,7 @@ public class UserController {
     public ResponseEntity<?> update(@RequestBody @Valid UserRequest.UpdateDTO requestDTO, Errors errors) {
         User sessionUser = (User) session.getAttribute("sessionUser");
 
-        UserResponse.updateResponseDTO responseDTO = userService.update(requestDTO, sessionUser);
+        UserResponse.UpdateResponseDTO responseDTO = userService.update(requestDTO, sessionUser);
 
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }

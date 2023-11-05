@@ -30,14 +30,8 @@ public class EpisodeController {
 
 
 
-    // {
-    //     "title" : "작가글제목",
-    //     "text" : "작가글본문"
-    //     "photo" : "MultipartFile??"
-    // }
     // 에피소드 추가
     @PostMapping("/episodes")
-    // public ResponseEntity<?> createBoard(@RequestBody @Valid AuthorRequest.CreateBoardDTO requestDTO, MultipartFile photo, Errors errors) {
     public ResponseEntity<?> create(EpisodeRequest.CreateDTO requestDTO, MultipartFile thumbnailPhoto, List<MultipartFile> photoList) {
 
 

@@ -227,7 +227,7 @@ public class UserService {
     }
 
     @Transactional
-    public UserResponse.updateResponseDTO update(UserRequest.UpdateDTO requestDTO, User sessionUser) {
+    public UserResponse.UpdateResponseDTO update(UserRequest.UpdateDTO requestDTO, User sessionUser) {
 
         User user = userJPARepository.findById(sessionUser.getId())
                 .orElseThrow(() -> new Exception400("오류 : " + requestDTO.getEmail()));
@@ -242,7 +242,7 @@ public class UserService {
         user.setPassword(requestDTO.getPassword());
         user.setCookie(requestDTO.getCookie());
 
-        UserResponse.updateResponseDTO responseDTO = new UserResponse.updateResponseDTO(user);
+        UserResponse.UpdateResponseDTO responseDTO = new UserResponse.UpdateResponseDTO(user);
 
         return responseDTO;
     }
