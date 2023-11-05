@@ -2,9 +2,12 @@ package com.example.kakao.author;
 
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception404;
+import com.example.kakao._core.utils.ImageUtils;
+import com.example.kakao._entity.AuthorBoard;
 import com.example.kakao._entity.InterestAuthor;
 import com.example.kakao._entity.WebtoonAuthor;
 import com.example.kakao._entity.enums.UserTypeEnum;
+import com.example.kakao._repository.AuthorBoardRepository;
 import com.example.kakao._repository.InterestAuthorRepository;
 import com.example.kakao.user.User;
 import com.example.kakao.user.UserJPARepository;
@@ -27,6 +30,26 @@ public class AuthorService {
     private final AuthorJPARepository authorRepository;
     private final InterestAuthorRepository interestAuthorRepository;
     private final UserJPARepository userRepository;
+    private final AuthorBoardRepository authorBoardRepository;
+
+    // 작가의글 추가
+    @Transactional
+    public AuthorResponse.CreateBoardDTO createBoard(AuthorRequest.CreateBoardDTO requestDTO, User sessionUser) {
+
+        String fileName = ImageUtils.updateImage(requestDTO.getPhoto(), "AuthorBoard/");
+
+        AuthorBoard authorBoard = AuthorBoard.builder()
+                .author(authorRepository.findByUserId(sessionUser.getId()))
+                .title(requestDTO.getTitle())
+                .text(requestDTO.getText())
+                .photo(fileName)
+                .build();
+
+        authorBoardRepository.save(authorBoard);
+        
+        AuthorResponse.CreateBoardDTO responseDTO = new AuthorResponse.CreateBoardDTO(authorBoard);
+        return responseDTO;
+    }
 
 
 

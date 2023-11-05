@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.example.kakao._entity.AuthorBoard;
 import com.example.kakao._entity.enums.WebtoonSpeciallyEnum;
 import com.example.kakao.user.User;
@@ -22,34 +24,28 @@ import java.util.List;
 public class AuthorRequest {
 
 
-    // @Getter
-    // @Setter
-    // @ToString
-    // public static class CreateBoardDTO {
+    @Getter
+    @Setter
+    @ToString
+    public static class CreateBoardDTO {
 
-    //     @Size(min = 1, max = 45, message = "45자 이내여야 합니다.")
-    //     private String authorNickname; // 그냥 유저네임
+        @NotEmpty
+        @Size(min = 1, max = 20, message = "1에서 20자 이내여야 합니다.")
+        private String title;
 
-    //     @NotEmpty
-    //     private String authorPhoto;
+        // @NotEmpty
+        // @Size(min = 5, max = 500, message = "5에서 500자 이내여야 합니다.")
+        private String text;
 
-    //     private String siteURL;
-        
-    //     private String introduce;
+        private MultipartFile photo;
 
-    //     @NotNull
-    //     private int userId;
-
-    //     public AuthorBoard toEntity() {
-    //         return AuthorBoard.builder()
-    //                 .authorNickname(authorNickname)
-    //                 .authorPhoto(authorPhoto)
-    //                 .siteURL(siteURL == null ? "https://naver.com" : siteURL)
-    //                 .introduce(introduce)
-    //                 .user(User.builder().id(userId).build())
-    //                 .build();
-    //     }
-    // }
+        // public AuthorBoard toEntity() {
+        //     return AuthorBoard.builder()
+        //             .title(title)
+        //             .text(text)
+        //             .build();
+        // }
+    }
 
 
     @Getter

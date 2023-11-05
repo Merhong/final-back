@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -29,26 +30,26 @@ public class AuthorController {
 
     
     
-    // // {
-    // //     "userId" : 1,
-    // //     "authorNickname" : "유저닉네임같게",
-    // //     "authorPhoto" : "defaultAuthorPhoto.jpg",
-    // //     "siteURL" : "https://naver.com",
-    // //     "introduce" : "작가소개"
-    // // }
-    // // 작가의글 추가
-    // @PostMapping("/authors/board")
-    // public ResponseEntity<?> createBoard(@RequestBody @Valid AuthorRequest.CreateDTO requestDTO, Errors errors) {
-    //     User sessionUser = (User) session.getAttribute("sessionUser");
-
-    //     if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) ) {
-    //         throw new Exception403("어드민만 가능함");
-    //     }
-
-    //     AuthorResponse.CreateDTO responseDTO = authorService.create(requestDTO);
-
-    //     return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    // {
+    //     "title" : "작가글제목",
+    //     "text" : "작가글본문"
+    //     "photo" : "MultipartFile??"
     // }
+    // 작가의글 추가
+    @PostMapping("/authors/board")
+    // public ResponseEntity<?> createBoard(@RequestBody @Valid AuthorRequest.CreateBoardDTO requestDTO, MultipartFile photo, Errors errors) {
+    public ResponseEntity<?> createBoard(AuthorRequest.CreateBoardDTO requestDTO, MultipartFile photo) {
+
+        User sessionUser = (User) session.getAttribute("sessionUser");
+
+        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.AUTHOR)) ) {
+            throw new Exception403("작가만 가능함");
+        }
+
+        AuthorResponse.CreateBoardDTO responseDTO = authorService.createBoard(requestDTO, sessionUser);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
 
 
 

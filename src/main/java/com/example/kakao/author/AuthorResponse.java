@@ -6,12 +6,38 @@ import lombok.ToString;
 
 import java.sql.Timestamp;
 
+import com.example.kakao._entity.AuthorBoard;
 import com.example.kakao._entity.InterestAuthor;
 
 public class AuthorResponse {
 
     
 
+
+
+    @Getter
+    @Setter
+    @ToString
+    public static class CreateBoardDTO {
+        private int id;
+        private int authorId;
+        private String title;
+        private String text;
+        private String photo;
+        private Timestamp createdAt;
+        private Timestamp updatedAt;
+
+
+        public CreateBoardDTO(AuthorBoard authorBoard) {
+            this.id = authorBoard.getId();
+            this.authorId = authorBoard.getAuthor().getId();
+            this.title = authorBoard.getTitle();
+            this.text = authorBoard.getText();
+            this.photo = authorBoard.getPhoto();
+            this.createdAt = authorBoard.getCreatedAt();
+            this.updatedAt = authorBoard.getUpdatedAt();
+        }
+    }
 
 
     

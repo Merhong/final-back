@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@ToString
 @Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -44,7 +43,7 @@ public class Episode {
     @OneToMany(mappedBy = "episode", fetch = FetchType.LAZY)
     private List<RecentWebtoon> recentWebtoonList = new ArrayList<>();
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 45, nullable = false)
     private String detailTitle;
 
     private String thumbnail;
@@ -52,13 +51,13 @@ public class Episode {
     @ColumnDefault("'작가의말 없음'")
     private String authorText;
 
-    @ColumnDefault("0")
+    @ColumnDefault("0") // 작동안하는듯
     private Integer cookieCost;
 
-    @ColumnDefault("0")
+    @ColumnDefault("0") // 작동안하는듯
     private Double starScore; // 별점 계산 분자값
 
-    @ColumnDefault("0")
+    @ColumnDefault("0") // 작동안하는듯
     private Double starCount; // 별점 계산 분모값
 
     @CreationTimestamp

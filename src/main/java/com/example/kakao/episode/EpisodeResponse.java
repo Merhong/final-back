@@ -16,6 +16,46 @@ import java.util.stream.Collectors;
 public class EpisodeResponse {
 
 
+
+
+
+
+
+
+    @Getter
+    @Setter
+    @ToString
+    public static class CreateDTO {
+        private int id;
+        private int webtoonId;
+        private String detailTitle;
+        private String authorText;
+        private Timestamp createdAt;
+        private Timestamp updatedAt;
+
+        private String thumbnail;
+        // private List<PhotoDTO> photoDTOList;
+
+
+        public CreateDTO(Episode episode) {
+            this.id = episode.getId();
+            this.webtoonId = episode.getWebtoon().getId();
+            this.detailTitle = episode.getDetailTitle();
+            this.authorText = episode.getAuthorText();
+            this.createdAt = episode.getCreatedAt();
+            this.updatedAt = episode.getUpdatedAt();
+
+            this.thumbnail = episode.getThumbnail();
+            
+            // this.photoDTOList = episode.getEpisodePhotoList().stream()
+            //         .map(t -> new PhotoDTO(t))
+            //         .collect(Collectors.toList());
+        }
+    }
+
+
+
+
     // 에피소드 좋아요 DTO
     @Getter
     @Setter
@@ -124,7 +164,8 @@ public class EpisodeResponse {
             this.commentCount = episode.getCommentList().size();
 
             this.PhotoList = episode.getEpisodePhotoList().stream()
-                    .map(t -> new PhotoDTO(t)).collect(Collectors.toList());
+                    .map(t -> new PhotoDTO(t))
+                    .collect(Collectors.toList());
 
             if (likeEpisode.size() != 0) {
                 this.isLike = likeEpisode.get(0).getIsLike();
@@ -225,21 +266,25 @@ public class EpisodeResponse {
             //     }
             // }
         }
-
-        @Getter
-        @Setter
-        @ToString
-        class PhotoDTO {
-            private Integer id;
-            private String photoURL;
-
-            PhotoDTO(EpisodePhoto episodePhoto) {
-                this.id = episodePhoto.getId();
-                this.photoURL = episodePhoto.getPhotoURL();
-            }
-        }
-
     }
+
+
+
+
+
+    @Getter
+    @Setter
+    @ToString
+    public static class PhotoDTO {
+        private Integer id;
+        private String photoURL;
+        PhotoDTO(EpisodePhoto episodePhoto) {
+            this.id = episodePhoto.getId();
+            this.photoURL = episodePhoto.getPhotoURL();
+        }
+    }
+
+
 
 
     // @ToString

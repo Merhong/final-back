@@ -2,14 +2,24 @@ package com.example.kakao.episode;
 
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception404;
+import com.example.kakao._core.utils.ImageUtils;
+import com.example.kakao._entity.AuthorBoard;
+import com.example.kakao._entity.EpisodePhoto;
 import com.example.kakao._entity.LikeEpisode;
+import com.example.kakao._repository.EpisodePhotoRepository;
 import com.example.kakao._repository.LikeEpisodeRepository;
+import com.example.kakao.author.AuthorRequest;
+import com.example.kakao.author.AuthorResponse;
 import com.example.kakao.user.User;
+import com.example.kakao.webtoon.Webtoon;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -18,6 +28,52 @@ public class EpisodeService {
 
     private final EpisodeRepository episodeRepository;
     private final LikeEpisodeRepository likeEpisodeRepository;
+    private final EpisodePhotoRepository episodePhotoRepository;
+
+
+
+
+
+    // 에피소드 추가
+    @Transactional
+    public EpisodeResponse.CreateDTO create(EpisodeRequest.CreateDTO requestDTO, User sessionUser, List<MultipartFile> photoList) {
+
+        String thumbnailFileName = ImageUtils.updateImage(requestDTO.getThumbnailPhoto(), "EpisodeThumbnail/");
+
+        Episode episode = Episode.builder()
+                .webtoon(Webtoon.builder().id(requestDTO.getWebtoonId()).build())
+                .detailTitle(requestDTO.getDetailTitle())
+                .authorText(requestDTO.getAuthorText())
+                .thumbnail(thumbnailFileName)
+                .cookieCost(0)
+                .starCount(0.0)
+                .starScore(0.0)
+                .build();
+
+        episodeRepository.save(episode);
+        
+        System.err.println("episode세이브됨");
+        System.err.println(episode.getId());
+        System.err.println("2episode세이브됨");
+
+        List<EpisodePhoto> episodePhotoList = photoList.stream()
+                .map(multipartFile -> {
+                    String fileName = ImageUtils.updateImage(multipartFile, "EpisodePhoto/");
+                    EpisodePhoto episodePhoto = EpisodePhoto.builder().episode(episode).photoURL(fileName).build();
+                    episodePhotoRepository.save(episodePhoto);
+                    System.err.println("스트림실행에피소드포토저장1번");
+                    return episodePhoto;
+                })
+                .collect(Collectors.toList());
+
+        System.out.println("스트림끝");
+        System.out.println(episodePhotoList.get(0).getEpisode().getId());
+        
+
+        EpisodeResponse.CreateDTO responseDTO = new EpisodeResponse.CreateDTO(episode);
+        return responseDTO;
+    }
+
 
 
     // 에피소드 좋아요

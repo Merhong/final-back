@@ -1,7 +1,11 @@
 package com.example.kakao.episode;
 
 import com.example.kakao._core.errors.exception.Exception400;
+import com.example.kakao._core.errors.exception.Exception403;
 import com.example.kakao._core.utils.ApiUtils;
+import com.example.kakao._entity.enums.UserTypeEnum;
+import com.example.kakao.author.AuthorRequest;
+import com.example.kakao.author.AuthorResponse;
 import com.example.kakao.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,6 +26,44 @@ public class EpisodeController {
     private final EpisodeService episodeService; // 자바에서 final 변수는 반드시 초기화되어야 함.
     private final HttpSession session;
 
+
+
+
+
+    // {
+    //     "title" : "작가글제목",
+    //     "text" : "작가글본문"
+    //     "photo" : "MultipartFile??"
+    // }
+    // 에피소드 추가
+    @PostMapping("/episodes")
+    // public ResponseEntity<?> createBoard(@RequestBody @Valid AuthorRequest.CreateBoardDTO requestDTO, MultipartFile photo, Errors errors) {
+    public ResponseEntity<?> create(EpisodeRequest.CreateDTO requestDTO, MultipartFile thumbnailPhoto, List<MultipartFile> photoList) {
+
+        // System.err.println("테스트1");
+        // System.out.println(requestDTO.getThumbnailPhoto().getOriginalFilename());
+        // System.out.println(photoList.get(0).getOriginalFilename());
+        // System.out.println(photoList.get(1).getOriginalFilename());
+        
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        
+        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.AUTHOR)) ) {
+            throw new Exception403("작가만 가능함");
+        }
+
+        EpisodeResponse.CreateDTO responseDTO = episodeService.create(requestDTO, sessionUser, photoList);
+
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    }
+
+
+
+
+
+
+
+
+    
     // 에피소드 1편 보기
     @GetMapping("/episodes/{episodeId}")
     public ResponseEntity<?> findById(@PathVariable int episodeId) {
