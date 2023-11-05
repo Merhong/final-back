@@ -340,6 +340,8 @@ public class WebtoonResponse {
 
             this.interestCount = webtoon.getInterstWebtoonList().size();
 
+            
+
             this.authorOtherWebtoonList = webtoon.getWebtoonAuthorList().stream()
                     .map(webtoonAuthor -> webtoonAuthor.getAuthor())
                     .flatMap(author -> author.getWebtoonAuthorList().stream()) // 리스트의 여러 개를 스트림으로 합칠 때 flatMap

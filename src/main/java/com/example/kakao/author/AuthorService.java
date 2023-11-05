@@ -35,6 +35,34 @@ public class AuthorService {
     private final UserJPARepository userRepository;
     private final AuthorBoardRepository authorBoardRepository;
 
+
+
+
+
+
+
+    // 작가페이지 (작가별 작가의글)
+    public AuthorResponse.AuthorDetailDTO authorDetail(int authorId, int sessionUserId) {
+        Author author = authorRepository.findById(authorId)
+                .orElseThrow(() -> new Exception404(authorId+"작가없음"));
+
+        AuthorResponse.AuthorDetailDTO responseDTO = new AuthorResponse.AuthorDetailDTO(author);
+
+        
+        List<InterestAuthor> interestAuthorList = interestAuthorRepository.findByUserIdAndAuthorId(sessionUserId, authorId);
+        if (interestAuthorList.size() == 0) {
+            responseDTO.setIsInterest(false);
+        }
+        if (interestAuthorList.size() == 1) {
+            responseDTO.setIsInterest(true);
+        }
+
+        return responseDTO;
+    }
+
+
+
+
     // 작가의글 추가
     @Transactional
     public AuthorResponse.CreateBoardDTO createBoard(AuthorRequest.CreateBoardDTO requestDTO, User sessionUser) {
