@@ -492,6 +492,7 @@ public class WebtoonResponse {
         private Integer id;
         private String title;
         private String image;
+        private String intro;
         private Integer episodeCount;
         private List<String> authorNicknameList;
 
@@ -499,6 +500,7 @@ public class WebtoonResponse {
             this.id = webtoon.getId();
             this.title = webtoon.getTitle();
             this.image = webtoon.getImage();
+            this.intro = webtoon.getIntro();
             this.episodeCount = webtoon.getEpisodeList().size();
             this.authorNicknameList = webtoon.getWebtoonAuthorList().stream()
                     .map(t -> t.getAuthor().getAuthorNickname())
