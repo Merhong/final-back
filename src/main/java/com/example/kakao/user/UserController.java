@@ -106,6 +106,15 @@ public class UserController {
         return ResponseEntity.ok().body(ApiUtils.success(null));
     }
 
+    // 자동로그인
+    @PostMapping("/autologin")
+    public ResponseEntity<?> autoLogin() {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        
+        UserResponse.loginResponseDTO responseDTO = userService.autologin(sessionUser);
+        return ResponseEntity.ok().header("Authorization", "Bearer " + responseDTO.getJwt()).body(ApiUtils.success(responseDTO));
+    }
+
     // 로그인
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody @Valid UserRequest.LoginDTO requestDTO, Errors errors) {
@@ -118,7 +127,7 @@ public class UserController {
     public ResponseEntity<?> update(@RequestBody @Valid UserRequest.UpdateDTO requestDTO, Errors errors) {
         User sessionUser = (User) session.getAttribute("sessionUser");
 
-        UserResponse.updateResponseDTO responseDTO = userService.update(requestDTO, sessionUser);
+        UserResponse.UpdateResponseDTO responseDTO = userService.update(requestDTO, sessionUser);
 
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }

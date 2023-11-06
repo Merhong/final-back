@@ -1,16 +1,21 @@
 package com.example.kakao.webtoon;
 
 import com.example.kakao._core.errors.exception.Exception400;
+import com.example.kakao._core.errors.exception.Exception401;
 import com.example.kakao._core.errors.exception.Exception404;
+import com.example.kakao._core.utils.ImageUtils;
 import com.example.kakao._entity.AdvertisingMain;
 import com.example.kakao._entity.AdvertisingSub;
 import com.example.kakao._entity.InterestWebtoon;
 import com.example.kakao._entity.RecentWebtoon;
+import com.example.kakao._entity.WebtoonAuthor;
 import com.example.kakao._entity.enums.WebtoonSpeciallyEnum;
 import com.example.kakao._repository.AdvertisingMainRepository;
 import com.example.kakao._repository.AdvertisingSubRepository;
 import com.example.kakao._repository.InterestWebtoonRepository;
 import com.example.kakao._repository.RecentWebtoonRepository;
+import com.example.kakao._repository.WebtoonAuthorRepository;
+import com.example.kakao.author.Author;
 import com.example.kakao.episode.Episode;
 import com.example.kakao.episode.EpisodeRepository;
 import com.example.kakao.user.User;
@@ -41,6 +46,42 @@ public class WebtoonService {
     private final AdvertisingSubRepository advertisingSubRepository;
     private final EpisodeRepository episodeRepository;
     private final RecentWebtoonRepository recentWebtoonRepository;
+    private final WebtoonAuthorRepository webtoonAuthorRepository;
+
+
+    
+    
+    
+    // 웹툰 추가
+    @Transactional
+    public WebtoonResponse.CreateDTO create(WebtoonRequest.CreateDTO requestDTO) {
+        
+        List<Webtoon> titleCheckList = webtoonRepository.findByTitle(requestDTO.getTitle());
+        if(titleCheckList.size() != 0){
+            throw new Exception400("웹툰제목중복 : "+requestDTO.getTitle());
+        }
+        
+        List<Integer> authorIdList = requestDTO.getAuthorIdList();
+        
+        Webtoon webtoon = requestDTO.toEntity();
+        webtoonRepository.save(webtoon);
+        // Webtoon webtoon = webtoonRepository.findByTitle(requestDTO.getTitle()).get(0);
+
+        List<WebtoonAuthor> webtoonAuthorList = authorIdList.stream()
+                .map( authorId -> WebtoonAuthor.builder()
+                        .author(Author.builder().id(authorId).build())
+                        .webtoon(webtoon)
+                        .build() )
+                .collect(Collectors.toList());
+        webtoonAuthorList.stream()
+                .map(t -> webtoonAuthorRepository.save(t))
+                .collect(Collectors.toList());
+                
+        WebtoonResponse.CreateDTO responseDTO = new WebtoonResponse.CreateDTO(webtoon);
+        return responseDTO;
+    }
+
+
 
 
 
@@ -103,10 +144,10 @@ public class WebtoonService {
         if(findRecentWebtoonList.size()==0){
             System.out.println("테스트 if 새로만듬");
             recentWebtoon = RecentWebtoon.builder()
-            .user(User.builder().id(sessionUserId).build())
-            .episode(episode)
-            .webtoon(episode.getWebtoon())
-            .build();
+                    .user(User.builder().id(sessionUserId).build())
+                    .episode(episode)
+                    .webtoon(episode.getWebtoon())
+                    .build();
             recentWebtoonRepository.save(recentWebtoon);
         } else{
             System.out.println("테스트 else 있는거임");
@@ -173,6 +214,103 @@ public class WebtoonService {
                 .collect(Collectors.toList());
 
         return responseDTOList;
+    }
+
+
+
+    // 메인 광고 제거
+    @Transactional
+    public WebtoonResponse.AdvertisingMainDTO advertisingMainDelete(int advertisingMainId) {
+        
+        AdvertisingMain advertisingMain = advertisingMainRepository.findById(advertisingMainId)
+                .orElseThrow(() -> new Exception404(advertisingMainId + "없음"));
+
+        WebtoonResponse.AdvertisingMainDTO responseDTO = new WebtoonResponse.AdvertisingMainDTO(advertisingMain);
+
+        advertisingMainRepository.delete(advertisingMain);
+        
+        return responseDTO;
+    }
+
+
+
+
+    // 서브 광고 추가
+    @Transactional
+    public WebtoonResponse.AdvertisingSubDTO advertisingSubSave(WebtoonRequest.AdvertisingSubDTO requestDTO) {
+
+        AdvertisingSub advertisingSub = AdvertisingSub.builder()
+                .linkURL(requestDTO.getLinkURL())
+                .photo("Advertising/" + ImageUtils.updateImage(requestDTO.getPhoto(), "Advertising/"))
+                .build();
+      
+        try {
+            advertisingSubRepository.save(advertisingSub);
+        } catch (Exception e) {
+            throw new Exception400("실패");
+        }
+
+        WebtoonResponse.AdvertisingSubDTO responseDTO = new WebtoonResponse.AdvertisingSubDTO(advertisingSub);
+
+        return responseDTO;
+    }
+
+
+
+
+
+    // 메인 광고 추가
+    @Transactional
+    public WebtoonResponse.AdvertisingMainDTO advertisingMainSave(WebtoonRequest.AdvertisingMainDTO requestDTO) {
+
+        AdvertisingMain advertisingMain;
+
+        if(requestDTO.getIsWebLink() == true){
+
+            if(requestDTO.getPhoto()==null || requestDTO.getLinkURL() == null || requestDTO.getMainText() == null || requestDTO.getSubText() == null){
+                throw new Exception400("웹툰광고가 아니면 모두 입력해야함");
+            }
+
+            advertisingMain = AdvertisingMain.builder()
+                    .linkURL(requestDTO.getLinkURL())
+                    .isWebLink(true)
+                    .mainText(requestDTO.getMainText())
+                    .subText(requestDTO.getSubText())
+                    .photo("Advertising/" + ImageUtils.updateImage(requestDTO.getPhoto(), "Advertising/"))
+                    .build();
+        } else{
+            Webtoon webtoon;
+            try {
+                webtoon = webtoonRepository.findById(requestDTO.getWebtoonId()).get();
+            } catch (Exception e) {
+                throw new Exception400("webtoonId가 없거나 웹툰이 없음");
+            }
+            advertisingMain = AdvertisingMain.builder()
+                    .webtoon(webtoon)
+                    .isWebLink(false)
+                    .mainText(requestDTO.getMainText() == null ? webtoon.getTitle() : requestDTO.getMainText() )
+                    .subText(requestDTO.getSubText() == null ? 
+                            webtoon.getWebtoonAuthorList().stream()
+                                    .map(webtoonAuthor -> webtoonAuthor.getAuthor().getAuthorNickname())
+                                    .collect(Collectors.joining("/")) 
+                            : requestDTO.getSubText() )
+                    .photo(requestDTO.getPhoto() == null ? 
+                            webtoon.getEpisodeList().size() == 0 ?
+                            "WebtoonThumbnail/" + webtoon.getImage()
+                            : "EpisodeThumbnail/" + webtoon.getEpisodeList().get(0).getThumbnail() 
+                                : "Advertising/" + ImageUtils.updateImage(requestDTO.getPhoto(), "Advertising/"))
+                    .build();
+        }
+
+        try {
+            advertisingMainRepository.save(advertisingMain);
+        } catch (Exception e) {
+            throw new Exception400("실패");
+        }
+
+        WebtoonResponse.AdvertisingMainDTO responseDTO = new WebtoonResponse.AdvertisingMainDTO(advertisingMain);
+
+        return responseDTO;
     }
 
 

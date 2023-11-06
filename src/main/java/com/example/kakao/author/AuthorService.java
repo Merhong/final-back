@@ -1,15 +1,29 @@
 package com.example.kakao.author;
 
 import com.example.kakao._core.errors.exception.Exception400;
+import com.example.kakao._core.errors.exception.Exception403;
 import com.example.kakao._core.errors.exception.Exception404;
+import com.example.kakao._core.utils.ImageUtils;
+import com.example.kakao._entity.AuthorBoard;
 import com.example.kakao._entity.InterestAuthor;
+import com.example.kakao._entity.WebtoonAuthor;
+import com.example.kakao._entity.enums.UserTypeEnum;
+import com.example.kakao._repository.AuthorBoardRepository;
 import com.example.kakao._repository.InterestAuthorRepository;
 import com.example.kakao.user.User;
+import com.example.kakao.user.UserJPARepository;
+import com.example.kakao.user.UserRequest;
+import com.example.kakao.user.UserResponse;
+import com.example.kakao.webtoon.Webtoon;
+import com.example.kakao.webtoon.WebtoonRequest;
+import com.example.kakao.webtoon.WebtoonResponse;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -18,6 +32,111 @@ public class AuthorService {
 
     private final AuthorJPARepository authorRepository;
     private final InterestAuthorRepository interestAuthorRepository;
+    private final UserJPARepository userRepository;
+    private final AuthorBoardRepository authorBoardRepository;
+
+
+
+
+
+
+
+    // 작가페이지 (작가별 작가의글)
+    public AuthorResponse.AuthorDetailDTO authorDetail(int authorId, int sessionUserId) {
+        Author author = authorRepository.findById(authorId)
+                .orElseThrow(() -> new Exception404(authorId+"작가없음"));
+
+        AuthorResponse.AuthorDetailDTO responseDTO = new AuthorResponse.AuthorDetailDTO(author);
+
+        
+        List<InterestAuthor> interestAuthorList = interestAuthorRepository.findByUserIdAndAuthorId(sessionUserId, authorId);
+        if (interestAuthorList.size() == 0) {
+            responseDTO.setIsInterest(false);
+        }
+        if (interestAuthorList.size() == 1) {
+            responseDTO.setIsInterest(true);
+        }
+
+        return responseDTO;
+    }
+
+
+
+
+    // 작가의글 추가
+    @Transactional
+    public AuthorResponse.CreateBoardDTO createBoard(AuthorRequest.CreateBoardDTO requestDTO, User sessionUser) {
+
+        String fileName = ImageUtils.updateImage(requestDTO.getPhoto(), "AuthorBoard/");
+
+        AuthorBoard authorBoard = AuthorBoard.builder()
+                .author(authorRepository.findByUserId(sessionUser.getId())
+                        .orElseThrow(() -> new Exception404("작가가없음")))
+                .title(requestDTO.getTitle())
+                .text(requestDTO.getText())
+                .photo(fileName)
+                .build();
+
+        authorBoardRepository.save(authorBoard);
+        
+        AuthorResponse.CreateBoardDTO responseDTO = new AuthorResponse.CreateBoardDTO(authorBoard);
+        return responseDTO;
+    }
+
+
+
+
+
+    // 작가 추가
+    @Transactional
+    public AuthorResponse.CreateDTO create(AuthorRequest.CreateDTO requestDTO) {
+        
+        User authorUser = userRepository.findById(requestDTO.getUserId())
+                .orElseThrow(() -> new Exception404("유저없음 "+requestDTO.getUserId()));
+
+        if(authorUser.getUserTypeEnum()!=UserTypeEnum.NORMAL){
+            throw new Exception400("일반유저아님 "+requestDTO.getUserId());
+        }
+
+        Author author = requestDTO.toEntity();
+        authorRepository.save(author);
+
+        authorUser.setUserTypeEnum(UserTypeEnum.AUTHOR);
+
+
+        AuthorResponse.CreateDTO responseDTO = new AuthorResponse.CreateDTO(author);
+        return responseDTO;
+    }
+
+
+
+
+    // 작가 수정
+    @Transactional
+    public AuthorResponse.UpdateDTO update(AuthorRequest.UpdateDTO requestDTO, User sessionUser) {
+
+        Author author = authorRepository.findByUserId(sessionUser.getId())
+                .orElseThrow(() -> new Exception404("작가수정실패 작가못찾음"));
+        
+        if( requestDTO.getAuthorPhoto() != null && !(requestDTO.getAuthorPhoto().isEmpty()) ){
+            String fileName = ImageUtils.updateImage(requestDTO.getAuthorPhoto(), "AuthorPhoto/");
+            author.setAuthorPhoto(fileName);
+            author.getAuthorPhoto();
+        System.err.println("실행1");
+        }
+        if( requestDTO.getIntroduce() != null && !(requestDTO.getIntroduce().isEmpty()) ){
+            author.setIntroduce(requestDTO.getIntroduce());
+        }
+        if( requestDTO.getSiteURL() != null && !(requestDTO.getSiteURL().isEmpty()) ){
+            author.setSiteURL(requestDTO.getSiteURL());
+        }
+
+        System.err.println("실행2");
+
+        AuthorResponse.UpdateDTO responseDTO = new AuthorResponse.UpdateDTO(author);
+        return responseDTO;
+    }
+
 
 
     // 관심작가추가

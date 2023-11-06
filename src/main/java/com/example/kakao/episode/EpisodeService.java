@@ -1,15 +1,29 @@
 package com.example.kakao.episode;
 
 import com.example.kakao._core.errors.exception.Exception400;
+import com.example.kakao._core.errors.exception.Exception401;
+import com.example.kakao._core.errors.exception.Exception403;
 import com.example.kakao._core.errors.exception.Exception404;
+import com.example.kakao._core.utils.ImageUtils;
+import com.example.kakao._entity.AuthorBoard;
+import com.example.kakao._entity.EpisodePhoto;
 import com.example.kakao._entity.LikeEpisode;
+import com.example.kakao._entity.enums.UserTypeEnum;
+import com.example.kakao._repository.EpisodePhotoRepository;
 import com.example.kakao._repository.LikeEpisodeRepository;
+import com.example.kakao.author.AuthorRequest;
+import com.example.kakao.author.AuthorResponse;
 import com.example.kakao.user.User;
+import com.example.kakao.webtoon.Webtoon;
+import com.example.kakao.webtoon.WebtoonRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -18,6 +32,79 @@ public class EpisodeService {
 
     private final EpisodeRepository episodeRepository;
     private final LikeEpisodeRepository likeEpisodeRepository;
+    private final EpisodePhotoRepository episodePhotoRepository;
+    private final WebtoonRepository webtoonRepository;
+
+
+
+
+
+    // 에피소드 추가
+    @Transactional
+    public EpisodeResponse.CreateDTO create(EpisodeRequest.CreateDTO requestDTO, List<MultipartFile> photoList, User sessionUser) {
+
+        Webtoon webtoon = webtoonRepository.findById(requestDTO.getWebtoonId())
+                .orElseThrow(() -> new Exception404(requestDTO.getWebtoonId() + "없음"));
+
+        if(sessionUser.getUserTypeEnum() == UserTypeEnum.AUTHOR){
+            webtoon.getWebtoonAuthorList().stream()
+                    .map(webtoonAuthor -> webtoonAuthor.getAuthor().getUser().getId())
+                    .filter(userId -> userId == sessionUser.getId())
+                    .findFirst()
+                    .orElseThrow(() -> new Exception403("어드민이 아니고 웹툰"+requestDTO.getWebtoonId()+"의 작가도 아님"));
+        }
+        
+        if(requestDTO.getThumbnailPhoto()==null){
+            throw new Exception400("썸네일 없음");
+        }
+
+        String thumbnailFileName = ImageUtils.updateImage(requestDTO.getThumbnailPhoto(), "EpisodeThumbnail/");
+
+        Episode episode = Episode.builder()
+                .webtoon(Webtoon.builder().id(requestDTO.getWebtoonId()).build())
+                .detailTitle(requestDTO.getDetailTitle())
+                .authorText(requestDTO.getAuthorText())
+                .thumbnail(thumbnailFileName)
+                .cookieCost(0)
+                .starCount(0.0)
+                .starScore(0.0)
+                .build();
+
+        try {
+            episodeRepository.save(episode);
+        } catch (Exception e) {
+            throw new Exception400("에피소드타이틀중복");
+        }
+        
+        System.err.println("episode세이브됨");
+        System.err.println(episode.getId());
+        System.err.println("2episode세이브됨");
+
+        try {
+            photoList.stream()
+                    .map(multipartFile -> {
+                        System.err.println("스트림실행에피소드포토저장1-1");
+                        String fileName = ImageUtils.updateImage(multipartFile, "EpisodePhoto/");
+                        EpisodePhoto episodePhoto = EpisodePhoto.builder().episode(episode).photoURL(fileName).build();
+                        episodePhotoRepository.save(episodePhoto);
+                        System.err.println("스트림실행에피소드포토저장1-2");
+                        return episodePhoto;
+                    })
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            System.err.println("스트림 캐치로");
+            throw new Exception400("에피소드 사진 없음");
+        }
+
+        System.out.println("스트림끝");
+        
+
+        EpisodeResponse.CreateDTO responseDTO = new EpisodeResponse.CreateDTO(episode);
+        return responseDTO;
+    }
+
+
+
 
 
     // 에피소드 좋아요

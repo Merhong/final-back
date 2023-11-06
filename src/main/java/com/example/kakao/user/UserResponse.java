@@ -230,14 +230,14 @@ public class UserResponse {
     @Getter
     @Setter
     @ToString
-    public static class updateResponseDTO {
+    public static class UpdateResponseDTO {
         private int id;
         private String password;
         private String email;
         private String username;
         private Integer cookie;
 
-        public updateResponseDTO(User user) {
+        public UpdateResponseDTO(User user) {
             this.id = user.getId();
             this.password = user.getPassword();
             this.email = user.getEmail();
