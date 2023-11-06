@@ -28,7 +28,7 @@ dependencies {
 	implementation 'org.jsoup:jsoup:1.15.3'
 	// https://mvnrepository.com/artifact/com.google.code.gson/gson
 	implementation 'com.google.code.gson:gson:2.9.0'
-
+    implementation 'org.springframework.boot:spring-boot-starter-mustache'
 	// local
 	runtimeOnly 'com.h2database:h2'
 }

@@ -10,6 +10,10 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
     password:
+  mustache:
+    servlet:
+      expose-session-attributes: true
+      expose-request-attributes: true
   h2:
     console:
       enabled: true
