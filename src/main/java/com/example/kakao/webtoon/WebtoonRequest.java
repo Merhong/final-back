@@ -90,8 +90,8 @@ public class WebtoonRequest {
         @Size(min = 1, max = 300, message = "300자 이내여야 합니다.")
         private String intro; // 소개글
 
-        @NotEmpty
-        private String image;
+        // @NotEmpty
+        private MultipartFile image;
 
         @Min(0)
         @Max(20)
@@ -109,7 +109,7 @@ public class WebtoonRequest {
             return Webtoon.builder()
                     .title(title)
                     .intro(intro)
-                    .image(image)
+                    // .image(image)
                     .ageLimit(ageLimit)
                     .webtoonWeekDayEnum(webtoonWeekDayEnum)
                     .webtoonSpeciallyEnum(WebtoonSpeciallyEnum.valueOf(webtoonSpeciallyEnum))

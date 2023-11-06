@@ -133,6 +133,11 @@ public class EpisodeResponse {
         private List<PhotoDTO> PhotoList;
         private boolean isLike;
 
+        private List<EpisodeMoveDTO> episodeMoveDTOList;
+
+
+
+
         public FindByIdDTO(Episode episode, List<LikeEpisode> likeEpisode) {
             this.episodeId = episode.getId();
             this.detailTitle = episode.getDetailTitle();
@@ -172,7 +177,34 @@ public class EpisodeResponse {
             } else {
                 this.isLike = false;
             }
+
+            this.episodeMoveDTOList = episode.getWebtoon().getEpisodeList().stream()
+                    .map(t -> new EpisodeMoveDTO(t))
+                    .collect(Collectors.toList());
+
         }
+
+
+
+
+            @Getter
+            @Setter
+            @ToString
+            class EpisodeMoveDTO {
+                private Integer id;
+                // private Integer webtoonId;
+                private String detailTitle;
+                private String thumbnail;
+
+                public EpisodeMoveDTO(Episode episode) {
+                    this.id = episode.getId();
+                    this.detailTitle = episode.getDetailTitle();
+                    this.thumbnail = episode.getThumbnail();
+                }
+            }
+
+
+
 
         @Getter
         @Setter

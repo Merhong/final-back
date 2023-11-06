@@ -63,7 +63,11 @@ public class WebtoonService {
         
         List<Integer> authorIdList = requestDTO.getAuthorIdList();
         
+        String imageFileName = ImageUtils.updateImage(requestDTO.getImage(), "WebtoonThumbnail/");
+
         Webtoon webtoon = requestDTO.toEntity();
+        webtoon.setImage(imageFileName);
+        
         webtoonRepository.save(webtoon);
         // Webtoon webtoon = webtoonRepository.findByTitle(requestDTO.getTitle()).get(0);
 

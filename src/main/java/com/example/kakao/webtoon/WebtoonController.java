@@ -198,7 +198,8 @@ public class WebtoonController {
     // }
     // 웹툰 추가
     @PostMapping("/webtoons")
-    public ResponseEntity<?> create(@RequestBody @Valid WebtoonRequest.CreateDTO requestDTO, Errors errors) {
+    // public ResponseEntity<?> create(@RequestBody @Valid WebtoonRequest.CreateDTO requestDTO, Errors errors) {
+    public ResponseEntity<?> create(WebtoonRequest.CreateDTO requestDTO, MultipartFile image) {
         User sessionUser = (User) session.getAttribute("sessionUser");
 
         if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) ) {
