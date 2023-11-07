@@ -1,8 +1,9 @@
 package com.example.kakao.episode;
 
+import com.example.kakao._entity.EpisodePhoto;
+import com.example.kakao._entity.LikeEpisode;
+import com.example.kakao._entity.RecentWebtoon;
 import com.example.kakao.comment.Comment;
-import com.example.kakao.entity.EpisodePhoto;
-import com.example.kakao.entity.LikeEpisode;
 import com.example.kakao.webtoon.Webtoon;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -15,12 +16,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@ToString
 @Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name = "episode_tb")
+@Table(name = "episode_tb", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"webtoon_id", "detailTitle"})
+})
 public class Episode {
 
     @Id
@@ -40,21 +42,25 @@ public class Episode {
     @OneToMany(mappedBy = "episode", fetch = FetchType.LAZY)
     private List<LikeEpisode> likeEpisodeList = new ArrayList<>();
 
-    @Column(length = 100, nullable = false)
+    @OneToMany(mappedBy = "episode", fetch = FetchType.LAZY)
+    private List<RecentWebtoon> recentWebtoonList = new ArrayList<>();
+
+    @Column(length = 45, nullable = false)
     private String detailTitle;
 
+    @Column(nullable = false)
     private String thumbnail;
 
     @ColumnDefault("'작가의말 없음'")
     private String authorText;
 
-    @ColumnDefault("0")
+    @ColumnDefault("0") // 작동안하는듯
     private Integer cookieCost;
 
-    @ColumnDefault("0")
+    @ColumnDefault("0") // 작동안하는듯
     private Double starScore; // 별점 계산 분자값
 
-    @ColumnDefault("0")
+    @ColumnDefault("0") // 작동안하는듯
     private Double starCount; // 별점 계산 분모값
 
     @CreationTimestamp

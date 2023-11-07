@@ -1,9 +1,10 @@
 package com.example.kakao.episode;
 
+import com.example.kakao._entity.EpisodePhoto;
+import com.example.kakao._entity.LikeEpisode;
+import com.example.kakao._entity.ReComment;
 import com.example.kakao.comment.Comment;
-import com.example.kakao.entity.EpisodePhoto;
-import com.example.kakao.entity.LikeEpisode;
-import com.example.kakao.entity.ReComment;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,6 +14,46 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class EpisodeResponse {
+
+
+
+
+
+
+
+
+    @Getter
+    @Setter
+    @ToString
+    public static class CreateDTO {
+        private int id;
+        private int webtoonId;
+        private String detailTitle;
+        private String authorText;
+        private Timestamp createdAt;
+        private Timestamp updatedAt;
+
+        private String thumbnail;
+        // private List<PhotoDTO> photoDTOList;
+
+
+        public CreateDTO(Episode episode) {
+            this.id = episode.getId();
+            this.webtoonId = episode.getWebtoon().getId();
+            this.detailTitle = episode.getDetailTitle();
+            this.authorText = episode.getAuthorText();
+            this.createdAt = episode.getCreatedAt();
+            this.updatedAt = episode.getUpdatedAt();
+
+            this.thumbnail = episode.getThumbnail();
+            
+            // this.photoDTOList = episode.getEpisodePhotoList().stream()
+            //         .map(t -> new PhotoDTO(t))
+            //         .collect(Collectors.toList());
+        }
+    }
+
+
 
 
     // 에피소드 좋아요 DTO
@@ -92,6 +133,11 @@ public class EpisodeResponse {
         private List<PhotoDTO> PhotoList;
         private boolean isLike;
 
+        private List<EpisodeMoveDTO> episodeMoveDTOList;
+
+
+
+
         public FindByIdDTO(Episode episode, List<LikeEpisode> likeEpisode) {
             this.episodeId = episode.getId();
             this.detailTitle = episode.getDetailTitle();
@@ -123,14 +169,42 @@ public class EpisodeResponse {
             this.commentCount = episode.getCommentList().size();
 
             this.PhotoList = episode.getEpisodePhotoList().stream()
-                    .map(t -> new PhotoDTO(t)).collect(Collectors.toList());
+                    .map(t -> new PhotoDTO(t))
+                    .collect(Collectors.toList());
 
             if (likeEpisode.size() != 0) {
                 this.isLike = likeEpisode.get(0).getIsLike();
             } else {
                 this.isLike = false;
             }
+
+            this.episodeMoveDTOList = episode.getWebtoon().getEpisodeList().stream()
+                    .map(t -> new EpisodeMoveDTO(t))
+                    .collect(Collectors.toList());
+
         }
+
+
+
+
+            @Getter
+            @Setter
+            @ToString
+            class EpisodeMoveDTO {
+                private Integer id;
+                // private Integer webtoonId;
+                private String detailTitle;
+                private String thumbnail;
+
+                public EpisodeMoveDTO(Episode episode) {
+                    this.id = episode.getId();
+                    this.detailTitle = episode.getDetailTitle();
+                    this.thumbnail = episode.getThumbnail();
+                }
+            }
+
+
+
 
         @Getter
         @Setter
@@ -224,21 +298,25 @@ public class EpisodeResponse {
             //     }
             // }
         }
-
-        @Getter
-        @Setter
-        @ToString
-        class PhotoDTO {
-            private Integer id;
-            private String photoURL;
-
-            PhotoDTO(EpisodePhoto episodePhoto) {
-                this.id = episodePhoto.getId();
-                this.photoURL = episodePhoto.getPhotoURL();
-            }
-        }
-
     }
+
+
+
+
+
+    @Getter
+    @Setter
+    @ToString
+    public static class PhotoDTO {
+        private Integer id;
+        private String photoURL;
+        PhotoDTO(EpisodePhoto episodePhoto) {
+            this.id = episodePhoto.getId();
+            this.photoURL = episodePhoto.getPhotoURL();
+        }
+    }
+
+
 
 
     // @ToString

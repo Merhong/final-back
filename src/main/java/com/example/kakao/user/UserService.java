@@ -3,15 +3,15 @@ package com.example.kakao.user;
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception500;
 import com.example.kakao._core.utils.JwtTokenUtils;
+import com.example.kakao._entity.InterestAuthor;
+import com.example.kakao._entity.InterestWebtoon;
+import com.example.kakao._entity.ReComment;
+import com.example.kakao._entity.enums.UserTypeEnum;
+import com.example.kakao._repository.InterestAuthorRepository;
+import com.example.kakao._repository.InterestWebtoonRepository;
+import com.example.kakao._repository.ReCommentRepository;
 import com.example.kakao.comment.Comment;
 import com.example.kakao.comment.CommentJPARepository;
-import com.example.kakao.entity.InterestAuthor;
-import com.example.kakao.entity.InterestWebtoon;
-import com.example.kakao.entity.ReComment;
-import com.example.kakao.entity.enums.UserTypeEnum;
-import com.example.kakao.repository.InterestAuthorRepository;
-import com.example.kakao.repository.InterestWebtoonRepository;
-import com.example.kakao.repository.ReCommentRepository;
 import com.example.kakao.user.UserResponse.InterestAuthorDTO;
 import com.example.kakao.user.UserResponse.InterestWebtoonDTO;
 
@@ -209,6 +209,20 @@ public class UserService {
         }
     }
 
+    public UserResponse.loginResponseDTO autologin(User sessionUser) {
+
+        User userPS = userJPARepository.findById(sessionUser.getId())
+                .orElseThrow(() -> new Exception400("자동로그인 오류"));
+
+        String jwt = JwtTokenUtils.create(userPS);
+
+        UserResponse.loginResponseDTO responseDTO = new UserResponse.loginResponseDTO(userPS);
+        responseDTO.setJwt(jwt);
+
+
+        return responseDTO;
+    }
+
 
     public UserResponse.loginResponseDTO login(UserRequest.LoginDTO requestDTO) {
         System.out.println("로그1");
@@ -227,7 +241,7 @@ public class UserService {
     }
 
     @Transactional
-    public UserResponse.updateResponseDTO update(UserRequest.UpdateDTO requestDTO, User sessionUser) {
+    public UserResponse.UpdateResponseDTO update(UserRequest.UpdateDTO requestDTO, User sessionUser) {
 
         User user = userJPARepository.findById(sessionUser.getId())
                 .orElseThrow(() -> new Exception400("오류 : " + requestDTO.getEmail()));
@@ -242,7 +256,7 @@ public class UserService {
         user.setPassword(requestDTO.getPassword());
         user.setCookie(requestDTO.getCookie());
 
-        UserResponse.updateResponseDTO responseDTO = new UserResponse.updateResponseDTO(user);
+        UserResponse.UpdateResponseDTO responseDTO = new UserResponse.UpdateResponseDTO(user);
 
         return responseDTO;
     }

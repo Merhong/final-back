@@ -1,9 +1,11 @@
 package com.example.kakao.webtoon;
 
-import com.example.kakao.entity.InterestWebtoon;
-import com.example.kakao.entity.WebtoonAuthor;
-import com.example.kakao.entity.WebtoonHashTag;
-import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
+import com.example.kakao._entity.AdvertisingMain;
+import com.example.kakao._entity.InterestWebtoon;
+import com.example.kakao._entity.WebtoonAuthor;
+import com.example.kakao._entity.WebtoonHashTag;
+import com.example.kakao._entity.enums.WebtoonSpeciallyEnum;
+import com.example.kakao.author.Author;
 import com.example.kakao.episode.Episode;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -15,7 +17,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-@ToString
 @Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -40,21 +41,24 @@ public class Webtoon {
     @OneToMany(mappedBy = "webtoon", fetch = FetchType.LAZY)
     private List<WebtoonHashTag> webtoonHashTagList = new ArrayList<>();
 
-    @Column(length = 100, nullable = false)
+    // @OneToOne(mappedBy = "webtoon")
+    // private AdvertisingMain advertisingMain;
+
+    @Column(length = 100, nullable = false, unique = true)
     private String title;
 
     @Column(length = 500)
     private String intro; // 소개글
 
-    @ColumnDefault("0")
+    // @ColumnDefault("0")
     private Double starScore; // 별점 계산 분자값 // 웹툰 자체 별점은 없고 각 에피소드별 합산임. 그러니까 모두 0으로 하거나, 필드를 없애고 requestDTO에만 계산해서 줘야함
 
-    @ColumnDefault("0")
+    // @ColumnDefault("0")
     private Double starCount; // 별점 계산 분모값 // 웹툰 자체 별점은 없고 각 에피소드별 합산임. 그러니까 모두 0으로 하거나, 필드를 없애고 requestDTO에만 계산해서 줘야함
 
     private String image; // 메인페이지 썸네일
 
-    private String detailImage; // 상세보기페이지 썸네일
+    // private String detailImage; // 상세보기페이지 썸네일
 
     private Integer ageLimit; // 나이제한
 
@@ -74,7 +78,7 @@ public class Webtoon {
 
     @Builder
     public Webtoon(Integer id, List<WebtoonAuthor> webtoonAuthorList, List<Episode> episodeList, String title,
-                   String intro, Double starScore, Double starCount, String image, String detailImage, Integer ageLimit,
+                   String intro, Double starScore, Double starCount, String image, Integer ageLimit,
                    String webtoonWeekDayEnum, WebtoonSpeciallyEnum webtoonSpeciallyEnum, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.webtoonAuthorList = webtoonAuthorList;
@@ -84,7 +88,7 @@ public class Webtoon {
         this.starScore = starScore;
         this.starCount = starCount;
         this.image = image;
-        this.detailImage = detailImage;
+        // this.detailImage = detailImage;
         this.ageLimit = ageLimit;
         this.webtoonWeekDayEnum = webtoonWeekDayEnum;
         this.webtoonSpeciallyEnum = webtoonSpeciallyEnum;

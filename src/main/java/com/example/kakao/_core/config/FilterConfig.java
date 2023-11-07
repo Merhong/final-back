@@ -14,6 +14,7 @@ public class FilterConfig {
         // bean.addUrlPatterns("/products/*");
         // bean.addUrlPatterns("/carts/*");
         // bean.addUrlPatterns("/webtoons/author/*");
+        bean.addUrlPatterns("/autologin");
         bean.addUrlPatterns("/user");
         bean.addUrlPatterns("/users/*");
         bean.addUrlPatterns("/authors/*");

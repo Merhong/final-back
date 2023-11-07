@@ -4,13 +4,13 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.example.kakao._entity.AuthorBoard;
+import com.example.kakao._entity.InterestAuthor;
+import com.example.kakao._entity.InterestWebtoon;
+import com.example.kakao._entity.ReComment;
+import com.example.kakao._entity.enums.UserTypeEnum;
+import com.example.kakao._entity.enums.WebtoonSpeciallyEnum;
 import com.example.kakao.comment.Comment;
-import com.example.kakao.entity.AuthorBoard;
-import com.example.kakao.entity.InterestAuthor;
-import com.example.kakao.entity.InterestWebtoon;
-import com.example.kakao.entity.ReComment;
-import com.example.kakao.entity.enums.UserTypeEnum;
-import com.example.kakao.entity.enums.WebtoonSpeciallyEnum;
 import com.example.kakao.episode.Episode;
 import com.example.kakao.webtoon.Webtoon;
 
@@ -230,14 +230,14 @@ public class UserResponse {
     @Getter
     @Setter
     @ToString
-    public static class updateResponseDTO {
+    public static class UpdateResponseDTO {
         private int id;
         private String password;
         private String email;
         private String username;
         private Integer cookie;
 
-        public updateResponseDTO(User user) {
+        public UpdateResponseDTO(User user) {
             this.id = user.getId();
             this.password = user.getPassword();
             this.email = user.getEmail();

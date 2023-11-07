@@ -1,7 +1,8 @@
 package com.example.kakao.user;
 
+import com.example.kakao._entity.enums.UserTypeEnum;
 import com.example.kakao.author.Author;
-import com.example.kakao.entity.enums.UserTypeEnum;
+
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;

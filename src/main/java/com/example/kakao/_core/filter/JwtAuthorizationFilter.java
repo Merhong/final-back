@@ -6,7 +6,7 @@ import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.kakao._core.errors.exception.Exception401;
 import com.example.kakao._core.utils.JwtTokenUtils;
-import com.example.kakao.entity.enums.UserTypeEnum;
+import com.example.kakao._entity.enums.UserTypeEnum;
 import com.example.kakao.user.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.MediaType;
