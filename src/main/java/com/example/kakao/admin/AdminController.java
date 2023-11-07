@@ -1,13 +1,29 @@
 package com.example.kakao.admin;
 
+import com.example.kakao._core.utils.ApiUtils;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
+@RequiredArgsConstructor
 @Controller
 public class AdminController {
 
+    @Autowired
+    private final AdminService adminService;
+    private final HttpSession session;
+
+
     // mustache admin 홈페이지
-    @GetMapping({ "/admin"})
+    @GetMapping({"/admin"})
     public String index() {
         return "index";
     }
@@ -27,5 +43,14 @@ public class AdminController {
         return "500";
     }
 
+    @GetMapping("/adminJoinForm")
+    public String adminJoinForm() {
+        return "adminJoinForm";
+    }
 
+    @PostMapping("/joinadmin")
+    public ResponseEntity<?> joinAdmin(@Valid AdminRequest.JoinDTO requestDTO, Errors errors) {
+        adminService.joinAdmin(requestDTO);
+        return ResponseEntity.ok().body(ApiUtils.success(null));
+    }
 }
