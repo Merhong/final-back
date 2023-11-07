@@ -225,17 +225,28 @@ public class EpisodeService {
 
     // 에피소드 한편 보기
     public EpisodeResponse.FindByIdDTO findById(int episodeId, Integer userId) {
+        System.out.println("테스트31");
         Episode episode = episodeRepository.findById(episodeId)
                 .orElseThrow(() -> new Exception404(episodeId + "없음"));
-        if (userId != null) {
-            List<LikeEpisode> likeEpisode = likeEpisodeRepository.findByUserIdAndEpisodeId(userId, episodeId);
-            EpisodeResponse.FindByIdDTO responseDTO = new EpisodeResponse.FindByIdDTO(episode, likeEpisode);
+        // if (userId != null) {
+
+            System.out.println("테스트32");
+
+            List<LikeEpisode> myLikeEpisode = likeEpisodeRepository.findByUserIdAndEpisodeId(userId, episodeId);
+
+            System.out.println("테스트33");
+            EpisodeResponse.FindByIdDTO responseDTO = new EpisodeResponse.FindByIdDTO(episode, myLikeEpisode);
+            System.out.println("테스트34여기안나옴");
+            // System.out.println("테스트33"+responseDTO);
+
             return responseDTO;
-        } else {
-           EpisodeResponse.FindByIdDTO responseDTO = new EpisodeResponse.FindByIdDTO(episode, null);
-           responseDTO.setLike(false);
-           return responseDTO;            
-        }
+
+
+        // } else {
+        //    EpisodeResponse.FindByIdDTO responseDTO = new EpisodeResponse.FindByIdDTO(episode, null);
+        //    responseDTO.setLike(false);
+        //    return responseDTO;            
+        // }
         
 
        

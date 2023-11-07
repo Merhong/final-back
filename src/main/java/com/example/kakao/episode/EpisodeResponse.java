@@ -132,13 +132,14 @@ public class EpisodeResponse {
         // private List<CommentDTO> commentList;
         private List<PhotoDTO> PhotoList;
         private boolean isLike;
+        private boolean isStar;
 
         private List<EpisodeMoveDTO> episodeMoveDTOList;
 
 
 
 
-        public FindByIdDTO(Episode episode, List<LikeEpisode> likeEpisode) {
+        public FindByIdDTO(Episode episode, List<LikeEpisode> myLikeEpisode) {
             this.episodeId = episode.getId();
             this.detailTitle = episode.getDetailTitle();
             this.starScore = episode.getStarScore();
@@ -147,41 +148,74 @@ public class EpisodeResponse {
             this.authorText = episode.getAuthorText();
             this.cookieCost = episode.getCookieCost();
 
-
+            System.out.println("dto테스트1");
+            
             this.webtoonId = episode.getWebtoon().getId();
             this.webtoonName = episode.getWebtoon().getTitle();
-
+            
             this.authorName = episode.getWebtoon().getWebtoonAuthorList().stream()
-                    .map(webtoonAuthor -> webtoonAuthor.getAuthor().getAuthorNickname())
-                    .collect(Collectors.joining(" / "));
-
+            .map(webtoonAuthor -> webtoonAuthor.getAuthor().getAuthorNickname())
+            .collect(Collectors.joining(" / "));
+            
+            System.out.println("dto테스트2");
             // this.likeEpisodeCount = episode.getLikeEpisodeList().size(); // 싫어요일수도 있음
+            
+            /// 임시
+            // this.likeEpisodeCount = 1;
             this.likeEpisodeCount = episode.getLikeEpisodeList().stream()
-                    .map(t -> (t.getIsLike() == true) ? 1 : 0)
-                    .reduce(0, (a, b) -> a + b);
-
+            .map(t -> (t.getIsLike() != null && t.getIsLike() == true) ? 1 : 0)
+            .reduce(0, (a, b) -> a + b);
+            /// 임시
+            
             // List<Integer> authorUserIdList = episode.getWebtoon().getWebtoonAuthorList().stream()
             //         .map(webtoonAuthor -> webtoonAuthor.getAuthor().getUser().getId())
             //         .collect(Collectors.toList());
             // this.commentList = episode.getCommentList().stream()
             //         .map(t -> new CommentDTO(t, authorUserIdList)).collect(Collectors.toList());
-
+            
             this.commentCount = episode.getCommentList().size();
-
+            
             this.PhotoList = episode.getEpisodePhotoList().stream()
-                    .map(t -> new PhotoDTO(t))
-                    .collect(Collectors.toList());
-
-            if (likeEpisode.size() != 0) {
-                this.isLike = likeEpisode.get(0).getIsLike();
+            .map(t -> new PhotoDTO(t))
+            .collect(Collectors.toList());
+            
+            System.out.println("dto테스트3");
+            
+            
+            /// 임시
+            // this.isLike=false;
+            if (myLikeEpisode.size() != 0) {
+                try {
+                    this.isLike = myLikeEpisode.get(0).getIsLike();
+                } catch (Exception e) {
+                    System.out.println("테스트 캐치로옴");
+                    this.isLike = false;
+                }
             } else {
                 this.isLike = false;
             }
 
+            
+            if (myLikeEpisode.size() != 0) {
+                try {
+                    this.isStar = myLikeEpisode.get(0).getIsStar();
+                } catch (Exception e) {
+                    System.out.println("테스트 캐치로옴");
+                    this.isStar = false;
+                }
+            } else {
+                this.isLike = false;
+            }
+            ///
+            
+            System.out.println("dto테스트4");
+            
+            
             this.episodeMoveDTOList = episode.getWebtoon().getEpisodeList().stream()
-                    .map(t -> new EpisodeMoveDTO(t))
-                    .collect(Collectors.toList());
-
+            .map(t -> new EpisodeMoveDTO(t))
+            .collect(Collectors.toList());
+            
+            System.out.println("dto테스트5");
         }
 
 
