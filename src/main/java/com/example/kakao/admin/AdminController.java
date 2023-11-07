@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -43,14 +42,32 @@ public class AdminController {
         return "500";
     }
 
+    @GetMapping("/adminLoginForm")
+    public String adminLoginForm() {
+        return "adminLoginForm";
+    }
+
     @GetMapping("/adminJoinForm")
     public String adminJoinForm() {
         return "adminJoinForm";
     }
 
-    @PostMapping("/joinadmin")
-    public ResponseEntity<?> joinAdmin(@Valid AdminRequest.JoinDTO requestDTO, Errors errors) {
-        adminService.joinAdmin(requestDTO);
-        return ResponseEntity.ok().body(ApiUtils.success(null));
+    // 관리자 로그인
+    @PostMapping("/loginAdmin")
+    public String loginAdmin(@Valid AdminRequest.LoginDTO requestDTO, Errors errors) {
+        adminService.loginAdmin(requestDTO);
+        // json데이터 확인용
+        // AdminResponse.loginResponseDTO responseDTO = adminService.loginAdmin(requestDTO);
+        return "index";
     }
+
+    // 관리자 계정 생성
+    @PostMapping("/joinAdmin")
+    public String joinAdmin(@Valid AdminRequest.JoinDTO requestDTO, Errors errors) {
+        adminService.joinAdmin(requestDTO);
+        // json데이터 확인용
+        // return ResponseEntity.ok().body(ApiUtils.success(null));
+        return "adminLoginForm";
+    }
+
 }
