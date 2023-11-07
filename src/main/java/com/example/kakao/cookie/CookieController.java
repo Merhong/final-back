@@ -11,6 +11,8 @@ import com.example.kakao._core.utils.ApiUtils;
 
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.logging.Logger;
+
 
 @RestController
 public class CookieController {
@@ -20,9 +22,9 @@ public class CookieController {
 
     @PostMapping("/payment/result")
     public ResponseEntity<?> payment(@RequestBody CookieRequest.paymentReqDTO dto) {
-        
         try {
             cookieService.payment(dto);
+            System.out.println("333333");
             return ResponseEntity.ok().body(ApiUtils.success(null));
         } catch (Exception e) {
             return ResponseEntity.ok().body(ApiUtils.error("컨트롤러 내부에서 오류", null));
