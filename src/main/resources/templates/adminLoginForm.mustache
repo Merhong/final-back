@@ -6,8 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 	<meta name="description" content=""/>
 	<meta name="author" content=""/>
-	<title>Login - SB Admin</title>
-	<link href="../static/css/styles.css" rel="stylesheet"/>
+	<title>로그인 - 웹툰 관리자 페이지</title>
+	<link href="/css/styles.css" rel="stylesheet"/>
 	<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="bg-primary">
@@ -20,7 +20,7 @@
 							<div class="card shadow-lg border-0 rounded-lg mt-5">
 								<div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
 								<div class="card-body">
-									<form action="/loginAdmin" method="post" onsubmit="redirectToIndex()">
+									<form action="/loginAdmin" method="post">
 										<div class="form-floating mb-3">
 											<input class="form-control" id="email" name="email" type="email" placeholder="name@example.com"/>
 											<label for="email">이메일</label>
@@ -39,7 +39,7 @@
 									</form>
 								</div>
 								<div class="card-footer text-center py-3">
-									<div class="small"><a href="adminJoinForm.html">관리자 계정 생성하기</a></div>
+									<div class="small"><a href="/adminJoinForm">관리자 계정 생성하기</a></div>
 								</div>
 							</div>
 						</div>
@@ -66,9 +66,13 @@
 	<script src="../static/js/scripts.js"></script>
 
 	<script>
-		function redirectToIndex() {
-			// 원하는 리디렉션 코드를 여기에 추가
-			location.href = "/index.mustache";
+		// JWT를 추출하고 페이지에 표시
+		var jwtToken = localStorage.getItem("jwt"); // 여기에서 "jwt"는 저장된 JWT의 키일 수 있습니다.
+
+		if (jwtToken) {
+			alert("JWT 토큰: " + jwtToken);
+			// 또는 페이지의 특정 위치에 표시
+			document.getElementById("jwtTokenDisplay").textContent = "JWT 토큰: " + jwtToken;
 		}
 	</script>
 </body>

@@ -25,9 +25,11 @@ public class AdminService {
                 .orElseThrow(() -> new Exception400("email이나 password가 틀림 : " + requestDTO.getEmail()));
 
         String jwt = JwtTokenUtils.create(adminPS);
+        System.out.println("로그인시 JWT 토큰 발급!");
 
         AdminResponse.loginResponseDTO responseDTO = new AdminResponse.loginResponseDTO(adminPS);
         responseDTO.setJwt(jwt);
+        System.out.println("JWT 토큰 : " + responseDTO.getJwt());
 
         return responseDTO;
     }
@@ -39,6 +41,7 @@ public class AdminService {
             admin.setUserTypeEnum(UserTypeEnum.ADMIN); // 관리자페이지에서 가입하면 관리자
 
             adminJPARepository.save(admin);
+            System.out.println("회원가입 완료됨!!!");
 
         } catch (Exception e) {
             throw new Exception500("unknown server error");

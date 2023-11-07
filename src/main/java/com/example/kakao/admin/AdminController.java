@@ -9,6 +9,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -52,11 +53,21 @@ public class AdminController {
         return "adminJoinForm";
     }
 
+
+    // 관리자 로그아웃
+    @GetMapping("/logout")
+    public String logout(){
+        if (session != null) {
+            session.invalidate();
+        }
+        return "redirect:/";
+    }
+
     // 관리자 로그인
     @PostMapping("/loginAdmin")
     public String loginAdmin(@Valid AdminRequest.LoginDTO requestDTO, Errors errors) {
         adminService.loginAdmin(requestDTO);
-        // json데이터 확인용
+        // json 데이터 확인할려면 responseDTO로 리턴
         // AdminResponse.loginResponseDTO responseDTO = adminService.loginAdmin(requestDTO);
         return "index";
     }
