@@ -115,6 +115,10 @@ public class WebtoonResponse {
         private Timestamp updatedAt;
         private Integer totalCount;
         private Integer viewCount;
+        
+        private Integer lastEpisodeId;
+        private Integer firstEpisodeId;
+
 
         // private String webtoonImage; // 최근본웹툰이면 에피소드 하나는 무조건 본거니까 에피소드 사진으로
 
@@ -132,6 +136,9 @@ public class WebtoonResponse {
             this.webtoonSpeciallyEnum = webtoon.getWebtoonSpeciallyEnum();
 
             this.updatedAt = recentWebtoon.getUpdatedAt();
+
+            this.lastEpisodeId = webtoon.getEpisodeList().get(0).getId();
+            this.firstEpisodeId = webtoon.getEpisodeList().get(webtoon.getEpisodeList().size()-1).getId();
         }
 
         
