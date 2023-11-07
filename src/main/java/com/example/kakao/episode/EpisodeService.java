@@ -237,7 +237,6 @@ public class EpisodeService {
             System.out.println("테스트33");
             EpisodeResponse.FindByIdDTO responseDTO = new EpisodeResponse.FindByIdDTO(episode, myLikeEpisode);
             System.out.println("테스트34여기안나옴");
-            // System.out.println("테스트33"+responseDTO);
 
             return responseDTO;
 
