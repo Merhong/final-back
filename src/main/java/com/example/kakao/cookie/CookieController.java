@@ -20,7 +20,7 @@ public class CookieController {
 
     @PostMapping("/payment/result")
     public ResponseEntity<?> payment(@RequestBody CookieRequest.paymentReqDTO dto) {
-        
+        System.out.println("컨트롤러 때려지는지 확인");
         try {
             cookieService.payment(dto);
             return ResponseEntity.ok().body(ApiUtils.success(null));

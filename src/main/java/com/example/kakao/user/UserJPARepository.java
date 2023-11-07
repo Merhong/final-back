@@ -15,7 +15,7 @@ public interface UserJPARepository extends JpaRepository<User, Integer> {
 
     @Modifying
     @Transactional
-    @Query("UPDATE User u SET u.cookie = :newCookie where u.id = :userId")
+    @Query(value = "UPDATE User u SET u.cookie = :newCookie where u.id = :userId")
     void updateCookie(@Param("userId") int userId, @Param("newCookie") int cookieAmount);
 
 }
