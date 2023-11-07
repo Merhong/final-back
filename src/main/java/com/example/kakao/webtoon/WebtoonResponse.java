@@ -279,7 +279,11 @@ public class WebtoonResponse {
         
         private Timestamp episodeUpdatedAt;
 
-        public FindAllDTO(Webtoon webtoon) {
+        private Boolean isInterest;
+
+
+
+        public FindAllDTO(Webtoon webtoon, boolean isInterest) {
             this.id = webtoon.getId();
             this.title = webtoon.getTitle();
             this.starScore = webtoon.getStarScore();
@@ -296,6 +300,8 @@ public class WebtoonResponse {
             this.episodeUpdatedAt = webtoon.getEpisodeList().size() != 0
                 ? webtoon.getEpisodeList().get(0).getCreatedAt()
                 : webtoon.getCreatedAt();
+
+            this.isInterest = isInterest;
         }
 
     }
@@ -373,7 +379,7 @@ public class WebtoonResponse {
                         otherWebtoon.setStarScore(totalStarScore);
                         return otherWebtoon;
                     })
-                    .map(otherWebtoon -> new FindAllDTO(otherWebtoon))
+                    .map(otherWebtoon -> new FindAllDTO(otherWebtoon, false))
                     .collect(Collectors.toList());
             
             this.hashTagList = webtoon.getWebtoonHashTagList().stream()
