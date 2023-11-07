@@ -502,6 +502,7 @@ public class WebtoonResponse {
             this.image = webtoon.getImage();
             this.intro = webtoon.getIntro();
             this.episodeCount = webtoon.getEpisodeList().size();
+            this.intro = webtoon.getIntro();
             this.authorNicknameList = webtoon.getWebtoonAuthorList().stream()
                     .map(t -> t.getAuthor().getAuthorNickname())
                     .collect(Collectors.toList());

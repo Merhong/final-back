@@ -215,6 +215,7 @@ public class WebtoonController {
 
     @GetMapping("/webtoons/recommend")
     public ResponseEntity<?> endRecommendation() {
+        System.out.println("++++++++++++++++++++++여긴되니??????????");
         List<EndRecommendationDTO> endRecommendationDTOList = webtoonService.endRecommendation();
         return ResponseEntity.ok().body(ApiUtils.success(endRecommendationDTOList));
     }
