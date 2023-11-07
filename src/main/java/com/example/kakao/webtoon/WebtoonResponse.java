@@ -494,7 +494,6 @@ public class WebtoonResponse {
         private String image;
         private String intro;
         private Integer episodeCount;
-        private String intro;
         private List<String> authorNicknameList;
 
         public EndRecommendationDTO(Webtoon webtoon) {
