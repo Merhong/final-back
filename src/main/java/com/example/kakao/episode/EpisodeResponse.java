@@ -3,7 +3,9 @@ package com.example.kakao.episode;
 import com.example.kakao._entity.EpisodePhoto;
 import com.example.kakao._entity.LikeEpisode;
 import com.example.kakao._entity.ReComment;
+import com.example.kakao.author.Author;
 import com.example.kakao.comment.Comment;
+import com.example.kakao.episode.EpisodeResponse.FindByIdDTO.AuthorDTO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -123,7 +125,8 @@ public class EpisodeResponse {
         private Double starCount;
         private Timestamp createdAt;
         private String authorText;
-        private String authorName;
+        // private String authorName;
+        private List<AuthorDTO> authorList;
         private Integer webtoonId;
         private String webtoonName;
         private Integer cookieCost;
@@ -153,9 +156,16 @@ public class EpisodeResponse {
             this.webtoonId = episode.getWebtoon().getId();
             this.webtoonName = episode.getWebtoon().getTitle();
             
-            this.authorName = episode.getWebtoon().getWebtoonAuthorList().stream()
-            .map(webtoonAuthor -> webtoonAuthor.getAuthor().getAuthorNickname())
-            .collect(Collectors.joining(" / "));
+            // this.authorName = episode.getWebtoon().getWebtoonAuthorList().stream()
+            // .map(webtoonAuthor -> webtoonAuthor.getAuthor().getAuthorNickname())
+            // .collect(Collectors.joining(" / "));
+            
+            this.authorList = episode.getWebtoon().getWebtoonAuthorList().stream()
+                    .map(webtoonAuthor -> webtoonAuthor.getAuthor())
+                    .map(author -> new AuthorDTO(author))
+                    .collect(Collectors.toList());
+
+                    
             
             System.out.println("dto테스트2");
             // this.likeEpisodeCount = episode.getLikeEpisodeList().size(); // 싫어요일수도 있음
@@ -218,6 +228,20 @@ public class EpisodeResponse {
             System.out.println("dto테스트5");
         }
 
+            @Getter
+            @Setter
+            @ToString
+            class AuthorDTO {
+                private Integer id;
+                private String authorNickname;
+                private String authorPhoto;
+
+                AuthorDTO(Author author) {
+                    this.id = author.getId();
+                    this.authorNickname = author.getAuthorNickname();
+                    this.authorPhoto = author.getAuthorPhoto();
+                }
+            }
 
 
 
