@@ -10,10 +10,12 @@ import com.example.kakao._entity.enums.UserTypeEnum;
 import com.example.kakao._repository.InterestAuthorRepository;
 import com.example.kakao._repository.InterestWebtoonRepository;
 import com.example.kakao._repository.ReCommentRepository;
+import com.example.kakao.author.Author;
 import com.example.kakao.comment.Comment;
 import com.example.kakao.comment.CommentJPARepository;
 import com.example.kakao.user.UserResponse.InterestAuthorDTO;
 import com.example.kakao.user.UserResponse.InterestWebtoonDTO;
+import com.example.kakao.webtoon.Webtoon;
 
 import lombok.RequiredArgsConstructor;
 
@@ -182,14 +184,40 @@ public class UserService {
 
 
     // MY 관심작가목록
-    public List<UserResponse.InterestAuthorDTO> interestAuthor(int userId) {
+    public UserResponse.MyAuthorAllDTO interestAuthor(int userId) {
 
         List<InterestAuthor> interestAuthorList = interestAuthorRepository.findByUserId(userId, Sort.by(Sort.Order.desc("id")));
-        List<UserResponse.InterestAuthorDTO> responseDTOList = interestAuthorList.stream()
+
+        List<UserResponse.InterestAuthorDTO> interestAuthorDTOList = interestAuthorList.stream()
                 .map(t -> new UserResponse.InterestAuthorDTO(t))
                 .collect(Collectors.toList());
 
-        return responseDTOList;
+
+
+        List<Author> myAuthorList = interestAuthorList.stream()
+                .map(interestAuthor -> interestAuthor.getAuthor())
+                .collect(Collectors.toList());
+
+        // List<Author> recommendAuthorList = interestWebtoonRepository.findByUserId(userId).stream()
+        //         .flatMap(interestWebtoon -> interestWebtoon.getWebtoon().getWebtoonAuthorList().stream())
+        //         .map(webtoonAuthor -> webtoonAuthor.getAuthor())
+        //         .distinct()
+        //         .filter(author -> !(myAuthorList.contains(author)) )
+        //         .collect(Collectors.toList());
+
+        List<UserResponse.RecommendAuthorDTO> recommendAuthorDTOList = interestWebtoonRepository.findByUserId(userId).stream()
+                .flatMap(interestWebtoon -> interestWebtoon.getWebtoon().getWebtoonAuthorList().stream())
+                .map(webtoonAuthor -> webtoonAuthor.getAuthor())
+                .distinct()
+                .filter(author -> !(myAuthorList.contains(author)) )
+                .map(author -> new UserResponse.RecommendAuthorDTO(author))
+                .collect(Collectors.toList());
+
+        
+
+        UserResponse.MyAuthorAllDTO responseDTO = new UserResponse.MyAuthorAllDTO(interestAuthorDTOList, recommendAuthorDTOList);
+
+        return responseDTO;
     }
 
 

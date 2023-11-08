@@ -93,9 +93,9 @@ public class UserController {
     public ResponseEntity<?> interestAuthor() {
         User sessionUser = (User) session.getAttribute("sessionUser");
 
-        List<UserResponse.InterestAuthorDTO> responseDTOList = userService.interestAuthor(sessionUser.getId());
+        UserResponse.MyAuthorAllDTO responseDTO = userService.interestAuthor(sessionUser.getId());
 
-        return ResponseEntity.ok().body(ApiUtils.success(responseDTOList));
+        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
 
 
