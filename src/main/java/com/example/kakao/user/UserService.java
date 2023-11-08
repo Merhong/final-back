@@ -21,7 +21,9 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Sort;
@@ -205,12 +207,19 @@ public class UserService {
         //         .filter(author -> !(myAuthorList.contains(author)) )
         //         .collect(Collectors.toList());
 
+        Map<Integer, String> AuthorIdWebtoonTitleMap = new HashMap<>();
+        
         List<UserResponse.RecommendAuthorDTO> recommendAuthorDTOList = interestWebtoonRepository.findByUserId(userId).stream()
+                // .map(interestWebtoon -> interestWebtoon.getWebtoon())
                 .flatMap(interestWebtoon -> interestWebtoon.getWebtoon().getWebtoonAuthorList().stream())
-                .map(webtoonAuthor -> webtoonAuthor.getAuthor())
+                .map(webtoonAuthor -> {
+                    AuthorIdWebtoonTitleMap.put(webtoonAuthor.getAuthor().getId(), webtoonAuthor.getWebtoon().getTitle());
+                    return webtoonAuthor.getAuthor();
+                })
+                // .map(webtoonAuthor -> webtoonAuthor.getAuthor())
                 .distinct()
                 .filter(author -> !(myAuthorList.contains(author)) )
-                .map(author -> new UserResponse.RecommendAuthorDTO(author))
+                .map(author -> new UserResponse.RecommendAuthorDTO(author, AuthorIdWebtoonTitleMap.get(author.getId())))
                 .collect(Collectors.toList());
 
         

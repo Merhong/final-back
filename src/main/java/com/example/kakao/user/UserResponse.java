@@ -137,7 +137,9 @@ public class UserResponse {
         private String authorSiteURL;
         private Timestamp authorBoardCreateAt;
 
-        public RecommendAuthorDTO(Author author) {
+        private String webtoonTitle;
+
+        public RecommendAuthorDTO(Author author, String webtoonTitle) {
             this.authorId = author.getId();
             this.authorNickname = author.getAuthorNickname();
             this.authorPhoto = author.getAuthorPhoto() == null ? "default_profile.png" : author.getAuthorPhoto();
@@ -150,6 +152,7 @@ public class UserResponse {
                 this.authorBoardCreateAt = author.getCreatedAt();
             }
 
+            this.webtoonTitle = webtoonTitle;
         }
     }
 

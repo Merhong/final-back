@@ -2360,8 +2360,8 @@ VALUES ('444', '387', '444');
 
 --웹툰작가
 INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('101', '104');
-INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('102', '101');
-INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('102', '108');
+-- INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('102', '101');
+-- INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('102', '108');
 INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('103', '101');
 INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('104', '106');
 INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('104', '102');
@@ -6410,12 +6410,12 @@ INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `creat
 VALUES (4, 1, 105, true, '2021-02-21');
 INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `created_at`)
 VALUES (5, 1, 302, false, '2021-06-03');
-INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `created_at`)
-VALUES (6, 1, 304, true, '2021-07-13');
-INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `created_at`)
-VALUES (7, 1, 305, true, '2021-08-13');
-INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `created_at`)
-VALUES (8, 1, 306, true, '2021-10-21');
+-- INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `created_at`)
+-- VALUES (6, 1, 304, true, '2021-07-13');
+-- INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `created_at`)
+-- VALUES (7, 1, 305, true, '2021-08-13');
+-- INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `created_at`)
+-- VALUES (8, 1, 306, true, '2021-10-21');
 
 
 
@@ -6431,9 +6431,13 @@ VALUES (2, 101, '작가1글2제목', '작가글2내용', '2021-04-13');
 INSERT INTO author_board_tb (`id`, `author_id`, `title`, `text`, `photo`, `created_at`)
 VALUES (3, 101, '작가1글3제목', '작가글3내용', 'test.jpg', now());
 INSERT INTO author_board_tb (`id`, `author_id`, `title`, `text`, `photo`, `created_at`)
-VALUES (4, 102, '작가2글4제목', '작가글4내용', 'test.jpg', '2023-10-29');
+VALUES (4, 102, '작가2글4제목', '작가글4내용', 'test.jpg', '2023-11-08');
 INSERT INTO author_board_tb (`id`, `author_id`, `title`, `text`, `photo`, `created_at`)
 VALUES (5, 103, '작가3글5제목', '작가글5내용', 'test.jpg', '2023-10-31');
+INSERT INTO author_board_tb (`id`, `author_id`, `title`, `text`, `created_at`)
+VALUES (6, 106, '작가4글1제목', '작가글6내용', '2023-11-09');
+INSERT INTO author_board_tb (`id`, `author_id`, `title`, `text`, `created_at`)
+VALUES (7, 107, '작가5글1제목', '작가글7내용', now());
 
 
 
