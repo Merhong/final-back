@@ -15,7 +15,6 @@ public class AdminResponse {
         private int id;
         private String email;
         private String username;
-        private String jwt;
         private UserTypeEnum userTypeEnum;
         
         public loginResponseDTO(User user) {

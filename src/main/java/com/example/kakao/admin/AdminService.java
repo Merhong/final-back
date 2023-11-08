@@ -2,7 +2,6 @@ package com.example.kakao.admin;
 
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception500;
-import com.example.kakao._core.utils.JwtTokenUtils;
 import com.example.kakao._entity.enums.UserTypeEnum;
 import com.example.kakao.user.User;
 import lombok.RequiredArgsConstructor;
@@ -24,12 +23,12 @@ public class AdminService {
         User adminPS = adminJPARepository.findByEmailAndPassword(requestDTO.getEmail(), requestDTO.getPassword())
                 .orElseThrow(() -> new Exception400("email이나 password가 틀림 : " + requestDTO.getEmail()));
 
-        String jwt = JwtTokenUtils.create(adminPS);
-        System.out.println("로그인시 JWT 토큰 발급!");
+        // String jwt = JwtTokenUtils.create(adminPS);
+        // System.out.println("로그인시 JWT 토큰 발급!");
 
         AdminResponse.loginResponseDTO responseDTO = new AdminResponse.loginResponseDTO(adminPS);
-        responseDTO.setJwt(jwt);
-        System.out.println("JWT 토큰 : " + responseDTO.getJwt());
+        // responseDTO.setJwt(jwt);
+        // System.out.println("JWT 토큰 : " + responseDTO.getJwt());
 
         return responseDTO;
     }
