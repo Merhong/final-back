@@ -2,6 +2,7 @@ package com.example.kakao._core.errors;
 
 import com.example.kakao._core.errors.exception.*;
 import com.example.kakao._core.utils.ApiUtils;
+import com.example.kakao._core.utils.Script;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -9,6 +10,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
+
+    // 일반적인 예외처리 -> 관리자 페이지에서 사용
+    @ExceptionHandler(MyException.class)
+    public String error(MyException e) {
+        return Script.back(e.getMessage());
+    }
 
     @ExceptionHandler(Exception400.class)
     public ResponseEntity<?> badRequest(Exception400 e) {

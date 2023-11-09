@@ -9,7 +9,7 @@
 <div id="layoutSidenav_content">
 	<main>
 		<div class="container-fluid px-4">
-			<h1 class="mt-4">Index_Body_대시보드</h1>
+			{{#sessionUser}}<h1 class="mt-4">반갑습니다. {{sessionUser.getUsername}}님</h1>{{/sessionUser}}
 			<ol class="breadcrumb mb-4">
 				<li class="breadcrumb-item active">Dashboard</li>
 			</ol>

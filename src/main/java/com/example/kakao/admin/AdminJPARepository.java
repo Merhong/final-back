@@ -10,7 +10,7 @@ import java.util.Optional;
 // Admin도 User 테이블에 포함되어 있음.
 public interface AdminJPARepository extends JpaRepository<User, Integer> {
 
-    Optional<User> findByEmailAndPassword(@Param("email")String email, @Param("password")String password);
+    Optional<User> findByEmailAndPassword(String email, String password);
 
 
     @Query("select u from User u where u.email = :email")

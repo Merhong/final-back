@@ -17,7 +17,7 @@
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar 우상단 로고 -->
-		<a class="navbar-brand ps-3" href="/admin"><img src="/assets/img/Naver_Logotype.svg" style="height: 35px" /></a>
+		<a class="navbar-brand ps-3" href="/admin"><img src="/assets/img/Naver_Logotype.svg" style="height: 35px"/></a>
 		<!-- Sidebar Toggle -->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
 		<!-- Navbar 검색 -->
@@ -57,15 +57,24 @@
 							대시보드
 						</a>
 						<!-- 첫번째 아이템 -->
-						<a class="nav-link" href="/adminLoginForm">
-							<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-							로그인
-						</a>
-						<!-- 첫번째 아이템 -->
-						<a class="nav-link" href="/adminJoinForm">
-							<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-							회원가입
-						</a>
+						{{#sessionUser}}
+							<!-- 세션이 있을때(로그인) 나타낼 내용 -->
+							<a class="nav-link" href="/logout">
+								<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+								로그아웃
+							</a>
+						{{/sessionUser}}
+						{{^sessionUser}}
+							<!-- 세션이 없을때(비로그인) 나타낼 내용-->
+							<a class="nav-link" href="/adminLoginForm">
+								<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+								로그인
+							</a>
+							<a class="nav-link" href="/adminJoinForm">
+								<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+								관리자 계정 생성
+							</a>
+						{{/sessionUser}}
 						<!-- 두번째 아이템 -->
 						<div class="sb-sidenav-menu-heading">인터페이스</div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -73,7 +82,7 @@
 							레이아웃
 							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 						</a>
- 						<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+						<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<!-- 2-1 아이템 -->
 								<a class="nav-link" href="layout-static.html">Static Navigation</a>

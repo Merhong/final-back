@@ -7,6 +7,7 @@ import com.example.kakao._entity.enums.UserTypeEnum;
 import com.example.kakao.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -38,21 +39,17 @@ public class AdminService {
         // System.out.println("로그인시 JWT 토큰 발급!");
 
         AdminResponse.loginResponseDTO responseDTO = new AdminResponse.loginResponseDTO(user);
-        // // 관리자 로그인시
-        // if (user.getUserTypeEnum().equals("ADMIN")) {
-        //     System.out.println("관리자 로그인!!!!!!");
-        //     return responseDTO;
-        // }
-        // // 일반유저 or 작가 계정으로 로그인시
-        // else {
-        //     System.out.println("관리자 아님!!!!!!");
-        //     throw new MyException("관리자 계정이 아닙니다." + responseDTO.getUserTypeEnum());
-        // }
+        // 관리자 로그인시
+        if (responseDTO.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) {
+            return responseDTO;
+        }
+        // 일반유저 or 작가 계정으로 로그인시
+        else {
+            throw new MyException("관리자 계정이 아닙니다." + responseDTO.getUserTypeEnum(), HttpStatus.BAD_REQUEST);
+        }
 
         // responseDTO.setJwt(jwt);
         // System.out.println("JWT 토큰 : " + responseDTO.getJwt());
-
-        return responseDTO;
 
     }
 

@@ -1,10 +1,9 @@
 package com.example.kakao.admin;
 
-import com.example.kakao._core.errors.exception.Exception400;
+import com.example.kakao._core.errors.exception.MyException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -69,32 +68,26 @@ public class AdminController {
 
     // 관리자 로그인
     @PostMapping("/loginAdmin")
-    public String loginAdmin(AdminRequest.LoginDTO requestDTO) {
-        // 유효성 검사
-        if(requestDTO.getEmail() == null || requestDTO.getEmail().isEmpty()) {
-            return "error/404";
-        }
-        if (requestDTO.getPassword() == null || requestDTO.getPassword().isEmpty()) {
-            return "error/404";
-        }
+    public String loginAdmin(@Valid AdminRequest.LoginDTO requestDTO) {
 
         try {
             // 핵심 로직
             // 로그인 메서드 호출하여 로그인
-            System.out.println("로그인 서비스 ㅈㅈㅈㅈㅈㅈ");
             AdminResponse.loginResponseDTO sessionUser = adminService.loginAdmin(requestDTO);
-            System.out.println("로그인 서비스 ㅎㅎㅎㅎㅎㅎ");
+            System.out.println("로그인 성공");
+            System.out.println("이메일 : " + sessionUser.getEmail());
+            System.out.println("회원유형 : " + sessionUser.getUserTypeEnum());
+            System.out.println("이름 : " + sessionUser.getUsername());
 
             // 로그인 성공시 session에 sessionUser 정보를 담는다.
-            System.out.println("세션 담기 ㅈㅈㅈㅈㅈㅈㅈ");
             session.setAttribute("sessionUser", sessionUser);
-            System.out.println("세션 담기 완료!!!");
+            System.out.println("세션 담아짐!!!");
 
             // 로그인 후 홈페이지로 리다이렉트
+            System.out.println("리다이렉트됨");
             return "redirect:/admin";
-
-        } catch (Exception e){
-            return "redirect:/adminLoginForm";
+        } catch (Exception e) {
+            throw new MyException(e.getMessage());
         }
     }
 
