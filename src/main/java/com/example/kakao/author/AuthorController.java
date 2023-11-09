@@ -118,6 +118,7 @@ public class AuthorController {
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
 
+
     // 관심작가 제거
     @DeleteMapping("/authors/interest/{authorId}")
     public ResponseEntity<?> interestDelete(@PathVariable int authorId) {

@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.MediaType;
 
 import javax.servlet.*;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -33,6 +34,16 @@ public class JwtAuthorizationFilter implements Filter {
             throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
+
+        // 먼저 모든 쿠키를 제거합니다.
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                // 이전에 설정된 모든 쿠키를 삭제합니다.
+                cookie.setMaxAge(0);
+                response.addCookie(cookie);
+            }
+        }
 
         String jwt = request.getHeader("Authorization");
         if (jwt == null || jwt.isEmpty()) {

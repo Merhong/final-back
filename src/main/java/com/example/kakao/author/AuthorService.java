@@ -1,29 +1,20 @@
 package com.example.kakao.author;
 
 import com.example.kakao._core.errors.exception.Exception400;
-import com.example.kakao._core.errors.exception.Exception403;
 import com.example.kakao._core.errors.exception.Exception404;
 import com.example.kakao._core.utils.ImageUtils;
 import com.example.kakao._entity.AuthorBoard;
 import com.example.kakao._entity.InterestAuthor;
-import com.example.kakao._entity.WebtoonAuthor;
 import com.example.kakao._entity.enums.UserTypeEnum;
 import com.example.kakao._repository.AuthorBoardRepository;
 import com.example.kakao._repository.InterestAuthorRepository;
 import com.example.kakao.user.User;
 import com.example.kakao.user.UserJPARepository;
-import com.example.kakao.user.UserRequest;
-import com.example.kakao.user.UserResponse;
-import com.example.kakao.webtoon.Webtoon;
-import com.example.kakao.webtoon.WebtoonRequest;
-import com.example.kakao.webtoon.WebtoonResponse;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
