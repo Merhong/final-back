@@ -49,43 +49,16 @@ public class AdminController {
     @Autowired
     private final HttpSession session;
 
-    // // jwt 없을때 레퍼런스 코드
-    // @GetMapping
-    // public String test(HttpServletRequest request){
-    //     Cookie[] cookies = request.getCookies();
-    //     String jwtToken = null;
-    //
-    //     if (cookies != null) {
-    //         for (Cookie cookie : cookies) {
-    //             if ("jwt".equals(cookie.getName())) {
-    //                 // Found the "jwt" cookie
-    //                 jwtToken = cookie.getValue();
-    //                 break;
-    //             }
-    //         }
-    //     }
-    //
-    //     if (jwtToken != null) {
-    //         // Do something with the jwtToken value
-    //         System.out.println("JWT Token: " + jwtToken);
-    //     } else {
-    //         // Cookie not found
-    //         System.out.println("JWT Cookie not found.");
-    //     }
-    //     return "test";
-    // }
-
     // mustache admin 홈페이지
     @GetMapping({"/admin", "/"})
     public String index(HttpSession session) {
 
-        
         AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
 
         try {
             
             if(loginResponseDTO.getUserTypeEnum()==UserTypeEnum.ADMIN){
-                return "mainForm";
+                return "index";
             }
 
             if(loginResponseDTO.getUserTypeEnum()==UserTypeEnum.AUTHOR){
@@ -181,32 +154,12 @@ public class AdminController {
         공격자들이 이 조건문을 타게 됨.(PostMan 사용 같은것)
         따라서 친절하게 리턴 해줄 필요가 없음. 여기선 Error 페이지로 리턴
         */
-        // TODO : 유효성 검사시 DTO에 맞게 수정필요
-        // if (joinDTO.getUsername() == null || joinDTO.getUsername().isEmpty()) {
-        //     return "redirect:/40x";
-        // }
-        // if (joinDTO.getPassword() == null || joinDTO.getPassword().isEmpty()) {
-        //     return "redirect:/40x";
-        // }
-        // if (joinDTO.getEmail() == null || joinDTO.getEmail().isEmpty()) {
-        //     return "redirect:/40x";
-        // }
-
-        // MVC 패턴의 M(Model)
-        // DB에 해당 username이 있는지 체크해보기
-        // username이 있다? username이 중복됐을때 걸러짐
-        // User user = userRepository.findByUsername(joinDTO.getUsername());
-        // if (user != null) {
-        //     return "redirect:/50x";
-        // }
 
         adminService.joinAdmin(requestDTO);
         // json데이터 확인용
         // return ResponseEntity.ok().body(ApiUtils.success(null));
         return "adminLoginForm";
     }
-
-
 
 
     @GetMapping("advertisingSubForm")
