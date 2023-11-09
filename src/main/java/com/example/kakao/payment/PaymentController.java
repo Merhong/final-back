@@ -43,7 +43,6 @@ public class PaymentController {
         try {
             User user = (User) session.getAttribute("sessionUser"); 
             List<PaymentResponse.PaymentHistoryResDTO> dto = paymentService.readHistory(user.getId());
-            System.out.println("333333333333");
             return ResponseEntity.ok().body(ApiUtils.success(dto));
         } catch (Exception e) {
             throw new Exception500("컨트롤러에서 터짐");
