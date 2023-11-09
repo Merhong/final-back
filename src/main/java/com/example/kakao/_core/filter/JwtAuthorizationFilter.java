@@ -35,15 +35,6 @@ public class JwtAuthorizationFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
 
-        // 먼저 모든 쿠키를 제거합니다.
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                // 이전에 설정된 모든 쿠키를 삭제합니다.
-                cookie.setMaxAge(0);
-                response.addCookie(cookie);
-            }
-        }
 
         String jwt = request.getHeader("Authorization");
         if (jwt == null || jwt.isEmpty()) {

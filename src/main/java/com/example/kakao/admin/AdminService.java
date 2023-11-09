@@ -2,6 +2,7 @@ package com.example.kakao.admin;
 
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception500;
+import com.example.kakao._core.errors.exception.MyException;
 import com.example.kakao._entity.enums.UserTypeEnum;
 import com.example.kakao.user.User;
 import lombok.RequiredArgsConstructor;
@@ -20,17 +21,39 @@ public class AdminService {
 
 
     public AdminResponse.loginResponseDTO loginAdmin(AdminRequest.LoginDTO requestDTO) {
-        User adminPS = adminJPARepository.findByEmailAndPassword(requestDTO.getEmail(), requestDTO.getPassword())
+        // 1. 통신 email과 password가 같은 유저를 들고온다.
+        User user = adminJPARepository.findByEmailAndPassword(requestDTO.getEmail(), requestDTO.getPassword())
                 .orElseThrow(() -> new Exception400("email이나 password가 틀림 : " + requestDTO.getEmail()));
 
+        if (user.getEmail() == null) {
+            throw new MyException("없는 이메일 입니다.");
+        }
+        // 패스워드 검증
+        if (!user.getPassword().equals(requestDTO.getPassword())) {
+            throw new MyException("패스워드가 잘못되었습니다!");
+        }
+
+        // 관리자 페이지는 웹 브라우저에서만 사용할거라 세션을 사용하면 된다. JWT 사용할 필요 없음.
         // String jwt = JwtTokenUtils.create(adminPS);
         // System.out.println("로그인시 JWT 토큰 발급!");
 
-        AdminResponse.loginResponseDTO responseDTO = new AdminResponse.loginResponseDTO(adminPS);
+        AdminResponse.loginResponseDTO responseDTO = new AdminResponse.loginResponseDTO(user);
+        // // 관리자 로그인시
+        // if (user.getUserTypeEnum().equals("ADMIN")) {
+        //     System.out.println("관리자 로그인!!!!!!");
+        //     return responseDTO;
+        // }
+        // // 일반유저 or 작가 계정으로 로그인시
+        // else {
+        //     System.out.println("관리자 아님!!!!!!");
+        //     throw new MyException("관리자 계정이 아닙니다." + responseDTO.getUserTypeEnum());
+        // }
+
         // responseDTO.setJwt(jwt);
         // System.out.println("JWT 토큰 : " + responseDTO.getJwt());
 
         return responseDTO;
+
     }
 
     @Transactional

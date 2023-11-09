@@ -1,6 +1,6 @@
 package com.example.kakao.admin;
 
-import com.example.kakao.user.UserService;
+import com.example.kakao._core.errors.exception.Exception400;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,32 +21,6 @@ public class AdminController {
 
     @Autowired
     private final HttpSession session;
-
-    // // jwt 없을때 레퍼런스 코드
-    // @GetMapping
-    // public String test(HttpServletRequest request){
-    //     Cookie[] cookies = request.getCookies();
-    //     String jwtToken = null;
-    //
-    //     if (cookies != null) {
-    //         for (Cookie cookie : cookies) {
-    //             if ("jwt".equals(cookie.getName())) {
-    //                 // Found the "jwt" cookie
-    //                 jwtToken = cookie.getValue();
-    //                 break;
-    //             }
-    //         }
-    //     }
-    //
-    //     if (jwtToken != null) {
-    //         // Do something with the jwtToken value
-    //         System.out.println("JWT Token: " + jwtToken);
-    //     } else {
-    //         // Cookie not found
-    //         System.out.println("JWT Cookie not found.");
-    //     }
-    //     return "test";
-    // }
 
     // mustache admin 홈페이지
     @GetMapping({"/admin"})
@@ -95,32 +69,31 @@ public class AdminController {
 
     // 관리자 로그인
     @PostMapping("/loginAdmin")
-    public String loginAdmin(@Valid AdminRequest.LoginDTO requestDTO, HttpSession session, Model model) {
+    public String loginAdmin(AdminRequest.LoginDTO requestDTO) {
         // 유효성 검사
         if(requestDTO.getEmail() == null || requestDTO.getEmail().isEmpty()) {
-            return "redirect:/404";
+            return "error/404";
         }
         if (requestDTO.getPassword() == null || requestDTO.getPassword().isEmpty()) {
-            return "redirect:/404";
+            return "error/404";
         }
 
         try {
             // 핵심 로직
             // 로그인 메서드 호출하여 로그인
+            System.out.println("로그인 서비스 ㅈㅈㅈㅈㅈㅈ");
             AdminResponse.loginResponseDTO sessionUser = adminService.loginAdmin(requestDTO);
-            // 위의 결과가 null이면 실행
-            // if(sessionUser != null) {
-            //     throw new MyException("이미 로그인 상태임");
-            // }
+            System.out.println("로그인 서비스 ㅎㅎㅎㅎㅎㅎ");
 
             // 로그인 성공시 session에 sessionUser 정보를 담는다.
+            System.out.println("세션 담기 ㅈㅈㅈㅈㅈㅈㅈ");
             session.setAttribute("sessionUser", sessionUser);
+            System.out.println("세션 담기 완료!!!");
+
             // 로그인 후 홈페이지로 리다이렉트
-            return "redirect:/";
+            return "redirect:/admin";
 
         } catch (Exception e){
-            //
-            model.addAttribute("errorMessage", "로그인에 실패했습니다. 다시 시도하세요.");
             return "redirect:/adminLoginForm";
         }
     }
