@@ -1,10 +1,10 @@
-package com.example.kakao.cookie;
+package com.example.kakao.payment;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-public class CookieRequest {
+public class PaymentRequest {
     
 
     @Getter

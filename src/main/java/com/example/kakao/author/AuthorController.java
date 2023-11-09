@@ -6,6 +6,8 @@ import com.example.kakao._entity.enums.UserTypeEnum;
 import com.example.kakao.user.User;
 
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,6 +28,7 @@ import javax.validation.Valid;
 @RestController
 public class AuthorController {
 
+    @Autowired
     private final AuthorService authorService; // 자바에서 final 변수는 반드시 초기화되어야 함.
     private final HttpSession session;
 
