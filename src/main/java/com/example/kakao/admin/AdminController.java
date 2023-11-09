@@ -311,6 +311,7 @@ public class AdminController {
 
         if(loginResponseDTO == null || !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN)){
             System.out.println("통과못함");
+                
             return "redirect:/adminLoginForm";
         }
 
