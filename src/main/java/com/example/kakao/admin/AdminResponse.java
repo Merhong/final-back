@@ -11,13 +11,13 @@ public class AdminResponse {
     @Getter
     @Setter
     @ToString
-    public static class loginResponseDTO {
+    public static class LoginResponseDTO {
         private int id;
         private String email;
         private String username;
         private UserTypeEnum userTypeEnum;
         
-        public loginResponseDTO(User user) {
+        public LoginResponseDTO(User user) {
             this.id = user.getId();
             this.email = user.getEmail();
             this.username = user.getUsername();

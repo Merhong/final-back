@@ -19,14 +19,14 @@ public class AdminService {
     private final AdminJPARepository adminJPARepository;
 
 
-    public AdminResponse.loginResponseDTO loginAdmin(AdminRequest.LoginDTO requestDTO) {
+    public AdminResponse.LoginResponseDTO loginAdmin(AdminRequest.LoginDTO requestDTO) {
         User adminPS = adminJPARepository.findByEmailAndPassword(requestDTO.getEmail(), requestDTO.getPassword())
                 .orElseThrow(() -> new Exception400("email이나 password가 틀림 : " + requestDTO.getEmail()));
 
         // String jwt = JwtTokenUtils.create(adminPS);
         // System.out.println("로그인시 JWT 토큰 발급!");
 
-        AdminResponse.loginResponseDTO responseDTO = new AdminResponse.loginResponseDTO(adminPS);
+        AdminResponse.LoginResponseDTO responseDTO = new AdminResponse.LoginResponseDTO(adminPS);
         // responseDTO.setJwt(jwt);
         // System.out.println("JWT 토큰 : " + responseDTO.getJwt());
 

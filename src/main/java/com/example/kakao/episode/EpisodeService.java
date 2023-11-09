@@ -43,15 +43,21 @@ public class EpisodeService {
     @Transactional
     public EpisodeResponse.CreateDTO create(EpisodeRequest.CreateDTO requestDTO, List<MultipartFile> photoList, User sessionUser) {
 
-        Webtoon webtoon = webtoonRepository.findById(requestDTO.getWebtoonId())
-                .orElseThrow(() -> new Exception404(requestDTO.getWebtoonId() + "없음"));
+        Webtoon webtoon;
+        try {
+            webtoon = webtoonRepository.findByTitle(requestDTO.getWebtoonTitle()).get(0);
+        } catch (Exception e) {
+            throw new Exception404(requestDTO.getWebtoonTitle() + "없음");
+        }
+
+
 
         if(sessionUser.getUserTypeEnum() == UserTypeEnum.AUTHOR){
             webtoon.getWebtoonAuthorList().stream()
                     .map(webtoonAuthor -> webtoonAuthor.getAuthor().getUser().getId())
                     .filter(userId -> userId == sessionUser.getId())
                     .findFirst()
-                    .orElseThrow(() -> new Exception403("어드민이 아니고 웹툰"+requestDTO.getWebtoonId()+"의 작가도 아님"));
+                    .orElseThrow(() -> new Exception403("어드민이 아니고 웹툰"+webtoon.getId()+"의 작가도 아님"));
         }
         
         if(requestDTO.getThumbnailPhoto()==null){
@@ -61,7 +67,7 @@ public class EpisodeService {
         String thumbnailFileName = ImageUtils.updateImage(requestDTO.getThumbnailPhoto(), "EpisodeThumbnail/");
 
         Episode episode = Episode.builder()
-                .webtoon(Webtoon.builder().id(requestDTO.getWebtoonId()).build())
+                .webtoon(webtoon)
                 .detailTitle(requestDTO.getDetailTitle())
                 .authorText(requestDTO.getAuthorText())
                 .thumbnail(thumbnailFileName)

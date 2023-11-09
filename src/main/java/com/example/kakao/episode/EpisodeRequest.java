@@ -37,8 +37,9 @@ public class EpisodeRequest {
         
         private MultipartFile thumbnailPhoto;
         
-        @NotNull
-        private int webtoonId;
+        // @NotNull
+        // private int webtoonId;
+        private String webtoonTitle;
 
         // public Episode toEntity() {
         //     return Episode.builder()

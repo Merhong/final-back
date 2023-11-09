@@ -83,38 +83,38 @@ public class WebtoonController {
     }
 
 
-    // 메인 광고 추가
-    @PostMapping("/webtoons/advertising/main")
-    public ResponseEntity<?> advertisingMainSave(WebtoonRequest.AdvertisingMainDTO requestDTO, MultipartFile photo) {
-        User sessionUser = (User) session.getAttribute("sessionUser");
+    // // 메인 광고 추가
+    // @PostMapping("/webtoons/advertising/main")
+    // public ResponseEntity<?> advertisingMainSave(WebtoonRequest.AdvertisingMainDTO requestDTO, MultipartFile photo) {
+    //     User sessionUser = (User) session.getAttribute("sessionUser");
 
-        if (!(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN))) {
-            throw new Exception403("어드민만 가능함");
-        }
+    //     if (!(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN))) {
+    //         throw new Exception403("어드민만 가능함");
+    //     }
 
-        if (requestDTO.getIsWebLink() == null) {
-            throw new Exception400("isWebLink없음");
-        }
+    //     if (requestDTO.getIsWebLink() == null) {
+    //         throw new Exception400("isWebLink없음");
+    //     }
 
-        WebtoonResponse.AdvertisingMainDTO responseDTO = webtoonService.advertisingMainSave(requestDTO);
+    //     WebtoonResponse.AdvertisingMainDTO responseDTO = webtoonService.advertisingMainSave(requestDTO);
 
-        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
-    }
+    //     return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    // }
 
 
-    // 서브 광고 추가
-    @PostMapping("/webtoons/advertising/sub")
-    public ResponseEntity<?> advertisingSubSave(WebtoonRequest.AdvertisingSubDTO requestDTO, MultipartFile photo) {
-        User sessionUser = (User) session.getAttribute("sessionUser");
+    // // 서브 광고 추가
+    // @PostMapping("/webtoons/advertising/sub")
+    // public ResponseEntity<?> advertisingSubSave(WebtoonRequest.AdvertisingSubDTO requestDTO, MultipartFile photo) {
+    //     User sessionUser = (User) session.getAttribute("sessionUser");
 
-        if (!(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN))) {
-            throw new Exception403("어드민만 가능함");
-        }
+    //     if (!(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN))) {
+    //         throw new Exception403("어드민만 가능함");
+    //     }
 
-        WebtoonResponse.AdvertisingSubDTO responseDTO = webtoonService.advertisingSubSave(requestDTO);
+    //     WebtoonResponse.AdvertisingSubDTO responseDTO = webtoonService.advertisingSubSave(requestDTO);
 
-        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
-    }
+    //     return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    // }
 
 
     // 웹툰 전체목록
@@ -180,20 +180,20 @@ public class WebtoonController {
     //     "webtoonWeekDayEnum" : "월",
     //     "webtoonSpeciallyEnum" : "신작"
     // }
-    // 웹툰 추가
-    @PostMapping("/webtoons")
-    // public ResponseEntity<?> create(@RequestBody @Valid WebtoonRequest.CreateDTO requestDTO, Errors errors) {
-    public ResponseEntity<?> create(WebtoonRequest.CreateDTO requestDTO, MultipartFile image) {
-        User sessionUser = (User) session.getAttribute("sessionUser");
+    // // 웹툰 추가
+    // @PostMapping("/webtoons")
+    // // public ResponseEntity<?> create(@RequestBody @Valid WebtoonRequest.CreateDTO requestDTO, Errors errors) {
+    // public ResponseEntity<?> create(WebtoonRequest.CreateDTO requestDTO, MultipartFile image) {
+    //     User sessionUser = (User) session.getAttribute("sessionUser");
 
-        if (!(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN))) {
-            throw new Exception403("어드민만 가능함");
-        }
+    //     if (!(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN))) {
+    //         throw new Exception403("어드민만 가능함");
+    //     }
 
-        WebtoonResponse.CreateDTO responseDTO = webtoonService.create(requestDTO);
+    //     WebtoonResponse.CreateDTO responseDTO = webtoonService.create(requestDTO);
 
-        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
-    }
+    //     return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    // }
 
 
     @GetMapping("/webtoons/recommend")

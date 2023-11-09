@@ -54,7 +54,9 @@ public class WebtoonRequest {
 
         private Boolean isWebLink;
 
-        private Integer webtoonId;
+        // private Integer webtoonId;
+
+        private String webtoonTitle;
 
         private String linkURL;
 
@@ -97,7 +99,7 @@ public class WebtoonRequest {
         @Max(20)
         private Integer ageLimit;
 
-        @Size(min = 1, max = 5, message = "월화수목금토일 중에서 여러개가능")
+        @Size(min = 1, max = 7, message = "월화수목금토일 중에서 여러개가능")
         private String webtoonWeekDayEnum;
 
         // @Size(min = 1, max = 2, message = "없음, 휴재, 완결, 무료, 순위, 신작 중에서")

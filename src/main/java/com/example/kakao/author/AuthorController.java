@@ -37,30 +37,34 @@ public class AuthorController {
     // 작가페이지 (작가별 작가의글)
     @GetMapping("/authors/{authorId}")
     public ResponseEntity<?> authorDetail(@PathVariable int authorId) {
+
+        System.out.println("테스트 실행됨 작가페이지");
         User sessionUser = (User) session.getAttribute("sessionUser");
-
+        
         AuthorResponse.AuthorDetailDTO responseDTO = authorService.authorDetail(authorId, sessionUser.getId());
-
+        
+        
+        System.out.println("테스트 완료직전 작가페이지");
         return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
     }
 
     
 
 
-    // 작가의글 추가
-    @PostMapping("/authors/board")
-    public ResponseEntity<?> createBoard(AuthorRequest.CreateBoardDTO requestDTO, MultipartFile photo) {
+    // // 작가의글 추가
+    // @PostMapping("/authors/board")
+    // public ResponseEntity<?> createBoard(AuthorRequest.CreateBoardDTO requestDTO, MultipartFile photo) {
 
-        User sessionUser = (User) session.getAttribute("sessionUser");
+    //     User sessionUser = (User) session.getAttribute("sessionUser");
 
-        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.AUTHOR)) ) {
-            throw new Exception403("작가만 가능함");
-        }
+    //     if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.AUTHOR)) ) {
+    //         throw new Exception403("작가만 가능함");
+    //     }
 
-        AuthorResponse.CreateBoardDTO responseDTO = authorService.createBoard(requestDTO, sessionUser);
+    //     AuthorResponse.CreateBoardDTO responseDTO = authorService.createBoard(requestDTO, sessionUser);
 
-        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
-    }
+    //     return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    // }
 
 
 

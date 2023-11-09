@@ -30,21 +30,21 @@ public class EpisodeController {
 
 
 
-    // 에피소드 추가
-    @PostMapping("/episodes")
-    public ResponseEntity<?> create(EpisodeRequest.CreateDTO requestDTO, MultipartFile thumbnailPhoto, List<MultipartFile> photoList) {
+    // // 에피소드 추가
+    // @PostMapping("/episodes")
+    // public ResponseEntity<?> create(EpisodeRequest.CreateDTO requestDTO, MultipartFile thumbnailPhoto, List<MultipartFile> photoList) {
 
 
-        User sessionUser = (User) session.getAttribute("sessionUser");
+    //     User sessionUser = (User) session.getAttribute("sessionUser");
         
-        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) && !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.AUTHOR))) {
-            throw new Exception403("작가나 어드민만 가능함");
-        }
+    //     if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) && !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.AUTHOR))) {
+    //         throw new Exception403("작가나 어드민만 가능함");
+    //     }
 
-        EpisodeResponse.CreateDTO responseDTO = episodeService.create(requestDTO, photoList, sessionUser);
+    //     EpisodeResponse.CreateDTO responseDTO = episodeService.create(requestDTO, photoList, sessionUser);
 
-        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
-    }
+    //     return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    // }
 
 
 

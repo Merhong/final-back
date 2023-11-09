@@ -1,0 +1,59 @@
+{{> layout/myheader}}
+
+
+
+
+<form action="/add/advertising/sub" method="post" onsubmit="" class="col-auto container"
+      id="selectform" enctype="multipart/form-data">
+
+	<div class="d-flex">
+
+		<div class="col-12 pt-1">
+			
+			<h1 class="text-center mt-2">서브 광고 등록</h1>
+			
+			{{! <div class="d-flex flex-column img-fluid" style="width:500; height:200;">
+				<img src="/images/Advertising/default_advertising_sub.jpg" class=""/>
+			</div> }}
+		
+			<div class="input-group mb-3 mt-3">
+				<span class="input-group-text">광고 URL</span>
+				<textarea class="form-control" rows="1"
+				          name="linkURL", placeholder="https://www.naver.com"></textarea>
+			</div>
+
+			<div class="mb-2">
+				<input type="file" class="form-control" name="photo">
+			</div>
+
+		</div>
+
+	</div>
+
+	<!--
+
+    <div class="input-group mb-3 ms-1">
+        <span class="input-group-text">기업소개</span>
+        <textarea class="form-control" rows="5"></textarea>
+    </div>
+    -->
+
+	<div>
+		<input id="button" class="btn btn-primary w-100 mb-3 mt-2 bg-primary" type="submit" value="작성 완료" onclick="">
+	</div>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

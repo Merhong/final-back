@@ -272,7 +272,10 @@ public class WebtoonService {
 
         if(requestDTO.getIsWebLink() == true){
 
-            if(requestDTO.getPhoto()==null || requestDTO.getLinkURL() == null || requestDTO.getMainText() == null || requestDTO.getSubText() == null){
+            if(requestDTO.getPhoto()==null || requestDTO.getPhoto().isEmpty() 
+            || requestDTO.getLinkURL() == null || requestDTO.getLinkURL().isEmpty() 
+            || requestDTO.getMainText() == null || requestDTO.getMainText().isEmpty() 
+            || requestDTO.getSubText() == null || requestDTO.getSubText().isEmpty()){
                 throw new Exception400("웹툰광고가 아니면 모두 입력해야함");
             }
 
@@ -286,15 +289,16 @@ public class WebtoonService {
         } else{
             Webtoon webtoon;
             try {
-                webtoon = webtoonRepository.findById(requestDTO.getWebtoonId()).get();
+                webtoon = webtoonRepository.findByTitle(requestDTO.getWebtoonTitle()).get(0);
             } catch (Exception e) {
-                throw new Exception400("webtoonId가 없거나 웹툰이 없음");
+                throw new Exception400(requestDTO.getWebtoonTitle()+" 제목 웹툰 없음");
             }
+
             advertisingMain = AdvertisingMain.builder()
                     .webtoon(webtoon)
                     .isWebLink(false)
-                    .mainText(requestDTO.getMainText() == null ? webtoon.getTitle() : requestDTO.getMainText() )
-                    .subText(requestDTO.getSubText() == null ? 
+                    .mainText(requestDTO.getMainText() == null || requestDTO.getMainText().isEmpty() ? webtoon.getTitle() : requestDTO.getMainText() )
+                    .subText(requestDTO.getSubText() == null || requestDTO.getSubText().isEmpty() ? 
                             webtoon.getWebtoonAuthorList().stream()
                                     .map(webtoonAuthor -> webtoonAuthor.getAuthor().getAuthorNickname())
                                     .collect(Collectors.joining("/")) 
