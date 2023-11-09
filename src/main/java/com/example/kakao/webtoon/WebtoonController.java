@@ -8,12 +8,10 @@ import com.example.kakao.user.User;
 import com.example.kakao.webtoon.WebtoonResponse.EndRecommendationDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -22,8 +20,6 @@ public class WebtoonController {
 
     private final WebtoonService webtoonService; // 자바에서 final 변수는 반드시 초기화되어야 함.
     private final HttpSession session;
-
-
 
 
     // 최근본웹툰 목록
@@ -37,8 +33,6 @@ public class WebtoonController {
     }
 
 
-
-    
     // 최근본웹툰 추가
     @PostMapping("/webtoons/recent/{episodeId}")
     public ResponseEntity<?> recentSave(@PathVariable int episodeId) {
@@ -50,15 +44,12 @@ public class WebtoonController {
     }
 
 
-
     // 검색
     @GetMapping("/search")
     public ResponseEntity<?> search(String searchText) {
         List<WebtoonResponse.SearchDTO> responseDTOList = webtoonService.search(searchText);
         return ResponseEntity.ok().body(ApiUtils.success(responseDTOList));
     }
-
-
 
 
     // 서브 광고
@@ -69,7 +60,6 @@ public class WebtoonController {
     }
 
 
-    
     // 메인 광고
     @GetMapping("/webtoons/advertising/main")
     public ResponseEntity<?> advertisingMain() {
@@ -78,14 +68,12 @@ public class WebtoonController {
     }
 
 
-
-
     // 메인 광고 제거
     @DeleteMapping("/webtoons/advertising/main/{advertisingMainId}")
     public ResponseEntity<?> advertisingMainDelete(@PathVariable int advertisingMainId) {
         User sessionUser = (User) session.getAttribute("sessionUser");
 
-        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) ) {
+        if (!(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN))) {
             throw new Exception403("어드민만 가능함");
         }
 
@@ -95,19 +83,16 @@ public class WebtoonController {
     }
 
 
-
-
-
     // 메인 광고 추가
     @PostMapping("/webtoons/advertising/main")
     public ResponseEntity<?> advertisingMainSave(WebtoonRequest.AdvertisingMainDTO requestDTO, MultipartFile photo) {
         User sessionUser = (User) session.getAttribute("sessionUser");
 
-        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) ) {
+        if (!(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN))) {
             throw new Exception403("어드민만 가능함");
         }
-        
-        if(requestDTO.getIsWebLink() == null){
+
+        if (requestDTO.getIsWebLink() == null) {
             throw new Exception400("isWebLink없음");
         }
 
@@ -117,13 +102,12 @@ public class WebtoonController {
     }
 
 
-
     // 서브 광고 추가
     @PostMapping("/webtoons/advertising/sub")
     public ResponseEntity<?> advertisingSubSave(WebtoonRequest.AdvertisingSubDTO requestDTO, MultipartFile photo) {
         User sessionUser = (User) session.getAttribute("sessionUser");
 
-        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) ) {
+        if (!(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN))) {
             throw new Exception403("어드민만 가능함");
         }
 
@@ -133,16 +117,12 @@ public class WebtoonController {
     }
 
 
-
-
-
-
     // 웹툰 전체목록
     @GetMapping("/webtoons")
     public ResponseEntity<?> findAll(@RequestParam(value = "page", defaultValue = "0") Integer page) {
         // List<WebtoonResponse.FindAllDTO> responseDTOs = webtoonService.findAll(page);
 
-        
+
         User sessionUser = (User) session.getAttribute("sessionUser");
 
         List<WebtoonResponse.FindAllDTO> DTOList = webtoonService.findAll(sessionUser.getId());
@@ -206,7 +186,7 @@ public class WebtoonController {
     public ResponseEntity<?> create(WebtoonRequest.CreateDTO requestDTO, MultipartFile image) {
         User sessionUser = (User) session.getAttribute("sessionUser");
 
-        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) ) {
+        if (!(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN))) {
             throw new Exception403("어드민만 가능함");
         }
 
@@ -216,9 +196,9 @@ public class WebtoonController {
     }
 
 
-
     @GetMapping("/webtoons/recommend")
     public ResponseEntity<?> endRecommendation() {
+        System.out.println("++++++++++++++++++++++여긴되니??????????");
         List<EndRecommendationDTO> endRecommendationDTOList = webtoonService.endRecommendation();
         return ResponseEntity.ok().body(ApiUtils.success(endRecommendationDTOList));
     }

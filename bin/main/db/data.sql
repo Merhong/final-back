@@ -1,3 +1,20 @@
+--쿠키
+
+INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
+VALUES (1, 1, '쿠키 1개', 120);
+INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
+VALUES (2, 10, '쿠키 10개', 1200);
+INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
+VALUES (3, 30, '쿠키 30개', 3600);
+INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
+VALUES (4, 50, '쿠키 50개', 6000);
+INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
+VALUES (5, 100, '쿠키 100개', 12000);
+INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
+VALUES (6, 200, '쿠키 200개', 24000);
+INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
+VALUES (7, 300, '쿠키 300개', 36000);
+
 
 
 
