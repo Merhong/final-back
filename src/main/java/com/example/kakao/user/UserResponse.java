@@ -10,6 +10,7 @@ import com.example.kakao._entity.InterestWebtoon;
 import com.example.kakao._entity.ReComment;
 import com.example.kakao._entity.enums.UserTypeEnum;
 import com.example.kakao._entity.enums.WebtoonSpeciallyEnum;
+import com.example.kakao.author.Author;
 import com.example.kakao.comment.Comment;
 import com.example.kakao.episode.Episode;
 import com.example.kakao.webtoon.Webtoon;
@@ -106,6 +107,57 @@ public class UserResponse {
             this.isReComment = false;
         }
     }
+
+
+
+    @ToString
+    @Getter
+    @Setter
+    public static class MyAuthorAllDTO {
+        private List<InterestAuthorDTO> interestAuthorDTOList;
+        private List<RecommendAuthorDTO> recommendAuthorDTOList;
+
+        public MyAuthorAllDTO(List<InterestAuthorDTO> interestAuthorDTOList, List<RecommendAuthorDTO> recommendAuthorDTOList) {
+            this.interestAuthorDTOList = interestAuthorDTOList;
+            this.recommendAuthorDTOList = recommendAuthorDTOList;
+        }
+    }
+
+
+    
+
+
+    @ToString
+    @Getter
+    @Setter
+    public static class RecommendAuthorDTO {
+        private int authorId;
+        private String authorPhoto;
+        private String authorNickname;
+        private String authorSiteURL;
+        private Timestamp authorBoardCreateAt;
+
+        private String webtoonTitle;
+
+        public RecommendAuthorDTO(Author author, String webtoonTitle) {
+            this.authorId = author.getId();
+            this.authorNickname = author.getAuthorNickname();
+            this.authorPhoto = author.getAuthorPhoto() == null ? "default_profile.png" : author.getAuthorPhoto();
+            this.authorSiteURL = author.getSiteURL() == null? "없음" : author.getSiteURL();
+
+            List<AuthorBoard> tempAuthorBoardList = author.getAuthorBoardList();
+            if(tempAuthorBoardList.size() > 0){
+                this.authorBoardCreateAt = tempAuthorBoardList.get(0).getCreatedAt();
+            } else {
+                this.authorBoardCreateAt = author.getCreatedAt();
+            }
+
+            this.webtoonTitle = webtoonTitle;
+        }
+    }
+
+
+
 
 
     @ToString

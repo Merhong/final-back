@@ -5,11 +5,21 @@ server:
       force: true
   port: 8081
 spring:
+  mustache:
+    servlet:
+      expose-session-attributes: true
   datasource:
     url: jdbc:h2:mem:test;MODE=MySQL
     driver-class-name: org.h2.Driver
     username: sa
     password:
+<<<<<<< HEAD
+=======
+  mustache:
+>>>>>>> dev
+    servlet:
+      expose-session-attributes: true
+      expose-request-attributes: true
   h2:
     console:
       enabled: true

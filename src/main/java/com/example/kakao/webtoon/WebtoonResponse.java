@@ -1,10 +1,6 @@
 package com.example.kakao.webtoon;
 
-import com.example.kakao._entity.AdvertisingMain;
-import com.example.kakao._entity.AdvertisingSub;
-import com.example.kakao._entity.InterestWebtoon;
-import com.example.kakao._entity.RecentWebtoon;
-import com.example.kakao._entity.WebtoonHashTag;
+import com.example.kakao._entity.*;
 import com.example.kakao._entity.enums.HashTagEnum;
 import com.example.kakao._entity.enums.WebtoonSpeciallyEnum;
 import com.example.kakao.author.Author;
@@ -14,18 +10,11 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-
 public class WebtoonResponse {
 
-
-
-    
 
     @Getter
     @Setter
@@ -58,7 +47,7 @@ public class WebtoonResponse {
             //         .map(webtoonAuthor -> webtoonAuthor.getAuthor())
             //         .map(author -> new AuthorDTO(author))
             //         .collect(Collectors.toList());
-            
+
             // this.hashTagList = webtoon.getWebtoonHashTagList().stream()
             //         .map(hashTag -> new HashTagDTO(hashTag))
             //         .collect(Collectors.toList());
@@ -97,9 +86,6 @@ public class WebtoonResponse {
 
     }
 
-    
-
-
 
     @ToString
     @Getter
@@ -115,6 +101,10 @@ public class WebtoonResponse {
         private Timestamp updatedAt;
         private Integer totalCount;
         private Integer viewCount;
+
+        private Integer lastEpisodeId;
+        private Integer firstEpisodeId;
+
 
         // private String webtoonImage; // 최근본웹툰이면 에피소드 하나는 무조건 본거니까 에피소드 사진으로
 
@@ -132,12 +122,13 @@ public class WebtoonResponse {
             this.webtoonSpeciallyEnum = webtoon.getWebtoonSpeciallyEnum();
 
             this.updatedAt = recentWebtoon.getUpdatedAt();
+
+            this.lastEpisodeId = webtoon.getEpisodeList().get(0).getId();
+            this.firstEpisodeId = webtoon.getEpisodeList().get(webtoon.getEpisodeList().size() - 1).getId();
         }
 
-        
+
     }
-
-
 
 
     @ToString
@@ -153,7 +144,7 @@ public class WebtoonResponse {
         private WebtoonSpeciallyEnum webtoonSpeciallyEnum;
         // private String webtoonWeekDayEnum;
         private List<String> authorNicknameList;
-        
+
         private Timestamp episodeUpdatedAt;
 
         public SearchDTO(Webtoon webtoon) {
@@ -174,14 +165,11 @@ public class WebtoonResponse {
                     .collect(Collectors.toList());
 
             this.episodeUpdatedAt = webtoon.getEpisodeList().size() != 0
-                ? webtoon.getEpisodeList().get(0).getCreatedAt()
-                : webtoon.getCreatedAt();
+                    ? webtoon.getEpisodeList().get(0).getCreatedAt()
+                    : webtoon.getCreatedAt();
         }
 
     }
-
-
-
 
 
     @ToString
@@ -206,7 +194,6 @@ public class WebtoonResponse {
     }
 
 
-
     @ToString
     @Getter
     @Setter
@@ -223,7 +210,7 @@ public class WebtoonResponse {
         // private String webtoonTitle;
         // private WebtoonSpeciallyEnum webtoonSpeciallyEnum;
         // private List<String> authorNicknameList;
-        
+
         private Boolean isWebLink = true;
 
         public AdvertisingMainDTO(AdvertisingMain advertisingMain) {
@@ -235,17 +222,17 @@ public class WebtoonResponse {
             this.updatedAt = advertisingMain.getUpdatedAt();
             this.endDate = advertisingMain.getEndDate();
 
-            if(advertisingMain.getIsWebLink() == true){
+            if (advertisingMain.getIsWebLink() == true) {
                 this.isWebLink = true;
                 this.linkURL = advertisingMain.getLinkURL();
             }
 
-            if(advertisingMain.getIsWebLink() == false){
+            if (advertisingMain.getIsWebLink() == false) {
                 this.isWebLink = false;
                 this.webtoonId = advertisingMain.getWebtoon().getId();
                 // this.webtoonTitle = advertisingMain.getWebtoon().getTitle();
                 // this.webtoonSpeciallyEnum = advertisingMain.getWebtoon().getWebtoonSpeciallyEnum();
-                
+
                 // this.authorNicknameList = advertisingMain.getWebtoon().getWebtoonAuthorList().stream()
                 //         .map(t -> t.getAuthor().getAuthorNickname())
                 //         .collect(Collectors.toList());
@@ -253,7 +240,6 @@ public class WebtoonResponse {
 
         }
     }
-
 
 
     @ToString
@@ -269,10 +255,13 @@ public class WebtoonResponse {
         private WebtoonSpeciallyEnum webtoonSpeciallyEnum;
         private String webtoonWeekDayEnum;
         private List<String> authorNicknameList;
-        
+
         private Timestamp episodeUpdatedAt;
 
-        public FindAllDTO(Webtoon webtoon) {
+        private Boolean isInterest;
+
+
+        public FindAllDTO(Webtoon webtoon, boolean isInterest) {
             this.id = webtoon.getId();
             this.title = webtoon.getTitle();
             this.starScore = webtoon.getStarScore();
@@ -287,8 +276,10 @@ public class WebtoonResponse {
                     .collect(Collectors.toList());
 
             this.episodeUpdatedAt = webtoon.getEpisodeList().size() != 0
-                ? webtoon.getEpisodeList().get(0).getCreatedAt()
-                : webtoon.getCreatedAt();
+                    ? webtoon.getEpisodeList().get(0).getCreatedAt()
+                    : webtoon.getCreatedAt();
+
+            this.isInterest = isInterest;
         }
 
     }
@@ -344,7 +335,6 @@ public class WebtoonResponse {
 
             this.interestCount = webtoon.getInterstWebtoonList().size();
 
-            
 
             this.authorOtherWebtoonList = webtoon.getWebtoonAuthorList().stream()
                     .map(webtoonAuthor -> webtoonAuthor.getAuthor())
@@ -366,15 +356,13 @@ public class WebtoonResponse {
                         otherWebtoon.setStarScore(totalStarScore);
                         return otherWebtoon;
                     })
-                    .map(otherWebtoon -> new FindAllDTO(otherWebtoon))
+                    .map(otherWebtoon -> new FindAllDTO(otherWebtoon, false))
                     .collect(Collectors.toList());
-            
+
             this.hashTagList = webtoon.getWebtoonHashTagList().stream()
                     .map(hashTag -> new HashTagDTO(hashTag))
                     .collect(Collectors.toList());
         }
-
-
 
 
         @Getter
@@ -502,6 +490,7 @@ public class WebtoonResponse {
             this.image = webtoon.getImage();
             this.intro = webtoon.getIntro();
             this.episodeCount = webtoon.getEpisodeList().size();
+            this.intro = webtoon.getIntro();
             this.authorNicknameList = webtoon.getWebtoonAuthorList().stream()
                     .map(t -> t.getAuthor().getAuthorNickname())
                     .collect(Collectors.toList());

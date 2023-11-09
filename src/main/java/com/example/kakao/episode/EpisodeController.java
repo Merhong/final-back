@@ -57,16 +57,18 @@ public class EpisodeController {
     // 에피소드 1편 보기
     @GetMapping("/episodes/{episodeId}")
     public ResponseEntity<?> findById(@PathVariable int episodeId) {
-        System.out.println("여기 실행되는 거 아닌가???????");
+        // System.out.println("여기 실행되는 거 아닌가???????");
         // System.out.println(webtoonId+"/"+episodeId);
         //로그인 한 경우와 안 한 경우로 나눔
+        System.out.println("테스트 컨트롤러진입");
         if (session != null) {
-        
+            System.out.println("테스트 컨트롤러1");
             User sessionUser = (User) session.getAttribute("sessionUser");
             EpisodeResponse.FindByIdDTO responseDTO = episodeService.findById(episodeId, sessionUser.getId());
             return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
         }else{
-        
+            
+            System.out.println("테스트 컨트롤러2");
             EpisodeResponse.FindByIdDTO responseDTO = episodeService.findById(episodeId, null);
             return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
         }
@@ -110,6 +112,15 @@ public class EpisodeController {
         }
 
         User sessionUser = (User) session.getAttribute("sessionUser");
+
+
+        
+        System.err.println("떄려짐");
+        System.err.println(episodeId);
+        System.err.println(score);
+        System.err.println(sessionUser.getUsername());
+
+
 
         EpisodeResponse.StarDTO responseDTO = episodeService.starSave(sessionUser.getId(), episodeId, score);
 
