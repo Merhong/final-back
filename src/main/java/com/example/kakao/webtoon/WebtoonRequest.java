@@ -84,7 +84,7 @@ public class WebtoonRequest {
     public static class CreateDTO {
 
         @NotEmpty
-        private List<Integer> authorIdList;
+        private List<String> authorNameList;
 
         @Size(min = 1, max = 30, message = "30자 이내여야 합니다.")
         private String title;

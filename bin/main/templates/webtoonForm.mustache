@@ -52,8 +52,8 @@
 
 			<div id="fileInputContainer">
 			<div class="input-group mb-3">
-				<span class="input-group-text">작가</span>
-				<input type="text" class="form-control" name="authorIdList">
+				<span class="input-group-text">작가닉네임</span>
+				<input type="text" class="form-control" name="authorNameList">
 			</div>
 			</div>
 		</div>
@@ -86,13 +86,13 @@ document.getElementById("addFileInputButton").addEventListener("click", function
     // input-group-text를 위한 span 엘리먼트 생성
     const span = document.createElement("span");
     span.className = "input-group-text";
-    span.textContent = "작가"; // "작가" 텍스트 추가
+    span.textContent = "작가닉네임"; // "작가" 텍스트 추가
 
     // 새로운 input 엘리먼트 생성
     const input = document.createElement("input");
     input.type = "text";
     input.className = "form-control";
-    input.name = "authorIdList"; // name 속성 추가
+    input.name = "authorNameList"; // name 속성 추가
 
     // 생성한 엘리먼트들을 조합
     newInputContainer.appendChild(span);

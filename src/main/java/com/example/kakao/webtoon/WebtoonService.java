@@ -16,6 +16,7 @@ import com.example.kakao._repository.InterestWebtoonRepository;
 import com.example.kakao._repository.RecentWebtoonRepository;
 import com.example.kakao._repository.WebtoonAuthorRepository;
 import com.example.kakao.author.Author;
+import com.example.kakao.author.AuthorJPARepository;
 import com.example.kakao.episode.Episode;
 import com.example.kakao.episode.EpisodeRepository;
 import com.example.kakao.user.User;
@@ -48,6 +49,7 @@ public class WebtoonService {
     private final EpisodeRepository episodeRepository;
     private final RecentWebtoonRepository recentWebtoonRepository;
     private final WebtoonAuthorRepository webtoonAuthorRepository;
+    private final AuthorJPARepository authorRepository;
 
 
     
@@ -57,12 +59,32 @@ public class WebtoonService {
     @Transactional
     public WebtoonResponse.CreateDTO create(WebtoonRequest.CreateDTO requestDTO) {
         
+        if(requestDTO.getAgeLimit()>20 || requestDTO.getAgeLimit()<0){
+            throw new Exception400("나이제한오류");
+        }
+            
+        String pattern = "^(월|화|수|목|금|토|일)(?!.*\\1).*+$";
+        if( !(requestDTO.getWebtoonWeekDayEnum().matches(pattern)) ){
+            throw new Exception400("요일오류");
+        }
+        
+
         List<Webtoon> titleCheckList = webtoonRepository.findByTitle(requestDTO.getTitle());
         if(titleCheckList.size() != 0){
             throw new Exception400("웹툰제목중복 : "+requestDTO.getTitle());
         }
         
-        List<Integer> authorIdList = requestDTO.getAuthorIdList();
+        List<Author> authorTempList = authorRepository.findAll();
+        List<String> authorNameList = requestDTO.getAuthorNameList();
+
+        List<Integer> authorIdList = authorTempList.stream()
+                .filter(author -> authorNameList.contains(author.getAuthorNickname()))
+                .map(author -> author.getId())
+                .collect(Collectors.toList());
+                
+        if(authorIdList.size() != authorNameList.size()){
+            throw new Exception400("작가이름없음");
+        }
         
         String imageFileName = ImageUtils.updateImage(requestDTO.getImage(), "WebtoonThumbnail/");
 
