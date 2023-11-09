@@ -38,13 +38,8 @@ public class PaymentController {
     @GetMapping("/payment/history")
     public ResponseEntity<?> paymentHistory() {
         try {
-            System.out.println("결제내역 불러옴!!!!");
-            System.out.println("세션 : " + session);
 
             User user = (User) session.getAttribute("sessionUser");
-
-            System.out.println("세션 : " + session);
-            System.out.println("유저아이디 : " + user.getId());
 
             List<PaymentResponse.PaymentHistoryResDTO> dto = paymentService.readHistory(user.getId());
             return ResponseEntity.ok().body(ApiUtils.success(dto));
