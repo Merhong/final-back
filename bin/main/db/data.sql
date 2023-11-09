@@ -1,19 +1,33 @@
 --쿠키
 
-INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
-VALUES (1, 1, '쿠키 1개', 120);
-INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
-VALUES (2, 10, '쿠키 10개', 1200);
-INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
-VALUES (3, 30, '쿠키 30개', 3600);
-INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
-VALUES (4, 50, '쿠키 50개', 6000);
-INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
-VALUES (5, 100, '쿠키 100개', 12000);
-INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
-VALUES (6, 200, '쿠키 200개', 24000);
-INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
-VALUES (7, 300, '쿠키 300개', 36000);
+-- INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
+-- VALUES (1, 1, '쿠키 1개', 120);
+-- INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
+-- VALUES (2, 10, '쿠키 10개', 1200);
+-- INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
+-- VALUES (3, 30, '쿠키 30개', 3600);
+-- INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
+-- VALUES (4, 50, '쿠키 50개', 6000);
+-- INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
+-- VALUES (5, 100, '쿠키 100개', 12000);
+-- INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
+-- VALUES (6, 200, '쿠키 200개', 24000);
+-- INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
+-- VALUES (7, 300, '쿠키 300개', 36000);
+
+--구매내역
+
+  INSERT INTO `payment_history_tb` (`id`,`user_id`,`purchased_cookie`,`now_cookie_amount`,`price`,`created_at`) VALUES (1,1,10,11,1200,'2024-03-10 20:56:39');
+  INSERT INTO `payment_history_tb` (`id`,`user_id`,`purchased_cookie`,`now_cookie_amount`,`price`,`created_at`) VALUES (2,1,20,17,2400,'2023-01-26 05:29:29');
+  INSERT INTO `payment_history_tb` (`id`,`user_id`,`purchased_cookie`,`now_cookie_amount`,`price`,`created_at`) VALUES (3,2,200,90,24000,'2024-01-03 04:15:14');
+  INSERT INTO `payment_history_tb` (`id`,`user_id`,`purchased_cookie`,`now_cookie_amount`,`price`,`created_at`) VALUES (4,1,100,6,12000,'2023-06-15 05:52:32');
+  INSERT INTO `payment_history_tb` (`id`,`user_id`,`purchased_cookie`,`now_cookie_amount`,`price`,`created_at`) VALUES (5,4,50,178,6000,'2023-02-24 20:05:15');
+  INSERT INTO `payment_history_tb` (`id`,`user_id`,`purchased_cookie`,`now_cookie_amount`,`price`,`created_at`) VALUES (6,3,10,90,1200,'2023-12-06 00:28:32');
+  INSERT INTO `payment_history_tb` (`id`,`user_id`,`purchased_cookie`,`now_cookie_amount`,`price`,`created_at`) VALUES (7,2,100,45,12000,'2023-04-01 17:49:35');
+  INSERT INTO `payment_history_tb` (`id`,`user_id`,`purchased_cookie`,`now_cookie_amount`,`price`,`created_at`) VALUES (8,3,200,180,24000,'2023-12-29 08:58:02');
+  INSERT INTO `payment_history_tb` (`id`,`user_id`,`purchased_cookie`,`now_cookie_amount`,`price`,`created_at`) VALUES (9,1,50,55,6000,'2023-01-12 13:43:34');
+  INSERT INTO `payment_history_tb` (`id`,`user_id`,`purchased_cookie`,`now_cookie_amount`,`price`,`created_at`) VALUES (10,2,30,76,3600,'2024-06-02 10:36:27');
+
 
 
 
