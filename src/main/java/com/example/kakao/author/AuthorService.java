@@ -68,7 +68,13 @@ public class AuthorService {
     public AuthorResponse.CreateBoardDTO createBoard(AuthorRequest.CreateBoardDTO requestDTO, int sessionUserId) {
         System.out.println("테스트"+requestDTO);
         System.out.println("테스트"+sessionUserId);
-        String fileName = ImageUtils.updateImage(requestDTO.getPhoto(), "AuthorBoard/");
+        
+        String fileName;
+        if(requestDTO.getPhoto() == null || requestDTO.getPhoto().isEmpty()){
+            fileName = null;
+        } else{
+            fileName = ImageUtils.updateImage(requestDTO.getPhoto(), "AuthorBoard/");
+        }
 
         AuthorBoard authorBoard = AuthorBoard.builder()
                 .author(authorRepository.findByUserId(sessionUserId)
@@ -92,14 +98,23 @@ public class AuthorService {
     @Transactional
     public AuthorResponse.CreateDTO create(AuthorRequest.CreateDTO requestDTO) {
         
-        User authorUser = userRepository.findById(requestDTO.getUserId())
-                .orElseThrow(() -> new Exception404("유저없음 "+requestDTO.getUserId()));
+        User authorUser = userRepository.findByUsername(requestDTO.getNickname())
+                .orElseThrow(() -> new Exception404("유저없음 "+requestDTO.getNickname()));
 
         if(authorUser.getUserTypeEnum()!=UserTypeEnum.NORMAL){
-            throw new Exception400("일반유저아님 "+requestDTO.getUserId());
+            throw new Exception400("일반유저아님 "+requestDTO.getNickname());
         }
 
-        Author author = requestDTO.toEntity();
+        Author author = Author.builder()
+                .authorNickname(requestDTO.getNickname())
+                .authorPhoto("defaultAuthorPhoto.jpg")
+                .siteURL("https://naver.com")
+                .introduce("작가 소개 없음")
+                .user(authorUser)
+                .build();
+                
+
+
         authorRepository.save(author);
 
         authorUser.setUserTypeEnum(UserTypeEnum.AUTHOR);
@@ -114,9 +129,9 @@ public class AuthorService {
 
     // 작가 수정
     @Transactional
-    public AuthorResponse.UpdateDTO update(AuthorRequest.UpdateDTO requestDTO, User sessionUser) {
+    public AuthorResponse.UpdateDTO update(AuthorRequest.UpdateDTO requestDTO, int sessionUserId) {
 
-        Author author = authorRepository.findByUserId(sessionUser.getId())
+        Author author = authorRepository.findByUserId(sessionUserId)
                 .orElseThrow(() -> new Exception404("작가수정실패 작가못찾음"));
         
         if( requestDTO.getAuthorPhoto() != null && !(requestDTO.getAuthorPhoto().isEmpty()) ){
