@@ -1,21 +1,17 @@
 package com.example.kakao.payment;
 
-import javax.servlet.http.HttpSession;
-import java.util.*;
-
+import com.example.kakao._core.errors.exception.Exception500;
+import com.example.kakao._core.utils.ApiUtils;
+import com.example.kakao.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.kakao._core.errors.exception.Exception500;
-import com.example.kakao._core.utils.ApiUtils;
-import com.example.kakao.user.User;
-
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 @RestController
@@ -23,6 +19,7 @@ public class PaymentController {
 
     @Autowired
     private PaymentService paymentService;
+    @Autowired
     private HttpSession session;
 
     @PostMapping("/payment/result")
@@ -35,19 +32,26 @@ public class PaymentController {
         } catch (Exception e) {
             return ResponseEntity.ok().body(ApiUtils.error("컨트롤러 내부에서 오류", null));
         }
-    
+
     }
 
     @GetMapping("/payment/history")
     public ResponseEntity<?> paymentHistory() {
         try {
-            User user = (User) session.getAttribute("sessionUser"); 
+            System.out.println("결제내역 불러옴!!!!");
+            System.out.println("세션 : " + session);
+
+            User user = (User) session.getAttribute("sessionUser");
+
+            System.out.println("세션 : " + session);
+            System.out.println("유저아이디 : " + user.getId());
+
             List<PaymentResponse.PaymentHistoryResDTO> dto = paymentService.readHistory(user.getId());
             return ResponseEntity.ok().body(ApiUtils.success(dto));
         } catch (Exception e) {
             throw new Exception500("컨트롤러에서 터짐");
         }
     }
-    
-    
+
+
 }

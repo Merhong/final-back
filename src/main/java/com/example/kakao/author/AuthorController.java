@@ -32,11 +32,6 @@ public class AuthorController {
     private final AuthorService authorService; // 자바에서 final 변수는 반드시 초기화되어야 함.
     private final HttpSession session;
 
-
-
-
-
-
     // 작가페이지 (작가별 작가의글)
     @GetMapping("/authors/{authorId}")
     public ResponseEntity<?> authorDetail(@PathVariable int authorId) {
