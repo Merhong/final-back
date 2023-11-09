@@ -65,12 +65,13 @@ public class AuthorService {
 
     // 작가의글 추가
     @Transactional
-    public AuthorResponse.CreateBoardDTO createBoard(AuthorRequest.CreateBoardDTO requestDTO, User sessionUser) {
-
+    public AuthorResponse.CreateBoardDTO createBoard(AuthorRequest.CreateBoardDTO requestDTO, int sessionUserId) {
+        System.out.println("테스트"+requestDTO);
+        System.out.println("테스트"+sessionUserId);
         String fileName = ImageUtils.updateImage(requestDTO.getPhoto(), "AuthorBoard/");
 
         AuthorBoard authorBoard = AuthorBoard.builder()
-                .author(authorRepository.findByUserId(sessionUser.getId())
+                .author(authorRepository.findByUserId(sessionUserId)
                         .orElseThrow(() -> new Exception404("작가가없음")))
                 .title(requestDTO.getTitle())
                 .text(requestDTO.getText())
