@@ -16,12 +16,14 @@ public class AdminResponse {
         private String email;
         private String username;
         private UserTypeEnum userTypeEnum;
+        private Boolean isAuthor;
         
         public LoginResponseDTO(User user) {
             this.id = user.getId();
             this.email = user.getEmail();
             this.username = user.getUsername();
             this.userTypeEnum = user.getUserTypeEnum();
+            this.isAuthor = user.getUserTypeEnum() == UserTypeEnum.AUTHOR ? true : false;
         }
     }
 }

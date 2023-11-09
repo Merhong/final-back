@@ -4,6 +4,9 @@ import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception403;
 import com.example.kakao._core.utils.ApiUtils;
 import com.example.kakao._entity.enums.UserTypeEnum;
+import com.example.kakao.author.AuthorRequest;
+import com.example.kakao.author.AuthorResponse;
+import com.example.kakao.author.AuthorService;
 import com.example.kakao.episode.EpisodeRequest;
 import com.example.kakao.episode.EpisodeResponse;
 import com.example.kakao.episode.EpisodeService;
@@ -37,6 +40,7 @@ public class AdminController {
 
     private final WebtoonService webtoonService;
     private final EpisodeService episodeService;
+    private final AuthorService authorService;
 
     @Autowired
     private AdminService adminService;
@@ -80,6 +84,10 @@ public class AdminController {
         try {
             
             if(loginResponseDTO.getUserTypeEnum()==UserTypeEnum.ADMIN){
+                return "mainForm";
+            }
+
+            if(loginResponseDTO.getUserTypeEnum()==UserTypeEnum.AUTHOR){
                 return "mainForm";
             }
 
@@ -237,7 +245,7 @@ public class AdminController {
         
         AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
 
-        if(loginResponseDTO == null || !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN)){
+        if(loginResponseDTO == null || ( !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN) && !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.AUTHOR) )){
             System.out.println("통과못함");
             return "redirect:/adminLoginForm";
         }
@@ -262,27 +270,43 @@ public class AdminController {
 
 
     
+    @GetMapping("authorBoardForm")
+    public String authorBoardForm(HttpSession session){
+        System.out.println("작가의글폼");
+        
+        AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
+
+        if(loginResponseDTO == null || !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.AUTHOR)){
+            System.out.println("통과못함");
+            return "redirect:/adminLoginForm";
+        }
+
+        return "authorBoardForm";
+    }
+
+
     // // 작가의글 추가
-    // @PostMapping("/authors/board")
-    // public ResponseEntity<?> createBoard(AuthorRequest.CreateBoardDTO requestDTO, MultipartFile photo) {
+    @PostMapping("/add/authors/board")
+    // public ResponseEntity<?> createBoard(AuthorRequest.CreateBoardDTO requestDTO, MultipartFile photo, HttpSession session) {
+    public String createBoard(AuthorRequest.CreateBoardDTO requestDTO, MultipartFile photo, HttpSession session) {
+        // User sessionUser = (User) session.getAttribute("sessionUser");
+        AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
+        if (!(loginResponseDTO.getUserTypeEnum().equals(UserTypeEnum.AUTHOR))) {
+            throw new Exception403("어드민만 가능함");
+        }
+        
+        AuthorResponse.CreateBoardDTO responseDTO = authorService.createBoard(requestDTO, loginResponseDTO.getId());
 
-    //     User sessionUser = (User) session.getAttribute("sessionUser");
-
-    //     if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.AUTHOR)) ) {
-    //         throw new Exception403("작가만 가능함");
-    //     }
-
-    //     AuthorResponse.CreateBoardDTO responseDTO = authorService.createBoard(requestDTO, sessionUser);
-
-    //     return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
-    // }
+        // return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+        return "redirect:/admin";
+    }
 
 
     
     // 웹툰 추가
     @PostMapping("/add/webtoons")
     // public ResponseEntity<?> webtoonCreate(WebtoonRequest.CreateDTO requestDTO, MultipartFile image) {
-    public String webtoonCreate(WebtoonRequest.CreateDTO requestDTO, MultipartFile image) {
+    public String webtoonCreate(WebtoonRequest.CreateDTO requestDTO, MultipartFile image, HttpSession session) {
         // User sessionUser = (User) session.getAttribute("sessionUser");
         AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
         if (!(loginResponseDTO.getUserTypeEnum().equals(UserTypeEnum.ADMIN))) {
@@ -299,7 +323,7 @@ public class AdminController {
     // 에피소드 추가
     @PostMapping("/add/episodes")
     // public ResponseEntity<?> create(EpisodeRequest.CreateDTO requestDTO, MultipartFile thumbnailPhoto, List<MultipartFile> photoList, HttpSession session) throws IOException {
-    public String episodeCreate(EpisodeRequest.CreateDTO requestDTO, MultipartFile thumbnailPhoto, List<MultipartFile> photoList, HttpSession session) throws IOException {
+    public String episodeCreate(EpisodeRequest.CreateDTO requestDTO, MultipartFile thumbnailPhoto, List<MultipartFile> photoList, HttpSession session) {
         // User sessionUser = (User) session.getAttribute("sessionUser");
         AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
         if ( !(loginResponseDTO.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) && !(loginResponseDTO.getUserTypeEnum().equals(UserTypeEnum.AUTHOR)) ) {
@@ -310,11 +334,6 @@ public class AdminController {
                 .id(loginResponseDTO.getId())
                 .userTypeEnum(loginResponseDTO.getUserTypeEnum())
                 .build();
-
-        System.out.println("photoList");
-        System.out.println(photoList.size());
-        System.out.println("requestDTO");
-        System.out.println(requestDTO.getThumbnailPhoto().getBytes());
                 
         EpisodeResponse.CreateDTO responseDTO = episodeService.create(requestDTO, photoList, sessionUser);
 
