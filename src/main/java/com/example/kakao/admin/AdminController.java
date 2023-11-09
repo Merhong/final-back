@@ -23,6 +23,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -285,6 +286,75 @@ public class AdminController {
     }
 
 
+    
+    @GetMapping("authorUpdateForm")
+    public String authorUpdateForm(HttpSession session){
+        System.out.println("작가정보수정폼");
+        
+        AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
+
+        if(loginResponseDTO == null || !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.AUTHOR)){
+            System.out.println("통과못함");
+            return "redirect:/adminLoginForm";
+        }
+
+        return "authorUpdateForm";
+    }
+    
+
+
+    @GetMapping("authorForm")
+    public String authorForm(HttpSession session){
+        System.out.println("작가등록폼");
+        
+        AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
+
+        if(loginResponseDTO == null || !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN)){
+            System.out.println("통과못함");
+            return "redirect:/adminLoginForm";
+        }
+
+        return "authorForm";
+    }
+
+    // 작가 추가
+    @PostMapping("/add/authors")
+    // public ResponseEntity<?> create(AuthorRequest.CreateDTO requestDTO) {
+    public String createAuthor(AuthorRequest.CreateDTO requestDTO) {
+        // User sessionUser = (User) session.getAttribute("sessionUser");
+        AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
+        if (!(loginResponseDTO.getUserTypeEnum().equals(UserTypeEnum.ADMIN))) {
+            throw new Exception403("어드민만 가능함");
+        }
+
+        AuthorResponse.CreateDTO responseDTO = authorService.create(requestDTO);
+
+        // return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+        return "redirect:/admin";
+    }
+    
+
+
+
+    // 작가 수정
+    // Put이 맞는데 html from에서 안됨
+    @PostMapping("/add/authors/update")
+    // public ResponseEntity<?> update(@Valid AuthorRequest.UpdateDTO requestDTO, MultipartFile authorPhoto, HttpSession session) {
+    public String update(@Valid AuthorRequest.UpdateDTO requestDTO, MultipartFile authorPhoto, HttpSession session) {
+        // User sessionUser = (User) session.getAttribute("sessionUser");
+        AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
+        if (!(loginResponseDTO.getUserTypeEnum().equals(UserTypeEnum.AUTHOR))) {
+            throw new Exception403("작가만 가능함");
+        }
+
+        AuthorResponse.UpdateDTO responseDTO = authorService.update(requestDTO, loginResponseDTO.getId());
+
+        // return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+        return "redirect:/admin";
+    }
+
+
+
     // // 작가의글 추가
     @PostMapping("/add/authors/board")
     // public ResponseEntity<?> createBoard(AuthorRequest.CreateBoardDTO requestDTO, MultipartFile photo, HttpSession session) {
@@ -292,7 +362,7 @@ public class AdminController {
         // User sessionUser = (User) session.getAttribute("sessionUser");
         AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
         if (!(loginResponseDTO.getUserTypeEnum().equals(UserTypeEnum.AUTHOR))) {
-            throw new Exception403("어드민만 가능함");
+            throw new Exception403("작가만 가능함");
         }
         
         AuthorResponse.CreateBoardDTO responseDTO = authorService.createBoard(requestDTO, loginResponseDTO.getId());

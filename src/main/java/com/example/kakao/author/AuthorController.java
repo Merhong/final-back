@@ -76,34 +76,34 @@ public class AuthorController {
     //     "siteURL" : "https://naver.com",
     //     "introduce" : "작가소개"
     // }
-    // 작가 추가
-    @PostMapping("/authors")
-    public ResponseEntity<?> create(@RequestBody @Valid AuthorRequest.CreateDTO requestDTO, Errors errors) {
-        User sessionUser = (User) session.getAttribute("sessionUser");
+    // // 작가 추가
+    // @PostMapping("/authors")
+    // public ResponseEntity<?> create(@RequestBody @Valid AuthorRequest.CreateDTO requestDTO, Errors errors) {
+    //     User sessionUser = (User) session.getAttribute("sessionUser");
 
-        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) ) {
-            throw new Exception403("어드민만 가능함");
-        }
+    //     if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.ADMIN)) ) {
+    //         throw new Exception403("어드민만 가능함");
+    //     }
 
-        AuthorResponse.CreateDTO responseDTO = authorService.create(requestDTO);
+    //     AuthorResponse.CreateDTO responseDTO = authorService.create(requestDTO);
 
-        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
-    }
+    //     return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    // }
 
 
-    // 작가 수정
-    @PutMapping("/authors")
-    public ResponseEntity<?> update(@Valid AuthorRequest.UpdateDTO requestDTO, MultipartFile authorPhoto) {
-        User sessionUser = (User) session.getAttribute("sessionUser");
+    // // 작가 수정
+    // @PutMapping("/authors")
+    // public ResponseEntity<?> update(@Valid AuthorRequest.UpdateDTO requestDTO, MultipartFile authorPhoto) {
+    //     User sessionUser = (User) session.getAttribute("sessionUser");
 
-        if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.AUTHOR)) ) {
-            throw new Exception403("작가만 가능함");
-        }
+    //     if ( !(sessionUser.getUserTypeEnum().equals(UserTypeEnum.AUTHOR)) ) {
+    //         throw new Exception403("작가만 가능함");
+    //     }
 
-        AuthorResponse.UpdateDTO responseDTO = authorService.update(requestDTO, sessionUser);
+    //     AuthorResponse.UpdateDTO responseDTO = authorService.update(requestDTO, sessionUser);
 
-        return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
-    }
+    //     return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+    // }
 
 
 

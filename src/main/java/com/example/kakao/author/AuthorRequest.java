@@ -54,10 +54,10 @@ public class AuthorRequest {
     public static class CreateDTO {
 
         @Size(min = 1, max = 45, message = "45자 이내여야 합니다.")
-        private String authorNickname; // 그냥 유저네임
+        private String nickname; // 그냥 유저네임
         
-        @NotNull
-        private int userId;
+        // @NotNull
+        // private int userId;
 
         // private String authorPhoto;
 
@@ -66,15 +66,15 @@ public class AuthorRequest {
         // private String introduce;
 
 
-        public Author toEntity() {
-            return Author.builder()
-                    .authorNickname(authorNickname)
-                    .authorPhoto("defaultAuthorPhoto.jpg")
-                    .siteURL("https://naver.com")
-                    .introduce("작가 소개 없음")
-                    .user(User.builder().id(userId).build())
-                    .build();
-        }
+        // public Author toEntity() {
+        //     return Author.builder()
+        //             .authorNickname(nickname)
+        //             .authorPhoto("defaultAuthorPhoto.jpg")
+        //             .siteURL("https://naver.com")
+        //             .introduce("작가 소개 없음")
+        //             // .user(User.builder().id(userId).build())
+        //             .build();
+        // }
     }
 
 
