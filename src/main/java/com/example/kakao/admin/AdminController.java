@@ -55,7 +55,7 @@ public class AdminController {
             }
             // 작가 로그인
             if(loginResponseDTO.getUserTypeEnum()==UserTypeEnum.AUTHOR){
-                return "mainForm";
+                return "author/authorMainForm";
             }
             // 예외시 로그인 페이지로 이동
         } catch (Exception e) {
@@ -162,7 +162,7 @@ public class AdminController {
             return "redirect:/admin/adminLoginForm";
         }
 
-        return "advertisingSubForm";
+        return "advertising/advertisingSubForm";
     }
 
 
@@ -177,7 +177,7 @@ public class AdminController {
             return "redirect:/admin/adminLoginForm";
         }
 
-        return "advertisingMainForm";
+        return "advertising/advertisingMainForm";
     }
     
 
@@ -193,7 +193,7 @@ public class AdminController {
             return "redirect:/admin/adminLoginForm";
         }
 
-        return "episodeForm";
+        return "episode/episodeForm";
     }
 
 
@@ -208,7 +208,7 @@ public class AdminController {
             return "redirect:/admin/adminLoginForm";
         }
 
-        return "webtoonForm";
+        return "webtoon/webtoonForm";
     }
 
 
@@ -224,7 +224,7 @@ public class AdminController {
             return "redirect:/admin/adminLoginForm";
         }
 
-        return "authorBoardForm";
+        return "author/authorBoardForm";
     }
 
 
