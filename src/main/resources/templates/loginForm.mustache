@@ -21,20 +21,19 @@
 								<div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
 								<div class="card-body">
 									<form action="/loginAdmin" method="post">
-										<!-- 실패 메시지를 표시하는 부분 -->
-										{{#errorMessage}}
-											<div class="alert alert-danger" role="alert">
-												{{errorMessage}}
-											</div>
-										{{/errorMessage}}
 										<div class="form-floating mb-3">
-											<input class="form-control" id="email" name="email" type="email" placeholder="name@example.com"/>
+											<input class="form-control" id="email" name="email" type="email" ss@naver.complaceholder="name@example.com" required min="10"/>
 											<label for="email">이메일</label>
 										</div>
 										<div class="form-floating mb-3">
-											<input class="form-control" id="password" name="password" type="password" placeholder="Password"/>
+											<input class="form-control" id="password" name="password" type="password" placeholder="Password" required minlength="4"/>
 											<label for="password">비밀번호</label>
 										</div>
+										{{#errorMessage}}
+											<div style="color: red; text-align: center;">
+												<p>{{errorMessage}}</p>
+											</div>
+										{{/errorMessage}}
 										<div class="form-check mb-3">
 											<input class="form-check-input" id="inputRememberPassword" type="checkbox" value=""/>
 											<label class="form-check-label" for="inputRememberPassword">비밀번호 기억하기</label>

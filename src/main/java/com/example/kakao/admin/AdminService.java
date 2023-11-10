@@ -2,6 +2,7 @@ package com.example.kakao.admin;
 
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception500;
+import com.example.kakao._core.errors.exception.MyException;
 import com.example.kakao._entity.enums.UserTypeEnum;
 import com.example.kakao.user.User;
 import lombok.RequiredArgsConstructor;
