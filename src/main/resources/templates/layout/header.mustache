@@ -17,7 +17,7 @@
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar 우상단 로고 -->
-		<a class="navbar-brand ps-3" href="/admin"><img src="/assets/img/Naver_Logotype.svg" style="height: 35px" /></a>
+		<a class="navbar-brand ps-3" href="/admin"><img src="/assets/img/Naver_Logotype.svg" style="height: 35px"/></a>
 		<!-- Sidebar Toggle -->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
 		<!-- Navbar 검색 -->
@@ -32,17 +32,17 @@
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
 				<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-		{{#sessionUser}}
-			<li><a class="dropdown-item" href="#">설정</a></li>
-			<li><a class="dropdown-item" href="#">활동내역</a></li>
-			<li>
-				<hr class="dropdown-divider"/>
-			</li>
-			<li><a class="dropdown-item" href="#">로그아웃</a></li>
-		{{/sessionUser}}
-		{{^sessionUser}}
-			<li><a class="dropdown-item" href="/adminLoginForm">로그인</a></li>
-		{{/sessionUser}}
+					{{#sessionUser}}
+						<li><a class="dropdown-item" href="#">설정</a></li>
+						<li><a class="dropdown-item" href="#">활동내역</a></li>
+						<li>
+							<hr class="dropdown-divider"/>
+						</li>
+						<li><a class="dropdown-item" href="/logout">로그아웃</a></li>
+					{{/sessionUser}}
+					{{^sessionUser}}
+						<li><a class="dropdown-item" href="/adminLoginForm">로그인</a></li>
+					{{/sessionUser}}
 				</ul>
 			</li>
 		</ul>
@@ -55,66 +55,63 @@
 			<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
 				<div class="sb-sidenav-menu">
 					<div class="nav">
-						<div class="sb-sidenav-menu-heading">홈화면</div>
 						<!-- 첫번째 아이템 -->
-						<a class="nav-link" href="/admin">
-							<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-							대시보드
-						</a>
-						<!-- 두번째 아이템 -->
-						<div class="sb-sidenav-menu-heading">인터페이스</div>
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-							<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-							레이아웃
+						<div class="sb-sidenav-menu-heading">Author</div>
+						<a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAuthor" aria-expanded="false" aria-controls="collapseAuthor">
+							<div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+							작가
 							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 						</a>
- 						<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+						<div class="collapse" id="collapseAuthor" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<!-- 2-1 아이템 -->
-								<a class="nav-link" href="layout-static.html">Static Navigation</a>
+								<a class="nav-link" href="#">작가 추가</a>
 								<!-- 2-2 아이템 -->
-								<a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+								<a class="nav-link" href="#">작가 삭제</a>
 							</nav>
 						</div>
-						<!-- 세번째 아이템 -->
+
+
+						<div class="sb-sidenav-menu-heading">Webtoon</div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
 							<div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-							페이지
+							웹툰
 							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 						</a>
 						<div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-								<!-- 3-1 아이템 -->
 								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-									Authentication
+									웹툰 관리
 									<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 								</a>
 								<div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
 									<nav class="sb-sidenav-menu-nested nav">
-										<!-- 3-1-1 아이템 -->
-										<a class="nav-link" href="adminLoginForm">Login</a>
-										<!-- 3-1-2 아이템 -->
-										<a class="nav-link" href="adminJoinForm">Register</a>
+										<!-- 아이템 -->
+										<a class="nav-link" href="#">웹툰 추가</a>
+										<!-- 아이템 -->
+										<a class="nav-link" href="#">웹툰 관리</a>
+										<!-- 아이템 -->
+										<a class="nav-link" href="#">웹툰 삭제</a>
 									</nav>
 								</div>
 								<!-- 3-2 아이템 -->
 								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-									Error
+									에피소드 관리
 									<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 								</a>
 								<div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
 									<nav class="sb-sidenav-menu-nested nav">
-										<!-- 3-2-1 아이템 -->
-										<a class="nav-link" href="/error401">401 Page</a>
-										<!-- 3-2-2 아이템 -->
-										<a class="nav-link" href="/error404">404 Page</a>
-										<!-- 3-2-3 아이템 -->
-										<a class="nav-link" href="/error500">500 Page</a>
+										<!-- 아이템 -->
+										<a class="nav-link" href="#">에피소드 추가</a>
+										<!-- 아이템 -->
+										<a class="nav-link" href="#">에피소드 관리</a>
+										<!-- 아이템 -->
+										<a class="nav-link" href="#">에피소드 삭제</a>
 									</nav>
 								</div>
 							</nav>
 						</div>
-						<div class="sb-sidenav-menu-heading">애드온</div>
+						<div class="sb-sidenav-menu-heading">광고</div>
 						<a class="nav-link" href="charts.html">
 							<div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
 							차트
@@ -127,7 +124,7 @@
 				</div>
 				<div class="sb-sidenav-footer">
 					<div class="small">Logged in as:</div>
-					관리자 {{sessionUser}}
+					관리자명 : {{sessionUser.getUsername}}
 				</div>
 			</nav>
 		</div>

@@ -18,7 +18,6 @@ public class AdminService {
     @Autowired
     private final AdminJPARepository adminJPARepository;
 
-
     public AdminResponse.LoginResponseDTO loginAdmin(AdminRequest.LoginDTO requestDTO) {
         User adminPS = adminJPARepository.findByEmailAndPassword(requestDTO.getEmail(), requestDTO.getPassword())
                 .orElseThrow(() -> new Exception400("email이나 password가 틀림 : " + requestDTO.getEmail()));

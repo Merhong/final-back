@@ -2,7 +2,6 @@ package com.example.kakao.admin;
 
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception403;
-import com.example.kakao._core.utils.ApiUtils;
 import com.example.kakao._entity.enums.UserTypeEnum;
 import com.example.kakao.author.AuthorRequest;
 import com.example.kakao.author.AuthorResponse;
@@ -11,14 +10,12 @@ import com.example.kakao.episode.EpisodeRequest;
 import com.example.kakao.episode.EpisodeResponse;
 import com.example.kakao.episode.EpisodeService;
 import com.example.kakao.user.User;
-import com.example.kakao.user.UserService;
 import com.example.kakao.webtoon.WebtoonRequest;
 import com.example.kakao.webtoon.WebtoonResponse;
 import com.example.kakao.webtoon.WebtoonService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,11 +23,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -56,21 +50,21 @@ public class AdminController {
         AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
 
         try {
-            
+            // 관리자 로그인
             if(loginResponseDTO.getUserTypeEnum()==UserTypeEnum.ADMIN){
                 return "index";
             }
-
+            // 작가 로그인
             if(loginResponseDTO.getUserTypeEnum()==UserTypeEnum.AUTHOR){
-                return "mainForm";
+                return "author/authorMainForm";
             }
-
+            // 예외시 로그인 페이지로 이동
         } catch (Exception e) {
-            return "adminLoginForm";
+            session.invalidate(); // 세션 날리고 로그인창으로 이동시킴
+            return "admin/adminLoginForm";
         }
-
-
-        return "adminLoginForm";
+        // 세션 없을때 로그인 페이지로 이동
+        return "admin/adminLoginForm";
 
     }
 
@@ -91,12 +85,12 @@ public class AdminController {
 
     @GetMapping("/adminLoginForm")
     public String adminLoginForm() {
-        return "adminLoginForm";
+        return "admin/adminLoginForm";
     }
 
     @GetMapping("/adminJoinForm")
     public String adminJoinForm() {
-        return "adminJoinForm";
+        return "admin/adminJoinForm";
     }
 
 
@@ -110,7 +104,7 @@ public class AdminController {
         // 서버쪽 세션 무효화(삭제), 브라우저의 jSessionID는 남아있음.
         session.invalidate();
 
-        return "redirect:/adminLoginForm";
+        return "/admin/adminLoginForm";
     }
 
     // 관리자 로그인
@@ -118,20 +112,16 @@ public class AdminController {
     public String loginAdmin(@Valid AdminRequest.LoginDTO requestDTO, HttpSession session, Model model) {
         // 유효성 검사
         if(requestDTO.getEmail() == null || requestDTO.getEmail().isEmpty()) {
-            return "redirect:/404";
+            return "redirect:error/404";
         }
         if (requestDTO.getPassword() == null || requestDTO.getPassword().isEmpty()) {
-            return "redirect:/404";
+            return "redirect:error/404";
         }
 
         try {
             // 핵심 로직
             // 로그인 메서드 호출하여 로그인
             AdminResponse.LoginResponseDTO sessionUser = adminService.loginAdmin(requestDTO);
-            // 위의 결과가 null이면 실행
-            // if(sessionUser != null) {
-            //     throw new MyException("이미 로그인 상태임");
-            // }
 
             // 로그인 성공시 session에 sessionUser 정보를 담는다.
             session.setAttribute("sessionUser", sessionUser);
@@ -141,7 +131,7 @@ public class AdminController {
         } catch (Exception e){
             //
             model.addAttribute("errorMessage", "로그인에 실패했습니다. 다시 시도하세요.");
-            return "redirect:/adminLoginForm";
+            return "redirect:/admin/adminLoginForm";
         }
     }
 
@@ -158,7 +148,7 @@ public class AdminController {
         adminService.joinAdmin(requestDTO);
         // json데이터 확인용
         // return ResponseEntity.ok().body(ApiUtils.success(null));
-        return "adminLoginForm";
+        return "admin/adminLoginForm";
     }
 
 
@@ -170,10 +160,10 @@ public class AdminController {
 
         if(loginResponseDTO == null || !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN)){
             System.out.println("통과못함");
-            return "redirect:/adminLoginForm";
+            return "redirect:/admin/adminLoginForm";
         }
 
-        return "advertisingSubForm";
+        return "advertising/advertisingSubForm";
     }
 
 
@@ -185,10 +175,10 @@ public class AdminController {
 
         if(loginResponseDTO == null || !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN)){
             System.out.println("통과못함");
-            return "redirect:/adminLoginForm";
+            return "redirect:/admin/adminLoginForm";
         }
 
-        return "advertisingMainForm";
+        return "advertising/advertisingMainForm";
     }
     
 
@@ -201,10 +191,10 @@ public class AdminController {
 
         if(loginResponseDTO == null || ( !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN) && !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.AUTHOR) )){
             System.out.println("통과못함");
-            return "redirect:/adminLoginForm";
+            return "redirect:/admin/adminLoginForm";
         }
 
-        return "episodeForm";
+        return "episode/episodeForm";
     }
 
 
@@ -216,10 +206,10 @@ public class AdminController {
 
         if(loginResponseDTO == null || !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN)){
             System.out.println("통과못함");
-            return "redirect:/adminLoginForm";
+            return "redirect:/admin/adminLoginForm";
         }
 
-        return "webtoonForm";
+        return "webtoon/webtoonForm";
     }
 
 
@@ -232,10 +222,10 @@ public class AdminController {
 
         if(loginResponseDTO == null || !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.AUTHOR)){
             System.out.println("통과못함");
-            return "redirect:/adminLoginForm";
+            return "redirect:/admin/adminLoginForm";
         }
 
-        return "authorBoardForm";
+        return "author/authorBoardForm";
     }
 
 
@@ -366,8 +356,6 @@ public class AdminController {
     }
 
 
-
-
     // 메인 광고 추가
     @PostMapping("/add/advertising/main")
     // public ResponseEntity<?> advertisingMainSave(WebtoonRequest.AdvertisingMainDTO requestDTO, MultipartFile photo, HttpSession session) {
@@ -408,59 +396,5 @@ public class AdminController {
         // return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
         return "redirect:/admin";
     }
-    
-
-
-
-    // @GetMapping("/loginForm2")
-    // public String loginForm(){
-    //     System.out.println("로그인폼");
-    //     return "loginForm2";
-    // }
-
-    // @PostMapping("/login2")
-    // public String login(String username, String password, HttpServletResponse response){
-    //     System.out.println("로그인 포스트");
-    //     System.out.println(username);
-    //     System.out.println(password);
-
-    //     Cookie jwtCookie = new Cookie("jwt", "tokenvalue");
-    //     jwtCookie.setHttpOnly(true);  // Set HttpOnly attribute
-    //     jwtCookie.setSecure(true);  // Set the Secure attribute (for HTTPS)
-    //     jwtCookie.setPath("/");      // Set the path for the cookie
-
-    //     response.addCookie(jwtCookie);
-    //     return "redirect:/home2";
-    // }
-
-
-    // @GetMapping("/home2")
-    // public String home(HttpServletRequest request){
-    //     System.out.println("home으로옴");
-
-    //     Cookie[] cookies = request.getCookies();
-    //     String jwtToken = null;
-
-    //     if (cookies != null) {
-    //         for (Cookie cookie : cookies) {
-    //             if ("jwt".equals(cookie.getName())) {
-    //                 // Found the "jwt" cookie
-    //                 jwtToken = cookie.getValue();
-    //                 break;
-    //             }
-    //         }
-    //     }
-
-    //     if (jwtToken != null) {
-    //         // Do something with the jwtToken value
-    //         System.out.println("JWT Token: " + jwtToken);
-    //         return "loginForm2";
-    //     } else {
-    //         // Cookie not found
-    //         System.out.println("JWT Cookie not found.");
-    //         return "home2";
-    //     }
-
-    // }
 
 }
