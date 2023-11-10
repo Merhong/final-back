@@ -20,7 +20,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -61,10 +60,10 @@ public class AdminController {
             // 예외시 로그인 페이지로 이동
         } catch (Exception e) {
             session.invalidate(); // 세션 날리고 로그인창으로 이동시킴
-            return "admin/adminLoginForm";
+            return "loginForm";
         }
         // 세션 없을때 로그인 페이지로 이동
-        return "admin/adminLoginForm";
+        return "loginForm";
 
     }
 
@@ -85,12 +84,12 @@ public class AdminController {
 
     @GetMapping("/adminLoginForm")
     public String adminLoginForm() {
-        return "admin/adminLoginForm";
+        return "loginForm";
     }
 
     @GetMapping("/adminJoinForm")
     public String adminJoinForm() {
-        return "admin/adminJoinForm";
+        return "joinForm";
     }
 
 
@@ -104,7 +103,7 @@ public class AdminController {
         // 서버쪽 세션 무효화(삭제), 브라우저의 jSessionID는 남아있음.
         session.invalidate();
 
-        return "/admin/adminLoginForm";
+        return "loginForm";
     }
 
     // 관리자 로그인
@@ -131,7 +130,7 @@ public class AdminController {
         } catch (Exception e){
             //
             model.addAttribute("errorMessage", "로그인에 실패했습니다. 다시 시도하세요.");
-            return "redirect:/admin/adminLoginForm";
+            return "redirect:/loginForm";
         }
     }
 
@@ -148,7 +147,7 @@ public class AdminController {
         adminService.joinAdmin(requestDTO);
         // json데이터 확인용
         // return ResponseEntity.ok().body(ApiUtils.success(null));
-        return "admin/adminLoginForm";
+        return "loginForm";
     }
 
 
@@ -160,7 +159,7 @@ public class AdminController {
 
         if(loginResponseDTO == null || !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN)){
             System.out.println("통과못함");
-            return "redirect:/admin/adminLoginForm";
+            return "redirect:/loginForm";
         }
 
         return "advertising/advertisingSubForm";
@@ -175,7 +174,7 @@ public class AdminController {
 
         if(loginResponseDTO == null || !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN)){
             System.out.println("통과못함");
-            return "redirect:/admin/adminLoginForm";
+            return "redirect:/loginForm";
         }
 
         return "advertising/advertisingMainForm";
@@ -191,7 +190,7 @@ public class AdminController {
 
         if(loginResponseDTO == null || ( !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN) && !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.AUTHOR) )){
             System.out.println("통과못함");
-            return "redirect:/admin/adminLoginForm";
+            return "redirect:/loginForm";
         }
 
         return "episode/episodeForm";
@@ -206,7 +205,7 @@ public class AdminController {
 
         if(loginResponseDTO == null || !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN)){
             System.out.println("통과못함");
-            return "redirect:/admin/adminLoginForm";
+            return "redirect:/loginForm";
         }
 
         return "webtoon/webtoonForm";
@@ -222,7 +221,7 @@ public class AdminController {
 
         if(loginResponseDTO == null || !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.AUTHOR)){
             System.out.println("통과못함");
-            return "redirect:/admin/adminLoginForm";
+            return "redirect:/loginForm";
         }
 
         return "author/authorBoardForm";
@@ -238,10 +237,10 @@ public class AdminController {
 
         if(loginResponseDTO == null || !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.AUTHOR)){
             System.out.println("통과못함");
-            return "redirect:/adminLoginForm";
+            return "redirect:/loginForm";
         }
 
-        return "authorUpdateForm";
+        return "/author/authorUpdateForm";
     }
     
 
@@ -255,10 +254,10 @@ public class AdminController {
         if(loginResponseDTO == null || !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN)){
             System.out.println("통과못함");
                 
-            return "redirect:/adminLoginForm";
+            return "redirect:/loginForm";
         }
 
-        return "authorForm";
+        return "/author/authorForm";
     }
 
     // 작가 추가
