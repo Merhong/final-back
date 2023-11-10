@@ -13,6 +13,8 @@ public interface UserJPARepository extends JpaRepository<User, Integer> {
 
     Optional<User> findByEmailAndPassword(String email, String password);
 
+    Optional<User> findByUsername(String username);
+
     @Modifying
     @Transactional
     @Query("UPDATE User u SET u.cookie = :newCookie where u.id = :userId")
