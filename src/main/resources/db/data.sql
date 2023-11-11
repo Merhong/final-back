@@ -156,8 +156,8 @@ INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('116', '108', '116');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('117', 'dummyAuthor117@naver.com', '1234', '김규삼');
-INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('117', '김규삼', '117');
+INSERT INTO author_tb (`id`, `author_nickname`, `user_id`, `author_photo`)
+VALUES ('117', '김규삼', '117', 'dummy4/authorId117.jpg');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
 VALUES ('109', 15, '데드퀸', 5, 45, '목금토일', '절망에 빠져 죽음이 임박했을때, 진짜 여왕이 재림한다!하이브 세계관의 장대한 끝, 데드퀸', '없음', 'dummy1/thumbnail_IMAG21_4049077133597095219.jpg', '2022-08-12');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
@@ -223,20 +223,20 @@ VALUES ('113', 8, '낙향문사전', 2, 38, '월화', '온갖 비리가 가득�
         'dummy1/thumbnail_IMAG21_3904681570744218160.jpg', '2023-10-10');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('126', 'dummyAuthor126@naver.com', '1234', '바킹독');
-INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('126', '바킹독', '126');
+INSERT INTO author_tb (`id`, `author_nickname`, `user_id`, `author_photo`)
+VALUES ('126', '바킹독', '126', 'dummy4/authorId126.jpg');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('126', '113', '126');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('127', 'dummyAuthor127@naver.com', '1234', '팀 페가수스');
-INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('127', '팀 페가수스', '127');
+INSERT INTO author_tb (`id`, `author_nickname`, `user_id`, `author_photo`)
+VALUES ('127', '팀 페가수스', '127', 'dummy4/authorId127.jpg');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('127', '113', '127');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('128', 'dummyAuthor128@naver.com', '1234', '언라이팅');
-INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('128', '언라이팅', '128');
+INSERT INTO author_tb (`id`, `author_nickname`, `user_id`, `author_photo`)
+VALUES ('128', '언라이팅', '128', 'dummy4/authorId128.jpg');
 INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('128', '113', '128');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
@@ -1402,8 +1402,8 @@ INSERT INTO webtoon_author_tb (`id`, `webtoon_id`, `author_id`)
 VALUES ('321', '312', '321');
 INSERT INTO user_tb (`id`, `email`, `password`, `username`)
 VALUES ('322', 'dummyAuthor322@naver.com', '1234', '배진수');
-INSERT INTO author_tb (`id`, `author_nickname`, `user_id`)
-VALUES ('322', '배진수', '322');
+INSERT INTO author_tb (`id`, `author_nickname`, `user_id`, `author_photo`)
+VALUES ('322', '배진수', '322', 'dummy4/authorId322.jpg');
 INSERT INTO webtoon_tb (`id`, `age_limit`, `title`, `star_count`, `star_score`, `webtoon_week_day_enum`, `intro`, `webtoon_specially_enum`, `image`, `created_at`)
 VALUES ('313', 0, '퍼니게임', 2, 29, '일', '<머니게임>,<파이게임> 에서 실패를 맛본 주인공은, 마지막 <퍼니게임>에서우승하기 위해 신체를 단련하고 정신을 다잡는다. 모든 참가자 중 본인만이유일한 게임 경험자임을 확인한 주인공은, 승리를 위해 악마가 되기로 결심한다.', '순위', 'dummy1/thumbnail_IMAG21_01fd148f-edb2-4ada-9571-910981ec3376.jpg',
         '2023-10-10');
@@ -2452,7 +2452,7 @@ INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('304', '108');
 
 
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`, `author_text`)
-VALUES (101, '466화 일해회(1계열사) [18]', 11, 54, 'dummy2/thumbnail_202x120_069a105d-c46e-4024-8973-2aa7202c5a12.jpg', now(), '에피소드1작가의말');
+VALUES (101, '466화 일해회(1계열사) [18]', 11, 54, 'dummy2/thumbnail_202x120_069a105d-c46e-4024-8973-2aa7202c5a12.jpg', now(), '에피소드1 작가의말 더미');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
 VALUES (101, '465화 일해회(1계열사) [17]', 12, 58, 'dummy2/thumbnail_202x120_e3dd5cd4-0d3f-4b76-bb49-386c23221c2a.jpg', '2023-10-28 17:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
@@ -2533,23 +2533,23 @@ VALUES (101,'428화 빅딜 잡기 [18]', '13', 52, 'dummy2/thumbnail_202x120_39c
 
 
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (107, '106화', 11, 34, 'dummy2/thumbnail_202x120_a8875ebf-fbe1-4700-bea0-7d5c33e499f2.jpg', now());
+VALUES (107, '106화', 15, 68, 'dummy2/thumbnail_202x120_a8875ebf-fbe1-4700-bea0-7d5c33e499f2.jpg', now());
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (107, '105화', 11, 49, 'dummy2/thumbnail_202x120_ace51d29-d5e5-42ba-b21d-2f15d7035b00.jpg', '2023-10-12 10:00:00.0');
+VALUES (107, '105화', 15, 71, 'dummy2/thumbnail_202x120_ace51d29-d5e5-42ba-b21d-2f15d7035b00.jpg', '2023-10-12 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (107, '휴재 특별편 5', 11, 49, 'dummy2/thumbnail_202x120_7bbdd521-4788-48e4-86ba-b9bf6dc84e23.jpg', '2023-08-31 10:00:00.0');
+VALUES (107, '휴재 특별편 5', 15, 72, 'dummy2/thumbnail_202x120_7bbdd521-4788-48e4-86ba-b9bf6dc84e23.jpg', '2023-08-31 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (107, '휴재 특별편 4 (각색의 시작)', 11, 45, 'dummy2/thumbnail_202x120_3bb676c5-db88-45ea-ac2c-9a8b9e193335.jpg', '2023-08-24 10:00:00.0');
+VALUES (107, '휴재 특별편 4 (각색의 시작)', 15, 73, 'dummy2/thumbnail_202x120_3bb676c5-db88-45ea-ac2c-9a8b9e193335.jpg', '2023-08-24 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (107, '휴재 특별편 3 (추가Q&A)', 11, 49, 'dummy2/thumbnail_202x120_539baffd-ffa2-47c4-9aeb-c7ee6db25874.jpg', '2023-08-17 10:00:00.0');
+VALUES (107, '휴재 특별편 3 (추가Q&A)', 15, 72, 'dummy2/thumbnail_202x120_539baffd-ffa2-47c4-9aeb-c7ee6db25874.jpg', '2023-08-17 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (107, '휴재 특별편 2 (김현수 작가님)', 11, 43, 'dummy2/thumbnail_202x120_dc5ac71d-6899-488a-a3d2-12d5eeae0cc1.jpg', '2023-08-10 10:00:00.0');
+VALUES (107, '휴재 특별편 2 (김현수 작가님)', 15, 71, 'dummy2/thumbnail_202x120_dc5ac71d-6899-488a-a3d2-12d5eeae0cc1.jpg', '2023-08-10 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
 VALUES (107, '휴재 특별편 1 (이현민&문백경 작가님)', 11, 42, 'dummy2/thumbnail_202x120_c3392e7c-754b-4515-b8ac-a0e74ff3c49a.jpg', '2023-08-03 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
 VALUES (107, '104화', 11, 48, 'dummy2/thumbnail_202x120_b6316d1b-820f-4bfd-a7d8-2ae07674f64e.jpg', '2023-07-27 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (107, '103화', 11, 41, 'dummy2/thumbnail_202x120_73c16fd1-68ce-41d1-811d-add3701ecf23.jpg', '2023-07-20 10:00:00.0');
+VALUES (107, '103화', 11, 54, 'dummy2/thumbnail_202x120_73c16fd1-68ce-41d1-811d-add3701ecf23.jpg', '2023-07-20 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
 VALUES (107, '102화', 11, 42, 'dummy2/thumbnail_202x120_4cbb7dfb-4278-4d58-8f80-e5815f0bcd73.jpg', '2023-07-13 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
@@ -2563,9 +2563,9 @@ VALUES (107, '98화', 11, 38, 'dummy2/thumbnail_202x120_aefcdc69-e884-40e7-aa5b-
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
 VALUES (107, '97화', 11, 39, 'dummy2/thumbnail_202x120_270a65aa-2959-4081-8bf6-a034a77d1c53.jpg', '2023-06-08 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (107, '96화', 11, 37, 'dummy2/thumbnail_202x120_f7bd3a7f-ec19-463d-901d-c86cead9f7fe.jpg', '2023-06-01 10:00:00.0');
+VALUES (107, '96화', 11, 53, 'dummy2/thumbnail_202x120_f7bd3a7f-ec19-463d-901d-c86cead9f7fe.jpg', '2023-06-01 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (107, '95화', 11, 47, 'dummy2/thumbnail_202x120_914b0b4e-e3f4-4b6d-a03e-edcbca52e2f1.jpg', '2023-05-25 10:00:00.0');
+VALUES (107, '95화', 11, 54, 'dummy2/thumbnail_202x120_914b0b4e-e3f4-4b6d-a03e-edcbca52e2f1.jpg', '2023-05-25 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
 VALUES (107, '94화', 11, 47, 'dummy2/thumbnail_202x120_d3279a0c-4827-4915-b0cc-f7d839a15f1e.jpg', '2023-05-18 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
@@ -2577,9 +2577,9 @@ VALUES (107, '92화', 11, 35, 'dummy2/thumbnail_202x120_46c791e4-51af-450e-ab54-
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
 VALUES (102, '89화', 11, 47, 'dummy2/thumbnail_202x120_46a16f6f-344f-4dfd-a089-2881bc2a8f49.jpg', now());
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (102, '88화', 11, 41, 'dummy2/thumbnail_202x120_37073671-8d95-4a5d-860d-98d6053053c8.jpg', '2023-10-12 10:00:00.0');
+VALUES (102, '88화', 11, 53, 'dummy2/thumbnail_202x120_37073671-8d95-4a5d-860d-98d6053053c8.jpg', '2023-10-12 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (102, '87화', 11, 47, 'dummy2/thumbnail_202x120_014f6424-4fcd-4b43-92db-c8816302e5b4.jpg', '2023-10-05 10:00:00.0');
+VALUES (102, '87화', 11, 52, 'dummy2/thumbnail_202x120_014f6424-4fcd-4b43-92db-c8816302e5b4.jpg', '2023-10-05 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
 VALUES (102, '86화', 11, 43, 'dummy2/thumbnail_202x120_abaed91f-4b0a-4bf4-8804-24fb8da8c44f.jpg', '2023-09-28 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
@@ -2589,53 +2589,53 @@ VALUES (102, '84화', 11, 42, 'dummy2/thumbnail_202x120_403d65c0-0efb-4412-8bfb-
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
 VALUES (102, '83화', 11, 41, 'dummy2/thumbnail_202x120_484fa97c-ebf5-468e-9b94-7ac0327070b1.jpg', '2023-09-07 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (102, '82화', 11, 47, 'dummy2/thumbnail_202x120_c0a837bc-852d-47cf-98c9-266b07731457.jpg', '2023-08-31 10:00:00.0');
+VALUES (102, '82화', 11, 55, 'dummy2/thumbnail_202x120_c0a837bc-852d-47cf-98c9-266b07731457.jpg', '2023-08-31 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (102, '81화', 11, 47, 'dummy2/thumbnail_202x120_c46cba05-e9f2-4e56-980a-499f20d7a274.jpg', '2023-08-24 10:00:00.0');
+VALUES (102, '81화', 11, 54, 'dummy2/thumbnail_202x120_c46cba05-e9f2-4e56-980a-499f20d7a274.jpg', '2023-08-24 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (102, '80화', 11, 47, 'dummy2/thumbnail_202x120_e7f897ff-9afa-4664-b099-0d5c2ae51563.jpg', '2023-08-17 10:00:00.0');
+VALUES (102, '80화', 11, 53, 'dummy2/thumbnail_202x120_e7f897ff-9afa-4664-b099-0d5c2ae51563.jpg', '2023-08-17 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (102, '79화', 11, 47, 'dummy2/thumbnail_202x120_28bc76dc-dbd3-47d5-9627-2f23266a0860.jpg', '2023-08-10 10:00:00.0');
+VALUES (102, '79화', 11, 54, 'dummy2/thumbnail_202x120_28bc76dc-dbd3-47d5-9627-2f23266a0860.jpg', '2023-08-10 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
 VALUES (102, '78화', 11, 47, 'dummy2/thumbnail_202x120_2bbe5b1a-c1f5-483e-a519-759006b8cfda.jpg', '2023-08-03 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (102, '77화', 11, 47, 'dummy2/thumbnail_202x120_08f983da-d543-4880-a918-904736657191.jpg', '2023-07-27 10:00:00.0');
+VALUES (102, '77화', 11, 52, 'dummy2/thumbnail_202x120_08f983da-d543-4880-a918-904736657191.jpg', '2023-07-27 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
 VALUES (102, '76화', 11, 47, 'dummy2/thumbnail_202x120_8c8526f0-7f16-4583-abe4-30d624bfb8ea.jpg', '2023-07-20 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (102, '75화', 11, 47, 'dummy2/thumbnail_202x120_a11f8b33-4b7f-4871-9230-4af28656bcad.jpg', '2023-07-13 10:00:00.0');
+VALUES (102, '75화', 11, 53, 'dummy2/thumbnail_202x120_a11f8b33-4b7f-4871-9230-4af28656bcad.jpg', '2023-07-13 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (102, '74화', 11, 47, 'dummy2/thumbnail_202x120_dae12d91-10c3-4988-8c19-a8270d035f22.jpg', '2023-07-06 10:00:00.0');
+VALUES (102, '74화', 11, 52, 'dummy2/thumbnail_202x120_dae12d91-10c3-4988-8c19-a8270d035f22.jpg', '2023-07-06 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (102, '73화', 11, 47, 'dummy2/thumbnail_202x120_39aa18b8-1b58-4fbe-92f7-dc0e2444259b.jpg', '2023-06-29 10:00:00.0');
+VALUES (102, '73화', 11, 53, 'dummy2/thumbnail_202x120_39aa18b8-1b58-4fbe-92f7-dc0e2444259b.jpg', '2023-06-29 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (102, '72화', 11, 47, 'dummy2/thumbnail_202x120_cbc87bef-6f54-49f3-b91f-d626ac52f9f7.jpg', '2023-06-22 10:00:00.0');
+VALUES (102, '72화', 11, 54, 'dummy2/thumbnail_202x120_cbc87bef-6f54-49f3-b91f-d626ac52f9f7.jpg', '2023-06-22 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (102, '71화', 11, 47, 'dummy2/thumbnail_202x120_76cd2289-d85a-4f5e-ac94-0dc2dcfa22f7.jpg', '2023-06-15 10:00:00.0');
+VALUES (102, '71화', 11, 55, 'dummy2/thumbnail_202x120_76cd2289-d85a-4f5e-ac94-0dc2dcfa22f7.jpg', '2023-06-15 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
 VALUES (102, '70화', 11, 47, 'dummy2/thumbnail_202x120_32e6c193-c3a5-40e5-9477-f4a9ade805c6.jpg', '2023-06-08 10:00:00.0');
 
 
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (106, '152화', 11, 36, 'dummy2/thumbnail_202x120_cf54b80e-2dd8-4138-95ca-82f2c7c517ef.jpg', '2023-10-19 10:00:00.0');
+VALUES (106, '152화', 16, 79, 'dummy2/thumbnail_202x120_cf54b80e-2dd8-4138-95ca-82f2c7c517ef.jpg', '2023-10-19 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (106, '151화', 11, 36, 'dummy2/thumbnail_202x120_92912862-c42f-4d59-9364-ebed145de9f2.jpg', '2023-10-12 10:00:00.0');
+VALUES (106, '151화', 16, 78, 'dummy2/thumbnail_202x120_92912862-c42f-4d59-9364-ebed145de9f2.jpg', '2023-10-12 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (106, '150화', 11, 45, 'dummy2/thumbnail_202x120_dc6a667b-39c6-4842-87f6-dd3599b80228.jpg', '2023-10-05 10:00:00.0');
+VALUES (106, '150화', 16, 78, 'dummy2/thumbnail_202x120_dc6a667b-39c6-4842-87f6-dd3599b80228.jpg', '2023-10-05 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (106, '149화', 11, 36, 'dummy2/thumbnail_202x120_c909af74-bc66-46a3-90ba-e660e36e5ab3.jpg', '2023-09-28 10:00:00.0');
+VALUES (106, '149화', 16, 76, 'dummy2/thumbnail_202x120_c909af74-bc66-46a3-90ba-e660e36e5ab3.jpg', '2023-09-28 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (106, '148화', 11, 33, 'dummy2/thumbnail_202x120_30b4f37f-bcd0-4161-8bb3-5450f21e8c05.jpg', '2023-09-21 10:00:00.0');
+VALUES (106, '148화', 16, 75, 'dummy2/thumbnail_202x120_30b4f37f-bcd0-4161-8bb3-5450f21e8c05.jpg', '2023-09-21 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (106, '147화', 11, 34, 'dummy2/thumbnail_202x120_7815c85e-cd09-47ea-af12-1f959f2ef3a7.jpg', '2023-09-14 10:00:00.0');
+VALUES (106, '147화', 16, 76, 'dummy2/thumbnail_202x120_7815c85e-cd09-47ea-af12-1f959f2ef3a7.jpg', '2023-09-14 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (106, '146화', 11, 35, 'dummy2/thumbnail_202x120_d25a7029-ef32-4e59-beaf-f4a43bede28b.jpg', '2023-09-07 10:00:00.0');
+VALUES (106, '146화', 16, 77, 'dummy2/thumbnail_202x120_d25a7029-ef32-4e59-beaf-f4a43bede28b.jpg', '2023-09-07 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (106, '145화', 11, 37, 'dummy2/thumbnail_202x120_29b882f6-d22b-4607-ab16-445a75337722.jpg', '2023-08-31 10:00:00.0');
+VALUES (106, '145화', 11, 54, 'dummy2/thumbnail_202x120_29b882f6-d22b-4607-ab16-445a75337722.jpg', '2023-08-31 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (106, '144화', 11, 31, 'dummy2/thumbnail_202x120_de5af4d5-9541-4a7f-be71-8e384a65ef2b.jpg', '2023-08-24 10:00:00.0');
+VALUES (106, '144화', 11, 53, 'dummy2/thumbnail_202x120_de5af4d5-9541-4a7f-be71-8e384a65ef2b.jpg', '2023-08-24 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (106, '143화', 11, 35, 'dummy2/thumbnail_202x120_2112411f-67d7-47bb-b91c-3f9bc950ca8a.jpg', '2023-08-17 10:00:00.0');
+VALUES (106, '143화', 11, 52, 'dummy2/thumbnail_202x120_2112411f-67d7-47bb-b91c-3f9bc950ca8a.jpg', '2023-08-17 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
 VALUES (106, '142화', 11, 46, 'dummy2/thumbnail_202x120_ae4e0d29-bc6d-4705-a774-2367fccba105.jpg', '2023-08-10 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
@@ -2649,11 +2649,11 @@ VALUES (106, '138화', 11, 46, 'dummy2/thumbnail_202x120_279e5d48-87c1-4422-b0cc
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
 VALUES (106, '137화', 11, 46, 'dummy2/thumbnail_202x120_ce008482-e598-4d3c-b4c4-b2fac66e6c5a.jpg', '2023-07-06 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (106, '136화', 11, 46, 'dummy2/thumbnail_202x120_48319cff-10a6-49d6-bb8b-213f0cf396d8.jpg', '2023-06-29 10:00:00.0');
+VALUES (106, '136화', 11, 42, 'dummy2/thumbnail_202x120_48319cff-10a6-49d6-bb8b-213f0cf396d8.jpg', '2023-06-29 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (106, '135화', 11, 46, 'dummy2/thumbnail_202x120_f0392c10-c9d3-4297-a037-2df617b5df35.jpg', '2023-06-22 10:00:00.0');
+VALUES (106, '135화', 11, 41, 'dummy2/thumbnail_202x120_f0392c10-c9d3-4297-a037-2df617b5df35.jpg', '2023-06-22 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (106, '134화', 11, 46, 'dummy2/thumbnail_202x120_80b33a4d-52f5-4c7e-aeb3-1b071852ffb0.jpg', '2023-06-15 10:00:00.0');
+VALUES (106, '134화', 11, 43, 'dummy2/thumbnail_202x120_80b33a4d-52f5-4c7e-aeb3-1b071852ffb0.jpg', '2023-06-15 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
 VALUES (106, '133화', 11, 46, 'dummy2/thumbnail_202x120_6df9d4df-7a7c-4a88-9b7c-aa1266e13bc5.jpg', '2023-06-08 10:00:00.0');
 
@@ -2789,25 +2789,25 @@ INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,
 VALUES (108,'152화-여우의 취업(1)', '9', 44, 'dummy2/thumbnail_202x120_ca4196a0-d806-48e4-b6a4-c987b0f360b9.jpg','2023-08-17 00:00:00.0');
 
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
-VALUES (109,'162화', '8', 32, 'dummy2/thumbnail_202x120_0dd84621-6df1-484d-af99-ecbe0178844c.jpg','2023-10-26 00:00:00.0');
+VALUES (109,'162화', '17', 79, 'dummy2/thumbnail_202x120_0dd84621-6df1-484d-af99-ecbe0178844c.jpg','2023-10-26 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
-VALUES (109,'161화(마지막회)', '8', 29, 'dummy2/thumbnail_202x120_39148680-20ba-438d-85c4-f565f6251227.jpg','2023-10-19 00:00:00.0');
+VALUES (109,'161화(마지막회)', '17', 73, 'dummy2/thumbnail_202x120_39148680-20ba-438d-85c4-f565f6251227.jpg','2023-10-19 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
-VALUES (109,'160화', '8', 28, 'dummy2/thumbnail_202x120_d834fbfc-11a2-4c90-8315-d03caee4fe84.jpg','2023-10-12 00:00:00.0');
+VALUES (109,'160화', '17', 75, 'dummy2/thumbnail_202x120_d834fbfc-11a2-4c90-8315-d03caee4fe84.jpg','2023-10-12 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
-VALUES (109,'159화', '8', 31, 'dummy2/thumbnail_202x120_ba55d3aa-ce73-4a2b-be5e-a086824a126a.jpg','2023-10-05 00:00:00.0');
+VALUES (109,'159화', '17', 74, 'dummy2/thumbnail_202x120_ba55d3aa-ce73-4a2b-be5e-a086824a126a.jpg','2023-10-05 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
-VALUES (109,'158화', '8', 32, 'dummy2/thumbnail_202x120_baed26a1-fabe-4568-b9fd-b3a3c1c57ea7.jpg','2023-09-28 00:00:00.0');
+VALUES (109,'158화', '17', 79, 'dummy2/thumbnail_202x120_baed26a1-fabe-4568-b9fd-b3a3c1c57ea7.jpg','2023-09-28 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
-VALUES (109,'157화', '8', 33, 'dummy2/thumbnail_202x120_d7b2f1ef-510e-4a8c-b978-14787da78fd1.jpg','2023-09-21 00:00:00.0');
+VALUES (109,'157화', '17', 78, 'dummy2/thumbnail_202x120_d7b2f1ef-510e-4a8c-b978-14787da78fd1.jpg','2023-09-21 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
-VALUES (109,'156화', '8', 34, 'dummy2/thumbnail_202x120_3bd25352-3d80-478d-898b-447b031d5dd8.jpg','2023-09-14 00:00:00.0');
+VALUES (109,'156화', '17', 80, 'dummy2/thumbnail_202x120_3bd25352-3d80-478d-898b-447b031d5dd8.jpg','2023-09-14 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
-VALUES (109,'155화', '8', 35, 'dummy2/thumbnail_202x120_05d14101-df3c-4057-b318-e58f51dbc305.jpg','2023-09-07 00:00:00.0');
+VALUES (109,'155화', '17', 79, 'dummy2/thumbnail_202x120_05d14101-df3c-4057-b318-e58f51dbc305.jpg','2023-09-07 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
 VALUES (109,'154화', '8', 37, 'dummy2/thumbnail_202x120_4235a4e4-db40-43d2-a515-10558aaaefb0.jpg','2023-08-31 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
-VALUES (109,'153화', '8', 24, 'dummy2/thumbnail_202x120_0b4fa1a4-a79b-4d9c-a710-8ffa648dbe69.jpg','2023-08-24 00:00:00.0');
+VALUES (109,'153화', '8', 34, 'dummy2/thumbnail_202x120_0b4fa1a4-a79b-4d9c-a710-8ffa648dbe69.jpg','2023-08-24 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
 VALUES (109,'152화', '8', 38, 'dummy2/thumbnail_202x120_30bb92d5-36f0-4dc5-9529-0ea3b41c005d.jpg','2023-08-17 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
@@ -3126,21 +3126,21 @@ VALUES (302,'3부 131화', '7', 27, 'dummy2/thumbnail_202x120_c5cfd5b9-1ea0-4fad
 
 
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
-VALUES (304,'180화 도시락', '8', 34, 'dummy2/thumbnail_202x120_858fd2e9-d214-49bc-8269-92b8b846e50b.jpg','2023-10-29 00:00:00.0');
+VALUES (304,'180화 도시락', '18', 82, 'dummy2/thumbnail_202x120_858fd2e9-d214-49bc-8269-92b8b846e50b.jpg','2023-10-29 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
-VALUES (304,'179화 틸라피아', '8', 37, 'dummy2/thumbnail_202x120_c7b4abca-7cab-4cfd-ac9d-d5365cadec2c.jpg','2023-10-22 00:00:00.0');
+VALUES (304,'179화 틸라피아', '18', 84, 'dummy2/thumbnail_202x120_c7b4abca-7cab-4cfd-ac9d-d5365cadec2c.jpg','2023-10-22 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
-VALUES (304,'178화 홍차', '8', 26, 'dummy2/thumbnail_202x120_de51abd8-d790-4b98-b3cc-614550e36200.jpg','2023-10-15 00:00:00.0');
+VALUES (304,'178화 홍차', '18', 88, 'dummy2/thumbnail_202x120_de51abd8-d790-4b98-b3cc-614550e36200.jpg','2023-10-15 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
-VALUES (304,'177화 마라 로제 떡볶이', '8', 36, 'dummy2/thumbnail_202x120_689b8b23-29cc-40ed-91cf-82bcea0dd0b3.jpg','2023-10-08 00:00:00.0');
+VALUES (304,'177화 마라 로제 떡볶이', '18', 87, 'dummy2/thumbnail_202x120_689b8b23-29cc-40ed-91cf-82bcea0dd0b3.jpg','2023-10-08 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
-VALUES (304,'176화 콩국수', '8', 32, 'dummy2/thumbnail_202x120_8a784a29-26b5-4e9a-9619-832cf4d1eb3c.jpg','2023-10-01 00:00:00.0');
+VALUES (304,'176화 콩국수', '18', 86, 'dummy2/thumbnail_202x120_8a784a29-26b5-4e9a-9619-832cf4d1eb3c.jpg','2023-10-01 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
-VALUES (304,'175화 콘치즈 누룽지 통닭', '8', 35, 'dummy2/thumbnail_202x120_3b8dca31-ff8b-402e-98df-a2aec9065994.jpg','2023-09-24 00:00:00.0');
+VALUES (304,'175화 콘치즈 누룽지 통닭', '18', 87, 'dummy2/thumbnail_202x120_3b8dca31-ff8b-402e-98df-a2aec9065994.jpg','2023-09-24 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
-VALUES (304,'174화 다이어트 도시락?', '8', 29, 'dummy2/thumbnail_202x120_bcc7c340-66bc-46d5-92f2-40efc32910a4.jpg','2023-09-17 00:00:00.0');
+VALUES (304,'174화 다이어트 도시락?', '18', 89, 'dummy2/thumbnail_202x120_bcc7c340-66bc-46d5-92f2-40efc32910a4.jpg','2023-09-17 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
-VALUES (304,'173화 간파게티', '8', 25, 'dummy2/thumbnail_202x120_699ac648-eb92-475e-981e-df6854efd872.jpg','2023-09-10 00:00:00.0');
+VALUES (304,'173화 간파게티', '18', 88, 'dummy2/thumbnail_202x120_699ac648-eb92-475e-981e-df6854efd872.jpg','2023-09-10 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
 VALUES (304,'172화 약과쿠키', '8', 38, 'dummy2/thumbnail_202x120_4eacd2fc-112a-43cb-b264-648fb7cad634.jpg','2023-09-03 00:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
@@ -3294,30 +3294,30 @@ VALUES (313,'38화', '13', 45, 'dummy2/thumbnail_202x120_0d97f765-321b-4d87-ade1
 
 
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (105, '1부 여희연(6)', 11, 45, 'dummy2/thumbnail_202x120_f638e258-b4f8-4731-b628-d29e16e878d6.jpg', '2023-10-19 10:00:00.0');
+VALUES (105, '1부 여희연(6)', 22, 105, 'dummy2/thumbnail_202x120_f638e258-b4f8-4731-b628-d29e16e878d6.jpg', '2023-10-19 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (105, '1부 여희연(5)', 11, 41, 'dummy2/thumbnail_202x120_7531eabf-2c72-451e-b3d1-11c8525d9f1f.jpg', '2023-10-12 10:00:00.0');
+VALUES (105, '1부 여희연(5)', 44, 155, 'dummy2/thumbnail_202x120_7531eabf-2c72-451e-b3d1-11c8525d9f1f.jpg', '2023-10-12 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (105, '1부 여희연(4)', 11, 45, 'dummy2/thumbnail_202x120_0548ea96-699c-4283-a9b9-7e3dbe575c36.jpg', '2023-10-05 10:00:00.0');
+VALUES (105, '1부 여희연(4)', 44, 168, 'dummy2/thumbnail_202x120_0548ea96-699c-4283-a9b9-7e3dbe575c36.jpg', '2023-10-05 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (105, '1부 여희연(3)', 11, 42, 'dummy2/thumbnail_202x120_16828337-71f6-4964-be33-7ad160c9f3b8.jpg', '2023-09-28 10:00:00.0');
+VALUES (105, '1부 여희연(3)', 44, 187, 'dummy2/thumbnail_202x120_16828337-71f6-4964-be33-7ad160c9f3b8.jpg', '2023-09-28 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (105, '1부 여희연(2)', 11, 43, 'dummy2/thumbnail_202x120_84da0cc0-84d0-4658-9448-a91890e232de.jpg', '2023-09-21 10:00:00.0');
+VALUES (105, '1부 여희연(2)', 44, 178, 'dummy2/thumbnail_202x120_84da0cc0-84d0-4658-9448-a91890e232de.jpg', '2023-09-21 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (105, '1부 여희연(1)', 11, 45, 'dummy2/thumbnail_202x120_317fc3b9-aad2-4132-b13a-c80376e093ba.jpg', '2023-09-14 10:00:00.0');
+VALUES (105, '1부 여희연(1)', 44, 197, 'dummy2/thumbnail_202x120_317fc3b9-aad2-4132-b13a-c80376e093ba.jpg', '2023-09-14 10:00:00.0');
 
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (104, '5화 - 그런 도박에는 자신있으니까', 11, 35, 'dummy2/thumbnail_202x120_e813d9d4-0c40-4dce-83cc-127079f9cf06.jpg', now());
+VALUES (104, '5화 - 그런 도박에는 자신있으니까', 22, 105, 'dummy2/thumbnail_202x120_e813d9d4-0c40-4dce-83cc-127079f9cf06.jpg', now());
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (104, '4화 - 타임 패러독스', 11, 48, 'dummy2/thumbnail_202x120_41d7bdf5-6dc5-41dd-8ef0-09a8a6411cd6.jpg', '2023-10-12 10:00:00.0');
+VALUES (104, '4화 - 타임 패러독스', 44, 194, 'dummy2/thumbnail_202x120_41d7bdf5-6dc5-41dd-8ef0-09a8a6411cd6.jpg', '2023-10-12 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (104, '3화 - 전직과 참교육', 11, 45, 'dummy2/thumbnail_202x120_8de811e3-37e9-449a-8abe-47824ff2d9d4.jpg', '2023-10-05 10:00:00.0');
+VALUES (104, '3화 - 전직과 참교육', 44, 166, 'dummy2/thumbnail_202x120_8de811e3-37e9-449a-8abe-47824ff2d9d4.jpg', '2023-10-05 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (104, '2화 - 철 (凸)', 11, 47, 'dummy2/thumbnail_202x120_aa5692b6-c7d5-4f99-a61f-3decdc23f235.jpg', '2023-09-28 10:00:00.0');
+VALUES (104, '2화 - 철 (凸)', 44, 177, 'dummy2/thumbnail_202x120_aa5692b6-c7d5-4f99-a61f-3decdc23f235.jpg', '2023-09-28 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (104, '1화 - 내가 돌아왔다', 11, 43, 'dummy2/thumbnail_202x120_276db2b9-007b-4295-82d1-98764a29f654.jpg', '2023-09-21 10:00:00.0');
+VALUES (104, '1화 - 내가 돌아왔다', 44, 188, 'dummy2/thumbnail_202x120_276db2b9-007b-4295-82d1-98764a29f654.jpg', '2023-09-21 10:00:00.0');
 INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
-VALUES (104, '프롤로그 - 롤백', 11, 35, 'dummy2/thumbnail_202x120_3cbccb02-0c9e-49aa-952a-9bb6a129fb34.jpg', '2023-09-21 10:00:00.0');
+VALUES (104, '프롤로그 - 롤백', 44, 199, 'dummy2/thumbnail_202x120_3cbccb02-0c9e-49aa-952a-9bb6a129fb34.jpg', '2023-09-21 10:00:00.0');
 
 
 
@@ -6287,10 +6287,10 @@ INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
 VALUES (8, 2, 1, '에피소드1 코스댓글2', '2022-02-11');
 INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
 VALUES (9, 2, 1, '에피소드1 코스댓글3', '2022-06-18');
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
-VALUES (10, 3, 1, '에피소드1 어드민댓글1', '2022-07-17');
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
-VALUES (11, 3, 1, '에피소드1 어드민댓글2', '2022-08-21');
+-- INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
+-- VALUES (10, 3, 1, '에피소드1 어드민댓글1', '2022-07-17');
+-- INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
+-- VALUES (11, 3, 1, '에피소드1 어드민댓글2', '2022-08-21');
 INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
 VALUES (12, 101, 1, '에피소드1 작가댓글1', '2022-09-22');
 INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
@@ -6338,8 +6338,8 @@ INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
 VALUES (2, 1, 1, '댓글1 쌀 대댓글2', '2021-06-15');
 INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
 VALUES (3, 2, 1, '댓글1 코스 대댓글1', '2021-09-11');
-INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
-VALUES (4, 3, 1, '댓글1 어드민 대댓글1', '2021-11-21');
+-- INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
+-- VALUES (4, 3, 1, '댓글1 어드민 대댓글1', '2021-11-21');
 INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
 VALUES (5, 101, 1, '댓글1 작가 대댓글1', '2021-12-14');
 INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
@@ -6348,13 +6348,13 @@ INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
 VALUES (7, 101, 1, '댓글1 작가 대댓글3', '2022-06-01');
 INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`, `is_delete`)
 VALUES (8, 101, 1, '댓글1 쌀 대댓글3 삭제', '2022-09-02', true);
-INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
-VALUES (9, 101, 1, '댓글1 어드민 대댓글2', '2022-12-04');
+-- INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
+-- VALUES (9, 101, 1, '댓글1 어드민 대댓글2', '2022-12-04');
 
 INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
 VALUES (10, 1, 2, '댓글2 쌀 대댓글1', '2021-05-16');
-INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
-VALUES (11, 3, 2, '댓글2 어드민 대댓글1', '2022-06-21');
+-- INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
+-- VALUES (11, 3, 2, '댓글2 어드민 대댓글1', '2022-06-21');
 
 
 -------------------------------------------------------------------------------------------------------------------------
@@ -6441,20 +6441,70 @@ VALUES (5, 1, 302, false, '2021-06-03');
 
 
 -- 작가 글
-INSERT INTO author_board_tb (`id`, `author_id`, `title`, `text`, `created_at`)
-VALUES (1, 101, '작가1글1제목', '작가글1내용', '2020-08-06');
-INSERT INTO author_board_tb (`id`, `author_id`, `title`, `text`, `created_at`)
-VALUES (2, 101, '작가1글2제목', '작가글2내용', '2021-04-13');
-INSERT INTO author_board_tb (`id`, `author_id`, `title`, `text`, `photo`, `created_at`)
-VALUES (3, 101, '작가1글3제목', '작가글3내용', 'test.jpg', now());
-INSERT INTO author_board_tb (`id`, `author_id`, `title`, `text`, `photo`, `created_at`)
-VALUES (4, 102, '작가2글4제목', '작가글4내용', 'test.jpg', '2023-11-08');
-INSERT INTO author_board_tb (`id`, `author_id`, `title`, `text`, `photo`, `created_at`)
-VALUES (5, 103, '작가3글5제목', '작가글5내용', 'test.jpg', '2023-10-31');
-INSERT INTO author_board_tb (`id`, `author_id`, `title`, `text`, `created_at`)
-VALUES (6, 106, '작가4글1제목', '작가글6내용', '2023-11-09');
-INSERT INTO author_board_tb (`id`, `author_id`, `title`, `text`, `created_at`)
-VALUES (7, 107, '작가5글1제목', '작가글7내용', now());
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `created_at`)
+VALUES (101, '작가1글1제목', '작가글1내용', '2020-08-06');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (101, '작가1글2제목', '작가글2내용', 'dummy5/board1.jpg', '2021-04-13');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (101, '작가1글3제목', '작가글3내용', 'dummy5/board2.jpg', now());
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (102, '작가2글4제목', '작가글4내용', 'dummy5/board3.jpg', '2023-11-08');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (103, '작가3글5제목', '작가글5내용', 'dummy5/board4.jpg', '2023-10-21');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (104, '104작가글제목', '작가글내용', 'dummy5/board5.jpg', '2023-11-09');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (105, '105작가글제목1', '작가글내용1', 'dummy5/board6.jpg', '2022-08-05');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (105, '105작가글제목2', '작가글내용2', 'dummy5/board7.jpg', '2022-11-14');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (106, '106작가글제목1', '작가글내용1', 'dummy5/board8.jpg', '2022-07-14');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `created_at`)
+VALUES (106, '106작가글제목2', '작가글내용2', '2022-12-08');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `created_at`)
+VALUES (106, '106작가글제목3', '작가글내용3', now());
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `created_at`)
+VALUES (107, '107작가글제목1', '작가글내용1', '2023-03-04');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (107, '107작가글제목2', '작가글내용2', 'dummy5/board9.jpg', now());
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `created_at`)
+VALUES (108, '108작가글제목1', '작가글내용1', '2022-08-24');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `created_at`)
+VALUES (108, '108작가글제목2', '작가글내용2', '2022-12-21');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (108, '108작가글제목3', '작가글내용3', 'dummy5/board10.jpg', '2023-11-11');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (109, '109작가글제목1', '작가글내용1', 'dummy5/board11.jpg', '2023-07-10');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `created_at`)
+VALUES (109, '109작가글제목2', '작가글내용2', '2023-11-10');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `created_at`)
+VALUES (110, '110작가글제목1', '작가글내용1', '2022-10-14');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (111, '111작가글제목1', '작가글내용1', 'dummy5/board12.jpg', '2023-05-08');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `created_at`)
+VALUES (113, '113작가글제목1', '작가글내용1', '2022-06-21');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (113, '113작가글제목2', '작가글내용1', 'dummy5/board13.jpg', '2022-10-18');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `created_at`)
+VALUES (114, '114작가글제목1', '작가글내용1', '2022-04-11');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `created_at`)
+VALUES (114, '114작가글제목2', '작가글내용2', '2023-08-18');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (126, '126작가글제목1', '작가글내용1', 'dummy5/board14.jpg', '2023-08-12');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `created_at`)
+VALUES (301, '301작가글제목1', '작가글내용1', '2023-10-07');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `created_at`)
+VALUES (301, '301작가글제목2', '작가글내용2', now());
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (303, '302작가글제목1', '작가글내용1', 'dummy5/board15.jpg', '2023-08-07');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (303, '303작가글제목1', '작가글내용1', 'dummy5/board16.jpg', '2023-10-01');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `created_at`)
+VALUES (303, '303작가글제목2', '작가글내용2', '2023-11-09');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `created_at`)
+VALUES (322, '322작가글제목1', '작가글내용1', '2023-11-10');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
+VALUES (322, '322작가글제목2', '작가글내용2', 'dummy5/board17.jpg', '2023-11-11');
 
 
 
@@ -6463,13 +6513,22 @@ VALUES (7, 107, '작가5글1제목', '작가글7내용', now());
 
 
 -- 메인 광고
+INSERT INTO advertising_main_tb (`photo`, `created_at`, `is_web_link`, `webtoon_id`, `main_text`, `sub_text`)
+VALUES ('EpisodeThumbnail/dummy2/thumbnail_202x120_a79b9214-dbab-4e63-9db8-17ecca04efd0.jpg', now(), false, 101, '웹툰101', '클릭');
+
+
+
 INSERT INTO advertising_main_tb (`photo`, `created_at`, `is_web_link`, `linkURL`, `main_text`, `sub_text`)
 VALUES ('Advertising/default_advertising_main.jpg', now(), true, 'https://github.com/Merhong/final-back', 'github back', '클릭');
 -- INSERT INTO advertising_main_tb (`photo`, `created_at`, `is_web_link`, `linkURL`, `main_text`, `sub_text`)
 -- VALUES ('Advertising/default_advertising_main.jpg', now(), true, 'https://github.com/Merhong/final-front', 'github front', '클릭');
 
+
 INSERT INTO advertising_main_tb (`photo`, `created_at`, `is_web_link`, `webtoon_id`, `main_text`, `sub_text`)
-VALUES ('EpisodeThumbnail/dummy2/thumbnail_202x120_069a105d-c46e-4024-8973-2aa7202c5a12.jpg', now(), false, 101, '웹툰101', '클릭');
+VALUES ('EpisodeThumbnail/dummy2/thumbnail_202x120_abaed91f-4b0a-4bf4-8804-24fb8da8c44f.jpg', now(), false, 102, '웹툰102메인텍스트', '102서브텍스트');
+
+
+
 
 -- INSERT INTO advertising_main_tb (`webtoon_id`, `photo`, `created_at`, `is_web_link`)
 -- VALUES (108, 'EpisodeThumbnail/dummy2/thumbnail_202x120_117b3cf8-0843-4cba-8b0f-a4bf5322a877.jpg', now(), false);
