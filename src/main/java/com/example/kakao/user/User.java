@@ -58,6 +58,8 @@ public class User {
 
     private String photo;
 
+    private String tokenFCM;
+
     @CreationTimestamp
     private Timestamp createdAt;
 
@@ -66,7 +68,7 @@ public class User {
 
     @Builder
     public User(int id, String email, String password, String username, UserTypeEnum userTypeEnum, Author author,
-                Integer cookie, String birth, String gender, String realName, String tel, String photo, Timestamp createdAt,
+                Integer cookie, String birth, String gender, String realName, String tel, String photo, String tokenFCM, Timestamp createdAt,
                 Timestamp updatedAt) {
         this.id = id;
         this.email = email;
@@ -80,6 +82,7 @@ public class User {
         this.realName = realName;
         this.tel = tel;
         this.photo = photo;
+        this.tokenFCM = tokenFCM;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }

@@ -97,6 +97,9 @@ public class UserController {
     // 회원가입
     @PostMapping("/join")
     public ResponseEntity<?> join(@RequestBody @Valid UserRequest.JoinDTO requestDTO, Errors errors) {
+
+        System.out.println(requestDTO.getTokenFCM());
+
         userService.join(requestDTO);
         return ResponseEntity.ok().body(ApiUtils.success(null));
     }
