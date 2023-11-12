@@ -1,6 +1,6 @@
 package com.example.kakao.episode;
 
-import com.example.kakao.FirebaseCloudMessageService;
+import com.example.kakao._core.FirebaseCloudMessageService;
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception401;
 import com.example.kakao._core.errors.exception.Exception403;

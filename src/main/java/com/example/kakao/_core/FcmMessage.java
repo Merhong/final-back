@@ -1,4 +1,5 @@
-package com.example.kakao;
+package com.example.kakao._core;
+
 
 // import com.google.firebase.messaging.AndroidConfig;
 // import com.google.firebase.messaging.AndroidNotification;

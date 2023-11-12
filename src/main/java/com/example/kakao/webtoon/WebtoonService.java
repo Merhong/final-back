@@ -31,6 +31,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -59,6 +60,15 @@ public class WebtoonService {
     @Transactional
     public WebtoonResponse.CreateDTO create(WebtoonRequest.CreateDTO requestDTO) {
         
+        // System.out.println(requestDTO);
+        // try {
+        //     System.out.println(requestDTO.getImage().getBytes());
+        //     System.out.println(requestDTO.getImage().getSize());
+        // } catch (IOException e) {
+        //     System.out.println("오류");
+        //     e.printStackTrace();
+        // }
+
         if(requestDTO.getAgeLimit()>20 || requestDTO.getAgeLimit()<0){
             throw new Exception400("나이제한오류");
         }
@@ -109,6 +119,77 @@ public class WebtoonService {
     }
 
 
+
+    // 웹툰 수정
+    @Transactional
+    public WebtoonResponse.CreateDTO update(WebtoonRequest.UpdateDTO requestDTO) {
+        
+        System.out.println(requestDTO);
+
+        List<Webtoon> tempWebtoonList = webtoonRepository.findByTitle(requestDTO.getTitle());
+        if(tempWebtoonList.size() != 1){
+            throw new Exception400("웹툰찾기오류 : "+requestDTO.getTitle());
+        }
+        Webtoon webtoon = tempWebtoonList.get(0);
+
+        if( !(requestDTO.getIntro().isEmpty()) ){
+            webtoon.setIntro(requestDTO.getIntro());
+        }
+
+        if(requestDTO.getAgeLimit() != null){
+            if(requestDTO.getAgeLimit()>20 || requestDTO.getAgeLimit()<0){
+                throw new Exception400("나이제한오류");
+            }
+            webtoon.setAgeLimit(requestDTO.getAgeLimit());
+        }
+
+        if( !(requestDTO.getWebtoonWeekDayEnum().isEmpty()) ){
+            String pattern = "^(월|화|수|목|금|토|일)(?!.*\\1).*+$";
+            if( !(requestDTO.getWebtoonWeekDayEnum().matches(pattern)) ){
+                throw new Exception400("요일오류");
+            }
+            webtoon.setWebtoonWeekDayEnum(requestDTO.getWebtoonWeekDayEnum());
+        }
+
+        if( !(requestDTO.getWebtoonSpeciallyEnum().isEmpty()) ){
+            String pattern = "없음|휴재|완결|무료|순위|신작";
+            if( !(requestDTO.getWebtoonSpeciallyEnum().matches(pattern)) ){
+                throw new Exception400("기타오류");
+            }
+            webtoon.setWebtoonSpeciallyEnum(WebtoonSpeciallyEnum.valueOf(requestDTO.getWebtoonSpeciallyEnum()));
+        }
+
+        if( !(requestDTO.getAddAuthorName().isEmpty()) ){
+            Author author = authorRepository.findByAuthorNickname(requestDTO.getAddAuthorName())
+                .orElseThrow(() -> new Exception400("작가추가오류"));
+
+            WebtoonAuthor webtoonAuthor = WebtoonAuthor.builder()
+                    .author(author)
+                    .webtoon(webtoon)
+                    .build();
+
+            try {
+                webtoonAuthorRepository.save(webtoonAuthor);
+            } catch (Exception e) {
+                throw new Exception400("이미 작가임 "+requestDTO.getAddAuthorName());
+            }
+        }
+
+        if( !(requestDTO.getDeleteAuthorName().isEmpty()) ){
+            Author author = authorRepository.findByAuthorNickname(requestDTO.getDeleteAuthorName())
+                .orElseThrow(() -> new Exception400("작가삭제오류"));
+
+            webtoonAuthorRepository.deleteByWebtoonIdAndAuthorId(webtoon.getId(), author.getId());
+        }
+        
+        if(requestDTO.getImage().getSize() > 0){
+            String imageFileName = ImageUtils.updateImage(requestDTO.getImage(), "WebtoonThumbnail/");
+            webtoon.setImage(imageFileName);
+        }
+                
+        WebtoonResponse.CreateDTO responseDTO = new WebtoonResponse.CreateDTO(webtoon);
+        return responseDTO;
+    }
 
 
 

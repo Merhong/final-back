@@ -10,4 +10,6 @@ public interface AuthorJPARepository extends JpaRepository<Author, Integer> {
     
     Optional<Author> findByUserId(int userId);
 
+    Optional<Author> findByAuthorNickname(String authorNickname);
+
 }
