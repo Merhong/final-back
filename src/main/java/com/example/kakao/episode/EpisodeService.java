@@ -131,7 +131,7 @@ public class EpisodeService {
         System.out.println(tokenList);
 
         for (String token : tokenList) {
-            System.out.println("for문실행");
+            System.out.println("for문실행"+episode.getWebtoon().getTitle());
             try {
                 firebaseCloudMessageService.sendMessageTo(token, episode.getWebtoon().getTitle()+" 에피소드가 등록되었습니다.", episode.getDetailTitle(), ""+webtoon.getId());
                 System.out.println("메세지");
