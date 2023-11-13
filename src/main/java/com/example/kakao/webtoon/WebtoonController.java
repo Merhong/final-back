@@ -122,7 +122,6 @@ public class WebtoonController {
     public ResponseEntity<?> findAll(@RequestParam(value = "page", defaultValue = "0") Integer page) {
         // List<WebtoonResponse.FindAllDTO> responseDTOs = webtoonService.findAll(page);
 
-
         User sessionUser = (User) session.getAttribute("sessionUser");
 
         List<WebtoonResponse.FindAllDTO> DTOList = webtoonService.findAll(sessionUser.getId());

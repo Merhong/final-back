@@ -1,0 +1,42 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+
+:user: user-controller-test
+:webtoon: webtoon-controller-test
+
+
+= REST API
+:toc: left
+:toclevels: 2
+:source-highlighter: highlightjs
+
+
+
+== 유저
+
+=== 1. 회원가입
+===== Request Example
+include::{snippets}/{user}/join_test/http-request.adoc[]
+
+===== Response Example
+include::{snippets}/{user}/join_test/http-response.adoc[]
+
+=== 2. 로그인
+===== Request Example
+include::{snippets}/{user}/login_test/http-request.adoc[]
+
+===== Response Example
+include::{snippets}/{user}/login_test/http-response.adoc[]
+
+
+
+
+== 웹툰
+
+=== 1. 웹툰전체목록
+===== Request Example
+include::{snippets}/{webtoon}/findAll_test/http-request.adoc[]
+
+===== Response Example
+include::{snippets}/{webtoon}/findAll_test/http-response.adoc[]
