@@ -18,14 +18,12 @@ endif::[]
 === 1. 회원가입
 ===== Request Example
 include::{snippets}/{user}/join_test/http-request.adoc[]
-
 ===== Response Example
 include::{snippets}/{user}/join_test/http-response.adoc[]
 
 === 2. 로그인
 ===== Request Example
 include::{snippets}/{user}/login_test/http-request.adoc[]
-
 ===== Response Example
 include::{snippets}/{user}/login_test/http-response.adoc[]
 
@@ -34,9 +32,14 @@ include::{snippets}/{user}/login_test/http-response.adoc[]
 
 == 웹툰
 
-=== 1. 웹툰전체목록
+=== 1. 웹툰보기
 ===== Request Example
-include::{snippets}/{webtoon}/findAll_test/http-request.adoc[]
-
+include::{snippets}/{webtoon}/find_by_id_test/http-request.adoc[]
 ===== Response Example
-include::{snippets}/{webtoon}/findAll_test/http-response.adoc[]
+include::{snippets}/{webtoon}/find_by_id_test/http-response.adoc[]
+
+=== 2. 웹툰전체목록
+===== Request Example
+include::{snippets}/{webtoon}/find_all_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{webtoon}/find_all_test/http-response.adoc[]
