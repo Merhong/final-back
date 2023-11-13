@@ -1,113 +1,112 @@
-{{> layout/myheader}}
+{{> layout/header}}
+
+<div id="layoutSidenav_content">
+	<main>
+		<div class="col-auto container">
+
+			<h1 class="text-center mt-2">웹툰 수정</h1>
+			<div class="text-center">비워둔 부분은 바뀌지 않음</div>
+
+			<!-- <button id="addFileInputButton" class="w-100 btn bg-info mb-3">공동 작가 추가</button> -->
+
+			<form action="/add/webtoons/update" method="post" onsubmit=""
+			      id="selectform" enctype="multipart/form-data">
+
+				<div class="d-flex">
+
+					<div class="col-12 pt-1">
 
 
+						{{! <div class="d-flex flex-column img-fluid" style="width:500; height:200;">
+                            <img src="/images/Advertising/default_advertising_sub.jpg" class=""/>
+                        </div> }}
 
-<div class="col-auto container">
+						<div class="input-group mb-3">
+							<span class="input-group-text">웹툰 제목</span>
+							<input type="text" class="form-control" value="" name="title">
+						</div>
 
-	<h1 class="text-center mt-2">웹툰 수정</h1>
-	<div class="text-center">비워둔 부분은 바뀌지 않음</div>
+						<div class="input-group mb-3">
+							<span class="input-group-text">소개글</span>
+							<textarea class="form-control" rows="5"
+							          name="intro" ,></textarea>
+						</div>
 
-<!-- <button id="addFileInputButton" class="w-100 btn bg-info mb-3">공동 작가 추가</button> -->
-	
-<form action="/add/webtoons/update" method="post" onsubmit="" 
-      id="selectform" enctype="multipart/form-data">
+						<div class="mb-3">
+							<input type="file" class="form-control" name="image">
+						</div>
 
-	<div class="d-flex">
+						<div class="input-group mb-3">
+							<span class="input-group-text">나이 제한</span>
+							<input type="text" class="form-control" value="" name="ageLimit" placeholder="0~20">
+						</div>
 
-		<div class="col-12 pt-1">
-			
-			
-			{{! <div class="d-flex flex-column img-fluid" style="width:500; height:200;">
-				<img src="/images/Advertising/default_advertising_sub.jpg" class=""/>
-			</div> }}
+						<div class="input-group mb-3">
+							<span class="input-group-text">업로드 요일</span>
+							<input type="text" class="form-control" value="" name="webtoonWeekDayEnum" placeholder="월화수목금토일 중 여러 개 가능">
+						</div>
 
-			<div class="input-group mb-3">
-				<span class="input-group-text">웹툰 제목</span>
-				<input type="text" class="form-control" value="" name="title">
-			</div>
+						<div class="input-group mb-3">
+							<span class="input-group-text">기타</span>
+							<input type="text" class="form-control" value="" name="webtoonSpeciallyEnum" placeholder="없음, 휴재, 완결, 무료, 순위, 신작">
+						</div>
 
-			<div class="input-group mb-3">
-				<span class="input-group-text">소개글</span>
-				<textarea class="form-control" rows="5"
-				          name="intro",></textarea>
-			</div>
+						<!-- <div id="fileInputContainer"> -->
+						<div class="input-group mb-3">
+							<span class="input-group-text">작가 추가</span>
+							<input type="text" class="form-control" name="addAuthorName">
+						</div>
+						<!-- </div> -->
 
-			<div class="mb-3">
-				<input type="file" class="form-control" name="image">
-			</div>
+						<div class="input-group mb-3">
+							<span class="input-group-text">작가 삭제</span>
+							<input type="text" class="form-control" name="deleteAuthorName">
+						</div>
 
-			<div class="input-group mb-3">
-				<span class="input-group-text">나이 제한</span>
-				<input type="text" class="form-control" value="" name="ageLimit" placeholder="0~20">
-			</div>
+					</div>
 
-			<div class="input-group mb-3">
-				<span class="input-group-text">업로드 요일</span>
-				<input type="text" class="form-control" value="" name="webtoonWeekDayEnum" placeholder="월화수목금토일 중 여러 개 가능">
-			</div>
+				</div>
 
-			<div class="input-group mb-3">
-				<span class="input-group-text">기타</span>
-				<input type="text" class="form-control" value="" name="webtoonSpeciallyEnum" placeholder="없음, 휴재, 완결, 무료, 순위, 신작">
-			</div>
 
-			<!-- <div id="fileInputContainer"> -->
-			<div class="input-group mb-3">
-				<span class="input-group-text">작가 추가</span>
-				<input type="text" class="form-control" name="addAuthorName">
-			</div>
-			<!-- </div> -->
+				<div>
+					<input id="button" class="btn btn-primary w-100 mb-3 mt-2 bg-primary" type="submit" value="작성 완료" onclick="">
+				</div>
 
-			<div class="input-group mb-3">
-				<span class="input-group-text">작가 삭제</span>
-				<input type="text" class="form-control" name="deleteAuthorName">
-			</div>
+			</form>
+
 
 		</div>
-
-	</div>
-
-
-	<div>
-		<input id="button" class="btn btn-primary w-100 mb-3 mt-2 bg-primary" type="submit" value="작성 완료" onclick="">
-	</div>
-
-</form>
-
-
+	</main>
+	{{> layout/footer}}
 </div>
 
 
-
-
-
-
 <script>
-document.getElementById("addFileInputButton").addEventListener("click", function() {
-    const fileInputContainer = document.getElementById("fileInputContainer");
+	document.getElementById("addFileInputButton").addEventListener("click", function () {
+		const fileInputContainer = document.getElementById("fileInputContainer");
 
-    // 새로운 input-group 컨테이너 생성
-    const newInputContainer = document.createElement("div");
-    newInputContainer.className = "input-group mb-3";
+		// 새로운 input-group 컨테이너 생성
+		const newInputContainer = document.createElement("div");
+		newInputContainer.className = "input-group mb-3";
 
-    // input-group-text를 위한 span 엘리먼트 생성
-    const span = document.createElement("span");
-    span.className = "input-group-text";
-    span.textContent = "작가 닉네임"; // "작가" 텍스트 추가
+		// input-group-text를 위한 span 엘리먼트 생성
+		const span = document.createElement("span");
+		span.className = "input-group-text";
+		span.textContent = "작가 닉네임"; // "작가" 텍스트 추가
 
-    // 새로운 input 엘리먼트 생성
-    const input = document.createElement("input");
-    input.type = "text";
-    input.className = "form-control";
-    input.name = "authorNameList"; // name 속성 추가
+		// 새로운 input 엘리먼트 생성
+		const input = document.createElement("input");
+		input.type = "text";
+		input.className = "form-control";
+		input.name = "authorNameList"; // name 속성 추가
 
-    // 생성한 엘리먼트들을 조합
-    newInputContainer.appendChild(span);
-    newInputContainer.appendChild(input);
+		// 생성한 엘리먼트들을 조합
+		newInputContainer.appendChild(span);
+		newInputContainer.appendChild(input);
 
-    // fileInputContainer에 새로운 input-group 컨테이너 추가
-    fileInputContainer.appendChild(newInputContainer);
-});
+		// fileInputContainer에 새로운 input-group 컨테이너 추가
+		fileInputContainer.appendChild(newInputContainer);
+	});
 
 
 </script>
