@@ -1,9 +1,11 @@
 package com.example.kakao.episode;
 
+import com.example.kakao._core.FirebaseCloudMessageService;
 import com.example.kakao._core.errors.exception.Exception400;
 import com.example.kakao._core.errors.exception.Exception401;
 import com.example.kakao._core.errors.exception.Exception403;
 import com.example.kakao._core.errors.exception.Exception404;
+import com.example.kakao._core.utils.ApiUtils;
 import com.example.kakao._core.utils.ImageUtils;
 import com.example.kakao._entity.AuthorBoard;
 import com.example.kakao._entity.EpisodePhoto;
@@ -16,12 +18,16 @@ import com.example.kakao.author.AuthorResponse;
 import com.example.kakao.user.User;
 import com.example.kakao.webtoon.Webtoon;
 import com.example.kakao.webtoon.WebtoonRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -104,6 +110,42 @@ public class EpisodeService {
 
         System.out.println("스트림끝");
         
+
+
+        
+
+        ////테스트
+        System.out.println("============테스트시작");
+
+        FirebaseCloudMessageService firebaseCloudMessageService = new FirebaseCloudMessageService(new ObjectMapper());
+
+        
+        List<String> tokenList = webtoon.getInterstWebtoonList().stream()
+                .filter(intrewsWebtoon -> intrewsWebtoon.getIsAlarm() == true)
+                .map(interestWebtoon -> interestWebtoon.getUser().getTokenFCM())
+                .filter( token -> token != null && !(token.isEmpty()) )
+                .collect(Collectors.toList());
+        
+        System.out.println("====================");
+        System.out.println(tokenList.size());
+        System.out.println(tokenList);
+
+        for (String token : tokenList) {
+            System.out.println("for문실행"+episode.getWebtoon().getTitle());
+            try {
+                firebaseCloudMessageService.sendMessageTo(token, episode.getWebtoon().getTitle()+" 에피소드가 등록되었습니다.", episode.getDetailTitle(), ""+webtoon.getId());
+                System.out.println("메세지");
+            } catch (IOException e) {
+                System.out.println("=============테스트실패IOException "+e);
+                e.printStackTrace();
+            }
+        }
+
+
+
+
+
+        System.out.println("끝나기직전");
 
         EpisodeResponse.CreateDTO responseDTO = new EpisodeResponse.CreateDTO(episode);
         return responseDTO;

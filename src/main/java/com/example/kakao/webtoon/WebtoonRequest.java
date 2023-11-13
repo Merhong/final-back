@@ -75,6 +75,51 @@ public class WebtoonRequest {
     }
 
 
+    @Getter
+    @Setter
+    @ToString
+    public static class UpdateDTO {
+
+        @NotEmpty
+        private String addAuthorName;
+
+        @NotEmpty
+        private String deleteAuthorName;
+
+        @Size(min = 1, max = 30, message = "30자 이내여야 합니다.")
+        private String title;
+
+        @Size(min = 1, max = 300, message = "300자 이내여야 합니다.")
+        private String intro; // 소개글
+
+        // @NotEmpty
+        private MultipartFile image;
+
+        @Min(0)
+        @Max(20)
+        private Integer ageLimit;
+
+        @Size(min = 1, max = 7, message = "월화수목금토일 중에서 여러개가능")
+        private String webtoonWeekDayEnum;
+
+        // @Size(min = 1, max = 2, message = "없음, 휴재, 완결, 무료, 순위, 신작 중에서")
+        @Pattern(regexp = "없음|휴재|완결|무료|순위|신작", message = "없음, 휴재, 완결, 무료, 순위, 신작 중에서")
+        private String webtoonSpeciallyEnum;
+
+
+        // public Webtoon toEntity() {
+        //     return Webtoon.builder()
+        //             .title(title)
+        //             .intro(intro)
+        //             // .image(image)
+        //             .ageLimit(ageLimit)
+        //             .webtoonWeekDayEnum(webtoonWeekDayEnum)
+        //             .webtoonSpeciallyEnum(WebtoonSpeciallyEnum.valueOf(webtoonSpeciallyEnum))
+        //             // .webtoonAuthorList() // 로직 필요
+        //             .build();
+        // }
+    }
+
 
 
 

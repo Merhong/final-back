@@ -9,4 +9,8 @@ import java.util.List;
 
 public interface WebtoonAuthorRepository extends JpaRepository<WebtoonAuthor, Integer> {
 
+    void deleteAllByWebtoonId(int webtoonId); 
+
+    void deleteByWebtoonIdAndAuthorId(int webtoonId, int authorId); 
+
 }

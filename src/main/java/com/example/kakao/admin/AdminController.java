@@ -304,6 +304,38 @@ public class AdminController {
     }
 
 
+
+    @GetMapping("webtoonUpdateForm")
+    public String webtoonUpdateForm(HttpSession session) {
+        System.out.println("웹툰업데이트폼");
+
+        AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
+
+        if (loginResponseDTO == null || !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN)) {
+            System.out.println("통과못함");
+            return "redirect:/loginForm";
+        }
+
+        return "webtoon/webtoonUpdateForm";
+    }
+
+    // 웹툰 수정
+    @PostMapping("/add/webtoons/update")
+    // public ResponseEntity<?> webtoonCreate(WebtoonRequest.CreateDTO requestDTO, MultipartFile image) {
+    public String webtoonUpdate(WebtoonRequest.UpdateDTO requestDTO, MultipartFile image, HttpSession session) {
+        // User sessionUser = (User) session.getAttribute("sessionUser");
+        AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
+        if (!(loginResponseDTO.getUserTypeEnum().equals(UserTypeEnum.ADMIN))) {
+            throw new Exception403("어드민만 가능함");
+        }
+
+        WebtoonResponse.CreateDTO responseDTO = webtoonService.update(requestDTO);
+
+        // return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
+        return "redirect:/admin";
+    }
+
+
     // 웹툰 추가
     @PostMapping("/add/webtoons")
     // public ResponseEntity<?> webtoonCreate(WebtoonRequest.CreateDTO requestDTO, MultipartFile image) {

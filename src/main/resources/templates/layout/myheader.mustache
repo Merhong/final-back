@@ -122,6 +122,12 @@
                             </li>
                         </ul>{{/sessionUser.isAuthor}}
 
+                        {{^sessionUser.isAuthor}}<ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/webtoonUpdateForm">웹툰 수정</a>
+                            </li>
+                        </ul>{{/sessionUser.isAuthor}}
+
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="/episodeForm">에피소드 등록</a>

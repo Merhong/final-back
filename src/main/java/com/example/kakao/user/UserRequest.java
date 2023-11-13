@@ -25,11 +25,16 @@ public class UserRequest {
         @NotEmpty
         private String username;
 
+        
+        private String tokenFCM;
+
+
         public User toEntity() {
             return User.builder()
                     .email(email)
                     .password(password)
                     .username(username)
+                    .tokenFCM(tokenFCM)
                     .build();
         }
     }
