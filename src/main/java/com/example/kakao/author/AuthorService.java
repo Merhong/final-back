@@ -131,6 +131,7 @@ public class AuthorService {
     @Transactional
     public AuthorResponse.UpdateDTO update(AuthorRequest.UpdateDTO requestDTO, int sessionUserId) {
 
+        System.out.println("실행됨");
         Author author = authorRepository.findByUserId(sessionUserId)
                 .orElseThrow(() -> new Exception404("작가수정실패 작가못찾음"));
         

@@ -4,12 +4,225 @@ endif::[]
 
 :user: user-controller-test
 :webtoon: webtoon-controller-test
+:episode: episode-controller-test
+:comment: comment-controller-test
+:author: author-controller-test
+:admin: admin-controller-test
 
 
 = REST API
 :toc: left
 :toclevels: 2
 :source-highlighter: highlightjs
+
+== json viewer 복붙해서 보는게 보기 편함
+=== https://jsonviewer.stack.hu/
+
+
+
+== 웹툰
+
+=== 1. 웹툰보기
+===== Request Example
+include::{snippets}/{webtoon}/find_by_id_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{webtoon}/find_by_id_test/http-response.adoc[]
+
+=== 2. 웹툰전체목록
+===== Request Example
+include::{snippets}/{webtoon}/find_all_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{webtoon}/find_all_test/http-response.adoc[]
+
+=== 3. 웹툰랜덤보기
+===== Request Example
+include::{snippets}/{webtoon}/find_by_random_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{webtoon}/find_by_random_test/http-response.adoc[]
+
+=== 4. 관심웹툰추가
+===== Request Example
+include::{snippets}/{webtoon}/interest_save_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{webtoon}/interest_save_test/http-response.adoc[]
+
+=== 4. 관심웹툰삭제
+===== Request Example
+include::{snippets}/{webtoon}/interest_delete_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{webtoon}/interest_delete_test/http-response.adoc[]
+
+
+=== 5. 검색
+===== Request Example
+include::{snippets}/{webtoon}/search_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{webtoon}/search_test/http-response.adoc[]
+
+=== 6. 최근본웹툰등록
+===== Request Example
+include::{snippets}/{webtoon}/recent_save_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{webtoon}/recent_save_test/http-response.adoc[]
+
+=== 7. 최근본웹툰목록
+===== Request Example
+include::{snippets}/{webtoon}/recent_find_all_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{webtoon}/recent_find_all_test/http-response.adoc[]
+
+=== 8. 서브광고보기
+===== Request Example
+include::{snippets}/{webtoon}/advertising_sub_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{webtoon}/advertising_sub_test/http-response.adoc[]
+
+=== 9. 메인광고보기
+===== Request Example
+include::{snippets}/{webtoon}/advertising_sub_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{webtoon}/advertising_sub_test/http-response.adoc[]
+
+=== 10. 메인광고삭제
+===== Request Example
+include::{snippets}/{webtoon}/advertising_main_delete_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{webtoon}/advertising_main_delete_test/http-response.adoc[]
+
+=== 11. 추천완결목록
+===== Request Example
+include::{snippets}/{webtoon}/end_recommendation_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{webtoon}/end_recommendation_test/http-response.adoc[]
+
+
+
+
+
+
+== 에피소드
+
+=== 1. 에피소드 보기
+===== Request Example
+include::{snippets}/{episode}/find_by_id_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{episode}/find_by_id_test/http-response.adoc[]
+
+=== 2. 에피소드 좋아요
+===== Request Example
+include::{snippets}/{episode}/like_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{episode}/like_test/http-response.adoc[]
+
+=== 3. 에피소드 좋아요 취소
+===== Request Example
+include::{snippets}/{episode}/like_cancel_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{episode}/like_cancel_test/http-response.adoc[]
+
+=== 4. 에피소드 별점 주기
+===== Request Example
+include::{snippets}/{episode}/star_save_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{episode}/star_save_test/http-response.adoc[]
+
+
+
+
+
+
+== 댓글
+
+=== 1. 에피소드의 댓글 목록
+===== Request Example
+include::{snippets}/{comment}/find_by_id_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{comment}/find_by_id_test/http-response.adoc[]
+
+=== 2. 댓글 작성
+===== Request Example
+include::{snippets}/{comment}/save_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{comment}/save_test/http-response.adoc[]
+
+=== 3. 댓글 삭제
+===== Request Example
+include::{snippets}/{comment}/delete_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{comment}/delete_test/http-response.adoc[]
+
+=== 4. 댓글 좋아요
+===== Request Example
+include::{snippets}/{comment}/like_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{comment}/like_test/http-response.adoc[]
+
+=== 5. 댓글 싫어요
+===== Request Example
+include::{snippets}/{comment}/dislike_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{comment}/dislike_test/http-response.adoc[]
+
+=== 6. 댓글 좋아요/싫어요 삭제
+===== Request Example
+include::{snippets}/{comment}/likecancel_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{comment}/likecancel_test/http-response.adoc[]
+
+=== 7. 대댓글 작성
+===== Request Example
+include::{snippets}/{comment}/re_comment_save_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{comment}/re_comment_save_test/http-response.adoc[]
+
+=== 8. 대댓글 삭제
+===== Request Example
+include::{snippets}/{comment}/re_comment_delete_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{comment}/re_comment_delete_test/http-response.adoc[]
+
+=== 9. 대댓글 좋아요
+===== Request Example
+include::{snippets}/{comment}/re_comment_like_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{comment}/re_comment_like_test/http-response.adoc[]
+
+=== 10. 대댓글 싫어요
+===== Request Example
+include::{snippets}/{comment}/re_comment_dislike_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{comment}/re_comment_dislike_test/http-response.adoc[]
+
+=== 11. 대댓글 좋아요/싫어요 삭제
+===== Request Example
+include::{snippets}/{comment}/re_comment_likecancel_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{comment}/re_comment_likecancel_test/http-response.adoc[]
+
+
+
+
+
+== 작가
+
+=== 1. 작가 페이지 보기
+===== Request Example
+include::{snippets}/{author}/author_detail_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{author}/author_detail_test/http-response.adoc[]
+
+=== 2. 관심작가 추가
+===== Request Example
+include::{snippets}/{author}/interest_save_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{author}/interest_save_test/http-response.adoc[]
+
+=== 3. 관심작가 제거
+===== Request Example
+include::{snippets}/{author}/interest_delete_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{author}/interest_delete_test/http-response.adoc[]
+
 
 
 
@@ -27,19 +240,136 @@ include::{snippets}/{user}/login_test/http-request.adoc[]
 ===== Response Example
 include::{snippets}/{user}/login_test/http-response.adoc[]
 
-
-
-
-== 웹툰
-
-=== 1. 웹툰보기
+=== 3. 자동로그인
 ===== Request Example
-include::{snippets}/{webtoon}/find_by_id_test/http-request.adoc[]
+include::{snippets}/{user}/autologin_test/http-request.adoc[]
 ===== Response Example
-include::{snippets}/{webtoon}/find_by_id_test/http-response.adoc[]
+include::{snippets}/{user}/autologin_test/http-response.adoc[]
 
-=== 2. 웹툰전체목록
+=== 4. 회원수정
 ===== Request Example
-include::{snippets}/{webtoon}/find_all_test/http-request.adoc[]
+include::{snippets}/{user}/update_test/http-request.adoc[]
 ===== Response Example
-include::{snippets}/{webtoon}/find_all_test/http-response.adoc[]
+include::{snippets}/{user}/update_test/http-response.adoc[]
+
+=== 5. MY관심웹툰목록
+===== Request Example
+include::{snippets}/{user}/interest_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{user}/interest_test/http-response.adoc[]
+
+=== 6. MY관심작가목록
+===== Request Example
+include::{snippets}/{user}/interest_author_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{user}/interest_author_test/http-response.adoc[]
+
+=== 7. 관심웹툰알람켜기
+===== Request Example
+include::{snippets}/{user}/interest_alarm_on_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{user}/interest_alarm_on_test/http-response.adoc[]
+
+=== 8. 관심웹툰알람끄기
+===== Request Example
+include::{snippets}/{user}/interest_alarm_off_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{user}/interest_alarm_off_test/http-response.adoc[]
+
+=== 9. 관심작가알람켜기
+===== Request Example
+include::{snippets}/{user}/interest_author_alarm_on_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{user}/interest_author_alarm_on_test/http-response.adoc[]
+
+=== 10. 관심작가알람끄기
+===== Request Example
+include::{snippets}/{user}/interest_author_alarm_off_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{user}/interest_author_alarm_off_test/http-response.adoc[]
+
+=== 11. MY댓글목록
+===== Request Example
+include::{snippets}/{user}/comment_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{user}/comment_test/http-response.adoc[]
+
+
+
+== 관리자(웹)
+
+=== form은 제외함
+=== 사진부분 글자로 나와서 깨지는듯
+
+=== 1. 관리자 로그인
+===== Request Example
+include::{snippets}/{admin}/login_admin_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{admin}/login_admin_test/http-response.adoc[]
+
+=== 2. 관리자 메인페이지
+===== Request Example
+include::{snippets}/{admin}/index_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{admin}/index_test/http-response.adoc[]
+
+=== 3. 관리자 웹툰페이지
+===== Request Example
+include::{snippets}/{admin}/admin_detail_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{admin}/admin_detail_test/http-response.adoc[]
+
+=== 4. 관리자 작가페이지
+===== Request Example
+include::{snippets}/{admin}/admin_author_detail_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{admin}/admin_author_detail_test/http-response.adoc[]
+
+=== 5. 작가 등록
+===== Request Example
+include::{snippets}/{admin}/create_author_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{admin}/create_author_test/http-response.adoc[]
+
+=== 6. 작가 수정
+===== Request Example
+include::{snippets}/{admin}/update_author_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{admin}/update_author_test/http-response.adoc[]
+
+=== 7. 작가의 글 등록
+===== Request Example
+include::{snippets}/{admin}/create_board_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{admin}/create_board_test/http-response.adoc[]
+
+=== 8. 웹툰 등록
+===== Request Example
+include::{snippets}/{admin}/webtoon_create_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{admin}/webtoon_create_test/http-response.adoc[]
+
+=== 9. 웹툰 수정
+===== Request Example
+include::{snippets}/{admin}/webtoon_update_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{admin}/webtoon_update_test/http-response.adoc[]
+
+=== 10. 에피소드 등록
+===== Request Example
+include::{snippets}/{admin}/episode_create_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{admin}/episode_create_test/http-response.adoc[]
+
+=== 11. 메인광고 등록
+===== Request Example
+include::{snippets}/{admin}/advertising_main_save_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{admin}/advertising_main_save_test/http-response.adoc[]
+
+=== 11. 서브광고 등록
+===== Request Example
+include::{snippets}/{admin}/advertising_sub_save_test/http-request.adoc[]
+===== Response Example
+include::{snippets}/{admin}/advertising_sub_save_test/http-response.adoc[]
+

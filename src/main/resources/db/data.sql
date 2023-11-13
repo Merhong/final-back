@@ -6304,27 +6304,31 @@ INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
 VALUES (16, 101, 2, '에피소드2 작가댓글1', '2022-06-16');
 INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
 VALUES (17, 101, 2, '에피소드2 작가댓글2', '2022-07-21');
+INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
+VALUES (18, 3, 3, '에피소드2 관리자댓글1', '2022-08-27');
 
 -------------------------------------------------------------------------------------------------------------------------
 
 
 -- 댓글 좋아요
 INSERT INTO like_comment_tb (`id`, `user_id`, `comment_id`, `is_like`, `created_at`)
-VALUES (1, 1, 7, true, '2023-10-10');
+VALUES (1, 1, 7, true, '2022-8-10');
 INSERT INTO like_comment_tb (`id`, `user_id`, `comment_id`, `is_like`, `created_at`)
-VALUES (2, 1, 8, false, '2023-10-10');
+VALUES (2, 1, 8, false, '2022-9-10');
 INSERT INTO like_comment_tb (`id`, `user_id`, `comment_id`, `is_like`, `created_at`)
-VALUES (3, 2, 1, true, '2023-10-10');
+VALUES (3, 2, 1, true, '2022-10-12');
 INSERT INTO like_comment_tb (`id`, `user_id`, `comment_id`, `is_like`, `created_at`)
-VALUES (4, 2, 2, false, '2023-10-10');
+VALUES (4, 2, 2, false, '2022-11-15');
 INSERT INTO like_comment_tb (`id`, `user_id`, `comment_id`, `is_like`, `created_at`)
-VALUES (5, 1, 9, true, '2023-10-10');
+VALUES (5, 1, 9, true, '2023-04-13');
 INSERT INTO like_comment_tb (`id`, `user_id`, `comment_id`, `is_like`, `created_at`)
-VALUES (6, 101, 1, true, '2023-10-10');
+VALUES (6, 101, 1, true, '2023-05-12');
 INSERT INTO like_comment_tb (`id`, `user_id`, `comment_id`, `is_like`, `created_at`)
-VALUES (7, 1, 5, false, '2023-10-10');
+VALUES (7, 1, 5, false, '2023-07-08');
 INSERT INTO like_comment_tb (`id`, `user_id`, `comment_id`, `is_like`, `created_at`)
-VALUES (8, 2, 9, true, '2023-10-10');
+VALUES (8, 2, 9, true, '2023-08-07');
+INSERT INTO like_comment_tb (`id`, `user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (9, 3, 1, true, '2023-10-08');
 
 
 
@@ -6353,8 +6357,8 @@ VALUES (8, 101, 1, '댓글1 쌀 대댓글3 삭제', '2022-09-02', true);
 
 INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
 VALUES (10, 1, 2, '댓글2 쌀 대댓글1', '2021-05-16');
--- INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
--- VALUES (11, 3, 2, '댓글2 어드민 대댓글1', '2022-06-21');
+INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
+VALUES (11, 3, 2, '댓글2 어드민 대댓글1', '2022-06-21');
 
 
 -------------------------------------------------------------------------------------------------------------------------
@@ -6410,6 +6414,8 @@ INSERT INTO interest_webtoon_tb (`id`, `user_id`, `webtoon_id`, `is_alarm`, `cre
 VALUES (7, 2, 102, true, '2022-06-22');
 INSERT INTO interest_webtoon_tb (`id`, `user_id`, `webtoon_id`, `is_alarm`, `created_at`)
 VALUES (8, 3, 101, true, '2022-09-11');
+INSERT INTO interest_webtoon_tb (`id`, `user_id`, `webtoon_id`, `is_alarm`, `created_at`)
+VALUES (9, 3, 102, false, '2022-09-12');
 
 
 
@@ -6433,6 +6439,12 @@ VALUES (5, 1, 302, false, '2021-06-03');
 -- VALUES (7, 1, 305, true, '2021-08-13');
 -- INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `created_at`)
 -- VALUES (8, 1, 306, true, '2021-10-21');
+INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `created_at`)
+VALUES (6, 3, 101, true, '2020-09-15');
+INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `created_at`)
+VALUES (7, 3, 102, false, '2021-08-16');
+INSERT INTO interest_author_tb (`id`, `user_id`, `author_id`, `is_alarm`, `created_at`)
+VALUES (8, 3, 105, true, '2021-08-22');
 
 
 
