@@ -41,6 +41,17 @@ public class AdminController {
     @Autowired
     private final HttpSession session;
 
+
+    @GetMapping("/test")
+    public String t1(HttpSession session, Model model) {
+        // 로그인 (세션)
+        AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
+
+
+        return "test";
+    }
+
+
     // mustache admin 홈페이지
     @GetMapping({"/admin", "/"})
     public String index(HttpSession session, Model model) {
@@ -59,9 +70,8 @@ public class AdminController {
             }
             // 작가 로그인
             if (loginResponseDTO.getUserTypeEnum() == UserTypeEnum.AUTHOR) {
-                return "author/authorMainForm"; // 작가 페이지로 이동
-            }
-            else return "loginForm";
+                return "index"; // 작가 페이지로 이동
+            } else return "loginForm";
             // 예외시 로그인 페이지로 이동
         } catch (Exception e) {
             session.invalidate(); // 세션 날리고 로그인창으로 이동시킴
@@ -105,7 +115,7 @@ public class AdminController {
         // 서버쪽 세션 무효화(삭제), 브라우저의 jSessionID는 남아있음.
         session.invalidate();
 
-        return "loginForm";
+        return "redirect:/";
     }
 
     // 관리자 로그인
@@ -209,26 +219,26 @@ public class AdminController {
 
     @GetMapping("authorBoardForm")
     public String authorBoardForm(HttpSession session) {
-        System.out.println("작가의글폼");
+        System.out.println("작가의후기폼");
 
         AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
 
-        if (loginResponseDTO == null || !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.AUTHOR)) {
+        if (loginResponseDTO == null || (!(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN) && !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.AUTHOR))) {
             System.out.println("통과못함");
             return "redirect:/loginForm";
         }
 
-        return "author/authorBoardForm";
+        return "/author/authorBoardForm";
     }
 
 
     @GetMapping("authorUpdateForm")
     public String authorUpdateForm(HttpSession session) {
-        System.out.println("작가정보수정폼");
+        System.out.println("작가소개수정폼");
 
         AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
 
-        if (loginResponseDTO == null || !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.AUTHOR)) {
+        if (loginResponseDTO == null || (!(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN) && !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.AUTHOR))) {
             System.out.println("통과못함");
             return "redirect:/loginForm";
         }
@@ -243,9 +253,8 @@ public class AdminController {
 
         AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
 
-        if (loginResponseDTO == null || !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN)) {
+        if (loginResponseDTO == null || (!(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN) && !(loginResponseDTO.getUserTypeEnum() == UserTypeEnum.AUTHOR))) {
             System.out.println("통과못함");
-
             return "redirect:/loginForm";
         }
 
@@ -258,6 +267,7 @@ public class AdminController {
     public String createAuthor(AuthorRequest.CreateDTO requestDTO) {
         // User sessionUser = (User) session.getAttribute("sessionUser");
         AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
+
         if (!(loginResponseDTO.getUserTypeEnum().equals(UserTypeEnum.ADMIN))) {
             throw new Exception403("어드민만 가능함");
         }
@@ -302,7 +312,6 @@ public class AdminController {
         // return ResponseEntity.ok().body(ApiUtils.success(responseDTO));
         return "redirect:/admin";
     }
-
 
 
     @GetMapping("webtoonUpdateForm")
