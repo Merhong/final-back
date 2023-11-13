@@ -1,37 +1,41 @@
 {{> layout/header}}
 
+<div id="layoutSidenav_content">
+	<main>
+		<form action="/add/authors" method="post" onsubmit="" class="col-auto container"
+		      id="selectform" enctype="multipart/form-data">
+
+			<div class="d-flex">
+
+				<div class="col-12 pt-1">
+
+					<h1 class="text-center mt-2">작가 등록</h1>
+
+					{{! <div class="d-flex flex-column img-fluid" style="width:500; height:200;">
+                        <img src="/images/Advertising/default_advertising_sub.jpg" class=""/>
+                    </div> }}
+
+					<div class="input-group mb-3 mt-3">
+						<span class="input-group-text">유저 닉네임</span>
+						<input type="text" class="form-control" value="" name="nickname">
+					</div>
 
 
+				</div>
 
-<form action="/add/authors" method="post" onsubmit="" class="col-auto container"
-      id="selectform" enctype="multipart/form-data">
-
-	<div class="d-flex">
-
-		<div class="col-12 pt-1">
-			
-			<h1 class="text-center mt-2">작가 등록</h1>
-			
-			{{! <div class="d-flex flex-column img-fluid" style="width:500; height:200;">
-				<img src="/images/Advertising/default_advertising_sub.jpg" class=""/>
-			</div> }}
-		
-			<div class="input-group mb-3 mt-3">
-				<span class="input-group-text">유저 닉네임</span>
-				<input type="text" class="form-control" value="" name="nickname">
 			</div>
 
 
-		</div>
+			<div>
+				<input id="button" class="btn btn-primary w-100 mb-3 mt-2 bg-primary" type="submit" value="작성 완료" onclick="">
+			</div>
 
-	</div>
+		</form>
+	</main>
+	{{> layout/footer}}
+</div>
 
 
-	<div>
-		<input id="button" class="btn btn-primary w-100 mb-3 mt-2 bg-primary" type="submit" value="작성 완료" onclick="">
-	</div>
-
-</form>
 
 
 

@@ -285,6 +285,65 @@ public class WebtoonResponse {
     }
 
 
+
+    @ToString
+    @Getter
+    @Setter
+    public static class FindAllDTO2 {
+        private Integer id;
+        private String title;
+        private Double starScore;
+        private Double starCount;
+        private String image;
+        private Integer ageLimit;
+        private WebtoonSpeciallyEnum webtoonSpeciallyEnum;
+        private String webtoonWeekDayEnum;
+        private List<AuthorDTO> authorDTOList;
+
+        private Timestamp episodeUpdatedAt;
+
+        private Boolean isInterest;
+
+
+        public FindAllDTO2(Webtoon webtoon, boolean isInterest) {
+            this.id = webtoon.getId();
+            this.title = webtoon.getTitle();
+            this.starScore = webtoon.getStarScore();
+            this.starCount = webtoon.getStarCount();
+            this.image = webtoon.getImage();
+            this.ageLimit = webtoon.getAgeLimit();
+            this.webtoonSpeciallyEnum = webtoon.getWebtoonSpeciallyEnum();
+            this.webtoonWeekDayEnum = webtoon.getWebtoonWeekDayEnum();
+            this.authorDTOList = webtoon.getWebtoonAuthorList().stream()
+                    .map(t -> new AuthorDTO(t.getAuthor()))
+                    .collect(Collectors.toList());
+
+            this.episodeUpdatedAt = webtoon.getEpisodeList().size() != 0
+                    ? webtoon.getEpisodeList().get(0).getCreatedAt()
+                    : webtoon.getCreatedAt();
+
+            this.isInterest = isInterest;
+        }
+
+        
+        @Getter
+        @Setter
+        @ToString
+        class AuthorDTO {
+            private Integer id;
+            private String authorNickname;
+            private String authorPhoto;
+
+            AuthorDTO(Author author) {
+                this.id = author.getId();
+                this.authorNickname = author.getAuthorNickname();
+                this.authorPhoto = author.getAuthorPhoto();
+            }
+        }
+
+    }
+
+
     @Getter
     @Setter
     @ToString

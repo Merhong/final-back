@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -59,6 +60,9 @@ public class AdminController {
         AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
 
         try {
+
+            List<WebtoonResponse.FindAllDTO2> responseDTO = webtoonService.findAll2(loginResponseDTO.getId());
+
             // 일반유저 로그인
             if (loginResponseDTO.getUserTypeEnum() == UserTypeEnum.NORMAL) {
                 session.invalidate(); // 세션 날리고 401코드 날려줌
@@ -66,10 +70,12 @@ public class AdminController {
             }
             // 관리자 로그인
             if (loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN) {
+                model.addAttribute("responseDTO", responseDTO);
                 return "index"; // 관리자 페이지로 이동
             }
             // 작가 로그인
             if (loginResponseDTO.getUserTypeEnum() == UserTypeEnum.AUTHOR) {
+                model.addAttribute("responseDTO", responseDTO);
                 return "index"; // 작가 페이지로 이동
             } else return "loginForm";
             // 예외시 로그인 페이지로 이동
@@ -78,6 +84,71 @@ public class AdminController {
             return "loginForm";
         }
     }
+
+    
+    @GetMapping({"/detailForm/{webtoonId}"})
+    public String adminDetail(@PathVariable int webtoonId, HttpSession session, Model model) {
+
+        System.out.println("진입함");
+        AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
+        try {
+            WebtoonResponse.FindByIdDTO responseDTO = webtoonService.findById(webtoonId, loginResponseDTO.getId());
+            System.out.println("진입함2");
+
+            // 일반유저 로그인
+            if (loginResponseDTO.getUserTypeEnum() == UserTypeEnum.NORMAL) {
+                session.invalidate(); // 세션 날리고 401코드 날려줌
+                return "error/401";
+            }
+            // 관리자 로그인
+            if (loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN) {
+                model.addAttribute("responseDTO", responseDTO);
+                return "webtoon/detailForm"; // 관리자 페이지로 이동
+            }
+            // 작가 로그인
+            if (loginResponseDTO.getUserTypeEnum() == UserTypeEnum.AUTHOR) {
+                model.addAttribute("responseDTO", responseDTO);
+                return "webtoon/detailForm"; // 작가 페이지로 이동
+            } else return "loginForm";
+            // 예외시 로그인 페이지로 이동
+        } catch (Exception e) {
+            session.invalidate(); // 세션 날리고 로그인창으로 이동시킴
+            return "loginForm";
+        }
+    }
+    
+    @GetMapping({"/authorForm/{authorId}"})
+    public String authorDetail(@PathVariable int authorId, HttpSession session, Model model) {
+
+        System.out.println("진입함");
+        AdminResponse.LoginResponseDTO loginResponseDTO = (AdminResponse.LoginResponseDTO) session.getAttribute("sessionUser");
+        try {
+            AuthorResponse.AuthorDetailDTO responseDTO = authorService.authorDetail(authorId, loginResponseDTO.getId());
+            System.out.println("진입함2");
+
+            // 일반유저 로그인
+            if (loginResponseDTO.getUserTypeEnum() == UserTypeEnum.NORMAL) {
+                session.invalidate(); // 세션 날리고 401코드 날려줌
+                return "error/401";
+            }
+            // 관리자 로그인
+            if (loginResponseDTO.getUserTypeEnum() == UserTypeEnum.ADMIN) {
+                model.addAttribute("responseDTO", responseDTO);
+                return "author/detailForm"; // 관리자 페이지로 이동
+            }
+            // 작가 로그인
+            if (loginResponseDTO.getUserTypeEnum() == UserTypeEnum.AUTHOR) {
+                model.addAttribute("responseDTO", responseDTO);
+                return "author/detailForm"; // 작가 페이지로 이동
+            } else return "loginForm";
+            // 예외시 로그인 페이지로 이동
+        } catch (Exception e) {
+            session.invalidate(); // 세션 날리고 로그인창으로 이동시킴
+            return "loginForm";
+        }
+    }
+
+    
 
     @GetMapping("/error/401")
     public String error401() {

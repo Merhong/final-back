@@ -35,6 +35,9 @@ public class JwtAuthorizationFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
 
+        System.out.println("토큰검증중");
+
+
         // 먼저 모든 쿠키를 제거합니다.
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {

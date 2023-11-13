@@ -485,6 +485,61 @@ public class WebtoonService {
         return DTOList;
     }
 
+    // 웹에서
+    public List<WebtoonResponse.FindAllDTO2> findAll2(int sessionUserId) {
+        List<Webtoon> webtoonList = webtoonRepository.findAll();
+
+        // this.likeCommentCount = comment.getLikeCommentList().stream()
+        // .map(t -> (t.getIsLike() == true) ? 1 : 0)
+        // .reduce(0, (a, b) -> a + b);
+
+
+        // Map<Integer, Boolean> interestMap = new HashMap<>();
+        List<WebtoonResponse.FindAllDTO2> DTOList = webtoonList.stream()
+                // .map(webtoon -> {
+                //     boolean isInterest = webtoon.getInterstWebtoonList().stream()
+                //             .anyMatch(interestWebtoon -> interestWebtoon.getUser().getId() == sessionUserId);
+                //     interestMap.put(webtoon.getId(), isInterest);
+                //     return webtoon;
+                // })
+                // .map(webtoon -> {
+                //     double totalStarCount = webtoon.getEpisodeList().stream()
+                //             .map(episode -> episode.getStarCount())
+                //             .reduce(0.0, (a, b) -> a + b);
+                //     webtoon.setStarCount(totalStarCount);
+                //     return webtoon;
+                // })
+                // .map(webtoon -> {
+                //     double totalStarScore = webtoon.getEpisodeList().stream()
+                //             .map(episode -> episode.getStarScore())
+                //             .reduce(0.0, (a, b) -> a + b);
+                //     webtoon.setStarScore(totalStarScore);
+                //     return webtoon;
+                // })
+                // .map(webtoon -> new WebtoonResponse.FindAllDTO(webtoon, interestMap.get(webtoon.getId())))
+                .map(webtoon -> {
+                    double totalStarCount = webtoon.getEpisodeList().stream()
+                            .map(episode -> episode.getStarCount())
+                            .reduce(0.0, (a, b) -> a + b);
+                    webtoon.setStarCount(totalStarCount);
+
+                    double totalStarScore = webtoon.getEpisodeList().stream()
+                            .map(episode -> episode.getStarScore())
+                            .reduce(0.0, (a, b) -> a + b);
+                    webtoon.setStarScore(totalStarScore);
+
+                    boolean isInterest = webtoon.getInterstWebtoonList().stream()
+                            .anyMatch(interestWebtoon -> interestWebtoon.getUser().getId() == sessionUserId);
+                            
+                    return new WebtoonResponse.FindAllDTO2(webtoon, isInterest);
+                })
+                .collect(Collectors.toList());
+
+
+
+        return DTOList;
+    }
+
 
 
 

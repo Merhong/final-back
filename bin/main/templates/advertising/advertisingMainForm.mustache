@@ -1,103 +1,104 @@
 {{> layout/header}}
 
 
+<div id="layoutSidenav_content">
+	<main>
+		<form action="/add/advertising/main" method="post" onsubmit="" class="col-auto container"
+		      id="selectform" enctype="multipart/form-data">
+
+			<div class="d-flex">
+
+				<div class="col-12 pt-1">
+
+					<h1 class="text-center mt-2">메인 광고 등록</h1>
+
+					{{! <div class="d-flex flex-column img-fluid" style="width:500; height:200;">
+                        <img src="/images/Advertising/default_advertising_main.jpg" class=""/>
+                    </div> }}
 
 
-<form action="/add/advertising/main" method="post" onsubmit="" class="col-auto container"
-      id="selectform" enctype="multipart/form-data">
+					<div class="d-flex flex-wrap mt-3 mb-3">
+						<div class="form-check d-inline-block ms-3 me-2">
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" id="webLink" name="isWebLink" value="false">
+								웹툰 광고</label>
+						</div>
+						<div class="form-check d-inline-block ms-3 me-2">
+							<label class="form-check-label">
+								<input class="form-check-input" type="radio" id="externalLink" name="isWebLink" value="true">
+								외부 링크 광고</label>
+						</div>
+					</div>
 
-	<div class="d-flex">
+					<div class="input-group mb-3" id="webtoonIdInput">
+						<span class="input-group-text">웹툰 제목</span>
+						<textarea class="form-control" rows="1"
+						          name="webtoonTitle" , placeholder="" disabled></textarea>
+					</div>
 
-		<div class="col-12 pt-1">
+					<div class="input-group mb-3" id="linkURLInput">
+						<span class="input-group-text">광고 URL</span>
+						<textarea class="form-control" rows="1"
+						          name="linkURL" , placeholder="https://www.naver.com" disabled></textarea>
+					</div>
 
-			<h1 class="text-center mt-2">메인 광고 등록</h1>
-			
-			{{! <div class="d-flex flex-column img-fluid" style="width:500; height:200;">
-				<img src="/images/Advertising/default_advertising_main.jpg" class=""/>
-			</div> }}
+					<div class="input-group mb-3">
+						<span class="input-group-text">mainText</span>
+						<input type="text" class="form-control" value="" name="mainText" placeholder="웹툰 광고는 웹툰 제목이 기본값">
+					</div>
 
+					<div class="input-group mb-3">
+						<span class="input-group-text">subText</span>
+						<input type="text" class="form-control" value="" name="subText" placeholder="웹툰 광고는 작가들 이름이 기본값">
+					</div>
 
-			<div class="d-flex flex-wrap mt-3 mb-3">
-				<div class="form-check d-inline-block ms-3 me-2">
-					<label class="form-check-label">
-						<input class="form-check-input" type="radio" id="webLink" name="isWebLink" value="false">
-						웹툰 광고</label>
+					<div class="mb-2">
+						<input type="file" class="form-control" name="photo">
+					</div>
+
 				</div>
-				<div class="form-check d-inline-block ms-3 me-2">
-					<label class="form-check-label">
-						<input class="form-check-input" type="radio" id="externalLink" name="isWebLink" value="true">
-						외부 링크 광고</label>
-				</div>
-			</div>
-		
-			<div class="input-group mb-3" id="webtoonIdInput">
-				<span class="input-group-text">웹툰 제목</span>
-				<textarea class="form-control" rows="1"
-				          name="webtoonTitle", placeholder="" disabled></textarea>
-			</div>
-		
-			<div class="input-group mb-3" id="linkURLInput">
-				<span class="input-group-text">광고 URL</span>
-				<textarea class="form-control" rows="1"
-				          name="linkURL", placeholder="https://www.naver.com" disabled></textarea>
-			</div>
-			
-			<div class="input-group mb-3">
-				<span class="input-group-text">mainText</span>
-				<input type="text" class="form-control" value="" name="mainText" placeholder="웹툰 광고는 웹툰 제목이 기본값">
+
 			</div>
 
-			<div class="input-group mb-3">
-				<span class="input-group-text">subText</span>
-				<input type="text" class="form-control" value="" name="subText" placeholder="웹툰 광고는 작가들 이름이 기본값">
+			<!--
+
+            <div class="input-group mb-3 ms-1">
+                <span class="input-group-text">기업소개</span>
+                <textarea class="form-control" rows="5"></textarea>
+            </div>
+            -->
+
+			<div>
+				<input id="button" class="btn btn-primary w-100 mb-3 mt-2 bg-primary" type="submit" value="작성 완료" onclick="">
 			</div>
 
-			<div class="mb-2">
-				<input type="file" class="form-control" name="photo">
-			</div>
-
-		</div>
-
-	</div>
-
-	<!--
-
-    <div class="input-group mb-3 ms-1">
-        <span class="input-group-text">기업소개</span>
-        <textarea class="form-control" rows="5"></textarea>
-    </div>
-    -->
-
-	<div>
-		<input id="button" class="btn btn-primary w-100 mb-3 mt-2 bg-primary" type="submit" value="작성 완료" onclick="">
-	</div>
-
-</form>
+		</form>
+	</main>
+	{{> layout/footer}}
+</div>
 
 
 <script>
-    const webLinkRadio = document.getElementById("webLink");
-    const externalLinkRadio = document.getElementById("externalLink");
-    const webtoonIdInput = document.getElementById("webtoonIdInput");
-    const linkURLInput = document.getElementById("linkURLInput");
-	
+	const webLinkRadio = document.getElementById("webLink");
+	const externalLinkRadio = document.getElementById("externalLink");
+	const webtoonIdInput = document.getElementById("webtoonIdInput");
+	const linkURLInput = document.getElementById("linkURLInput");
 
 
-    webLinkRadio.addEventListener("change", () => {
-        if (webLinkRadio.checked) {
-            webtoonIdInput.querySelector("textarea").disabled = false;
-            linkURLInput.querySelector("textarea").disabled = true;
-        }
-    });
+	webLinkRadio.addEventListener("change", () => {
+		if (webLinkRadio.checked) {
+			webtoonIdInput.querySelector("textarea").disabled = false;
+			linkURLInput.querySelector("textarea").disabled = true;
+		}
+	});
 
-    externalLinkRadio.addEventListener("change", () => {
-        if (externalLinkRadio.checked) {
-            webtoonIdInput.querySelector("textarea").disabled = true;
-            linkURLInput.querySelector("textarea").disabled = false;
-        }
-    });
+	externalLinkRadio.addEventListener("change", () => {
+		if (externalLinkRadio.checked) {
+			webtoonIdInput.querySelector("textarea").disabled = true;
+			linkURLInput.querySelector("textarea").disabled = false;
+		}
+	});
 </script>
-
 
 
 
