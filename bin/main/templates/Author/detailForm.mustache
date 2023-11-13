@@ -45,8 +45,8 @@
 						</div>
 
 						<div class="input-group mb-3">
-							<span class="input-group-text">관심작가</span>
-							<input type="text" class="form-control" value="{{responseDTO.interestCount}}" name="title" disabled>
+							<span class="input-group-text">관심작가등록</span>
+							<input type="text" class="form-control" value="{{responseDTO.interestCount}}명" name="title" disabled>
 						</div>
 
 
@@ -76,6 +76,8 @@
 							{{#photo}}
 							<img src="/image?route=AuthorBoard/{{photo}}" style="max-height: 150px; width: auto;"/>
 							{{/photo}}
+							
+							{{^photo}}사진 없음{{/photo}}
 						</div>
 						<hr>
 						{{/responseDTO.authorBoardList}}
