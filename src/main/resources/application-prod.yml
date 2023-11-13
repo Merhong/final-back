@@ -1,0 +1,48 @@
+server:
+  servlet:
+    encoding:
+      charset: utf-8
+      force: true
+  port: 5000
+spring:
+  mustache:
+    servlet:
+      expose-session-attributes: true
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/metadb
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 101101
+  # sql:
+  #   init:
+  #     encoding: utf-8
+  #     username: root
+  #     password: 101101
+  #     mode: always
+  #     data-locations:
+  #       - classpath:db/data.sql
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      # ddl-auto: create
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+      default_batch_fetch_size: 100
+    open-in-view: true
+  output:
+    ansi:
+      enabled: always
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+logging:
+  level:
+    '[com.example.kakao]': DEBUG
+    '[org.hibernate.type]': TRACE
+
+file:
+  path: ./images/
