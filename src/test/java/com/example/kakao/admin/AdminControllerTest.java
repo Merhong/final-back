@@ -290,7 +290,7 @@ public class AdminControllerTest extends MyWithRestDoc {
 
         session.setAttribute("sessionUser", loginResponseDTO);
         
-        Path path = Paths.get("C:/src/final/final-back/images/AuthorPhoto/defaultAuthorPhoto.jpg");
+        Path path = Paths.get("images/AuthorPhoto/defaultAuthorPhoto.jpg");
         String originalFileName = "defaultAuthorPhoto.jpg";
         String contentType = "image/jpeg";
         byte[] content = Files.readAllBytes(path);
@@ -355,7 +355,7 @@ public class AdminControllerTest extends MyWithRestDoc {
 
         session.setAttribute("sessionUser", loginResponseDTO);
         
-        Path path = Paths.get("C:/src/final/final-back/images/AuthorPhoto/defaultAuthorPhoto.jpg");
+        Path path = Paths.get("images/AuthorPhoto/defaultAuthorPhoto.jpg");
         String originalFileName = "defaultAuthorPhoto.jpg";
         String contentType = "image/jpeg";
         byte[] content = Files.readAllBytes(path);
@@ -420,7 +420,7 @@ public class AdminControllerTest extends MyWithRestDoc {
 
         session.setAttribute("sessionUser", loginResponseDTO);
         
-        Path path = Paths.get("C:/src/final/final-back/images/AuthorPhoto/defaultAuthorPhoto.jpg");
+        Path path = Paths.get("images/AuthorPhoto/defaultAuthorPhoto.jpg");
         String originalFileName = "defaultAuthorPhoto.jpg";
         String contentType = "image/jpeg";
         byte[] content = Files.readAllBytes(path);
@@ -490,7 +490,7 @@ public class AdminControllerTest extends MyWithRestDoc {
 
         session.setAttribute("sessionUser", loginResponseDTO);
         
-        Path path = Paths.get("C:/src/final/final-back/images/AuthorPhoto/defaultAuthorPhoto.jpg");
+        Path path = Paths.get("images/AuthorPhoto/defaultAuthorPhoto.jpg");
         String originalFileName = "defaultAuthorPhoto.jpg";
         String contentType = "image/jpeg";
         byte[] content = Files.readAllBytes(path);
@@ -560,7 +560,7 @@ public class AdminControllerTest extends MyWithRestDoc {
 
         session.setAttribute("sessionUser", loginResponseDTO);
         
-        Path path = Paths.get("C:/src/final/final-back/images/AuthorPhoto/defaultAuthorPhoto.jpg");
+        Path path = Paths.get("images/AuthorPhoto/defaultAuthorPhoto.jpg");
         String originalFileName = "defaultAuthorPhoto.jpg";
         String contentType = "image/jpeg";
         byte[] content = Files.readAllBytes(path);
@@ -631,7 +631,7 @@ public class AdminControllerTest extends MyWithRestDoc {
 
         session.setAttribute("sessionUser", loginResponseDTO);
         
-        Path path = Paths.get("C:/src/final/final-back/images/AuthorPhoto/defaultAuthorPhoto.jpg");
+        Path path = Paths.get("images/AuthorPhoto/defaultAuthorPhoto.jpg");
         String originalFileName = "defaultAuthorPhoto.jpg";
         String contentType = "image/jpeg";
         byte[] content = Files.readAllBytes(path);
@@ -700,7 +700,7 @@ public class AdminControllerTest extends MyWithRestDoc {
 
         session.setAttribute("sessionUser", loginResponseDTO);
         
-        Path path = Paths.get("C:/src/final/final-back/images/AuthorPhoto/defaultAuthorPhoto.jpg");
+        Path path = Paths.get("images/AuthorPhoto/defaultAuthorPhoto.jpg");
         String originalFileName = "defaultAuthorPhoto.jpg";
         String contentType = "image/jpeg";
         byte[] content = Files.readAllBytes(path);

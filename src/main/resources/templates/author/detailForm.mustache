@@ -8,7 +8,7 @@
 			<h1 class="text-center mt-2">작가 상세정보</h1>
 
 			<div class="text-center mt-3 mb-3">
-				<img src="/image?route=AuthorPhoto/{{responseDTO.authorPhoto}}" style="max-width: 400px; height: auto;"/>
+				<img class="rounded-circle" src="/image?route=AuthorPhoto/{{responseDTO.authorPhoto}}" style="width: 300px; height: 300px; object-fit: cover;"/>
 			</div>
 
 			<form action="/add/webtoons" method="post" onsubmit=""
@@ -17,11 +17,6 @@
 				<div class="d-flex">
 
 					<div class="col-12 pt-1">
-
-
-						{{! <div class="d-flex flex-column img-fluid" style="width:500; height:200;">
-                            <img src="/images/Advertising/default_advertising_sub.jpg" class=""/>
-                        </div> }}
 
 						<div class="input-group mb-3">
 							<span class="input-group-text">ID</span>
@@ -67,17 +62,17 @@
 						<hr>
 						{{#responseDTO.authorBoardList}}
 						<div class="d-flex justify-content-center align-items-center mb-3">
-							<div class="mx-3">
+							<div class="mx-5 col-3">
 								<div>ID: {{id}}</div>
 								<div>제목: {{title}}</div>
 								<div>내용: {{text}}</div>
 								<div>등록일: {{createdAt}}</div>
 							</div>
 							{{#photo}}
-							<img src="/image?route=AuthorBoard/{{photo}}" style="max-height: 150px; width: auto;"/>
+							<div class="col-2"><img src="/image?route=AuthorBoard/{{photo}}" style="max-height: 150px; width: auto;"/></div>
 							{{/photo}}
 							
-							{{^photo}}사진 없음{{/photo}}
+							{{^photo}}<div class="col-2">사진 없음</div>{{/photo}}
 						</div>
 						<hr>
 						{{/responseDTO.authorBoardList}}
