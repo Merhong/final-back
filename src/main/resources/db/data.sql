@@ -6380,18 +6380,136 @@ VALUES (4, 1, 3, true, '2023-10-10');
 
 
 -- 웹툰해시태그
-INSERT INTO webtoon_hash_tag_tb (`id`, `webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
-VALUES (1, 101, '랭킹', '주간남성랭킹 TOP 10');
-INSERT INTO webtoon_hash_tag_tb (`id`, `webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
-VALUES (2, 101, '랭킹', '드라마랭킹 1위');
-INSERT INTO webtoon_hash_tag_tb (`id`, `webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
-VALUES (3, 101, '장르', '드라마');
-INSERT INTO webtoon_hash_tag_tb (`id`, `webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
-VALUES (4, 101, '장르', '판타지');
-INSERT INTO webtoon_hash_tag_tb (`id`, `webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
-VALUES (5, 101, '장르', '액션');
-INSERT INTO webtoon_hash_tag_tb (`id`, `webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
-VALUES (6, 101, '장르', '로맨스');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (101, '랭킹', '주간남성랭킹 TOP 10');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (101, '랭킹', '드라마랭킹 1위');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (101, '장르', '드라마');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (101, '장르', '판타지');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (101, '장르', '액션');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (101, '장르', '로맨스');
+
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (102, '랭킹', '주간랭킹 TOP 20');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (102, '랭킹', '판타지-무협랭킹 TOP 10');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (102, '장르', '무협');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (102, '장르', '사극');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (102, '장르', '소설원작');
+
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (103, '랭킹', '주간남성랭킹 TOP 10');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (103, '랭킹', '판타지-무협랭킹 3위');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (103, '장르', '판타지');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (103, '장르', '게임판타지');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (103, '장르', '헌터물');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (103, '장르', '소설원작');
+
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (104, '랭킹', '주간남성랭킹 TOP 30');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (104, '랭킹', '액션랭킹 TOP 20');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (104, '장르', '액션');
+
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (105, '랭킹', '드라마랭킹 TOP 30');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (105, '장르', '드라마');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (105, '장르', '판타지');
+
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (106, '랭킹', '주간여성랭킹 2위');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (106, '랭킹', '로맨스랭킹 3위');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (106, '장르', '로맨스');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (106, '장르', '후회물');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (106, '장르', '소설원작');
+
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (107, '랭킹', '주간랭킹 TOP20');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (107, '랭킹', '판타지-무협랭킹 TOP20');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (107, '장르', '판타지');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (107, '장르', '소년왕도물');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (107, '장르', '소설원작');
+
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (109, '랭킹', '주간랭킹 TOP30');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (109, '장르', '판타지');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (109, '장르', '아포칼립스');
+
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (113, '랭킹', '주간랭킹 TOP30');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (113, '장르', '무협');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (113, '장르', '사극');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (113, '장르', '소설원작');
+
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (301, '랭킹', '주간랭킹 TOP20');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (301, '랭킹', '드라마랭킹 3위');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (301, '장르', '드라마');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (301, '장르', '밀리터리');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (301, '장르', '직업드라마');
+
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (302, '랭킹', '주간남성랭킹 TOP30');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (302, '랭킹', '판타지-무협랭킹 TOP20');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (302, '장르', '판타지');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (302, '장르', '먼치킨');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (302, '장르', '이능력배틀물');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (302, '장르', '소년왕도물');
+
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (304, '랭킹', '주간여성랭킹 TOP30');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (304, '랭킹', '드라마랭킹 TOP10');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (304, '장르', '드라마');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (304, '장르', '요리');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (304, '장르', '감성드라마');
+
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (313, '랭킹', '주간남성랭킹 TOP30');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (313, '랭킹', '스릴러랭킹 2위');
+INSERT INTO webtoon_hash_tag_tb (`webtoon_id`, `hash_tag_enum`, `hash_tag_name`)
+VALUES (313, '장르', '스릴러');
 
 
 -------------------------------------------------------------------------------------------------------------------------

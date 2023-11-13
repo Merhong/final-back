@@ -8,7 +8,7 @@
 			<h1 class="text-center mt-2">작가 상세정보</h1>
 
 			<div class="text-center mt-3 mb-3">
-				<img class="rounded-circle" src="/image?route=AuthorPhoto/{{responseDTO.authorPhoto}}" style="width: 300px; height: 300px; object-fit: cover;"/>
+				<img class="rounded-circle" src="/image?route=AuthorPhoto/{{responseDTO.authorPhoto}}" onerror="this.onerror=null; this.src='/image?route=AuthorPhoto/defaultAuthorPhoto.jpg'" style="width: 300px; height: 300px; object-fit: cover;"/>
 			</div>
 
 			<form action="/add/webtoons" method="post" onsubmit=""
@@ -51,7 +51,7 @@
 							{{#responseDTO.authorWebtoonList}}
 							<div class="text-center mb-3">
 								<a href="/detailForm/{{id}}"><div>{{id}}  </div></a><div>{{title}}</div>
-								<img src="/image?route=WebtoonThumbnail/{{image}}" style="max-width: 150px; height: auto;"/>
+								<img src="/image?route=WebtoonThumbnail/{{image}}" onerror="this.onerror=null; this.src='/image?route=WebtoonThumbnail/default_webtoon_Thumbnail.jpg'" style="max-width: 150px; height: auto;"/>
 
 							</div>
 							{{/responseDTO.authorWebtoonList}}

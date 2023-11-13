@@ -147,7 +147,7 @@
 
 								<tr>
 									<td><a href="/detailForm/{{id}}">{{id}}</a></td>
-									<td><img src="/image?route=WebtoonThumbnail/{{image}}" style="max-width: 60px; height: auto;"/></td>
+									<td><img src="/image?route=WebtoonThumbnail/{{image}}" onerror="this.onerror=null; this.src='/image?route=WebtoonThumbnail/default_webtoon_Thumbnail.jpg'" style="max-width: 60px; height: auto;"/></td>
 									<td>{{title}}</td>
 									<td>{{#authorDTOList}} <div><a href="/authorForm/{{id}}">{{id}}</a> {{authorNickname}}</div> {{/authorDTOList}}</td>
 									<td><div class="rating-input">{{starScore}}/{{starCount}}</div></td>

@@ -8,7 +8,7 @@
 			<h1 class="text-center mt-2">웹툰 상세정보</h1>
 
 			<div class="text-center mt-3 mb-3">
-				<img src="/image?route=WebtoonThumbnail/{{responseDTO.image}}" style="max-width: 300px; height: auto;"/>
+				<img src="/image?route=WebtoonThumbnail/{{responseDTO.image}}" onerror="this.onerror=null; this.src='/image?route=WebtoonThumbnail/default_webtoon_Thumbnail.jpg'" style="max-width: 300px; height: auto;"/>
 			</div>
 
 			<form action="/add/webtoons" method="post" onsubmit=""
@@ -66,7 +66,7 @@
 							<div class="text-center mb-3">
 								<a href="/authorForm/{{id}}"><div>{{id}}  </div></a>
 								<div>{{authorNickname}}</div>
-								<img class="rounded-circle" src="/image?route=AuthorPhoto/{{authorPhoto}}" style="width: 150px; height: 150px; object-fit: cover;"/>
+								<img class="rounded-circle" src="/image?route=AuthorPhoto/{{authorPhoto}}" onerror="this.onerror=null; this.src='/image?route=AuthorPhoto/defaultAuthorPhoto.jpg'" style="width: 150px; height: 150px; object-fit: cover;"/>
 							</div>
 							{{/responseDTO.authorList}}
 						</div>
@@ -76,7 +76,7 @@
 
 						{{#responseDTO.episodeList}}
 						<div class="d-flex justify-content-center align-items-center mb-3">
-							<img src="/image?route=EpisodeThumbnail/{{thumbnail}}" style="max-width: 200px; height: auto;"/>
+							<img src="/image?route=EpisodeThumbnail/{{thumbnail}}" onerror="this.onerror=null; this.src='/image?route=EpisodeThumbnail/default_episode_Thumbnail.jpg'" style="max-width: 200px; height: auto;"/>
 							<div class="mx-3">
 								<div>ID: {{episodeId}}</div>
 								<div>등록일: {{updatedAt}}</div>
