@@ -1,2 +1,2 @@
-![image](https://github.com/Merhong/final-back/assets/78343061/db13e302-2a49-4688-9f56-4dea1d4a70e4)
 
+![logo](https://github.com/Merhong/final-back/assets/78343061/fba091bc-ef81-491d-a28a-822ce0ff2a8b)
