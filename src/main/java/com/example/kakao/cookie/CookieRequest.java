@@ -12,7 +12,7 @@ public class CookieRequest {
     @ToString
     public static class paymentReqDTO  {
 
-        private int cookieAmount;
-        private int userId;
+        private Integer cookieAmount;
+        private Integer userId;
     }
 }
