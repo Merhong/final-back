@@ -121,7 +121,7 @@
 									<th>사진</th>
 									<th>타이틀</th>
 									<th>작가</th>
-									<th>별점</th>
+									<th>평균 별점</th>
 									<th>나이</th>
 									<th>요일</th>
 									<th>기타</th>
@@ -134,7 +134,7 @@
 									<th>사진</th>
 									<th>타이틀</th>
 									<th>작가</th>
-									<th>별점</th>
+									<th>평균 별점</th>
 									<th>나이</th>
 									<th>요일</th>
 									<th>기타</th>
@@ -147,10 +147,10 @@
 
 								<tr>
 									<td><a href="/detailForm/{{id}}">{{id}}</a></td>
-									<td><img src="/image?route=WebtoonThumbnail/{{image}}" style="max-width: 50px; height: auto;"/></td>
+									<td><img src="/image?route=WebtoonThumbnail/{{image}}" onerror="this.onerror=null; this.src='/image?route=WebtoonThumbnail/default_webtoon_Thumbnail.jpg'" style="max-width: 60px; height: auto;"/></td>
 									<td>{{title}}</td>
 									<td>{{#authorDTOList}} <div><a href="/authorForm/{{id}}">{{id}}</a> {{authorNickname}}</div> {{/authorDTOList}}</td>
-									<td>{{starScore}}/{{starCount}}</td>
+									<td><div class="rating-input">{{starScore}}/{{starCount}}</div></td>
 									<td>{{ageLimit}}</td>
 									<td>{{webtoonWeekDayEnum}}</td>
 									<td>{{webtoonSpeciallyEnum}}</td>
@@ -191,3 +191,33 @@
 
 
 {{> layout/footer}}
+
+
+
+<script>
+	// 모든 클래스가 rating-input인 요소들을 선택
+	var ratingInputs = document.querySelectorAll('.rating-input');
+  
+	// 각 요소에 대해 처리
+	ratingInputs.forEach(function(ratingInput) {
+	  // 현재 요소의 텍스트 가져오기
+	  var text = ratingInput.innerText;
+  
+	  // "/"로 문자열을 나누기
+	  var parts = text.split("/");
+  
+	  // 나눈 결과를 숫자로 변환
+	  var numerator = parseFloat(parts[0]);
+	  var denominator = parseFloat(parts[1]);
+	  
+	  if (denominator === 0) {
+		denominator = 1;
+	  }
+  
+	  // 나눈 결과를 계산하여 소수점 두 자리까지 표시
+	  var result = (numerator / denominator).toFixed(2);
+  
+	  // 결과를 현재 요소에 설정
+	  ratingInput.innerText = result;
+	});
+  </script>

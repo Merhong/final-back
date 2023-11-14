@@ -8,7 +8,7 @@
 			<h1 class="text-center mt-2">웹툰 상세정보</h1>
 
 			<div class="text-center mt-3 mb-3">
-				<img src="/image?route=WebtoonThumbnail/{{responseDTO.image}}" style="max-width: 400px; height: auto;"/>
+				<img src="/image?route=WebtoonThumbnail/{{responseDTO.image}}" onerror="this.onerror=null; this.src='/image?route=WebtoonThumbnail/default_webtoon_Thumbnail.jpg'" style="max-width: 300px; height: auto;"/>
 			</div>
 
 			<form action="/add/webtoons" method="post" onsubmit=""
@@ -17,11 +17,6 @@
 				<div class="d-flex">
 
 					<div class="col-12 pt-1">
-
-
-						{{! <div class="d-flex flex-column img-fluid" style="width:500; height:200;">
-                            <img src="/images/Advertising/default_advertising_sub.jpg" class=""/>
-                        </div> }}
 
 						<div class="input-group mb-3">
 							<span class="input-group-text">ID</span>
@@ -41,7 +36,7 @@
 
 						<div class="input-group mb-3">
 							<span class="input-group-text">별점 총합</span>
-							<input type="text" class="form-control" value="{{responseDTO.starScore}}/{{responseDTO.starCount}}" name="title" disabled>
+							<input type="text" class="form-control rating-input" value="{{responseDTO.starScore}}/{{responseDTO.starCount}}" name="title" disabled>
 						</div>
 
 						<div class="input-group mb-3">
@@ -69,9 +64,9 @@
 						<div class="d-flex justify-content-around">
 							{{#responseDTO.authorList}}
 							<div class="text-center mb-3">
-								<a href="/authorForm/{{id}}"><div>{{id}}  </div></a><div>{{authorNickname}}</div>
-								<img src="/image?route=AuthorPhoto/{{authorPhoto}}" style="max-width: 150px; height: auto;"/>
-
+								<a href="/authorForm/{{id}}"><div>{{id}}  </div></a>
+								<div>{{authorNickname}}</div>
+								<img class="rounded-circle" src="/image?route=AuthorPhoto/{{authorPhoto}}" onerror="this.onerror=null; this.src='/image?route=AuthorPhoto/defaultAuthorPhoto.jpg'" style="width: 150px; height: 150px; object-fit: cover;"/>
 							</div>
 							{{/responseDTO.authorList}}
 						</div>
@@ -81,12 +76,12 @@
 
 						{{#responseDTO.episodeList}}
 						<div class="d-flex justify-content-center align-items-center mb-3">
-							<img src="/image?route=EpisodeThumbnail/{{thumbnail}}" style="max-width: 200px; height: auto;"/>
+							<img src="/image?route=EpisodeThumbnail/{{thumbnail}}" onerror="this.onerror=null; this.src='/image?route=EpisodeThumbnail/default_episode_Thumbnail.jpg'" style="max-width: 200px; height: auto;"/>
 							<div class="mx-3">
 								<div>ID: {{episodeId}}</div>
 								<div>등록일: {{updatedAt}}</div>
 								<div>작가의 말: {{authorText}}</div>
-								<div>별점: {{starScore}}/{{starCount}}</div>
+								<div class="rating-input">{{starScore}}/{{starCount}}</div>
 							</div>
 						</div>
 						<hr>
@@ -137,31 +132,64 @@
 
 
 <script>
-	document.getElementById("addFileInputButton").addEventListener("click", function () {
-		const fileInputContainer = document.getElementById("fileInputContainer");
-
-		// 새로운 input-group 컨테이너 생성
-		const newInputContainer = document.createElement("div");
-		newInputContainer.className = "input-group mb-3";
-
-		// input-group-text를 위한 span 엘리먼트 생성
-		const span = document.createElement("span");
-		span.className = "input-group-text";
-		span.textContent = "작가 닉네임"; // "작가" 텍스트 추가
-
-		// 새로운 input 엘리먼트 생성
-		const input = document.createElement("input");
-		input.type = "text";
-		input.className = "form-control";
-		input.name = "authorNameList"; // name 속성 추가
-
-		// 생성한 엘리먼트들을 조합
-		newInputContainer.appendChild(span);
-		newInputContainer.appendChild(input);
-
-		// fileInputContainer에 새로운 input-group 컨테이너 추가
-		fileInputContainer.appendChild(newInputContainer);
+	// 별점을 나타내는 요소의 클래스
+	var ratingElementClass = "rating-input";
+  
+	// 별점을 나타내는 모든 input과 div 요소 가져오기
+	var ratingElements = document.querySelectorAll("." + ratingElementClass);
+  
+	// 각 요소에 대해 계산 적용
+	ratingElements.forEach(function(ratingElement) {
+	  // input 요소인 경우
+	  if (ratingElement.tagName.toLowerCase() === "input") {
+		// "/"로 문자열을 나누기
+		var parts = ratingElement.value.split("/");
+  
+		// 나눈 결과를 숫자로 변환
+		var numerator = parseFloat(parts[0]);
+		var denominator = parseFloat(parts[1]);
+	  
+	    if (denominator === 0) {
+		  denominator = 1;
+	    }
+  
+		// 나눈 결과를 계산하여 소수점 두 자리까지 표시
+		var result = (numerator / denominator).toFixed(2);
+  
+		// 결과를 input 요소에 설정
+		ratingElement.value = result;
+	  }
+	  // div 요소인 경우 등의 추가 로직을 추가할 수 있습니다.
+	  // else if (ratingElement.tagName.toLowerCase() === "div") {
+	  //   // div에 대한 추가 로직
+	  // }
 	});
+  </script>
 
-
-</script>
+<script>
+	// 모든 클래스가 rating-input인 요소들을 선택
+	var ratingInputs = document.querySelectorAll('.rating-input');
+  
+	// 각 요소에 대해 처리
+	ratingInputs.forEach(function(ratingInput) {
+	  // 현재 요소의 텍스트 가져오기
+	  var text = ratingInput.innerText;
+  
+	  // "/"로 문자열을 나누기
+	  var parts = text.split("/");
+  
+	  // 나눈 결과를 숫자로 변환
+	  var numerator = parseFloat(parts[0]);
+	  var denominator = parseFloat(parts[1]);
+	  
+	  if (denominator === 0) {
+		denominator = 1;
+	  }
+	
+	  // 나눈 결과를 계산하여 소수점 두 자리까지 표시
+	  var result = (numerator / denominator).toFixed(2);
+  
+	  // 결과를 현재 요소에 설정
+	  ratingInput.innerText = "별점: " + result;
+	});
+  </script>
