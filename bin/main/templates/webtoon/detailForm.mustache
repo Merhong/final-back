@@ -45,6 +45,11 @@
 						</div>
 
 						<div class="input-group mb-3">
+							<span class="input-group-text">관심웹툰등록</span>
+							<input type="text" class="form-control" value="{{responseDTO.interestCount}}명" name="title" disabled>
+						</div>
+
+						<div class="input-group mb-3">
 							<span class="input-group-text">나이제한</span>
 							<input type="text" class="form-control" value="{{responseDTO.ageLimit}}" name="title" disabled>
 						</div>
@@ -72,6 +77,7 @@
 						</div>
 
 						<h3 class="text-center mt-5">에피소드 목록</h3>
+						<hr>
 
 						{{#responseDTO.episodeList}}
 						<div class="d-flex justify-content-center align-items-center mb-3">
@@ -83,6 +89,7 @@
 								<div>별점: {{starScore}}/{{starCount}}</div>
 							</div>
 						</div>
+						<hr>
 						{{/responseDTO.episodeList}}
 
 						<!-- <div class="mb-3">

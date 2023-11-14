@@ -87,4 +87,263 @@ public class WebtoonControllerTest extends MyWithRestDoc {
     }
 
 
+    @Test
+    public void find_by_random_test() throws Exception {
+        // given
+       
+        // when
+        ResultActions resultActions = mockMvcAddFilter.perform(
+                MockMvcRequestBuilders
+                        .get("/webtoons/random")
+                        .header(HttpHeaders.AUTHORIZATION, jwt)
+        );
+        String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+        System.out.println(responseBody);
+
+        // then
+        resultActions
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.success").value(true))
+                // .andExpect(MockMvcResultMatchers.jsonPath("$.data.id").value(101))
+                // .andExpect(MockMvcResultMatchers.jsonPath("$.data.title").value("외모지상주의"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.errorType").isEmpty())
+                .andDo(MockMvcResultHandlers.print())
+                .andDo(document);
+    }
+
+    @Test
+    public void interest_save_test() throws Exception {
+        // given
+        int webtoonId = 105;
+       
+        // when
+        ResultActions resultActions = mockMvcAddFilter.perform(
+                MockMvcRequestBuilders
+                        .post("/webtoons/interest/"+webtoonId)
+                        .header(HttpHeaders.AUTHORIZATION, jwt)
+        );
+        String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+        System.out.println(responseBody);
+
+        // then
+        resultActions
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.success").value(true))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.webtoonId").value(105))
+                // .andExpect(MockMvcResultMatchers.jsonPath("$.data.title").value("외모지상주의"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.errorType").isEmpty())
+                .andDo(MockMvcResultHandlers.print())
+                .andDo(document);
+    }
+
+    @Test
+    public void interest_delete_test() throws Exception {
+        // given
+        int webtoonId = 101;
+       
+        // when
+        ResultActions resultActions = mockMvcAddFilter.perform(
+                MockMvcRequestBuilders
+                        .delete("/webtoons/interest/"+webtoonId)
+                        .header(HttpHeaders.AUTHORIZATION, jwt)
+        );
+        String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+        System.out.println(responseBody);
+
+        // then
+        resultActions
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.success").value(true))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.webtoonId").value(101))
+                // .andExpect(MockMvcResultMatchers.jsonPath("$.data.title").value("외모지상주의"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.errorType").isEmpty())
+                .andDo(MockMvcResultHandlers.print())
+                .andDo(document);
+    }
+
+    @Test
+    public void advertising_main_delete_test() throws Exception {
+        // given
+        int id = 1;
+       
+        // when
+        ResultActions resultActions = mockMvcAddFilter.perform(
+                MockMvcRequestBuilders
+                        .delete("/webtoons/advertising/main/"+id)
+                        .header(HttpHeaders.AUTHORIZATION, jwt)
+        );
+        String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+        System.out.println(responseBody);
+
+        // then
+        resultActions
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.success").value(true))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.id").value(1))
+                // .andExpect(MockMvcResultMatchers.jsonPath("$.data.title").value("외모지상주의"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.errorType").isEmpty())
+                .andDo(MockMvcResultHandlers.print())
+                .andDo(document);
+    }
+
+    @Test
+    public void advertising_sub_test() throws Exception {
+        // given
+       
+        // when
+        ResultActions resultActions = mockMvcAddFilter.perform(
+                MockMvcRequestBuilders
+                        .get("/webtoons/advertising/sub")
+                        .header(HttpHeaders.AUTHORIZATION, jwt)
+        );
+        String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+        System.out.println(responseBody);
+
+        // then
+        resultActions
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.success").value(true))
+                // .andExpect(MockMvcResultMatchers.jsonPath("$.data.id").value(1))
+                // .andExpect(MockMvcResultMatchers.jsonPath("$.data.title").value("외모지상주의"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.errorType").isEmpty())
+                .andDo(MockMvcResultHandlers.print())
+                .andDo(document);
+    }
+    
+    @Test
+    public void advertising_main_test() throws Exception {
+        // given
+       
+        // when
+        ResultActions resultActions = mockMvcAddFilter.perform(
+                MockMvcRequestBuilders
+                        .get("/webtoons/advertising/main")
+                        .header(HttpHeaders.AUTHORIZATION, jwt)
+        );
+        String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+        System.out.println(responseBody);
+
+        // then
+        resultActions
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.success").value(true))
+                // .andExpect(MockMvcResultMatchers.jsonPath("$.data.id").value(1))
+                // .andExpect(MockMvcResultMatchers.jsonPath("$.data.title").value("외모지상주의"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.errorType").isEmpty())
+                .andDo(MockMvcResultHandlers.print())
+                .andDo(document);
+    }
+    
+    @Test
+    public void search_test() throws Exception {
+        // given
+        String searchText = "세";
+       
+        // when
+        ResultActions resultActions = mockMvcAddFilter.perform(
+                MockMvcRequestBuilders
+                        .get("/search?searchText="+searchText)
+                        .header(HttpHeaders.AUTHORIZATION, jwt)
+        );
+        String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+        System.out.println(responseBody);
+
+        // then
+        resultActions
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.success").value(true))
+                // .andExpect(MockMvcResultMatchers.jsonPath("$.data.id").value(1))
+                // .andExpect(MockMvcResultMatchers.jsonPath("$.data.title").value("외모지상주의"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.errorType").isEmpty())
+                .andDo(MockMvcResultHandlers.print())
+                .andDo(document);
+    }
+
+    @Test
+    public void recent_save_test() throws Exception {
+        // given
+        int episodeId = 111;
+       
+        // when
+        ResultActions resultActions = mockMvcAddFilter.perform(
+                MockMvcRequestBuilders
+                        .post("/webtoons/recent/"+episodeId)
+                        .header(HttpHeaders.AUTHORIZATION, jwt)
+        );
+        String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+        System.out.println(responseBody);
+
+        // then
+        resultActions
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.success").value(true))
+                // .andExpect(MockMvcResultMatchers.jsonPath("$.data.id").value(1))
+                // .andExpect(MockMvcResultMatchers.jsonPath("$.data.title").value("외모지상주의"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.errorType").isEmpty())
+                .andDo(MockMvcResultHandlers.print())
+                .andDo(document);
+    }
+
+    @Test
+    public void recent_find_all_test() throws Exception {
+        // given
+       
+        // when
+        ResultActions resultActions = mockMvcAddFilter.perform(
+                MockMvcRequestBuilders
+                        .get("/webtoons/recent")
+                        .header(HttpHeaders.AUTHORIZATION, jwt)
+        );
+        String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+        System.out.println(responseBody);
+
+        // then
+        resultActions
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.success").value(true))
+                // .andExpect(MockMvcResultMatchers.jsonPath("$.data.id").value(1))
+                // .andExpect(MockMvcResultMatchers.jsonPath("$.data.title").value("외모지상주의"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.errorType").isEmpty())
+                .andDo(MockMvcResultHandlers.print())
+                .andDo(document);
+    }
+
+    @Test
+    public void end_recommendation_test() throws Exception {
+        // given
+       
+        // when
+        ResultActions resultActions = mockMvcAddFilter.perform(
+                MockMvcRequestBuilders
+                        .get("/webtoons/recommend")
+                        .header(HttpHeaders.AUTHORIZATION, jwt)
+        );
+        String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+        System.out.println(responseBody);
+
+        // then
+        resultActions
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.success").value(true))
+                // .andExpect(MockMvcResultMatchers.jsonPath("$.data.id").value(1))
+                // .andExpect(MockMvcResultMatchers.jsonPath("$.data.title").value("외모지상주의"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.errorType").isEmpty())
+                .andDo(MockMvcResultHandlers.print())
+                .andDo(document);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
