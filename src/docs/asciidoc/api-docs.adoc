@@ -46,50 +46,50 @@ include::{snippets}/{webtoon}/interest_save_test/http-request.adoc[]
 ===== Response Example
 include::{snippets}/{webtoon}/interest_save_test/http-response.adoc[]
 
-=== 4. 관심웹툰삭제
+=== 5. 관심웹툰삭제
 ===== Request Example
 include::{snippets}/{webtoon}/interest_delete_test/http-request.adoc[]
 ===== Response Example
 include::{snippets}/{webtoon}/interest_delete_test/http-response.adoc[]
 
 
-=== 5. 검색
+=== 6. 검색
 ===== Request Example
 include::{snippets}/{webtoon}/search_test/http-request.adoc[]
 ===== Response Example
 include::{snippets}/{webtoon}/search_test/http-response.adoc[]
 
-=== 6. 최근본웹툰등록
+=== 7. 최근본웹툰등록
 ===== Request Example
 include::{snippets}/{webtoon}/recent_save_test/http-request.adoc[]
 ===== Response Example
 include::{snippets}/{webtoon}/recent_save_test/http-response.adoc[]
 
-=== 7. 최근본웹툰목록
+=== 8. 최근본웹툰목록
 ===== Request Example
 include::{snippets}/{webtoon}/recent_find_all_test/http-request.adoc[]
 ===== Response Example
 include::{snippets}/{webtoon}/recent_find_all_test/http-response.adoc[]
 
-=== 8. 서브광고보기
+=== 9. 서브광고보기
 ===== Request Example
 include::{snippets}/{webtoon}/advertising_sub_test/http-request.adoc[]
 ===== Response Example
 include::{snippets}/{webtoon}/advertising_sub_test/http-response.adoc[]
 
-=== 9. 메인광고보기
+=== 10. 메인광고보기
 ===== Request Example
-include::{snippets}/{webtoon}/advertising_sub_test/http-request.adoc[]
+include::{snippets}/{webtoon}/advertising_main_test/http-request.adoc[]
 ===== Response Example
-include::{snippets}/{webtoon}/advertising_sub_test/http-response.adoc[]
+include::{snippets}/{webtoon}/advertising_main_test/http-response.adoc[]
 
-=== 10. 메인광고삭제
+=== 11. 메인광고삭제
 ===== Request Example
 include::{snippets}/{webtoon}/advertising_main_delete_test/http-request.adoc[]
 ===== Response Example
 include::{snippets}/{webtoon}/advertising_main_delete_test/http-response.adoc[]
 
-=== 11. 추천완결목록
+=== 12. 추천완결목록
 ===== Request Example
 include::{snippets}/{webtoon}/end_recommendation_test/http-request.adoc[]
 ===== Response Example
@@ -367,7 +367,7 @@ include::{snippets}/{admin}/advertising_main_save_test/http-request.adoc[]
 ===== Response Example
 include::{snippets}/{admin}/advertising_main_save_test/http-response.adoc[]
 
-=== 11. 서브광고 등록
+=== 12. 서브광고 등록
 ===== Request Example
 include::{snippets}/{admin}/advertising_sub_save_test/http-request.adoc[]
 ===== Response Example
