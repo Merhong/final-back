@@ -3325,12 +3325,68 @@ INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`
 VALUES (104, '프롤로그 - 롤백', 44, 199, 'dummy2/thumbnail_202x120_3cbccb02-0c9e-49aa-952a-9bb6a129fb34.jpg', '2023-09-21 10:00:00.0');
 
 
-
-
-
-
-
-
+-- 추천완결용 더미 추가
+-- 126 말년용사
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
+VALUES (126,'229화 X', '11', 47, 'dummy2/thumbnail_202x120_fa3ee3bd-1f3d-4ccd-9046-9ce68f593e6a.jpg','2023-10-26 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
+VALUES (126,'228화 남자 (2)', '11', 52, 'dummy2/thumbnail_202x120_c7706b4a-eab8-4ef2-91e6-f6edce8cf5b4.jpg','2023-10-19 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
+VALUES (126,'227화 남자 (1)', '11', 51, 'dummy2/thumbnail_202x120_b58e2d6f-822f-4e95-a3f9-a9c739f5b444.jpg','2023-10-12 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
+VALUES (126,'226화 진둑산의 미스테리 (4)', '11', 55, 'dummy2/thumbnail_202x120_973fb7d8-c7ea-4fa7-8fcd-7d3c2ca5b4af.jpg','2023-10-05 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
+VALUES (126,'225화 진둑산의 미스테리 (3)', '11', 37, 'dummy2/thumbnail_202x120_5d6a2a13-4aef-4c2d-a0d7-3cbcf5e2c279.jpg','2023-09-28 00:00:00.0');
+-- 139 플레이어
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (139, '5화 - 그런 도박에는 자신있으니까', 22, 105, 'dummy2/thumbnail_202x120_e813d9d4-0c40-4dce-83cc-127079f9cf06.jpg', now());
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (139, '4화 - 타임 패러독스', 44, 194, 'dummy2/thumbnail_202x120_41d7bdf5-6dc5-41dd-8ef0-09a8a6411cd6.jpg', '2023-10-12 10:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (139, '3화 - 전직과 참교육', 44, 166, 'dummy2/thumbnail_202x120_8de811e3-37e9-449a-8abe-47824ff2d9d4.jpg', '2023-10-05 10:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (139, '2화 - 철 (凸)', 44, 177, 'dummy2/thumbnail_202x120_aa5692b6-c7d5-4f99-a61f-3decdc23f235.jpg', '2023-09-28 10:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (139, '1화 - 내가 돌아왔다', 44, 188, 'dummy2/thumbnail_202x120_276db2b9-007b-4295-82d1-98764a29f654.jpg', '2023-09-21 10:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (139, '프롤로그 - 롤백', 44, 199, 'dummy2/thumbnail_202x120_3cbccb02-0c9e-49aa-952a-9bb6a129fb34.jpg', '2023-09-21 10:00:00.0');
+-- 115 천하제일 대사형
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (115, '75화', 11, 53, 'dummy2/thumbnail_202x120_a11f8b33-4b7f-4871-9230-4af28656bcad.jpg', '2023-07-13 10:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (115, '74화', 11, 52, 'dummy2/thumbnail_202x120_dae12d91-10c3-4988-8c19-a8270d035f22.jpg', '2023-07-06 10:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (115, '73화', 11, 53, 'dummy2/thumbnail_202x120_39aa18b8-1b58-4fbe-92f7-dc0e2444259b.jpg', '2023-06-29 10:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (115, '72화', 11, 54, 'dummy2/thumbnail_202x120_cbc87bef-6f54-49f3-b91f-d626ac52f9f7.jpg', '2023-06-22 10:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (115, '71화', 11, 55, 'dummy2/thumbnail_202x120_76cd2289-d85a-4f5e-ac94-0dc2dcfa22f7.jpg', '2023-06-15 10:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (115, '70화', 11, 47, 'dummy2/thumbnail_202x120_32e6c193-c3a5-40e5-9477-f4a9ade805c6.jpg', '2023-06-08 10:00:00.0');
+-- 151 그냥선생님
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
+VALUES (151,'229화 X', '11', 47, 'dummy2/thumbnail_202x120_fa3ee3bd-1f3d-4ccd-9046-9ce68f593e6a.jpg','2023-10-26 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
+VALUES (151,'228화 남자 (2)', '11', 52, 'dummy2/thumbnail_202x120_c7706b4a-eab8-4ef2-91e6-f6edce8cf5b4.jpg','2023-10-19 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
+VALUES (151,'227화 남자 (1)', '11', 51, 'dummy2/thumbnail_202x120_b58e2d6f-822f-4e95-a3f9-a9c739f5b444.jpg','2023-10-12 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
+VALUES (151,'226화 진둑산의 미스테리 (4)', '11', 55, 'dummy2/thumbnail_202x120_973fb7d8-c7ea-4fa7-8fcd-7d3c2ca5b4af.jpg','2023-10-05 00:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`,`star_count`, `star_score`,`thumbnail`,`created_at`)
+VALUES (151,'225화 진둑산의 미스테리 (3)', '11', 37, 'dummy2/thumbnail_202x120_5d6a2a13-4aef-4c2d-a0d7-3cbcf5e2c279.jpg','2023-09-28 00:00:00.0');
+-- 152 드래곤
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (152, '5화 - 그런 도박에는 자신있으니까', 22, 105, 'dummy2/thumbnail_202x120_e813d9d4-0c40-4dce-83cc-127079f9cf06.jpg', now());
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (152, '4화 - 타임 패러독스', 44, 194, 'dummy2/thumbnail_202x120_41d7bdf5-6dc5-41dd-8ef0-09a8a6411cd6.jpg', '2023-10-12 10:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (152, '3화 - 전직과 참교육', 44, 166, 'dummy2/thumbnail_202x120_8de811e3-37e9-449a-8abe-47824ff2d9d4.jpg', '2023-10-05 10:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (152, '2화 - 철 (凸)', 44, 177, 'dummy2/thumbnail_202x120_aa5692b6-c7d5-4f99-a61f-3decdc23f235.jpg', '2023-09-28 10:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (152, '1화 - 내가 돌아왔다', 44, 188, 'dummy2/thumbnail_202x120_276db2b9-007b-4295-82d1-98764a29f654.jpg', '2023-09-21 10:00:00.0');
+INSERT INTO episode_tb (`webtoon_id`, `detail_title`, `star_count`, `star_score`, `thumbnail`, `created_at`)
+VALUES (152, '프롤로그 - 롤백', 44, 199, 'dummy2/thumbnail_202x120_3cbccb02-0c9e-49aa-952a-9bb6a129fb34.jpg', '2023-09-21 10:00:00.0');
 
 
 
