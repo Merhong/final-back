@@ -25,7 +25,7 @@ public class EpisodeControllerTest extends MyWithRestDoc {
     // @Autowired
     // private MockMvc mvc;
 
-    String jwt="Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtZXRhY29kaW5nLWtleSIsImlkIjozLCJlbWFpbCI6ImFkbWluQG5hdmVyLmNvbSIsImNvb2tpZSI6MCwidXNlcm5hbWUiOiLqtIDrpqzsnpAiLCJ1c2VyVHlwZUVudW0iOiJBRE1JTiIsImV4cCI6MTcwMDQ0ODc1M30.kBxBp7O8wG_s0xQb_p-myFaMKuuNRBVWWXaKAIpmsoUTX5wt1agnvlflS9pQ1hGBhgjGNpWPqw3ACHh-5BAR1Q";
+    String jwt="Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtZXRhY29kaW5nLWtleSIsImlkIjoxLCJlbWFpbCI6InNzYXJAbmF2ZXIuY29tIiwiY29va2llIjowLCJ1c2VybmFtZSI6IuyMgCIsInVzZXJUeXBlRW51bSI6Ik5PUk1BTCIsImV4cCI6MTcwMDUzNTYyNn0.MBlr8g9sUvq9RsKtQnhxcxUPMlWZqaaDQBsE5JcaqMtUUKloViwN5339IWgg65VopDxi_VOTikc389jApBI-qg";
 
     
     @Test

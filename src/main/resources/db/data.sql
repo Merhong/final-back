@@ -22,13 +22,17 @@ VALUES (7, 300, '쿠키 300개', 36000);
 
 
 INSERT INTO user_tb (`id`, `email`, `password`, `user_type_enum`, `username`)
-VALUES ('1', 'ssar@naver.com', '123455555555555', 'NORMAL', '쌀');
+VALUES ('1', 'ssar@naver.com', '12345', 'NORMAL', '쌀');
 INSERT INTO user_tb (`id`, `email`, `password`, `user_type_enum`, `username`)
 VALUES ('2', 'cos@naver.com', '12345555555555', 'AUTHOR', '코스');
 INSERT INTO user_tb (`id`, `email`, `password`, `user_type_enum`, `username`)
 VALUES ('3', 'admin@naver.com', '1234', 'ADMIN', '관리자');
 INSERT INTO user_tb (`id`, `email`, `password`, `user_type_enum`, `username`)
 VALUES ('4', 'love@naver.com', '123455555555', 'NORMAL', '럽브');
+INSERT INTO user_tb (`id`, `email`, `password`, `user_type_enum`, `username`)
+VALUES ('5', 'bogo@naver.com', '123455555555', 'NORMAL', '보고');
+INSERT INTO user_tb (`id`, `email`, `password`, `user_type_enum`, `username`)
+VALUES ('6', 'gildong@naver.com', '123455555555', 'NORMAL', '홍길동');
 
 
 -------------------------------------------------------------------------------------------------------------------------
@@ -2387,6 +2391,7 @@ INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('106', '107');
 INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('108', '101');
 INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('301', '101');
 INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('107', '301');
+INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('109', '101');
 INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('109', '302');
 INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('111', '303');
 INSERT INTO webtoon_author_tb (`webtoon_id`, `author_id`) VALUES ('302', '111');
@@ -3397,26 +3402,23 @@ VALUES (104, '프롤로그 - 롤백', 44, 199, 'dummy2/thumbnail_202x120_3cbccb0
 
 
 
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'dummy3/dummy (4).png');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'dummy3/dummy (441).png');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'dummy3/dummy (693).png');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'dummy3/dummy (617).png');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'dummy3/dummy (27).png');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'dummy3/dummy (54).png');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'dummy3/dummy (77).png');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'dummy3/dummy (31).png');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'dummy3/dummy (934).png');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'dummy3/dummy (582).png');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'dummy3/dummy (379).png');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (2, 'dummy3/dummy (754).png');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (2, 'dummy3/dummy (997).png');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (2, 'dummy3/dummy (393).png');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (2, 'dummy3/dummy (757).png');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (2, 'dummy3/dummy (552).png');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (2, 'dummy3/dummy (740).png');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (2, 'dummy3/dummy (13).png');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (2, 'dummy3/dummy (849).png');
-INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (2, 'dummy3/dummy (302).png');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'dummy3/episode2 (2).jpg');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'dummy3/episode2 (1).jpg');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'dummy3/episode2 (3).jpg');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'dummy3/episode2 (4).jpg');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'dummy3/episode2 (5).jpg');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'dummy3/episode2 (6).jpg');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'dummy3/episode2 (7).jpg');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (1, 'dummy3/episode2 (8).jpg');
+
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (2, 'dummy3/episode1 (1).jpg');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (2, 'dummy3/episode1 (2).jpg');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (2, 'dummy3/episode1 (3).jpg');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (2, 'dummy3/episode1 (4).jpg');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (2, 'dummy3/episode1 (5).jpg');
+INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (2, 'dummy3/episode1 (6).jpg');
+
+
 INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (3, 'dummy3/dummy (69).png');
 INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (3, 'dummy3/dummy (488).png');
 INSERT INTO EPISODE_PHOTO_TB (`episode_id`, `photoURL`) VALUES (3, 'dummy3/dummy (144).png');
@@ -6269,66 +6271,77 @@ VALUES (7, 3, 2, true, '2023-10-10');
 
 
 -- 댓글
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
-VALUES (1, 1, 1, '에피소드1 쌀댓글1', '2020-11-21');
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
-VALUES (2, 1, 1, '에피소드1 쌀댓글2', '2020-09-15');
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
-VALUES (3, 1, 1, '에피소드1 쌀댓글3', '2021-01-05');
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
-VALUES (4, 1, 1, '에피소드1 쌀댓글4', '2021-02-01');
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
-VALUES (5, 1, 1, '에피소드1 쌀댓글5', '2021-04-15');
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`, `is_delete`)
-VALUES (6, 1, 1, '에피소드1 쌀댓글6 삭제', '2021-06-19', true);
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
-VALUES (7, 2, 1, '에피소드1 코스댓글1', '2021-09-22');
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
-VALUES (8, 2, 1, '에피소드1 코스댓글2', '2022-02-11');
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
-VALUES (9, 2, 1, '에피소드1 코스댓글3', '2022-06-18');
--- INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
--- VALUES (10, 3, 1, '에피소드1 어드민댓글1', '2022-07-17');
--- INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
--- VALUES (11, 3, 1, '에피소드1 어드민댓글2', '2022-08-21');
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
-VALUES (12, 101, 1, '에피소드1 작가댓글1', '2022-09-22');
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
-VALUES (13, 101, 1, '에피소드1 작가댓글2', '2022-11-02');
+INSERT INTO comment_tb ( `user_id`, `episode_id`, `text`, `created_at`)
+VALUES (1, 1, '댓글1등', '2020-08-21');
+INSERT INTO comment_tb (`user_id`, `episode_id`, `text`, `created_at`)
+VALUES (101, 1, '작가입니다. 재밌게 봐주세요.', '2020-08-21');
+INSERT INTO comment_tb ( `user_id`, `episode_id`, `text`, `created_at`)
+VALUES (2, 1, '재밌어요', '2020-08-24');
+INSERT INTO comment_tb ( `user_id`, `episode_id`, `text`, `created_at`)
+VALUES (4, 1, '노잼인데', '2021-01-05');
+INSERT INTO comment_tb (`user_id`, `episode_id`, `text`, `created_at`, `is_delete`)
+VALUES (5, 1, '삭제', '2021-06-19', true);
+INSERT INTO comment_tb (`user_id`, `episode_id`, `text`, `created_at`)
+VALUES (1, 1, '또 보러옴', '2021-09-22');
 
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
-VALUES (14, 1, 2, '에피소드2 쌀댓글1', '2022-01-05');
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
-VALUES (15, 2, 2, '에피소드2 코스댓글1', '2022-04-12');
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
-VALUES (16, 101, 2, '에피소드2 작가댓글1', '2022-06-16');
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
-VALUES (17, 101, 2, '에피소드2 작가댓글2', '2022-07-21');
-INSERT INTO comment_tb (`id`, `user_id`, `episode_id`, `text`, `created_at`)
-VALUES (18, 3, 3, '에피소드2 관리자댓글1', '2022-08-27');
+INSERT INTO comment_tb (`user_id`, `episode_id`, `text`, `created_at`)
+VALUES (1, 2, '에피소드2 쌀댓글1', '2022-01-05');
+INSERT INTO comment_tb (`user_id`, `episode_id`, `text`, `created_at`)
+VALUES (2, 2, '에피소드2 코스댓글1', '2022-04-12');
+INSERT INTO comment_tb (`user_id`, `episode_id`, `text`, `created_at`)
+VALUES (101, 2, '에피소드2 작가댓글1', '2022-06-16');
+INSERT INTO comment_tb (`user_id`, `episode_id`, `text`, `created_at`)
+VALUES (101, 2, '에피소드2 작가댓글2', '2022-07-21');
+INSERT INTO comment_tb (`user_id`, `episode_id`, `text`, `created_at`)
+VALUES (3, 3, '에피소드2 관리자댓글1', '2022-08-27');
+
+INSERT INTO comment_tb (`user_id`, `episode_id`, `text`, `created_at`)
+VALUES (6, 1, '잘봤습니다', '2021-12-06');
 
 -------------------------------------------------------------------------------------------------------------------------
 
 
 -- 댓글 좋아요
-INSERT INTO like_comment_tb (`id`, `user_id`, `comment_id`, `is_like`, `created_at`)
-VALUES (1, 1, 7, true, '2022-8-10');
-INSERT INTO like_comment_tb (`id`, `user_id`, `comment_id`, `is_like`, `created_at`)
-VALUES (2, 1, 8, false, '2022-9-10');
-INSERT INTO like_comment_tb (`id`, `user_id`, `comment_id`, `is_like`, `created_at`)
-VALUES (3, 2, 1, true, '2022-10-12');
-INSERT INTO like_comment_tb (`id`, `user_id`, `comment_id`, `is_like`, `created_at`)
-VALUES (4, 2, 2, false, '2022-11-15');
-INSERT INTO like_comment_tb (`id`, `user_id`, `comment_id`, `is_like`, `created_at`)
-VALUES (5, 1, 9, true, '2023-04-13');
-INSERT INTO like_comment_tb (`id`, `user_id`, `comment_id`, `is_like`, `created_at`)
-VALUES (6, 101, 1, true, '2023-05-12');
-INSERT INTO like_comment_tb (`id`, `user_id`, `comment_id`, `is_like`, `created_at`)
-VALUES (7, 1, 5, false, '2023-07-08');
-INSERT INTO like_comment_tb (`id`, `user_id`, `comment_id`, `is_like`, `created_at`)
-VALUES (8, 2, 9, true, '2023-08-07');
-INSERT INTO like_comment_tb (`id`, `user_id`, `comment_id`, `is_like`, `created_at`)
-VALUES (9, 3, 1, true, '2023-10-08');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (3, 1, true, '2023-10-08');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (101, 1, true, '2023-05-12');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (2, 1, true, '2022-10-12');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (104, 1, false, '2022-10-12');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (105, 1, false, '2022-10-12');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (1, 2, true, '2022-11-15');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (2, 2, true, '2022-11-15');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (3, 2, true, '2022-11-15');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (4, 2, true, '2022-11-15');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (5, 2, true, '2022-11-15');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (1, 3, true, '2023-07-08');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (1, 4, false, '2023-07-08');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (104, 4, false, '2023-07-08');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (105, 4, false, '2023-07-08');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (106, 4, false, '2023-07-08');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (1, 5, false, '2023-07-08');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (2, 5, false, '2023-07-08');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (3, 5, false, '2023-07-08');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (1, 7, true, '2022-8-10');
+INSERT INTO like_comment_tb (`user_id`, `comment_id`, `is_like`, `created_at`)
+VALUES (1, 8, true, '2022-9-10');
 
 
 
@@ -6336,29 +6349,33 @@ VALUES (9, 3, 1, true, '2023-10-08');
 
 
 -- 대댓글
-INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
-VALUES (1, 1, 1, '댓글1 쌀 대댓글1', '2021-04-16');
-INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
-VALUES (2, 1, 1, '댓글1 쌀 대댓글2', '2021-06-15');
-INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
-VALUES (3, 2, 1, '댓글1 코스 대댓글1', '2021-09-11');
+INSERT INTO re_comment_tb (`user_id`, `comment_id`, `text`, `created_at`)
+VALUES (4, 1, '재밌다', '2021-05-15');
+INSERT INTO re_comment_tb (`user_id`, `comment_id`, `text`, `created_at`, `is_delete`)
+VALUES (5, 1, '삭제', '2022-06-02', true);
+INSERT INTO re_comment_tb (`user_id`, `comment_id`, `text`, `created_at`)
+VALUES (5, 1, 'ㅎㅇㅎㅇ', '2022-09-11');
 -- INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
 -- VALUES (4, 3, 1, '댓글1 어드민 대댓글1', '2021-11-21');
-INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
-VALUES (5, 101, 1, '댓글1 작가 대댓글1', '2021-12-14');
-INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
-VALUES (6, 101, 1, '댓글1 작가 대댓글2', '2022-05-21');
-INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
-VALUES (7, 101, 1, '댓글1 작가 대댓글3', '2022-06-01');
-INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`, `is_delete`)
-VALUES (8, 101, 1, '댓글1 쌀 대댓글3 삭제', '2022-09-02', true);
 -- INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
 -- VALUES (9, 101, 1, '댓글1 어드민 대댓글2', '2022-12-04');
 
-INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
-VALUES (10, 1, 2, '댓글2 쌀 대댓글1', '2021-05-16');
-INSERT INTO re_comment_tb (`id`, `user_id`, `comment_id`, `text`, `created_at`)
-VALUES (11, 3, 2, '댓글2 어드민 대댓글1', '2022-06-21');
+INSERT INTO re_comment_tb (`user_id`, `comment_id`, `text`, `created_at`)
+VALUES (2, 2, 'ㅎㅇ', '2021-03-16');
+INSERT INTO re_comment_tb (`user_id`, `comment_id`, `text`, `created_at`)
+VALUES (1, 2, '우와 작가님이다', '2021-04-11');
+INSERT INTO re_comment_tb (`user_id`, `comment_id`, `text`, `created_at`)
+VALUES (5, 2, '다음편 빨리 올려주세요', '2022-07-05');
+INSERT INTO re_comment_tb (`user_id`, `comment_id`, `text`, `created_at`, `is_delete`)
+VALUES (103, 2, '삭제', '2022-08-05', true);
+INSERT INTO re_comment_tb (`user_id`, `comment_id`, `text`, `created_at`)
+VALUES (4, 2, '안녕하세요', '2022-09-21');
+
+INSERT INTO re_comment_tb (`user_id`, `comment_id`, `text`, `created_at`)
+VALUES (1, 4, '재밌는데?', '2022-09-21');
+
+INSERT INTO re_comment_tb (`user_id`, `comment_id`, `text`, `created_at`)
+VALUES (1, 5, '신고함', '2022-09-21');
 
 
 -------------------------------------------------------------------------------------------------------------------------
@@ -6373,6 +6390,19 @@ INSERT INTO like_re_comment_tb (`id`, `user_id`, `re_comment_id`, `is_like`, `cr
 VALUES (3, 1, 2, false, '2023-10-10');
 INSERT INTO like_re_comment_tb (`id`, `user_id`, `re_comment_id`, `is_like`, `created_at`)
 VALUES (4, 1, 3, true, '2023-10-10');
+
+INSERT INTO like_re_comment_tb (`user_id`, `re_comment_id`, `is_like`, `created_at`)
+VALUES (2, 5, true, '2023-10-10');
+INSERT INTO like_re_comment_tb (`user_id`, `re_comment_id`, `is_like`, `created_at`)
+VALUES (2, 6, true, '2023-10-10');
+INSERT INTO like_re_comment_tb (`user_id`, `re_comment_id`, `is_like`, `created_at`)
+VALUES (3, 6, true, '2023-10-10');
+INSERT INTO like_re_comment_tb (`user_id`, `re_comment_id`, `is_like`, `created_at`)
+VALUES (4, 6, true, '2023-10-10');
+INSERT INTO like_re_comment_tb (`user_id`, `re_comment_id`, `is_like`, `created_at`)
+VALUES (2, 7, false, '2023-10-10');
+INSERT INTO like_re_comment_tb (`user_id`, `re_comment_id`, `is_like`, `created_at`)
+VALUES (3, 7, false, '2023-10-10');
 
 
 
@@ -6572,17 +6602,19 @@ VALUES (8, 3, 105, true, '2021-08-22');
 
 -- 작가 글
 INSERT INTO author_board_tb (`author_id`, `title`, `text`, `created_at`)
-VALUES (101, '작가1글1제목', '작가글1내용', '2020-08-06');
+VALUES (101, '처음올려봐요', '독자님들 안녕하세요', '2020-08-06');
 INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
-VALUES (101, '작가1글2제목', '작가글2내용', 'dummy5/board1.jpg', '2021-04-13');
+VALUES (101, '커피한잔ㅎ', '커피 마시고 웹툰 그림 그려요', 'dummy5/board1.jpg', '2021-04-13');
 INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
-VALUES (101, '작가1글3제목', '작가글3내용', 'dummy5/board2.jpg', now());
+VALUES (101, '외모지상주의 추가 등장인물입니다', '잘그렸죠?', 'dummy5/101photo.jpg', now());
 INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
 VALUES (102, '작가2글4제목', '작가글4내용', 'dummy5/board3.jpg', '2023-11-08');
 INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
 VALUES (103, '작가3글5제목', '작가글5내용', 'dummy5/board4.jpg', '2023-10-21');
+INSERT INTO author_board_tb (`author_id`, `title`, `text`, `created_at`)
+VALUES (104, '오늘 날씨가 좋네요', '좋은하루보내ㅐ세요', '2023-11-09');
 INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
-VALUES (104, '104작가글제목', '작가글내용', 'dummy5/board5.jpg', '2023-11-09');
+VALUES (104, '유진성입니다', '오늘 웹툰 업로드 지각입니다 죄송합니다', 'dummy5/sorry.jpg', '2023-11-09');
 INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
 VALUES (105, '105작가글제목1', '작가글내용1', 'dummy5/board6.jpg', '2022-08-05');
 INSERT INTO author_board_tb (`author_id`, `title`, `text`, `photo`, `created_at`)
@@ -6644,18 +6676,18 @@ VALUES (322, '322작가글제목2', '작가글내용2', 'dummy5/board17.jpg', '2
 
 -- 메인 광고
 INSERT INTO advertising_main_tb (`photo`, `created_at`, `is_web_link`, `webtoon_id`, `main_text`, `sub_text`)
-VALUES ('EpisodeThumbnail/dummy2/thumbnail_202x120_a79b9214-dbab-4e63-9db8-17ecca04efd0.jpg', now(), false, 101, '웹툰101', '클릭');
+VALUES ('EpisodeThumbnail/dummy2/thumbnail_202x120_a79b9214-dbab-4e63-9db8-17ecca04efd0.jpg', now(), false, 101, '외모지상주의', '박태준/유진성');
 
 
 
 INSERT INTO advertising_main_tb (`photo`, `created_at`, `is_web_link`, `linkURL`, `main_text`, `sub_text`)
-VALUES ('Advertising/default_advertising_main.jpg', now(), true, 'https://github.com/Merhong/final-back', 'github back', '클릭');
+VALUES ('Advertising/gitphoto.png', now(), true, 'https://github.com/Merhong/final-front', '깃허브 링크', '클릭');
 -- INSERT INTO advertising_main_tb (`photo`, `created_at`, `is_web_link`, `linkURL`, `main_text`, `sub_text`)
 -- VALUES ('Advertising/default_advertising_main.jpg', now(), true, 'https://github.com/Merhong/final-front', 'github front', '클릭');
 
 
 INSERT INTO advertising_main_tb (`photo`, `created_at`, `is_web_link`, `webtoon_id`, `main_text`, `sub_text`)
-VALUES ('EpisodeThumbnail/dummy2/thumbnail_202x120_abaed91f-4b0a-4bf4-8804-24fb8da8c44f.jpg', now(), false, 102, '웹툰102메인텍스트', '102서브텍스트');
+VALUES ('EpisodeThumbnail/dummy2/thumbnail_202x120_abaed91f-4b0a-4bf4-8804-24fb8da8c44f.jpg', now(), false, 102, 'EVENT 광마회귀 5회 보면 쿠키!', '');
 
 
 
