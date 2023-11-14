@@ -237,9 +237,7 @@ public class UserService {
         try {
             User user = requestDTO.toEntity();
             user.setUserTypeEnum(UserTypeEnum.NORMAL); // 일반 가입창으로 가입하면 무조건 노말유저
-
             user.setCookie(0); // 가입하면 기본 쿠키 무조건 0
-
             userJPARepository.save(user);
         } catch (Exception e) {
             throw new Exception500("unknown server error");
