@@ -1,6 +1,7 @@
 package com.example.kakao.cookie;
 
 import com.example.kakao._core.errors.exception.Exception400;
+import com.example.kakao._entity.enums.PurchaseHistory;
 import com.example.kakao.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.kakao._core.errors.exception.Exception500;
 import com.example.kakao.user.UserJPARepository;
+
+import java.util.List;
 
 @Transactional
 @Service
@@ -49,5 +52,14 @@ public class CookieService {
          throw new Exception500(" 쿠키서비스에서 터짐");
 
         }
+    }
+
+    public CookieResponse.PurchaseHistoryListDTO history(int userId) {
+        System.out.println("dddddddd"+cookieHistoryRepository.findByUserId(userId));
+        List<CookieHistory> historyList = cookieHistoryRepository.findByUserId(userId);
+        System.out.println(historyList);
+        CookieResponse.PurchaseHistoryListDTO dto = new CookieResponse.PurchaseHistoryListDTO(historyList);
+        return dto;
+
     }
 }
