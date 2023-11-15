@@ -16,6 +16,15 @@ INSERT INTO cookie_tb (`id`, `amount`, `name`, `price`)
 VALUES (7, 300, '쿠키 300개', 36000);
 
 
+-- private Integer id;
+--     private Integer userId;
+--     private Integer purchasedCookie;
+--     private Integer nowCookieAmount;
+--     private Integer price;
+--     @CreationTimestamp
+-- private Timestamp createdAt;
+
+    INSERT INTO purchase_history_tb(`id`, `user_id`, `purchased_cookie`, `now_cookie_amount`, `price`, `created_at`) values (1, 1, 300, 0, 36000, now() );
 
 
 -------------------------------------------------------------------------------------------------------------------------

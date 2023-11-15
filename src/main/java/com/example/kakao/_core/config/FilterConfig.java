@@ -22,6 +22,7 @@ public class FilterConfig {
         bean.addUrlPatterns("/episodes/*");
         bean.addUrlPatterns("/comments/*");
         bean.addUrlPatterns("/recomments/*");
+        bean.addUrlPatterns("/payment/*");
         bean.setOrder(0); // 낮은 번호부터 실행됨
         return bean;
     }
