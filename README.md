@@ -15,9 +15,11 @@ https://github.com/Merhong/final-front
 
 앱
 https://www.youtube.com/watch?v=U6SiR_z5pNo
+[![a](http://img.youtube.com/vi/U6SiR_z5pNo/0.jpg)](https://www.youtube.com/watch?v=U6SiR_z5pNo?t=0s)
 
 관리자 웹
 https://www.youtube.com/watch?v=7j7BKHVhSJs
+[![a](http://img.youtube.com/vi/7j7BKHVhSJs/0.jpg)](https://www.youtube.com/watch?v=7j7BKHVhSJs?t=0s)
 
 PPT
 https://github.com/Merhong/final-back/blob/k7850-patch-2/4%EC%A1%B0%20ppt.pdf
