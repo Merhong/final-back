@@ -13,17 +13,17 @@ https://github.com/Merhong/final-front
 
 ## 📌 시연 영상(유튜브 링크) 
 
-앱
-https://www.youtube.com/watch?v=U6SiR_z5pNo
-
+### 앱
 [![a](http://img.youtube.com/vi/U6SiR_z5pNo/0.jpg)](https://www.youtube.com/watch?v=U6SiR_z5pNo?t=0s)
 
-관리자 웹
-https://www.youtube.com/watch?v=7j7BKHVhSJs
+https://www.youtube.com/watch?v=U6SiR_z5pNo
 
+### 관리자 웹
 [![a](http://img.youtube.com/vi/7j7BKHVhSJs/0.jpg)](https://www.youtube.com/watch?v=7j7BKHVhSJs?t=0s)
 
-PPT
+https://www.youtube.com/watch?v=7j7BKHVhSJs
+
+### PPT
 https://github.com/Merhong/final-back/blob/k7850-patch-2/4%EC%A1%B0%20ppt.pdf
 
 ## 📚 기술 스택
