@@ -11,17 +11,22 @@
 ## 📌 시연 영상(유튜브 링크) 
 
 https://www.youtube.com/watch?v=U6SiR_z5pNo
+
 https://www.youtube.com/watch?v=7j7BKHVhSJs
+
 https://www.youtube.com/watch?v=ipFFrg8UWJk
+
 
 ## 📚 기술 스택
 
 ### Backend
-#### https://github.com/Merhong/final-back
+https://github.com/Merhong/final-back
+
  <img src="https://img.shields.io/badge/Springboot-6DB33F?style=for-the-badge&logo=SpringBoot&logoColor=white">
  
 ### Frontend
-#### https://github.com/Merhong/final-front
+https://github.com/Merhong/final-front
+
 <img src="https://img.shields.io/badge/flutter-02569B?style=for-the-badge&logo=Flutter&logoColor=white"> <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white">
 
 ### 협업 도구
