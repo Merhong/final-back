@@ -10,10 +10,13 @@
 
 ## 📌 시연 영상(유튜브 링크) 
 
+사용자 앱
 https://www.youtube.com/watch?v=U6SiR_z5pNo
 
+관리자 웹
 https://www.youtube.com/watch?v=7j7BKHVhSJs
 
+ppt
 https://www.youtube.com/watch?v=ipFFrg8UWJk
 
 
@@ -34,6 +37,9 @@ https://github.com/Merhong/final-front
 
 ### 데이터베이스
 <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">
+
+### REST Docs (API)
+https://github.com/Merhong/final-back/blob/dev/images/api-docs.html
 
 ### 의존성
 
@@ -79,7 +85,7 @@ https://github.com/Merhong/final-front
 
 - 웹툰,작가,광고 등록/수정
 
-## 모델링 연관관계
+## DB 연관관계
 ![image](https://github.com/Merhong/final-back/assets/78343061/ef5e34d2-e9be-4303-9eee-0acf7359804f)
 
 ## 보완할 점
