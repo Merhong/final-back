@@ -10,12 +10,18 @@
 
 ## 📌 시연 영상(유튜브 링크) 
 
+<iframe width="2543" height="754" src="https://www.youtube.com/embed/U6SiR_z5pNo" title="4조 플러터" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="2543" height="754" src="https://www.youtube.com/embed/7j7BKHVhSJs" title="4조 관리자 페이지" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="2543" height="754" src="https://www.youtube.com/embed/ipFFrg8UWJk" title="4조 ppt 영상으로" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## 📚 기술 스택
 
 ### Backend
+https://github.com/Merhong/final-back
  <img src="https://img.shields.io/badge/Springboot-6DB33F?style=for-the-badge&logo=SpringBoot&logoColor=white">
  
 ### Frontend
+https://github.com/Merhong/final-front
 <img src="https://img.shields.io/badge/flutter-02569B?style=for-the-badge&logo=Flutter&logoColor=white"> <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white">
 
 ### 협업 도구
